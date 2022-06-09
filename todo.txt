@@ -1,0 +1,2 @@
+- Actualizar netinfo.csv
+- Validar que son serivcios NO IP
