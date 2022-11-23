@@ -63,7 +63,8 @@ def router_cisco(nombre_cliente, equipo_actual, conexion1, delete_interface,
     ip_wan = ip_address.split(" ")
     octeto = ip_wan[0].split(".")
     octeto_remoto = int(octeto[3]) + 1
-    ruta_estatica = "sh run | in " + octeto[0] + "." + octeto[1] + "." + octeto[2] + "." + str(octeto_remoto) + "\n\n"
+    ruta_estatica = "sh run | in " + octeto[0] + "." + octeto[1] + "." +\
+        octeto[2] + "." + str(octeto_remoto) + "\n\n"
     name_static = "GPON-VL" + vlan_new + "-" + nombre_cliente_oper + "\n\n"
     
     comando_final_cisco = encabezado + eq_actual + conex1 + del_int + int_rec\
@@ -72,23 +73,31 @@ def router_cisco(nombre_cliente, equipo_actual, conexion1, delete_interface,
         comandos_file.writelines(comando_final_cisco)
 
 
-def sw_juniper(nombre_sw1, conex_sw1, nombre_cliente_oper, vlan_new, int_red_sw1, int_router_sw1):
+def sw_juniper(nombre_sw1, conex_sw1, nombre_cliente_oper, vlan_new,
+               int_red_sw1, int_router_sw1):
     eq_actual = "----------" + nombre_sw1 + "-----------\n"
     conex1 = conex_sw1 + "\n\n"
     crear_vlan = "set vlan " + nombre_cliente_oper + " vlan-id " + vlan_new + "\n"
-    permiso1 = "set interfaces " + int_red_sw1 + " unit 0 family ethernet-switching vlan members " + nombre_cliente_oper + "\n"
-    permiso2 = "set interfaces " + int_router_sw1 + " unit 0 family ethernet-switching vlan members " + nombre_cliente_oper + "\n\n"
+    permiso1 = "set interfaces " + int_red_sw1 +\
+        " unit 0 family ethernet-switching vlan members " +\
+        nombre_cliente_oper + "\n"
+    permiso2 = "set interfaces " + int_router_sw1 +\
+        " unit 0 family ethernet-switching vlan members " +\
+        nombre_cliente_oper + "\n\n"
 
-    comando_final_juniper = eq_actual + conex1 + crear_vlan + permiso1 + permiso2
+    comando_final_juniper = eq_actual + conex1 + crear_vlan +\
+        permiso1 + permiso2
     with open(comandos, 'a') as comandos_file:
         comandos_file.writelines(comando_final_juniper)
 
 
-def sw_cisco(nombre_sw_cisco, conex_sw2, nombre_cliente_oper, vlan_new, int_red_sw2):
+def sw_cisco(nombre_sw_cisco, conex_sw2, nombre_cliente_oper,
+             vlan_new, int_red_sw2):
     eq_actual = "----------" + nombre_sw_cisco + "-----------\n"
     conex1 = conex_sw2 + "\n\n"
     crear_vlan = "vlan " + vlan_new + "\n" + "name " + nombre_cliente_oper + "\n"
-    permiso1 = "interface " + int_red_sw2 + "\n" + "switchport trunk allowed vlan add " + vlan_new + "\n\n"
+    permiso1 = "interface " + int_red_sw2 + "\n" +\
+        "switchport trunk allowed vlan add " + vlan_new + "\n\n"
 
     comando_final_juniper = eq_actual + conex1 + crear_vlan + permiso1
     with open(comandos, 'a') as comandos_file:
@@ -99,23 +108,28 @@ for linea_oper in lineas_oper:
     lista_linea_oper = linea_oper.split("|")
     for linea_netinfo in lineas_netinfo:
         lista_linea_netinfo = linea_netinfo.split("|")
-        if lista_linea_oper[2] in lista_linea_netinfo[3]:  # Valido si piden cambio de nombre de vlan
+        if lista_linea_oper[2] in lista_linea_netinfo[3]:
+            # Valido si piden cambio de nombre de vlan
             if lista_linea_oper[1] != "":
                 lista_linea_oper[0] = lista_linea_oper[1]
+            # lleno las variables con los datos obtenidos
             nombre_cliente_netinfo = lista_linea_netinfo[2]
             nombre_cliente_oper = lista_linea_oper[0]
             equipo_actual = lista_linea_netinfo[0]
             delete_interface = lista_linea_netinfo[1]
-            interface_recibe = interface_router_recibe + "." + str(lista_linea_oper[3])
+            interface_recibe = interface_router_recibe + "."\
+                + str(lista_linea_oper[3])
             description = lista_linea_netinfo[2]
             bandwidth = int(lista_linea_netinfo[5][:-1]) * 1024
             vlan_new = str(lista_linea_oper[3])
             ip_address = lista_linea_netinfo[4]
             policy = lista_linea_netinfo[5]
 
+            # paso los parametros a la funcion q crea comandos
             router_cisco(nombre_cliente_netinfo, equipo_actual, conexion1,
                          delete_interface, interface_recibe, description,
-                         bandwidth, vlan_new, ip_address, policy, nombre_cliente_oper)
+                         bandwidth, vlan_new, ip_address, policy,
+                         nombre_cliente_oper)
             sw_juniper(nombre_sw_jun, conex_sw1, nombre_cliente_oper, vlan_new,
                        int_red_sw1, int_router_sw1)
             sw_cisco(nombre_sw_cisco, conex_sw2, nombre_cliente_oper,
