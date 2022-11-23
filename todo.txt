@@ -1,0 +1,2 @@
+- Capturar las rutas estaticas
+- Agregar cuenta id automaticamente

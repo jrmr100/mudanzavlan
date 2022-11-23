@@ -1,0 +1,3 @@
+ VECREDNOC1004X1, no interface TenGigabitEthernet1/0/4.983
+ VECREDNOC1004X1, no interface TenGigabitEthernet1/0/4.984
+VECCSNOCJM120x1, no interface ge-3/3/2 

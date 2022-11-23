@@ -1,0 +1,75 @@
+NOMBRE_EQUIPO,NOMBRE_VLAN,COMANDO_DEL,COMANDO_ADD,COMANDO_IP
+ VELEBNOC1002X1,BOL-CHOCOBRU,no interface Port-channel3.603,interface Po6.3400,ip address 172.23.247.185 255.255.255.252
+ VELEBNOC1002X1,BOL-TECNOCOM ,no interface Port-channel3.617,interface Po6.3408,ip address 172.23.252.253 255.255.255.252
+ VELEBNOC1002X1,BOL-AGROP-MUNDIAL,no interface Port-channel3.671,interface Po6.3432,ip address 172.23.243.225 255.255.255.252
+ VELEBNOC1002X1,BOL-ALBORADA,no interface Port-channel3.659,interface Po6.3422,ip address 172.23.245.145 255.255.255.252
+ VELEBNOC1002X1,BOL-AVILAIRE,no interface Port-channel5.1682,interface Po6.3435,ip address 172.23.243.117 255.255.255.252
+ VELEBNOC1002X1,BOL-TELCORP-HSJ,no interface Port-channel3.611,interface Po6.3403,ip address 172.23.245.249 255.255.255.252
+ VELEBNOC1002X1,BOL-BET-SHMUEL-ESTE,no interface Port-channel3.627,interface Po6.3410,ip address 190.94.210.189 255.255.255.252
+ VELEBNOC1002X1,BOL-BRANZA-1800,no interface Port-channel3.670,interface Po6.3431,ip address 172.23.243.221 255.255.255.252
+ VELEBNOC1002X1,BOL-CANGURO,no interface Port-channel2.1658,interface Po6.3450,ip address 172.23.244.113 255.255.255.252
+ VELEBNOC1002X1,BOL-CAPI,no interface Port-channel3.616,interface Po6.3407,ip address 172.23.252.185 255.255.255.252
+ VELEBNOC1002X1,BOL-CAUCHOS-MUNDIAL,no interface Port-channel3.666,interface Po6.3427,ip address 172.23.243.133 255.255.255.252
+ VELEBNOC1002X1,BOL-CGSI,no interface Port-channel3.654,interface Po6.3419,ip address 172.23.245.65 255.255.255.252
+ VELEBNOC1002X1,BOL-CL-LOS-CORTIJOS,no interface Port-channel5.1714 ,interface Po6.3438,ip address 172.23.246.201 255.255.255.252
+ VELEBNOC1002X1,BOL-COLEGIO-FRANCIA,no interface Port-channel3.669,interface Po6.3430,ip address 172.23.243.185 255.255.255.252
+ VELEBNOC1002X1,BOL-CONSIS,no interface Port-channel3.641,interface Po6.3412,ip address 172.23.247.41 255.255.255.252
+ VELEBNOC1002X1,BOL-DGCIM-LOGISTICA,no interface Port-channel5.1653 ,interface Po6.3446,ip address 172.23.245.197 255.255.255.252
+ VELEBNOC1002X1,BOL-DGCIM-OPER,no interface Port-channel5.1652,interface Po6.3445,ip address 172.23.245.193 255.255.255.252
+ VELEBNOC1002X1,BOL-DIR-GROUP-AUTANA,no interface Port-channel5.1660,interface Po6.3451,ip address 172.23.245.117 255.255.255.252
+ VELEBNOC1002X1,BOL-DROGUERIA-NENA,no interface Port-channel2.1681,interface Po6.3434,ip address 172.23.243.109 255.255.255.252
+ VELEBNOC1002X1,BOL-FARMACIA-ADAN,no interface Port-channel5.1666,interface Po6.3442,ip address 172.23.246.57 255.255.255.252
+ VELEBNOC1002X1,BOL-GALAXIA-MEDICA,no interface Port-channel3.651,interface Po6.3417,ip address 172.23.245.5 255.255.255.252
+ VELEBNOC1002X1,BOL-GENERACION-TECN,no interface Port-channel5.1667,interface Po6.3443,ip address 172.23.246.113 255.255.255.252
+ VELEBNOC1002X1,BOL-GINA,no interface Port-channel5.1120,interface Po6.3454,ip address 172.23.248.53 255.255.255.252
+ VELEBNOC1002X1,BOL-GRUPO-PHX,no interface Port-channel3.668,interface Po6.3429,ip address 172.23.243.181 255.255.255.252
+ VELEBNOC1002X1,BOL-HEB-CAM,no interface Port-channel3.605,interface Po6.3401,ip address 172.23.253.97 255.255.255.252
+ VELEBNOC1002X1,BOL-HEB-COLEGIO,no interface Port-channel3.644,interface Po6.3414,ip address 172.23.254.185 255.255.255.252
+ VELEBNOC1002X1,BOL-HEBRAICA-CLUB,no interface Port-channel5.1123 ,interface Po6.3456,ip address 172.23.254.105 255.255.255.252
+ VELEBNOC1002X1,BOL-HEB-WIFI,no interface Port-channel5.1122,interface Po6.3455,ip address 181.225.43.97 255.255.255.248
+ VELEBNOC1002X1,BOL-HOGAR-LUVADICHT,no interface Port-channel3.662,interface Po6.3426,ip address 190.94.250.185 255.255.255.252
+ VELEBNOC1002X1,BOL-HOTECHE,no interface Port-channel5.1675,interface Po6.3433,ip address 172.23.243.97 255.255.255.252
+ VELEBNOC1002X1,BOL-INFOTAX,no interface Port-channel3.642,interface Po6.3413,ip address 172.23.247.45 255.255.255.252
+ VELEBNOC1002X1,BOL-JOSEPH-SIMKIN,no interface Port-channel3.626 ,interface Po6.3409,ip address 172.23.250.149 255.255.255.252
+ VELEBNOC1002X1,BOL-JUAN-CARLOS-V,no interfacePort-channel3.615 ,interface Po6.3406,ip address 172.23.252.177 255.255.255.252
+ VELEBNOC1002X1,BOL-KORES,no interface Port-channel5.1719,interface Po6.3441,ip address 172.23.243.49 255.255.255.252
+ VELEBNOC1002X1,BOL-LA-PERLA,no interface Port-channel3.652,interface Po6.3418,ip address 172.23.245.37 255.255.255.252
+ VELEBNOC1002X1,BOL-LIBERTY-EXP-BOL,no interface Port-channel5.1717,interface Po6.3439,ip address 172.23.243.29 255.255.255.252
+ VELEBNOC1002X1,BOL-LIBERTY-OFINCA,no interface Port-channel3.667,interface Po6.3428,ip address 172.23.243.209 255.255.255.252
+ VELEBNOC1002X1,BOL-LIDER-PRAGMA,no interface Port-channel2.1656,interface Po6.3449,ip address 172.23.245.225 255.255.255.252
+ VELEBNOC1002X1,BOL-MAPLOCA,no interface Port-channel3.657,interface Po6.3420,ip address 172.23.245.153 255.255.255.252
+ VELEBNOC1002X1,BOL-MICROFILMS,no interface Port-channel3.650,interface Po6.3416,ip address 172.23.247.173 255.255.255.252
+ VELEBNOC1002X1,BOL-NIVTAJ-TSALACH,no interface Port-channel5.1661,interface Po6.3452,ip address 172.23.246.165 255.255.255.252
+ VELEBNOC1002X1,BOL-OLTP-ATM,no interface Port-channel3.661,interface Po6.3425,ip address 172.23.244.65 255.255.255.252
+ VELEBNOC1002X1,BOL-OLTP-URB,no interface Port-channel3.658,interface Po6.3421,ip address 172.23.255.237 255.255.255.252
+ VELEBNOC1002X1,BOL-OPAS,no interface Port-channel3.647,interface Po6.3415,ip address 172.23.247.177 255.255.255.252
+ VELEBNOC1002X1,BOL-PEPSICO,no interface Port-channel4.1119,interface Po6.3453,ip address 172.23.248.57 255.255.255.252
+ VELEBNOC1002X1,BOL-POLINAC,no interface Port-channel5.1718,interface Po6.3440,ip address 172.23.243.33 255.255.255.252
+ VELEBNOC1002X1,BOL-PRC-SEGRE,no interface Port-channel5.1669,interface Po6.3444,ip address 172.23.246.25 255.255.255.252
+ VELEBNOC1002X1,BOL-PRIMTEK-CCBC,no interface Port-channel5.1655,interface Po6.3448,ip address 172.23.245.213 255.255.255.252
+ VELEBNOC1002X1,BOL-PRIMTEK-WILSON,no interface Port-channel5.1654,interface Po6.3447,ip address 172.23.245.209 255.255.255.252
+ VELEBNOC1002X1,BOL-PROD_KHYM,no interface Port-channel3.660,interface Po6.3423,ip address 172.23.245.189 255.255.255.252
+VELEBNOC1002X1,BOL-QTA-MI-REFUGIO ,no interface Port-channel3.612,interface Po6.3404,ip address 172.23.245.165 255.255.255.252
+VECCSNOCJM120x1,BOL-RIVOLI,del interfaces ge-2/0/0 unit 620,interface Po6.3405,ip address 172.23.251.117/30
+ VELEBNOC1002X1,BOL-SALVA-LOGISTC,no interface Port-channel4.1707,interface Po6.3437,ip address 172.23.244.69 255.255.255.252
+ VELEBNOC1002X1,BOL-SMARTCALL-PANALP,no interface Port-channel4.1706,interface Po6.3436,ip address 172.23.244.29 255.255.255.252
+ VELEBNOC1002X1,BOL-VALORALTA,no interface Port-channel3.637,interface Po6.3411,ip address 172.23.248.185 255.255.255.252
+ VELEBNOC1002X1,BOL-WEDOO,no interface Port-channel3.606,interface Po6.3402,ip address 172.23.247.249 255.255.255.252
+ VELEBNOC1002X1,BOL-MOL-NACIONALES,no interface Port-channel5.1134,interface Po6.3461,ip address 172.23.254.249 255.255.255.252
+ VELEBNOC1002X1,BOL-PRC333-MONACA,no interface Port-channel2.1133,interface Po6.3460,ip address 172.23.248.245 255.255.255.252
+ VELEBNOC1002X1,BOL-PRC-DANISA,no interface Port-channel5.1132,interface Po6.3459,ip address 172.23.252.145 255.255.255.252
+ VELEBNOC1002X1,BOL-ARTROGEN,no interface Port-channel5.610,interface Po6.3462,ip address 172.23.245.173 255.255.255.252
+ VELEBNOC1002X1,BOL-SMARTCALL-COLEG,no interface Port-channel4.1128,interface Po6.3458,ip address 172.23.247.37 255.255.255.252
+ VELEBNOC1002X1,BOL-VENEIMCA,no interface Port-channel3.624,interface Po6.3463,ip address 172.23.250.145 255.255.255.252
+ VELEBNOC1002X1,BOL-TELEVEN,no interface Port-channel5.1127,interface Po6.3457,ip address 172.23.247.17 255.255.255.252
+ VELEBNOC1002X1,MCCY-CENTRO-MARMOL,no interface Port-channel5.1671,interface Po6.3505,ip address 172.23.243.73 255.255.255.252
+ VELEBNOC1002X1,MCCY-CHARVENCA,no interface Port-channel5.213,interface Po6.3506,ip address 172.23.252.221 255.255.255.252
+ VELEBNOC1002X1,MCCY-CLOUDHOPP,no interface Port-channel5.1683,interface Po6.3501,ip address 172.23.243.165 255.255.255.252
+ VELEBNOC1002X1,MCCY-CONTALFA,no interface Port-channel4.1103,interface Po6.3500,ip address 172.23.252.233 255.255.255.252
+ VELEBNOC1002X1,MCCY-DILOJA,no interface Port-channel4.1118,interface Po6.3502,ip address 172.23.248.233 255.255.255.252
+ VELEBNOC1002X1,MCCY-MUD-INT-LLANITO,no interface Port-channel4.1125,interface Po6.3503,ip address 172.23.247.1 255.255.255.252
+ VELEBNOC1002X1,MCCY-STP-CONSULTORES,no interface Port-channel4.1126,interface Po6.3504,ip address 172.23.247.13 255.255.255.252
+ VELEBNOC1002X1,LEB-DIVISION-365,no interface Port-channel5.1662,interface Po6.3150,ip address 172.23.246.209 255.255.255.252
+ VELEBNOC1002X1,LEB-QTA-ODETE,no interface Port-channel5.1663,interface Po6.3151,ip address 190.94.252.209 255.255.255.252
+ VELEBNOC1002X1,LEB-HERGLY,no interface Port-channel5.1664,interface Po6.3152,ip address 172.23.246.213 255.255.255.252
+ VELEBNOC1002X1,LEB-INVERSIONES-747,no interface Port-channel5.1665,interface Po6.3153,ip address 172.23.246.221 255.255.255.252
