@@ -15,8 +15,6 @@
 # - configuro las funciones que genera los comandos segun el equipo
 # - Busco manualmente las rutas estaticas para cambiarles el nombre
 
-
-import csv
 from herramientas.leer_csv import leer_lineas
 
 # INSUMOS:
