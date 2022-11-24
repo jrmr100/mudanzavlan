@@ -1,0 +1,321 @@
+################GALI-MENCEY-CONTAC############### XXXXXXXXX vlan usada en 4500
+---------- VECREDNOC1004X1-----------
+ssh soporte2@181.225.41.18
+
+no interface TenGigabitEthernet0/3/0.3240
+interface TenGigabitEthernet1/0/3.1558
+description GALI-MENCEY-CONTAC
+bandwidth 102400
+encapsulation dot1Q 1558
+ip address 172.23.244.13 255.255.255.252
+service-policy input 100M
+service-policy output 100M
+
+sh run | in 172.23.244.14
+
+GPON-VL1558-GALI-MENCEY-CONTAC
+
+----------CCSJ4500CREX2-----------
+ssh soporte2@172.23.253.59
+
+del vlan GALI-MENCEY-CONTAC vlan-id 1558
+del interfaces ae6 unit 0 family ethernet-switching vlan members GALI-MENCEY-CONTAC
+del interfaces xe-0/0/9 unit 0 family ethernet-switching vlan members GALI-MENCEY-CONTAC
+
+----------CCS3064GALIX1-----------
+ssh soporte2@172.23.253.46
+
+vlan 1558
+name GALI-MENCEY-CONTAC
+interface Eth1/8
+switchport trunk allowed vlan add 1558
+
+################BIXA;ID:26189############### XXXXXXXXXXXXxx vlan 4007 reservada en gali
+---------- VECREDNOC1004X1-----------
+ssh soporte2@181.225.41.18
+
+no interface TenGigabitEthernet0/3/0.3242
+interface TenGigabitEthernet1/0/3.4007
+description BIXA;ID:26189
+bandwidth 81920
+encapsulation dot1Q 4007
+ip address 172.23.245.137 255.255.255.252
+service-policy input 80M
+service-policy output 80M
+
+sh run | in 172.23.245.138
+
+GPON-VL4007-GALI-BIXA
+
+----------CCSJ4500CREX2-----------
+ssh soporte2@172.23.253.59
+
+set vlan GALI-BIXA vlan-id 4007
+set interfaces ae6 unit 0 family ethernet-switching vlan members GALI-BIXA
+set interfaces xe-0/0/9 unit 0 family ethernet-switching vlan members GALI-BIXA
+
+----------CCS3064GALIX1-----------
+ssh soporte2@172.23.253.46
+
+vlan 4007
+name GALI-BIXA
+interface Eth1/8
+switchport trunk allowed vlan add 4007
+
+################GPON-VL3229-GALI-FONDO-DE-VALORES###############
+---------- VECREDNOC1004X1-----------
+ssh soporte2@181.225.41.18
+
+no interface TenGigabitEthernet0/3/0.3229
+interface TenGigabitEthernet1/0/3.1596
+description GPON-VL3229-GALI-FONDO-DE-VALORES
+bandwidth 153600
+encapsulation dot1Q 1596
+ip address 172.23.248.169 255.255.255.252
+service-policy input 150M
+service-policy output 150M
+
+sh run | in 172.23.248.170
+
+GPON-VL1596-GALI-F-DE-VALORES
+
+----------CCSJ4500CREX2-----------
+ssh soporte2@172.23.253.59
+
+set vlan GALI-F-DE-VALORES vlan-id 1596
+set interfaces ae6 unit 0 family ethernet-switching vlan members GALI-F-DE-VALORES
+set interfaces xe-0/0/9 unit 0 family ethernet-switching vlan members GALI-F-DE-VALORES
+
+----------CCS3064GALIX1-----------
+ssh soporte2@172.23.253.46
+
+vlan 1596
+name GALI-F-DE-VALORES
+interface Eth1/8
+switchport trunk allowed vlan add 1596
+
+################DIVIDENDO-VOLUNTARIO;ID:26295###############
+---------- VECREDNOC1004X1-----------
+ssh soporte2@181.225.41.18
+
+no interface TenGigabitEthernet0/3/0.3223
+interface TenGigabitEthernet1/0/3.1590
+description DIVIDENDO-VOLUNTARIO;ID:26295
+bandwidth 102400
+encapsulation dot1Q 1590
+ip address 172.23.243.65 255.255.255.252
+service-policy input 100M
+service-policy output 100M
+
+sh run | in 172.23.243.66
+
+GPON-VL1590-GALI-DIV-VOLUNTARIO
+
+----------CCSJ4500CREX2-----------
+ssh soporte2@172.23.253.59
+
+set vlan GALI-DIV-VOLUNTARIO vlan-id 1590
+set interfaces ae6 unit 0 family ethernet-switching vlan members GALI-DIV-VOLUNTARIO
+set interfaces xe-0/0/9 unit 0 family ethernet-switching vlan members GALI-DIV-VOLUNTARIO
+
+----------CCS3064GALIX1-----------
+ssh soporte2@172.23.253.46
+
+vlan 1590
+name GALI-DIV-VOLUNTARIO
+interface Eth1/8
+switchport trunk allowed vlan add 1590
+
+################BEKESANTOS;ID:22647###############
+---------- VECREDNOC1004X1-----------
+ssh soporte2@181.225.41.18
+
+no interface TenGigabitEthernet0/3/0.3241
+interface TenGigabitEthernet1/0/3.4006
+description BEKESANTOS;ID:22647
+bandwidth 51200
+encapsulation dot1Q 4006
+ip address 172.23.247.213 255.255.255.252
+service-policy input 50M
+service-policy output 50M
+
+sh run | in 172.23.247.214
+
+GPON-VL4006-GALI-BEKESANTOS
+
+----------CCSJ4500CREX2-----------
+ssh soporte2@172.23.253.59
+
+set vlan GALI-BEKESANTOS vlan-id 4006
+set interfaces ae6 unit 0 family ethernet-switching vlan members GALI-BEKESANTOS
+set interfaces xe-0/0/9 unit 0 family ethernet-switching vlan members GALI-BEKESANTOS
+
+----------CCS3064GALIX1-----------
+ssh soporte2@172.23.253.46
+
+vlan 4006
+name GALI-BEKESANTOS
+interface Eth1/8
+switchport trunk allowed vlan add 4006
+
+################GPON-VL3228-ZURICH;ID:26002###############
+---------- VECREDNOC1004X1-----------
+ssh soporte2@181.225.41.18
+
+no interface TenGigabitEthernet0/3/0.3228
+interface TenGigabitEthernet1/0/3.1595
+description GPON-VL3228-ZURICH;ID:26002
+bandwidth 61440
+encapsulation dot1Q 1595
+ip address 172.23.251.121 255.255.255.252
+service-policy input 60M
+service-policy output 60M
+
+sh run | in 172.23.251.122
+
+GPON-VL1595-GALI-ZURICH
+
+----------CCSJ4500CREX2-----------
+ssh soporte2@172.23.253.59
+
+set vlan GALI-ZURICH vlan-id 1595
+set interfaces ae6 unit 0 family ethernet-switching vlan members GALI-ZURICH
+set interfaces xe-0/0/9 unit 0 family ethernet-switching vlan members GALI-ZURICH
+
+----------CCS3064GALIX1-----------
+ssh soporte2@172.23.253.46
+
+vlan 1595
+name GALI-ZURICH
+interface Eth1/8
+switchport trunk allowed vlan add 1595
+
+################ZUMA-SEGUROS;ID:26132###############
+---------- VECREDNOC1004X1-----------
+ssh soporte2@181.225.41.18
+
+no interface TenGigabitEthernet0/3/0.3608
+interface TenGigabitEthernet1/0/3.594
+description ZUMA-SEGUROS;ID:26132
+bandwidth 30720
+encapsulation dot1Q 594
+ip address 172.23.247.153 255.255.255.252
+service-policy input 30M
+service-policy output 30M
+
+sh run | in 172.23.247.154
+
+GPON-VL594-GALI-ZUMA-SEGUROS
+
+----------CCSJ4500CREX2-----------
+ssh soporte2@172.23.253.59
+
+set vlan GALI-ZUMA-SEGUROS vlan-id 594
+set interfaces ae6 unit 0 family ethernet-switching vlan members GALI-ZUMA-SEGUROS
+set interfaces xe-0/0/9 unit 0 family ethernet-switching vlan members GALI-ZUMA-SEGUROS
+
+----------CCS3064GALIX1-----------
+ssh soporte2@172.23.253.46
+
+vlan 594
+name GALI-ZUMA-SEGUROS
+interface Eth1/8
+switchport trunk allowed vlan add 594
+
+################GALI-CONTRUCTORA-IHI###############
+---------- VECREDNOC1004X1-----------
+ssh soporte2@181.225.41.18
+
+no interface TenGigabitEthernet0/3/0.3245
+interface TenGigabitEthernet1/0/3.4009
+description GALI-CONTRUCTORA-IHI
+bandwidth 51200
+encapsulation dot1Q 4009
+ip address 172.23.247.141 255.255.255.252
+service-policy input 50M
+service-policy output 50M
+
+sh run | in 172.23.247.142
+
+GPON-VL4009-GALI-CONTRUCTORA-IHI
+
+----------CCSJ4500CREX2-----------
+ssh soporte2@172.23.253.59
+
+set vlan GALI-CONTRUCTORA-IHI vlan-id 4009
+set interfaces ae6 unit 0 family ethernet-switching vlan members GALI-CONTRUCTORA-IHI
+set interfaces xe-0/0/9 unit 0 family ethernet-switching vlan members GALI-CONTRUCTORA-IHI
+
+----------CCS3064GALIX1-----------
+ssh soporte2@172.23.253.46
+
+vlan 4009
+name GALI-CONTRUCTORA-IHI
+interface Eth1/8
+switchport trunk allowed vlan add 4009
+
+################SEPAGOS;ID:26226###############
+---------- VECREDNOC1004X1-----------
+ssh soporte2@181.225.41.18
+
+no interface TenGigabitEthernet0/3/0.3605
+interface TenGigabitEthernet1/0/3.591
+description SEPAGOS;ID:26226
+bandwidth 61440
+encapsulation dot1Q 591
+ip address 172.23.247.81 255.255.255.252
+service-policy input 60M
+service-policy output 60M
+
+sh run | in 172.23.247.82
+
+GPON-VL591-GALI-SEPAGOS
+
+----------CCSJ4500CREX2-----------
+ssh soporte2@172.23.253.59
+
+set vlan GALI-SEPAGOS vlan-id 591
+set interfaces ae6 unit 0 family ethernet-switching vlan members GALI-SEPAGOS
+set interfaces xe-0/0/9 unit 0 family ethernet-switching vlan members GALI-SEPAGOS
+
+----------CCS3064GALIX1-----------
+ssh soporte2@172.23.253.46
+
+vlan 591
+name GALI-SEPAGOS
+interface Eth1/8
+switchport trunk allowed vlan add 591
+
+################GALI-ROSNEFT###############
+---------- VECREDNOC1004X1-----------
+ssh soporte2@181.225.41.18
+
+no interface TenGigabitEthernet0/3/0.3213
+interface TenGigabitEthernet1/0/3.570
+description GALI-ROSNEFT
+bandwidth 153600
+encapsulation dot1Q 570
+ip address 172.23.250.165 255.255.255.252
+service-policy input 150M
+service-policy output 150M
+
+sh run | in 172.23.250.166
+
+GPON-VL570-GALI-ROSNEFT
+
+----------CCSJ4500CREX2-----------
+ssh soporte2@172.23.253.59
+
+set vlan GALI-ROSNEFT vlan-id 570
+set interfaces ae6 unit 0 family ethernet-switching vlan members GALI-ROSNEFT
+set interfaces xe-0/0/9 unit 0 family ethernet-switching vlan members GALI-ROSNEFT
+
+----------CCS3064GALIX1-----------
+ssh soporte2@172.23.253.46
+
+vlan 570
+name GALI-ROSNEFT
+interface Eth1/8
+switchport trunk allowed vlan add 570
+
+
