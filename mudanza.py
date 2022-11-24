@@ -1,7 +1,8 @@
 #!venv/bin/python
 
 # Script realizado por JHON MONRROY jrmr100@gmail.com
-# OBJETIVO: Migrar clientes desde un router / nterface a otro, incluyendo cambio de VLAN
+# OBJETIVO: Migrar clientes desde un router / nterface a otro, incluyendo
+# cambio de VLAN
 # ALGORITMO:
 # - Leo csv enviado por operaciones y obtengo:
 #   - Nombre y Nro Vlan actual
@@ -18,14 +19,14 @@
 from herramientas.leer_csv import leer_lineas
 
 # INSUMOS:
-csv_oper = "MudanzaGPON2-galipan.csv" # Archivo enviado por operaciones
+csv_oper = "fuente-operaciones.csv"  # Archivo enviado por operaciones
 lista_campos_oper = ["Vlan Name", "Nombre a Cambiar", "Current Vlan",
-                     "New Vlan" ]  # Campos a leer del csv enviado
+                     "New Vlan"]  # Campos a leer del csv enviado
 lista_campos_netinfo = ["NOMBRE_EQUIPO", "INTERFACE", "NOMBRE_CLIENTE",
                         "NRO_VLAN", "DIRECCION_IP", "VELOCIDAD_ENTRADA",
-                        "VELOCIDAD_SALIDA" ]  # Campos a leer del csv netinfo
+                        "VELOCIDAD_SALIDA"]  # Campos a leer del csv netinfo
 csv_netinfo = "netinfo.csv"  # Ultima version del netinfo.csv
-comandos = "MudanzaGPON2-comandos.txt"  # archivo de salida con los comandos a aplicar
+comandos = "Comandos_generados.txt"  # archivo de salida con los comandos
 conexion1 = "ssh soporte2@181.225.41.18"
 interface_router_recibe = "TenGigabitEthernet1/0/3"
 nombre_sw_jun = "CCSJ4500CREX2"
@@ -57,16 +58,21 @@ def router_cisco(nombre_cliente, equipo_actual, conexion1, delete_interface,
     bw = "bandwidth " + str(bandwidth) + "\n"
     encap = "encapsulation dot1Q " + vlan_new + "\n"
     ip = "ip address " + ip_address + "\n"
-    speed = "service-policy input " + policy + "\n" + "service-policy output " + policy + "\n\n"
-    
+    speed = "service-policy input " + policy + "\n" +\
+        "service-policy output " + policy + "\n\n"
+
     # Creo la ip wan remota para buscar la estatica
-    ip_wan = ip_address.split(" ")
-    octeto = ip_wan[0].split(".")
-    octeto_remoto = int(octeto[3]) + 1
-    ruta_estatica = "sh run | in " + octeto[0] + "." + octeto[1] + "." +\
-        octeto[2] + "." + str(octeto_remoto) + "\n\n"
+    # valido q sea una IP valida y formato cisco
+    if "." in ip_address and "/" not in ip_address:
+        ip_wan = ip_address.split(" ")
+        octeto = ip_wan[0].split(".")
+        octeto_remoto = int(octeto[3]) + 1
+        ruta_estatica = "sh run | in " + octeto[0] + "." + octeto[1] + "." +\
+            octeto[2] + "." + str(octeto_remoto) + "\n\n"
+    else:
+        ruta_estatica = "FORMATO IP NO VALIDO!!!\n" + ip_address
     name_static = "GPON-VL" + vlan_new + "-" + nombre_cliente_oper + "\n\n"
-    
+
     comando_final_cisco = encabezado + eq_actual + conex1 + del_int + int_rec\
         + descr + bw + encap + ip + speed + ruta_estatica + name_static
     with open(comandos, 'a') as comandos_file:
@@ -120,7 +126,8 @@ for linea_oper in lineas_oper:
             interface_recibe = interface_router_recibe + "."\
                 + str(lista_linea_oper[3])
             description = lista_linea_netinfo[2]
-            bandwidth = int(lista_linea_netinfo[5][:-1]) * 1024
+            if lista_linea_netinfo[5][:-1] != "":
+                bandwidth = int(lista_linea_netinfo[5][:-1]) * 1024
             vlan_new = str(lista_linea_oper[3])
             ip_address = lista_linea_netinfo[4]
             policy = lista_linea_netinfo[5]
