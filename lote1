@@ -1,3 +1,94 @@
+################GPON-VL3230-PRIMTEK-27;ID:26258###############
+---------- VECREDNOC1004X1-----------
+ssh soporte2@181.225.41.18
+
+no interface TenGigabitEthernet0/3/0.3230
+interface TenGigabitEthernet1/0/3.1597
+description GPON-VL3230-PRIMTEK-27;ID:26258
+bandwidth 204800
+encapsulation dot1Q 1597
+ip address 172.23.248.225 255.255.255.252
+service-policy input 200M
+service-policy output 200M
+
+sh run | in 172.23.248.226
+
+GPON-VL1597-GALI-PRIMTEK-27
+
+----------CCSJ4500CREX2-----------
+ssh soporte2@172.23.253.59
+
+set vlan GALI-PRIMTEK-27 vlan-id 1597
+set interfaces ae6 unit 0 family ethernet-switching vlan members GALI-PRIMTEK-27
+set interfaces xe-0/0/9 unit 0 family ethernet-switching vlan members GALI-PRIMTEK-27
+
+----------CCS3064GALIX1-----------
+ssh soporte2@172.23.253.46
+
+vlan 1597
+name GALI-PRIMTEK-27
+interface Eth1/8
+switchport trunk allowed vlan add 1597
+
+################GALI-IGLESIA-C-ALEG###############
+---------- VECREDNOC1004X1-----------
+ssh soporte2@181.225.41.18
+
+no interface TenGigabitEthernet0/3/0.3243
+interface TenGigabitEthernet1/0/3.4050
+description GALI-IGLESIA-C-ALEG
+bandwidth 20480
+encapsulation dot1Q 4050
+ip address 172.23.248.29 255.255.255.252
+service-policy input 20M
+service-policy output 20M
+
+sh run | in 172.23.248.30
+
+GPON-VL4050-GALI-IGLESIA-C-ALEG
+
+----------CCSJ4500CREX2-----------
+ssh soporte2@172.23.253.59
+
+set vlan GALI-IGLESIA-C-ALEG vlan-id 4050
+set interfaces ae6 unit 0 family ethernet-switching vlan members GALI-IGLESIA-C-ALEG
+set interfaces xe-0/0/9 unit 0 family ethernet-switching vlan members GALI-IGLESIA-C-ALEG
+
+----------CCS3064GALIX1-----------
+ssh soporte2@172.23.253.46
+
+vlan 4050
+name GALI-IGLESIA-C-ALEG
+interface Eth1/8
+switchport trunk allowed vlan add 4050
+
+
+################GALI-FAROCA-MANSION-CA###############
+no pasa por nuestro router, directo a 2NET
+----------CCSJ4500CREX2-----------
+ssh soporte2@172.23.253.59
+
+del interfaces xe-0/0/8 unit 0 family ethernet-switching vlan members GALI-FAROCA-MANSION-CA
+set interfaces ae6 unit 0 family ethernet-switching vlan members GALI-FAROCA-MANSION-CA
+
+----------CCS3064GALIX1-----------
+ssh soporte2@172.23.253.46
+
+vlan 1566
+name GALI-FAROCA-MANSION-CA
+interface Eth1/8
+switchport trunk allowed vlan add 1566
+
+
+
+
+
+
+
+
+
+
+
 ################GALI-MENCEY-CONTAC############### XXXXXXXXX vlan usada en 4500
 ---------- VECREDNOC1004X1-----------
 ssh soporte2@181.225.41.18
