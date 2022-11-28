@@ -438,8 +438,7 @@ service-policy input 150M
 service-policy output 150M
 
 sh run | in 172.23.250.166
-
-GPON-VL570-GALI-ROSNEFT
+ip route 181.225.47.160 255.255.255.240 172.23.250.166 name GPON-VL570-GALI-ROSNEFT
 
 ----------CCSJ4500CREX2-----------
 ssh soporte2@172.23.253.59
@@ -471,8 +470,9 @@ service-policy input 80M
 service-policy output 80M
 
 sh run | in 172.23.255.122
+ip route 181.225.44.64 255.255.255.248 172.23.255.122 name GPON-VL562-GALI-PACIF
 
-GPON-VL562-GALI-PACIF
+
 
 ----------CCSJ4500CREX2-----------
 ssh soporte2@172.23.253.59
@@ -503,8 +503,8 @@ service-policy input 100M
 service-policy output 100M
 
 sh run | in 172.23.241.26
+ip route 190.94.244.156 255.255.255.252 172.23.241.26 name GPON-VL4063-GALI-AXESS-NET
 
-GPON-VL4063-GALI-AXESS-NET
 
 ----------CCSJ4500CREX2-----------
 ssh soporte2@172.23.253.59
@@ -536,15 +536,17 @@ service-policy input 10M
 service-policy output 10M
 
 sh run | in 172.23.245.58
-
-GPON-VL1553-GALI-AGEN-DE-FUTBOL
+ip route 190.94.250.0 255.255.255.252 172.23.245.58 name GPON-VL1553-GALI-AGEN-DE-FUTBOL
 
 ----------CCSJ4500CREX2-----------
 ssh soporte2@172.23.253.59
 
-del vlan GALI-AGEN-DE-FUTBOL vlan-id 1553
-del interfaces ae6 unit 0 family ethernet-switching vlan members GALI-AGEN-DE-FUTBOL
-set interfaces xe-0/0/9 unit 0 family ethernet-switching vlan members GALI-AGENCIA-DE-FUTBOL
+del interfaces xe-0/0/9 unit 0 family ethernet-switching vlan members GALI-AGENCIA-DE-FUTBOL
+del interfaces ae6 unit 0 family ethernet-switching vlan members GALI-AGENCIA-DE-FUTBOL
+del vlan GALI-AGENCIA-DE-FUTBOL vlan-id 1553
+set vlan GALI-AGEN-DE-FUTBOL vlan-id 1553
+set interfaces ae6 unit 0 family ethernet-switching vlan members GALI-AGEN-DE-FUTBOL
+set interfaces xe-0/0/9 unit 0 family ethernet-switching vlan members GALI-AGEN-DE-FUTBOL
 
 ----------CCS3064GALIX1-----------
 ssh soporte2@172.23.253.46
@@ -568,8 +570,9 @@ service-policy input 80M
 service-policy output 80M
 
 sh run | in 172.23.251.166
+ip route 190.94.199.48 255.255.255.252 172.23.251.166 name GPON-VL4051-GALI-GPS-40MB
+ip route 190.94.199.52 255.255.255.252 172.23.251.166 name GPON-VL4051-GALI-GPS-40MB
 
-GPON-VL4051-GALI-GPS-40MB
 
 ----------CCSJ4500CREX2-----------
 ssh soporte2@172.23.253.59
@@ -600,8 +603,9 @@ service-policy input 50M
 service-policy output 50M
 
 sh run | in 172.23.247.142
+ip route 190.94.208.176 255.255.255.252 172.23.247.142 name GPON-VL4059-GALI-CONTRUCTORA-IHI
 
-GPON-VL4059-GALI-CONTRUCTORA-IHI
+
 
 ----------CCSJ4500CREX2-----------
 ssh soporte2@172.23.253.59
@@ -632,8 +636,9 @@ service-policy input 80M
 service-policy output 80M
 
 sh run | in 172.23.251.70
+ip route 181.225.44.56 255.255.255.248 172.23.251.70 name GPON-VL555-GALI-EVEBA
 
-GPON-VL555-GALI-EVEBA
+
 
 ----------CCSJ4500CREX2-----------
 ssh soporte2@172.23.253.59
@@ -664,8 +669,9 @@ service-policy input 100M
 service-policy output 100M
 
 sh run | in 172.23.246.206
+ip route 190.94.252.200 255.255.255.252 172.23.246.206 name GPON-VL1582-GALI-SISNET-LIDO
 
-GPON-VL1582-GALI-SISNET-LIDO
+
 
 ----------CCSJ4500CREX2-----------
 ssh soporte2@172.23.253.59
@@ -696,8 +702,9 @@ service-policy input 50M
 service-policy output 50M
 
 sh run | in 172.23.251.126
+ip route 190.94.208.252 255.255.255.252 172.23.251.126 name GPON-VL558-GALI-OVEJA-NEGRA
 
-GPON-VL558-GALI-OVEJA-NEGRA
+
 
 ----------CCSJ4500CREX2-----------
 ssh soporte2@172.23.253.59
@@ -728,8 +735,9 @@ service-policy input 50M
 service-policy output 50M
 
 sh run | in 172.23.243.114
+ip route 190.94.244.60 255.255.255.252 172.23.243.114 name GPON-VL1593-GALI-TOKEN-PAGOS-POS
 
-GPON-VL1593-GALI-TOKEN-PAGOS-POS
+
 
 ----------CCSJ4500CREX2-----------
 ssh soporte2@172.23.253.59
@@ -760,8 +768,11 @@ service-policy input 150M
 service-policy output 150M
 
 sh run | in 172.23.248.170
+ip route 181.225.43.176 255.255.255.248 172.23.248.170 name GPON-VL1596-GALI-F-DE-VALORES
+ip route 181.225.47.144 255.255.255.240 172.23.248.170 name GPON-VL1596-GALI-F-DE-VALORES
+ip route 190.94.199.16 255.255.255.252 172.23.248.170 name GPON-VL1596-GALI-F-DE-VALORES
+ip route 190.94.250.136 255.255.255.252 172.23.248.170 name GPON-VL1596-GALI-F-DE-VALORES
 
-GPON-VL1596-GALI-F-DE-VALORES
 
 ----------CCSJ4500CREX2-----------
 ssh soporte2@172.23.253.59
@@ -792,8 +803,9 @@ service-policy input 60M
 service-policy output 60M
 
 sh run | in 172.23.251.122
+ip route 181.225.41.160 255.255.255.224 172.23.251.122 name GPON-VL1595-GALI-ZURICH
+ip route 190.94.199.8 255.255.255.252 172.23.251.122 name GPON-VL1595-GALI-ZURICH
 
-GPON-VL1595-GALI-ZURICH
 
 ----------CCSJ4500CREX2-----------
 ssh soporte2@172.23.253.59
@@ -824,8 +836,9 @@ service-policy input 100M
 service-policy output 100M
 
 sh run | in 172.23.243.66
+ip route 190.94.199.64 255.255.255.252 172.23.243.66 name GPON-VL1590-GALI-DIV-VOLUNTARIO
 
-GPON-VL1590-GALI-DIV-VOLUNTARIO
+
 
 ----------CCSJ4500CREX2-----------
 ssh soporte2@172.23.253.59
@@ -856,8 +869,8 @@ service-policy input 50M
 service-policy output 50M
 
 sh run | in 172.23.244.22
+ip route 190.94.245.160 255.255.255.248 172.23.244.22 name GPON-VL1559-GALI-MRW
 
-GPON-VL1559-GALI-MRW
 
 ----------CCSJ4500CREX2-----------
 ssh soporte2@172.23.253.59
@@ -890,8 +903,9 @@ service-policy input 200M
 service-policy output 200M
 
 sh run | in 172.23.243.122
+ip route 190.94.199.144 255.255.255.252 172.23.243.122 name GPON-VL4054-GALI-GRUPO-FALCON
 
-GPON-VL4054-GALI-GRUPO-FALCON
+
 
 ----------CCSJ4500CREX2-----------
 ssh soporte2@172.23.253.59
@@ -922,8 +936,9 @@ service-policy input 80M
 service-policy output 80M
 
 sh run | in 172.23.245.138
+ip route 190.94.250.16 255.255.255.252 172.23.245.138 name GPON-VL4058-GALI-BIXA
 
-GPON-VL4058-GALI-BIXA
+
 
 ----------CCSJ4500CREX2-----------
 ssh soporte2@172.23.253.59
@@ -954,8 +969,9 @@ service-policy input 100M
 service-policy output 100M
 
 sh run | in 172.23.244.14
+ip route 190.94.250.160 255.255.255.252 172.23.244.14 name GPON-VL1558-GALI-MENCEY-CONTAC
 
-GPON-VL1558-GALI-MENCEY-CONTAC
+
 
 ----------CCSJ4500CREX2-----------
 ssh soporte2@172.23.253.59
@@ -986,8 +1002,9 @@ service-policy input 60M
 service-policy output 60M
 
 sh run | in 172.23.247.82
+ip route 190.94.209.88 255.255.255.248 172.23.247.82 name GPON-VL591-GALI-SEPAGOS
+ip route 190.94.218.136 255.255.255.248 172.23.247.82 name GPON-VL591-GALI-SEPAGOS
 
-GPON-VL591-GALI-SEPAGOS
 
 ----------CCSJ4500CREX2-----------
 ssh soporte2@172.23.253.59
@@ -1018,8 +1035,9 @@ service-policy input 20M
 service-policy output 20M
 
 sh run | in 172.23.244.18
+ip route 190.94.250.164 255.255.255.252 172.23.244.18 name GPON-VL1560-GALI-POLICIA-CHACAO
 
-GPON-VL1560-GALI-POLICIA-CHACAO
+
 
 ----------CCSJ4500CREX2-----------
 ssh soporte2@172.23.253.59
@@ -1051,8 +1069,9 @@ service-policy input 20M
 service-policy output 20M
 
 sh run | in 172.23.247.234
+ip route 190.94.243.176 255.255.255.248 172.23.247.234 name GPON-VL595-GALI-FINANTRUST
 
-GPON-VL595-GALI-FINANTRUST
+
 
 ----------CCSJ4500CREX2-----------
 ssh soporte2@172.23.253.59
@@ -1083,8 +1102,9 @@ service-policy input 50M
 service-policy output 50M
 
 sh run | in 172.23.243.26
+ip route 190.94.252.116 255.255.255.252 172.23.243.26 name GPON-VL1588-GALI-PROPERTY
 
-GPON-VL1588-GALI-PROPERTY
+
 
 ----------CCSJ4500CREX2-----------
 ssh soporte2@172.23.253.59
@@ -1115,8 +1135,9 @@ service-policy input 100M
 service-policy output 100M
 
 sh run | in 172.23.243.254
+ip route 190.94.199.100 255.255.255.252 172.23.243.254 name GPON-VL4055-GALI-FRESH-TECHS
 
-GPON-VL4055-GALI-FRESH-TECHS
+
 
 ----------CCSJ4500CREX2-----------
 ssh soporte2@172.23.253.59
@@ -1148,8 +1169,9 @@ service-policy input 100M
 service-policy output 100M
 
 sh run | in 172.23.241.82
+ip route 190.94.199.252 255.255.255.252 172.23.241.82 name GPON-VL4060-GALI-CLARKEMODET
 
-GPON-VL4060-GALI-CLARKEMODET
+
 
 ----------CCSJ4500CREX2-----------
 ssh soporte2@172.23.253.59
@@ -1180,8 +1202,11 @@ service-policy input 110M
 service-policy output 110M
 
 sh run | in 172.23.247.230
+ip route 181.225.44.24 255.255.255.248 172.23.247.230 name GPON-VL566-GALI_ORIENTAL
+ip route 190.94.243.152 255.255.255.248 172.23.247.230 name GPON-VL566-GALI_ORIENTAL
+ip route 190.94.243.160 255.255.255.248 172.23.247.230 name GPON-VL566-GALI_ORIENTAL
+ip route 190.94.245.184 255.255.255.248 172.23.247.230 name GPON-VL566-GALI_ORIENTAL
 
-GPON-VL566-GALI_ORIENTAL
 
 ----------CCSJ4500CREX2-----------
 ssh soporte2@172.23.253.59
@@ -1244,8 +1269,9 @@ service-policy input 50M
 service-policy output 50M
 
 sh run | in 172.23.246.154
+ip route 190.94.251.24 255.255.255.248 172.23.246.154 name GPON-VL1579-GALI-VIVIR-SEGUROS
 
-GPON-VL1579-GALI-VIVIR-SEGUROS
+
 
 ----------CCSJ4500CREX2-----------
 ssh soporte2@172.23.253.59
@@ -1276,8 +1302,9 @@ service-policy input 40M
 service-policy output 40M
 
 sh run | in 172.23.243.234
+ip route 190.94.244.100 255.255.255.252 172.23.243.234 name GPON-VL1594-GALI-TEKKOA-BK2
 
-GPON-VL1594-GALI-TEKKOA-BK2
+
 
 ----------CCSJ4500CREX2-----------
 ssh soporte2@172.23.253.59
@@ -1309,8 +1336,9 @@ service-policy input 60M
 service-policy output 60M
 
 sh run | in 172.23.246.142
+ip route 190.94.252.88 255.255.255.252 172.23.246.142 name GPON-VL1577-GALI-POR-LA-PASTORA
 
-GPON-VL1577-GALI-POR-LA-PASTORA
+
 
 ----------CCSJ4500CREX2-----------
 ssh soporte2@172.23.253.59
@@ -1342,8 +1370,9 @@ service-policy input 40M
 service-policy output 40M
 
 sh run | in 172.23.255.230
+ip route 181.225.44.80 255.255.255.248 172.23.255.230 name GPON-VL551-GALI-FONDOGLOBAL
 
-GPON-VL551-GALI-FONDOGLOBAL
+
 
 ----------CCSJ4500CREX2-----------
 ssh soporte2@172.23.253.59
@@ -1374,8 +1403,9 @@ service-policy input 30M
 service-policy output 30M
 
 sh run | in 172.23.247.154
+ip route 190.94.209.184 255.255.255.248 172.23.247.154 name GPON-VL594-GALI-ZUMA-SEGUROS
+ip route 190.94.218.0 255.255.255.248 172.23.247.154 name GPON-VL594-GALI-ZUMA-SEGUROS
 
-GPON-VL594-GALI-ZUMA-SEGUROS
 
 ----------CCSJ4500CREX2-----------
 ssh soporte2@172.23.253.59
@@ -1406,8 +1436,11 @@ service-policy input 150M
 service-policy output 150M
 
 sh run | in 172.23.248.170
+ip route 181.225.43.176 255.255.255.248 172.23.248.170 name GPON-VL1596-GALI-F-DE-VALORES
+ip route 181.225.47.144 255.255.255.240 172.23.248.170 name GPON-VL1596-GALI-F-DE-VALORES
+ip route 190.94.199.16 255.255.255.252 172.23.248.170 name GPON-VL1596-GALI-F-DE-VALORES
+ip route 190.94.250.136 255.255.255.252 172.23.248.170 name GPON-VL1596-GALI-F-DE-VALORES
 
-GPON-VL1596-GALI-F-DE-VALORES
 
 ----------CCSJ4500CREX2-----------
 ssh soporte2@172.23.253.59
@@ -1438,8 +1471,9 @@ service-policy input 20M
 service-policy output 20M
 
 sh run | in 172.23.248.30
+ip route 190.94.253.200 255.255.255.252 172.23.248.30 name GPON-VL4050-GALI-IGLESIA-C-ALEG
 
-GPON-VL4050-GALI-IGLESIA-C-ALEG
+
 
 ----------CCSJ4500CREX2-----------
 ssh soporte2@172.23.253.59
@@ -1470,8 +1504,9 @@ service-policy input 200M
 service-policy output 200M
 
 sh run | in 172.23.248.226
+ip route 190.94.218.56 255.255.255.248 172.23.248.226 name GPON-VL1597-GALI-PRIMTEK-27
 
-GPON-VL1597-GALI-PRIMTEK-27
+
 
 ----------CCSJ4500CREX2-----------
 ssh soporte2@172.23.253.59
@@ -1534,8 +1569,8 @@ service-policy input 120M
 service-policy output 120M
 
 sh run | in 172.23.244.246
+ip route 190.94.211.64 255.255.255.248 172.23.244.246 name GPON-VL1599-GALI-VENAMCHAM
 
-GPON-VL1599-GALI-VENAMCHAM
 
 ----------CCSJ4500CREX2-----------
 ssh soporte2@172.23.253.59
@@ -1599,8 +1634,9 @@ service-policy input 50M
 service-policy output 50M
 
 sh run | in 172.23.246.130
+ip route 190.94.252.8 255.255.255.252 172.23.246.130 name GPON-VL1575-GALI-GLOBAL-UNO
 
-GPON-VL1575-GALI-GLOBAL-UNO
+
 
 ----------CCSJ4500CREX2-----------
 ssh soporte2@172.23.253.59
@@ -1631,8 +1667,9 @@ service-policy input 10M
 service-policy output 10M
 
 sh run | in 172.23.248.26
+ip route 190.94.243.128 255.255.255.248 172.23.248.26 name GPON-VL4052-GALI-INST-ITALIANO
 
-GPON-VL4052-GALI-INST-ITALIANO
+
 
 ----------CCSJ4500CREX2-----------
 ssh soporte2@172.23.253.59
@@ -1664,8 +1701,9 @@ service-policy input 140M
 service-policy output 140M
 
 sh run | in 172.23.253.206
+ip route 181.225.44.136 255.255.255.248 172.23.253.206 name GPON-VL4053-GALI-MAZAR
+ip route 181.225.48.72 255.255.255.248 172.23.253.206 name GPON-VL4053-GALI-MAZAR
 
-GPON-VL4053-GALI-MAZAR
 
 ----------CCSJ4500CREX2-----------
 ssh soporte2@172.23.253.59
@@ -1696,8 +1734,9 @@ service-policy input 50M
 service-policy output 50M
 
 sh run | in 172.23.241.22
+ip route 190.94.244.196 255.255.255.252 172.23.241.22 name GPON-VL4061-GALI-GRUPO-LATAM
 
-GPON-VL4061-GALI-GRUPO-LATAM
+
 
 ----------CCSJ4500CREX2-----------
 ssh soporte2@172.23.253.59
@@ -1728,8 +1767,9 @@ service-policy input 50M
 service-policy output 50M
 
 sh run | in 172.23.243.18
+ip route 190.94.252.120 255.255.255.252 172.23.243.18 name GPON-VL1568-GALI-ANALITICOM
 
-GPON-VL1568-GALI-ANALITICOM
+
 
 ----------CCSJ4500CREX2-----------
 ssh soporte2@172.23.253.59
@@ -1760,8 +1800,9 @@ service-policy input 50M
 service-policy output 50M
 
 sh run | in 172.23.246.218
+ip route 190.94.252.164 255.255.255.252 172.23.246.218 name GPON-VL1586-GALI-VECIIINO
 
-GPON-VL1586-GALI-VECIIINO
+
 
 ----------CCSJ4500CREX2-----------
 ssh soporte2@172.23.253.59
@@ -1793,8 +1834,10 @@ service-policy input 80M
 service-policy output 80M
 
 sh run | in 172.23.243.242
+ip route 181.225.44.216 255.255.255.248 172.23.243.242 name GPON-VL4056-GALI-CORPORACION-XDV
+ip route 190.94.199.224 255.255.255.252 172.23.243.242 name GPON-VL4056-GALI-CORPORACION-XDV
+ip route 208.84.85.4 255.255.255.255 172.23.243.242 name GPON-VL4056-GALI-CORPORACION-XDV
 
-GPON-VL4056-GALI-CORPORACION-XDV
 
 ----------CCSJ4500CREX2-----------
 ssh soporte2@172.23.253.59
@@ -1826,8 +1869,9 @@ service-policy input 100M
 service-policy output 100M
 
 sh run | in 172.23.244.26
+ip route 190.94.250.172 255.255.255.252 172.23.244.26 name GPON-VL1600-GALI-NATIONAL-CARGO
 
-GPON-VL1600-GALI-NATIONAL-CARGO
+
 
 ----------CCSJ4500CREX2-----------
 ssh soporte2@172.23.253.59
@@ -1858,8 +1902,9 @@ service-policy input 50M
 service-policy output 50M
 
 sh run | in 172.23.243.162
+ip route 190.94.244.28 255.255.255.252 172.23.243.162 name GPON-VL1592-GALI-OPTIDIALER
 
-GPON-VL1592-GALI-OPTIDIALER
+
 
 ----------CCSJ4500CREX2-----------
 ssh soporte2@172.23.253.59
@@ -1890,8 +1935,9 @@ service-policy input 40M
 service-policy output 40M
 
 sh run | in 172.23.241.90
+ip route 190.94.244.160 255.255.255.252 172.23.241.90 name GPON-VL1557-GALI-INV-CAYTAFA
 
-GPON-VL1557-GALI-INV-CAYTAFA
+
 
 ----------CCSJ4500CREX2-----------
 ssh soporte2@172.23.253.59
@@ -1922,8 +1968,9 @@ service-policy input 50M
 service-policy output 50M
 
 sh run | in 172.23.247.214
+ip route 181.225.40.176 255.255.255.248 172.23.247.214 name GPON-VL4057-GALI-BEKESANTOS
 
-GPON-VL4057-GALI-BEKESANTOS
+
 
 ----------CCSJ4500CREX2-----------
 ssh soporte2@172.23.253.59
@@ -1939,4 +1986,18 @@ vlan 4057
 name GALI-BEKESANTOS
 interface Eth1/8
 switchport trunk allowed vlan add 4057
+
+################EMBAJADA ITALIA 2NET###############
+----------CCS3064GALIX1-----------
+ssh soporte2@172.23.253.46
+
+vlan 1572
+name GALI-2NET-EMB-ITALIA
+interface Eth1/8
+switchport trunk allowed vlan add 1572
+
+----------CCSJ4500CREX2-----------
+ssh soporte2@172.23.253.59
+
+set interfaces ae6 unit 0 family ethernet-switching vlan members GALI-2NET-EMB-ITALIA
 
