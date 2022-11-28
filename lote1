@@ -2001,3 +2001,71 @@ ssh soporte2@172.23.253.59
 
 set interfaces ae6 unit 0 family ethernet-switching vlan members GALI-2NET-EMB-ITALIA
 
+################GALI-METRO-MULTICENT###############
+---------- VECREDNOC1004X1-----------
+ssh soporte2@181.225.41.18
+
+no interface TenGigabitEthernet0/3/0.3611
+interface TenGigabitEthernet1/0/3.4062
+description GALI-METRO-MULTICENT
+bandwidth 51200
+encapsulation dot1Q 4062
+ip address 172.23.241.193 255.255.255.252
+service-policy input 50M
+service-policy output 50M
+
+sh run | in 172.23.241.194
+
+GPON-VL4062-GALI-METRO-MULTICENT
+
+----------CCSJ4500CREX2-----------
+ssh soporte2@172.23.253.59
+
+set vlan GALI-METRO-MULTICENT vlan-id 4062
+set interfaces ae6 unit 0 family ethernet-switching vlan members GALI-METRO-MULTICENT
+set interfaces xe-0/0/9 unit 0 family ethernet-switching vlan members GALI-METRO-MULTICENT
+
+----------CCS3064GALIX1-----------
+ssh soporte2@172.23.253.46
+
+vlan 4062
+name GALI-METRO-MULTICENT
+interface Eth1/8
+switchport trunk allowed vlan add 4062
+
+
+################INTERJURIS;ID:25986###############
+---------- VECREDNOC1004X1-----------
+ssh soporte2@181.225.41.18
+
+no interface TenGigabitEthernet0/3/0.3249
+interface TenGigabitEthernet1/0/3.553
+description INTERJURIS;ID:25986
+bandwidth 81920
+encapsulation dot1Q 553
+ip address 172.23.251.29 255.255.255.252
+service-policy input 80M
+service-policy output 80M
+
+sh run | in 172.23.251.30
+
+GPON-VL553-GALI-INTERJURIS
+
+----------CCSJ4500CREX2-----------
+ssh soporte2@172.23.253.59
+
+set vlan GALI-INTERJURIS vlan-id 553
+set interfaces ae6 unit 0 family ethernet-switching vlan members GALI-INTERJURIS
+set interfaces xe-0/0/9 unit 0 family ethernet-switching vlan members GALI-INTERJURIS
+
+----------CCS3064GALIX1-----------
+ssh soporte2@172.23.253.46
+
+vlan 553
+name GALI-INTERJURIS
+interface Eth1/8
+switchport trunk allowed vlan add 553
+
+
+
+
