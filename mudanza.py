@@ -28,14 +28,15 @@ lista_campos_netinfo = ["NOMBRE_EQUIPO", "INTERFACE", "NOMBRE_CLIENTE",
 csv_netinfo = "netinfo.csv"  # Ultima version del netinfo.csv
 comandos = "Comandos_generados.txt"  # archivo de salida con los comandos
 conexion1 = "ssh soporte2@181.225.41.18"
-interface_router_recibe = "TenGigabitEthernet1/0/3"
+interface_router_recibe = "TenGigabitEthernet1/0/2"
 nombre_sw_jun = "CCSJ4500CREX2"
 conex_sw1 = "ssh soporte2@172.23.253.59"
-int_red_sw1 = "ae6"
-int_router_sw1 = "xe-0/0/9"
-nombre_sw_cisco = "CCS3064GALIX1"
-conex_sw2 = "ssh soporte2@172.23.253.46"
-int_red_sw2 = "Eth1/8"
+int_red_sw1 = "ae5"
+int_router_sw1 = "xe-0/0/10"
+nombre_sw_cisco = "CCS3064LIBERX1"
+conex_sw2 = "ssh soporte2@172.23.253.39"
+int_red_sw2 = "Eth1/7"
+
 
 # Leo y creo lista de campos de los archivos de operaciones y netinfo
 lineas_oper = leer_lineas(csv_oper, lista_campos_oper)
