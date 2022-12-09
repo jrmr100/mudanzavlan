@@ -1,0 +1,848 @@
+################LIBER-MORE###############
+---------- VECREDNOC1004X1-----------
+ssh soporte2@181.225.41.18
+
+no interface TenGigabitEthernet0/3/0.3044
+interface TenGigabitEthernet1/0/2.1937
+description LIBER-MORE
+bandwidth 51200
+encapsulation dot1Q 1937
+ip address 172.23.248.81 255.255.255.252
+service-policy input 50M
+service-policy output 50M
+
+sh run | in 172.23.248.82
+
+GPON-VL1937-LIBER-MORE
+
+----------CCSJ4500CREX2-----------
+ssh soporte2@172.23.253.59
+
+set vlan LIBER-MORE vlan-id 1937
+set interfaces ae5 unit 0 family ethernet-switching vlan members LIBER-MORE
+set interfaces xe-0/0/10 unit 0 family ethernet-switching vlan members LIBER-MORE
+
+----------CCS3064LIBERX1-----------
+ssh soporte2@172.23.253.39
+
+vlan 1937
+name LIBER-MORE
+interface Eth1/7
+switchport trunk allowed vlan add 1937
+
+listo
+
+################CASIO-PPAL-MGM;ID:26307###############
+---------- VELEBNOC1002X1-----------
+ssh soporte2@181.225.41.18
+
+no interface Port-channel3.665
+interface TenGigabitEthernet1/0/2.665
+description CASIO-PPAL-MGM;ID:26307
+bandwidth 512000
+encapsulation dot1Q 665
+ip address 172.23.249.81 255.255.255.240
+service-policy input 
+service-policy output 
+
+sh run | in 172.23.249.82
+
+GPON-VLN/A-BOL-CASIO-PPAL-MGM
+
+----------CCSJ4500CREX2-----------
+ssh soporte2@172.23.253.59
+
+set vlan BOL-CASIO-PPAL-MGM vlan-id N/A
+set interfaces ae5 unit 0 family ethernet-switching vlan members BOL-CASIO-PPAL-MGM
+set interfaces xe-0/0/10 unit 0 family ethernet-switching vlan members BOL-CASIO-PPAL-MGM
+
+----------CCS3064LIBERX1-----------
+ssh soporte2@172.23.253.39
+
+vlan 665
+name BOL-CASIO-PPAL-MGM
+interface Eth1/7
+switchport trunk allowed vlan add 665
+
+
+**LISTO
+################LIBER-FARMA-HB###############
+---------- VECREDNOC1004X1-----------
+ssh soporte2@181.225.41.18
+
+no interface TenGigabitEthernet0/3/0.3047
+interface TenGigabitEthernet1/0/2.1940
+description LIBER-FARMA-HB
+bandwidth 40960
+encapsulation dot1Q 1940
+ip address 172.23.241.129 255.255.255.252
+service-policy input 40M
+service-policy output 40M
+
+sh run | in 172.23.241.130
+
+GPON-VL1940-LIBER-FARMA-HB
+
+----------CCSJ4500CREX2-----------
+ssh soporte2@172.23.253.59
+
+set vlan LIBER-FARMA-HB vlan-id 1940
+set interfaces ae5 unit 0 family ethernet-switching vlan members LIBER-FARMA-HB
+set interfaces xe-0/0/10 unit 0 family ethernet-switching vlan members LIBER-FARMA-HB
+
+----------CCS3064LIBERX1-----------
+ssh soporte2@172.23.253.39
+
+vlan 1940
+name LIBER-FARMA-HB
+interface Eth1/7
+switchport trunk allowed vlan add 1940
+
+LISTO
+################GPON1-LIBER-COELLO-VEGA###############
+---------- VECREDNOC1004X1-----------
+ssh soporte2@181.225.41.18
+
+no interface TenGigabitEthernet1/0/2.1946
+interface TenGigabitEthernet0/3/0.3001
+ description LIBER-NETWORK-CONSUL
+ bandwidth 51200
+ encapsulation dot1Q 3001
+ ip address 172.23.246.65 255.255.255.252
+ service-policy input 50M
+ service-policy output 50M
+
+
+no interface TenGigabitEthernet0/3/0.3001
+interface TenGigabitEthernet1/0/2.1946
+description LIBER-NETWORK-CONSUL
+ bandwidth 51200
+ encapsulation dot1Q 1946
+ ip address 172.23.246.65 255.255.255.252
+ service-policy input 50M
+ service-policy output 50M
+
+sh run | in 172.23.247.182
+
+GPON-VL1946-LIBER-NETWORK-CONSUL
+
+----------CCSJ4500CREX2-----------
+ssh soporte2@172.23.253.59
+
+set vlan LIBER-NETWORK-CONSUL vlan-id 1946
+set interfaces ae5 unit 0 family ethernet-switching vlan members LIBER-NETWORK-CONSUL
+set interfaces xe-0/0/10 unit 0 family ethernet-switching vlan members LIBER-NETWORK-CONSUL
+
+----------CCS3064LIBERX1-----------
+ssh soporte2@172.23.253.39
+
+vlan 1946
+name LIBER-NETWORK-CONSUL
+interface Eth1/7
+switchport trunk allowed vlan add 1946
+
+** CRUZADA CON 3004
+
+################LIBER-TKONEKTO###############
+---------- VECREDNOC1004X1-----------
+ssh soporte2@181.225.41.18
+
+no interface TenGigabitEthernet0/3/0.3046
+interface TenGigabitEthernet1/0/2.1939
+description LIBER-TKONEKTO
+bandwidth 204800
+encapsulation dot1Q 1939
+ip address 172.23.241.69 255.255.255.252
+service-policy input 200M
+service-policy output 200M
+
+sh run | in 172.23.241.70
+
+GPON-VL1939-LIBER-TKONEKTO
+
+----------CCSJ4500CREX2-----------
+ssh soporte2@172.23.253.59
+
+set vlan LIBER-TKONEKTO vlan-id 1939
+set interfaces ae5 unit 0 family ethernet-switching vlan members LIBER-TKONEKTO
+set interfaces xe-0/0/10 unit 0 family ethernet-switching vlan members LIBER-TKONEKTO
+
+----------CCS3064LIBERX1-----------
+ssh soporte2@172.23.253.39
+
+vlan 1939
+name LIBER-TKONEKTO
+interface Eth1/7
+switchport trunk allowed vlan add 1939
+
+LISTO
+################LAB-BEHRENS;ID:26242###############
+---------- VECREDNOC1004X1-----------
+ssh soporte2@181.225.41.18
+
+no interface TenGigabitEthernet0/3/0.3031
+interface TenGigabitEthernet1/0/2.1924
+description LAB-BEHRENS;ID:26242
+bandwidth 61440
+encapsulation dot1Q 1924
+ip address 172.23.251.149 255.255.255.252
+service-policy input 60M
+service-policy output 60M
+
+sh run | in 172.23.251.150
+
+GPON-VL1924-LIB-LAB-BEHRENS
+
+----------CCSJ4500CREX2-----------
+ssh soporte2@172.23.253.59
+
+set vlan LIB-LAB-BEHRENS vlan-id 1924
+set interfaces ae5 unit 0 family ethernet-switching vlan members LIB-LAB-BEHRENS
+set interfaces xe-0/0/10 unit 0 family ethernet-switching vlan members LIB-LAB-BEHRENS
+
+----------CCS3064LIBERX1-----------
+ssh soporte2@172.23.253.39
+
+vlan 1924
+name LIB-LAB-BEHRENS
+interface Eth1/7
+switchport trunk allowed vlan add 1924
+
+LISTO
+
+################QTA-EL-SAMAN;ID:26386###############
+---------- VECREDNOC1004X1-----------
+ssh soporte2@181.225.41.18
+
+no interface TenGigabitEthernet0/3/0.3023
+interface TenGigabitEthernet1/0/2.1916
+description QTA-EL-SAMAN;ID:26386
+bandwidth 61440
+encapsulation dot1Q 1916
+ip address 172.23.246.173 255.255.255.252
+service-policy input 60M
+service-policy output 60M
+
+sh run | in 172.23.246.174
+
+GPON-VL1916-LIBER-QTA-EL-SAMAN
+
+----------CCSJ4500CREX2-----------
+ssh soporte2@172.23.253.59
+
+set vlan LIBER-QTA-EL-SAMAN vlan-id 1916
+set interfaces ae5 unit 0 family ethernet-switching vlan members LIBER-QTA-EL-SAMAN
+set interfaces xe-0/0/10 unit 0 family ethernet-switching vlan members LIBER-QTA-EL-SAMAN
+
+----------CCS3064LIBERX1-----------
+ssh soporte2@172.23.253.39
+
+vlan 1916
+name LIBER-QTA-EL-SAMAN
+interface Eth1/7
+switchport trunk allowed vlan add 1916
+
+LSITO
+
+################CLEA-TELECOM;ID:26305###############
+---------- VECREDNOC1004X1-----------
+ssh soporte2@181.225.41.18
+
+no interface TenGigabitEthernet0/3/0.3033
+interface TenGigabitEthernet1/0/2.1926
+description CLEA-TELECOM;ID:26305
+bandwidth 51200
+encapsulation dot1Q 1926
+ip address 172.23.243.57 255.255.255.252
+service-policy input 50M
+service-policy output 50M
+
+sh run | in 172.23.243.58
+
+GPON-VL1926-LIB-CLEA-TELECOM
+
+----------CCSJ4500CREX2-----------
+ssh soporte2@172.23.253.59
+
+set vlan LIB-CLEA-TELECOM vlan-id 1926
+set interfaces ae5 unit 0 family ethernet-switching vlan members LIB-CLEA-TELECOM
+set interfaces xe-0/0/10 unit 0 family ethernet-switching vlan members LIB-CLEA-TELECOM
+
+----------CCS3064LIBERX1-----------
+ssh soporte2@172.23.253.39
+
+vlan 1926
+name LIB-CLEA-TELECOM
+interface Eth1/7
+switchport trunk allowed vlan add 1926
+
+LISTO
+################LIBER-SOLUCIONESTI###############
+---------- VECREDNOC1004X1-----------
+ssh soporte2@181.225.41.18
+
+no interface TenGigabitEthernet0/3/0.3035
+interface TenGigabitEthernet1/0/2.1928
+description LIBER-SOLUCIONESTI
+bandwidth 51200
+encapsulation dot1Q 1928
+ip address 172.23.251.81 255.255.255.252
+service-policy input 50M
+service-policy output 50M
+
+sh run | in 172.23.251.82
+
+GPON-VL1928-LIBER-SOLUCIONESTI
+
+----------CCSJ4500CREX2-----------
+ssh soporte2@172.23.253.59
+
+set vlan LIBER-SOLUCIONESTI vlan-id 1928
+set interfaces ae5 unit 0 family ethernet-switching vlan members LIBER-SOLUCIONESTI
+set interfaces xe-0/0/10 unit 0 family ethernet-switching vlan members LIBER-SOLUCIONESTI
+
+----------CCS3064LIBERX1-----------
+ssh soporte2@172.23.253.39
+
+vlan 1928
+name LIBER-SOLUCIONESTI
+interface Eth1/7
+switchport trunk allowed vlan add 1928
+
+LISTO
+################LIBER-QUINTA-RE###############
+---------- VECREDNOC1004X1-----------
+ssh soporte2@181.225.41.18
+
+no interface TenGigabitEthernet0/3/0.3032
+interface TenGigabitEthernet1/0/2.1925
+description LIBER-QUINTA-RE
+bandwidth 61440
+encapsulation dot1Q 1925
+ip address 172.23.251.157 255.255.255.252
+service-policy input 60M
+service-policy output 60M
+
+sh run | in 172.23.251.158
+
+GPON-VL1925-LIB-QUINTA-RE
+
+----------CCSJ4500CREX2-----------
+ssh soporte2@172.23.253.59
+
+set vlan LIB-QUINTA-RE vlan-id 1925
+set interfaces ae5 unit 0 family ethernet-switching vlan members LIB-QUINTA-RE
+set interfaces xe-0/0/10 unit 0 family ethernet-switching vlan members LIB-QUINTA-RE
+
+----------CCS3064LIBERX1-----------
+ssh soporte2@172.23.253.39
+
+vlan 1925
+name LIB-QUINTA-RE
+interface Eth1/7
+switchport trunk allowed vlan add 1925
+
+listo
+################LIBER-QUINTA-CAPIHUE###############
+---------- VECREDNOC1004X1-----------
+ssh soporte2@181.225.41.18
+
+no interface TenGigabitEthernet0/3/0.3014
+interface TenGigabitEthernet1/0/2.1907
+description LIBER-QUINTA-CAPIHUE
+bandwidth 51200
+encapsulation dot1Q 1907
+ip address 172.23.241.85 255.255.255.252
+service-policy input 50M
+service-policy output 50M
+
+sh run | in 172.23.241.86
+
+GPON-VL1907-LIBER-QUINTA-CAPIHUE
+
+----------CCSJ4500CREX2-----------
+ssh soporte2@172.23.253.59
+
+set vlan LIBER-QUINTA-CAPIHUE vlan-id 1907
+set interfaces ae5 unit 0 family ethernet-switching vlan members LIBER-QUINTA-CAPIHUE
+set interfaces xe-0/0/10 unit 0 family ethernet-switching vlan members LIBER-QUINTA-CAPIHUE
+
+----------CCS3064LIBERX1-----------
+ssh soporte2@172.23.253.39
+
+vlan 1907
+name LIBER-QUINTA-CAPIHUE
+interface Eth1/7
+switchport trunk allowed vlan add 1907
+
+LISTO
+################QTA-SALTAMONTES;ID:26311###############
+---------- VECREDNOC1004X1-----------
+ssh soporte2@181.225.41.18
+
+no interface TenGigabitEthernet0/3/0.3024
+interface TenGigabitEthernet1/0/2.1917
+description QTA-SALTAMONTES;ID:26311
+bandwidth 51200
+encapsulation dot1Q 1917
+ip address 172.23.246.49 255.255.255.252
+service-policy input 50M
+service-policy output 50M
+
+sh run | in 172.23.246.50
+
+GPON-VL1917-LIBER-QTA-SALTAMONTS
+
+----------CCSJ4500CREX2-----------
+ssh soporte2@172.23.253.59
+
+set vlan LIBER-QTA-SALTAMONTS vlan-id 1917
+set interfaces ae5 unit 0 family ethernet-switching vlan members LIBER-QTA-SALTAMONTS
+set interfaces xe-0/0/10 unit 0 family ethernet-switching vlan members LIBER-QTA-SALTAMONTS
+
+----------CCS3064LIBERX1-----------
+ssh soporte2@172.23.253.39
+
+vlan 1917
+name LIBER-QTA-SALTAMONTS
+interface Eth1/7
+switchport trunk allowed vlan add 1917
+LISTO
+
+################LIBER-JHA###############
+---------- VECREDNOC1004X1-----------
+ssh soporte2@181.225.41.18
+
+no interface TenGigabitEthernet0/3/0.3004
+interface TenGigabitEthernet1/0/2.1017
+description LIBER-COELLO-VEGA
+bandwidth 512000
+encapsulation dot1Q 1017
+ip address 172.23.247.181 255.255.255.252
+service-policy input 500M
+service-policy output 500M
+
+sh run | in 172.23.247.182
+
+
+
+----------CCSJ4500CREX2-----------
+ssh soporte2@172.23.253.59
+
+del vlan LIBER-QTA-SOLERA vlan-id 1017
+set vlan LIBER-COELLO-VEGA vlan-id 1017
+set interfaces ae5 unit 0 family ethernet-switching vlan members LIBER-COELLO-VEGA
+set interfaces xe-0/0/10 unit 0 family ethernet-switching vlan members LIBER-COELLO-VEGA
+
+----------CCS3064LIBERX1-----------
+ssh soporte2@172.23.253.39
+
+vlan 1017
+name LIBER-COELLO-VEGA
+interface Eth1/7
+switchport trunk allowed vlan add 1017
+LISTO
+
+******************************************************************************************
+
+################QTA-EL-RINCON;ID:26310###############
+---------- VECREDNOC1004X1-----------
+ssh soporte2@181.225.41.18
+
+no interface TenGigabitEthernet0/3/0.3022
+interface TenGigabitEthernet1/0/2.1915
+description QTA-EL-RINCON;ID:26310
+bandwidth 51200
+encapsulation dot1Q 1915
+ip address 172.23.246.169 255.255.255.252
+service-policy input 50M
+service-policy output 50M
+
+sh run | in 172.23.246.170
+
+GPON-VL1915-LIBER-QTA-EL-RINCON
+
+----------CCSJ4500CREX2-----------
+ssh soporte2@172.23.253.59
+
+set vlan LIBER-QTA-EL-RINCON vlan-id 1915
+set interfaces ae5 unit 0 family ethernet-switching vlan members LIBER-QTA-EL-RINCON
+set interfaces xe-0/0/10 unit 0 family ethernet-switching vlan members LIBER-QTA-EL-RINCON
+
+----------CCS3064LIBERX1-----------
+ssh soporte2@172.23.253.39
+
+vlan 1915
+name LIBER-QTA-EL-RINCON
+interface Eth1/7
+switchport trunk allowed vlan add 1915
+
+LISTO
+################GPON-VL3038-LIBER-MICASITA###############
+---------- VECREDNOC1004X1-----------
+ssh soporte2@181.225.41.18
+
+no interface TenGigabitEthernet0/3/0.3038
+interface TenGigabitEthernet1/0/2.1931
+description GPON-VL3038-LIBER-MICASITA
+bandwidth 307200
+encapsulation dot1Q 1931
+ip address 172.23.246.33 255.255.255.252
+service-policy input 300M
+service-policy output 300M
+
+sh run | in 172.23.246.34
+
+GPON-VL1931-LIBER-MICASITA
+
+----------CCSJ4500CREX2-----------
+ssh soporte2@172.23.253.59
+
+set vlan LIBER-MICASITA vlan-id 1931
+set interfaces ae5 unit 0 family ethernet-switching vlan members LIBER-MICASITA
+set interfaces xe-0/0/10 unit 0 family ethernet-switching vlan members LIBER-MICASITA
+
+----------CCS3064LIBERX1-----------
+ssh soporte2@172.23.253.39
+
+vlan 1931
+name LIBER-MICASITA
+interface Eth1/7
+switchport trunk allowed vlan add 1931
+
+LISTO
+################LIBER-QUINTA-MERCED###############
+---------- VECREDNOC1004X1-----------
+ssh soporte2@181.225.41.18
+
+no interface TenGigabitEthernet0/3/0.3010
+interface TenGigabitEthernet1/0/2.1903
+description LIBER-QUINTA-MERCED
+bandwidth 51200
+encapsulation dot1Q 1903
+ip address 172.23.241.237 255.255.255.252
+service-policy input 50M
+service-policy output 50M
+
+sh run | in 172.23.241.238
+
+GPON-VL1903-LIBER-QUINTA-MERCED
+
+----------CCSJ4500CREX2-----------
+ssh soporte2@172.23.253.59
+
+set vlan LIBER-QUINTA-MERCED vlan-id 1903
+set interfaces ae5 unit 0 family ethernet-switching vlan members LIBER-QUINTA-MERCED
+set interfaces xe-0/0/10 unit 0 family ethernet-switching vlan members LIBER-QUINTA-MERCED
+
+----------CCS3064LIBERX1-----------
+ssh soporte2@172.23.253.39
+
+vlan 1903
+name LIBER-QUINTA-MERCED
+interface Eth1/7
+switchport trunk allowed vlan add 1903
+
+LISTO
+################LIBER-QUINTA-VY###############
+---------- VECREDNOC1004X1-----------
+ssh soporte2@181.225.41.18
+
+no interface TenGigabitEthernet0/3/0.3048
+interface TenGigabitEthernet1/0/2.1941
+description LIBER-QUINTA-VY
+bandwidth 102400
+encapsulation dot1Q 1941
+ip address 172.23.241.197 255.255.255.252
+service-policy input 100M
+service-policy output 100M
+
+sh run | in 172.23.241.198
+
+GPON-VL1941-LIBER-QUINTA-VY
+
+----------CCSJ4500CREX2-----------
+ssh soporte2@172.23.253.59
+
+set vlan LIBER-QUINTA-VY vlan-id 1941
+set interfaces ae5 unit 0 family ethernet-switching vlan members LIBER-QUINTA-VY
+set interfaces xe-0/0/10 unit 0 family ethernet-switching vlan members LIBER-QUINTA-VY
+
+----------CCS3064LIBERX1-----------
+ssh soporte2@172.23.253.39
+
+vlan 1941
+name LIBER-QUINTA-VY
+interface Eth1/7
+switchport trunk allowed vlan add 1941
+
+LISTO
+################GPON-VL1045-LIBER-QUINTA-SOLERA###############
+---------- VECREDNOC1004X1-----------
+ssh soporte2@181.225.41.18
+
+no interface TenGigabitEthernet0/3/0.3039
+interface TenGigabitEthernet1/0/2.1932
+description GPON-VL1045-LIBER-QUINTA-SOLERA
+bandwidth 307200
+encapsulation dot1Q 1932
+ip address 172.23.246.69 255.255.255.252
+service-policy input 300M
+service-policy output 300M
+
+sh run | in 172.23.246.70
+
+GPON-VL1932-LIBER-QUINTA-SOLERA
+
+----------CCSJ4500CREX2-----------
+ssh soporte2@172.23.253.59
+
+set vlan LIBER-QUINTA-SOLERA vlan-id 1932
+set interfaces ae5 unit 0 family ethernet-switching vlan members LIBER-QUINTA-SOLERA
+set interfaces xe-0/0/10 unit 0 family ethernet-switching vlan members LIBER-QUINTA-SOLERA
+
+----------CCS3064LIBERX1-----------
+ssh soporte2@172.23.253.39
+
+vlan 1932
+name LIBER-QUINTA-SOLERA
+interface Eth1/7
+switchport trunk allowed vlan add 1932
+
+LISTO
+################QTA-PIKAPU;ID:26248###############
+---------- VECREDNOC1004X1-----------
+ssh soporte2@181.225.41.18
+
+no interface TenGigabitEthernet0/3/0.3020
+interface TenGigabitEthernet1/0/2.1913
+description QTA-PIKAPU;ID:26248
+bandwidth 51200
+encapsulation dot1Q 1913
+ip address 172.23.246.145 255.255.255.252
+service-policy input 50M
+service-policy output 50M
+
+sh run | in 172.23.246.146
+
+GPON-VL1913-LIBER-QTA-PIKAPU
+
+----------CCSJ4500CREX2-----------
+ssh soporte2@172.23.253.59
+
+set vlan LIBER-QTA-PIKAPU vlan-id 1913
+set interfaces ae5 unit 0 family ethernet-switching vlan members LIBER-QTA-PIKAPU
+set interfaces xe-0/0/10 unit 0 family ethernet-switching vlan members LIBER-QTA-PIKAPU
+
+----------CCS3064LIBERX1-----------
+ssh soporte2@172.23.253.39
+
+vlan 1913
+name LIBER-QTA-PIKAPU
+interface Eth1/7
+switchport trunk allowed vlan add 1913
+
+LSITO
+################LIBER-CONDOMI-BANCOP###############
+---------- VECREDNOC1004X1-----------
+ssh soporte2@181.225.41.18
+
+no interface TenGigabitEthernet0/3/0.3042
+interface TenGigabitEthernet1/0/2.1935
+description LIBER-CONDOMI-BANCOP
+bandwidth 51200
+encapsulation dot1Q 1935
+ip address 172.23.247.245 255.255.255.252
+service-policy input 50M
+service-policy output 50M
+
+sh run | in 172.23.247.246
+
+GPON-VL1935-LIBER-CONDOMI-BANCOP
+
+----------CCSJ4500CREX2-----------
+ssh soporte2@172.23.253.59
+
+set vlan LIBER-CONDOMI-BANCOP vlan-id 1935
+set interfaces ae5 unit 0 family ethernet-switching vlan members LIBER-CONDOMI-BANCOP
+set interfaces xe-0/0/10 unit 0 family ethernet-switching vlan members LIBER-CONDOMI-BANCOP
+
+----------CCS3064LIBERX1-----------
+ssh soporte2@172.23.253.39
+
+vlan 1935
+name LIBER-CONDOMI-BANCOP
+interface Eth1/7
+switchport trunk allowed vlan add 1935
+
+LISTO
+################FARM-HB-PLZ-VE;ID:26557###############
+---------- VECREDNOC1004X1-----------
+ssh soporte2@181.225.41.18
+
+no interface TenGigabitEthernet0/3/0.3049
+interface TenGigabitEthernet1/0/2.1942
+description FARM-HB-PLZ-VE;ID:26557
+bandwidth 61440
+encapsulation dot1Q 1942
+ip address 172.23.241.157 255.255.255.252
+service-policy input 60M
+service-policy output 60M
+
+sh run | in 172.23.241.158
+
+GPON-VL1942-LIBER-FARM-HB-PLZ-VE
+
+----------CCSJ4500CREX2-----------
+ssh soporte2@172.23.253.59
+
+set vlan LIBER-FARM-HB-PLZ-VE vlan-id 1942
+set interfaces ae5 unit 0 family ethernet-switching vlan members LIBER-FARM-HB-PLZ-VE
+set interfaces xe-0/0/10 unit 0 family ethernet-switching vlan members LIBER-FARM-HB-PLZ-VE
+
+----------CCS3064LIBERX1-----------
+ssh soporte2@172.23.253.39
+
+vlan 1942
+name LIBER-FARM-HB-PLZ-VE
+interface Eth1/7
+switchport trunk allowed vlan add 1942
+
+LISTO
+################LIBER-QTA-SAN-LUIS###############
+---------- VECREDNOC1004X1-----------
+ssh soporte2@181.225.41.18
+
+no interface TenGigabitEthernet0/3/0.3019
+interface TenGigabitEthernet1/0/2.1912
+description LIBER-QTA-SAN-LUIS
+bandwidth 51200
+encapsulation dot1Q 1912
+ip address 172.23.246.45 255.255.255.252
+service-policy input 50M
+service-policy output 50M
+
+sh run | in 172.23.246.46
+
+GPON-VL1912-LIBER-QTA-SAN-LUIS
+
+----------CCSJ4500CREX2-----------
+ssh soporte2@172.23.253.59
+
+set vlan LIBER-QTA-SAN-LUIS vlan-id 1912
+set interfaces ae5 unit 0 family ethernet-switching vlan members LIBER-QTA-SAN-LUIS
+set interfaces xe-0/0/10 unit 0 family ethernet-switching vlan members LIBER-QTA-SAN-LUIS
+
+----------CCS3064LIBERX1-----------
+ssh soporte2@172.23.253.39
+
+vlan 1912
+name LIBER-QTA-SAN-LUIS
+interface Eth1/7
+switchport trunk allowed vlan add 1912
+
+################LIBER-QTA-BELVEDERE###############
+---------- VECREDNOC1004X1-----------
+ssh soporte2@181.225.41.18
+
+no interface TenGigabitEthernet0/3/0.3045
+interface TenGigabitEthernet1/0/2.1938
+description LIBER-QTA-BELVEDERE
+bandwidth 307200
+encapsulation dot1Q 1938
+ip address 172.23.243.245 255.255.255.252
+service-policy input 300M
+service-policy output 300M
+
+sh run | in 172.23.243.246
+
+GPON-VL1938-LIBER-QTA-BELVEDERE
+
+----------CCSJ4500CREX2-----------
+ssh soporte2@172.23.253.59
+
+set vlan LIBER-QTA-BELVEDERE vlan-id 1938
+set interfaces ae5 unit 0 family ethernet-switching vlan members LIBER-QTA-BELVEDERE
+set interfaces xe-0/0/10 unit 0 family ethernet-switching vlan members LIBER-QTA-BELVEDERE
+
+----------CCS3064LIBERX1-----------
+ssh soporte2@172.23.253.39
+
+vlan 1938
+name LIBER-QTA-BELVEDERE
+interface Eth1/7
+switchport trunk allowed vlan add 1938
+
+LSITO
+
+################LIBER-QTA-MARQUIS###############
+---------- VECREDNOC1004X1-----------
+ssh soporte2@181.225.41.18
+
+no interface TenGigabitEthernet0/3/0.3008
+interface TenGigabitEthernet1/0/2.1013
+description LIBER-QUINTA-MARQUIS; ID:26367
+ encapsulation dot1Q 1013
+ ip address 172.23.241.53 255.255.255.252
+ service-policy input 50M
+ service-policy output 50M
+
+sh run | in 172.23.241.54
+
+GPON-VL1912-LIBER-QTA-MARQUIS
+
+----------CCSJ4500CREX2-----------
+ssh soporte2@172.23.253.59
+
+set vlan LIBER-QTA-MARQUIS vlan-id 1013
+set interfaces ae5 unit 0 family ethernet-switching vlan members LIBER-QTA-MARQUIS
+set interfaces xe-0/0/10 unit 0 family ethernet-switching vlan members LIBER-QTA-MARQUIS
+
+----------CCS3064LIBERX1-----------
+ssh soporte2@172.23.253.39
+
+vlan 1013
+name LIBER-QTA-MARQUIS
+interface Eth1/7
+switchport trunk allowed vlan add 1013
+
+LISTO
+
+################PRIMTEK-T-DOMUS;ID:26592###############
+---------- VECREDNOC1004X1-----------
+ssh soporte2@181.225.41.18
+
+no interface TenGigabitEthernet0/3/0.1030
+interface TenGigabitEthernet1/0/2.1030
+description PRIMTEK-T-DOMUS;ID:26592
+ bandwidth 102400
+ encapsulation dot1Q 1030
+ ip address 172.23.241.113 255.255.255.252
+ service-policy input 100M
+ service-policy output 100M
+
+sh run | in 172.23.241.114
+
+GPON-VL1912-LIBER-PRIMTEK-T-DOMUS
+
+----------CCSJ4500CREX2-----------
+ssh soporte2@172.23.253.59
+
+del vlan LIBER-SOAINT vlan-id 1030
+del interfaces ae5 unit 0 family ethernet-switching vlan members LIBER-SOAINT
+del interfaces xe-0/0/8 unit 0 family ethernet-switching vlan members LIBER-SOAINT
+
+set vlan LIBER-PRIMTEK-T-DOMUS vlan-id 1030
+set interfaces ae5 unit 0 family ethernet-switching vlan members LIBER-PRIMTEK-T-DOMUS
+set interfaces xe-0/0/10 unit 0 family ethernet-switching vlan members LIBER-PRIMTEK-T-DOMUS
+
+----------CCS3064LIBERX1-----------
+ssh soporte2@172.23.253.39
+
+vlan 1030
+name LIBER-PRIMTEK-T-DOMUS
+interface Eth1/7
+switchport trunk allowed vlan add 1030
+
+LISTO
+
