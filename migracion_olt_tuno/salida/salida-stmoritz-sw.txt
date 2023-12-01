@@ -1,0 +1,47 @@
+########################################
+
+
+------jun - VECCSNOCJM120x1----- 
+ssh soporte2@181.225.41.16
+
+del routing-options static route 190.94.218.40/29 next-hop 172.23.245.86
+del interfaces ge-3/3/2	unit 497
+
+
+
+
+--------VECREDNOC1004X1-------------------
+ssh soporte2@181.225.41.18
+
+
+interface TenGigabitEthernet0/1/0.497
+  description TUNO-STMORITZ-IP-BAN;ID:
+ bandwidth 102400
+ encapsulation dot1Q 497
+ ip address 172.23.245.85 255.255.255.252
+ service-policy input 100M
+ service-policy output 100M
+exit
+ip route 190.94.218.40 255.255.255.248 172.23.245.86 name GPON-VL497-TUNO-STMORITZ-IP-BAN
+
+
+
+----------------CCSJ4500CREX2------------
+ssh soporte2@172.23.253.59
+
+del interfaces  xe-0/0/8 unit 0 family ethernet-switching vlan members TUNO-STMORITZ-IP-BAN
+del vlan TUNO-STMORITZ-IP-BAN vlan-id 497
+
+set vlan TUNO-STMORITZ-IP-BAN vlan-id 497
+set interfaces ae13 unit 0 family ethernet-switching vlan members TUNO-STMORITZ-IP-BAN
+set interfaces xe-0/0/14 unit 0 family ethernet-switching vlan members TUNO-STMORITZ-IP-BAN
+
+----------------CCSC4500TUNOX1------------
+ssh soporte2@172.23.253.20
+
+vlan 497
+name TUNO-STMORITZ-IP-BAN
+interface po4
+switchport trunk allowed vlan add 497
+
+

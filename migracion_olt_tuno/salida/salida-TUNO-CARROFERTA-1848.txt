@@ -1,0 +1,42 @@
+########################################
+1848	3296	TUNO-CARROFERTA
+
+--------VECREDNOC1004X1-------------------
+ssh soporte2@181.225.41.18
+
+no interface TenGigabitEthernet0/3/0.3296
+ description CARROFERTA;ID:26572
+ bandwidth 51200
+ encapsulation dot1Q 3296
+ ip address 172.23.241.225 255.255.255.252
+ service-policy input 50M
+ service-policy output 50M
+exit
+ip route 190.94.244.104 255.255.255.252 172.23.241.226 name GPON-VL3296-TUNO-CARROFERTA
+
+interface TenGigabitEthernet0/1/0.1848
+ description CARROFERTA;ID:26572
+ bandwidth 51200
+encapsulation dot1Q 1848
+ ip address 172.23.241.225 255.255.255.252
+ service-policy input 50M
+ service-policy output 50M
+exit
+ip route 190.94.244.104 255.255.255.252 172.23.241.226 name GPON-VL1848-TUNO-CARROFERTA
+
+----------------CCSJ4500CREX2------------
+ssh soporte2@172.23.253.59
+
+set vlan TUNO-CARROFERTA vlan-id 1848
+set interfaces ae13 unit 0 family ethernet-switching vlan members TUNO-CARROFERTA
+set interfaces xe-0/0/14 unit 0 family ethernet-switching vlan members TUNO-CARROFERTA
+
+----------------CCSC4500TUNOX1------------
+ssh soporte2@172.23.253.20
+
+vlan 1848
+name TUNO-CARROFERTA
+interface po4
+switchport trunk allowed vlan add 1848
+
+

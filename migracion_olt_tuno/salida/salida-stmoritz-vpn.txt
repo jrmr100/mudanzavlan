@@ -1,0 +1,22 @@
+########################################
+
+
+----------------CCSJ4500CREX2------------
+ssh soporte2@172.23.253.59
+
+del interfaces  xe-0/0/8 unit 0 family ethernet-switching vlan members TUNO-STMORITZ-VPN
+del vlan TUNO-STMORITZ-VPN vlan-id 500
+
+set vlan TUNO-STMORITZ-VPN vlan-id 500
+set interfaces ae13 unit 0 family ethernet-switching vlan members TUNO-STMORITZ-VPN
+
+
+----------------CCSC4500TUNOX1------------
+ssh soporte2@172.23.253.20
+
+vlan 500
+name TUNO-STMORITZ-VPN
+interface po4
+switchport trunk allowed vlan add 500
+
+

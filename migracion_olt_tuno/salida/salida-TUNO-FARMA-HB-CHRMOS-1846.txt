@@ -1,0 +1,42 @@
+########################################
+1846	3294	TUNO-FARMA-HB-CHRMOS
+
+--------VECREDNOC1004X1-------------------
+ssh soporte2@181.225.41.18
+
+no interface TenGigabitEthernet0/3/0.3294
+ description TUNO-FARMA-HB-CHRMOS
+ bandwidth 61440
+ encapsulation dot1Q 3294
+ ip address 172.23.241.221 255.255.255.252
+ service-policy input 60M
+ service-policy output 60M
+exit
+ip route 190.94.244.168 255.255.255.252 172.23.241.222 name RED1-VL3294-TUNO-FARMA-HB-CHRMOS
+
+interface TenGigabitEthernet0/1/0.1846
+ description TUNO-FARMA-HB-CHRMOS
+ bandwidth 61440
+encapsulation dot1Q 1846
+ ip address 172.23.241.221 255.255.255.252
+ service-policy input 60M
+ service-policy output 60M
+exit
+ip route 190.94.244.168 255.255.255.252 172.23.241.222 name GPON-VL1846-TUNO-FARMA-HB-CHRMOS
+
+----------------CCSJ4500CREX2------------
+ssh soporte2@172.23.253.59
+
+set vlan TUNO-FARMA-HB-CHRMOS vlan-id 1846
+set interfaces ae13 unit 0 family ethernet-switching vlan members TUNO-FARMA-HB-CHRMOS
+set interfaces xe-0/0/14 unit 0 family ethernet-switching vlan members TUNO-FARMA-HB-CHRMOS
+
+----------------CCSC4500TUNOX1------------
+ssh soporte2@172.23.253.20
+
+vlan 1846
+name TUNO-FARMA-HB-CHRMOS
+interface po4
+switchport trunk allowed vlan add 1846
+
+

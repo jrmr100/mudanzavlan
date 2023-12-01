@@ -1,0 +1,44 @@
+########################################
+1839	3285	TUNO-BANKING
+
+--------VECREDNOC1004X1-------------------
+ssh soporte2@181.225.41.18
+
+no interface TenGigabitEthernet0/3/0.3285
+ description TUNO-BANKING
+ bandwidth 163840
+ encapsulation dot1Q 3285
+ ip address 172.23.243.177 255.255.255.252
+ service-policy input 160M
+ service-policy output 160M
+exit
+ip route 190.94.244.84 255.255.255.252 172.23.243.178 name RED1-VL3285-TUNO-BANKING
+ip route 190.94.198.0 255.255.255.248 172.23.243.178 name RED1-VL3285-TUNO-BANKING
+
+interface TenGigabitEthernet0/1/0.1839
+ description TUNO-BANKING
+ bandwidth 163840
+encapsulation dot1Q 1839
+ ip address 172.23.243.177 255.255.255.252
+ service-policy input 160M
+ service-policy output 160M
+exit
+ip route 190.94.244.84 255.255.255.252 172.23.243.178 name GPON-VL1839-TUNO-BANKING
+ip route 190.94.198.0 255.255.255.248 172.23.243.178 name GPON-VL1839-TUNO-BANKING
+
+----------------CCSJ4500CREX2------------
+ssh soporte2@172.23.253.59
+
+set vlan TUNO-BANKING vlan-id 1839
+set interfaces ae13 unit 0 family ethernet-switching vlan members TUNO-BANKING
+set interfaces xe-0/0/14 unit 0 family ethernet-switching vlan members TUNO-BANKING
+
+----------------CCSC4500TUNOX1------------
+ssh soporte2@172.23.253.20
+
+vlan 1839
+name TUNO-BANKING
+interface po4
+switchport trunk allowed vlan add 1839
+
+

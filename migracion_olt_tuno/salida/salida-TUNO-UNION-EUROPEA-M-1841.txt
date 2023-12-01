@@ -1,0 +1,42 @@
+########################################
+1841	3287	TUNO-UNION-EUROPEA-M
+
+--------VECREDNOC1004X1-------------------
+ssh soporte2@181.225.41.18
+
+no interface TenGigabitEthernet0/3/0.3287
+ description UNION-EUROPEA-MUD;ID:9334
+ bandwidth 102400
+ encapsulation dot1Q 3287
+ ip address 172.23.255.217 255.255.255.252
+ service-policy input 100M
+ service-policy output 100M
+exit
+ip route 190.94.208.212 255.255.255.252 172.23.255.218 name RED1-VL3287-TUNO-UNION-EUROPEA-MUD
+
+interface TenGigabitEthernet0/1/0.1841
+ description UNION-EUROPEA-MUD;ID:9334
+ bandwidth 102400
+encapsulation dot1Q 1841
+ ip address 172.23.255.217 255.255.255.252
+ service-policy input 100M
+ service-policy output 100M
+exit
+ip route 190.94.208.212 255.255.255.252 172.23.255.218 name GPON-VL1841-TUNO-UNION-EUROPEA-MUD
+
+----------------CCSJ4500CREX2------------
+ssh soporte2@172.23.253.59
+
+set vlan TUNO-UNION-EUROPEA-M vlan-id 1841
+set interfaces ae13 unit 0 family ethernet-switching vlan members TUNO-UNION-EUROPEA-M
+set interfaces xe-0/0/14 unit 0 family ethernet-switching vlan members TUNO-UNION-EUROPEA-M
+
+----------------CCSC4500TUNOX1------------
+ssh soporte2@172.23.253.20
+
+vlan 1841
+name TUNO-UNION-EUROPEA-M
+interface po4
+switchport trunk allowed vlan add 1841
+
+

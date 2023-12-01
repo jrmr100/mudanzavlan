@@ -1,0 +1,42 @@
+########################################
+1843	3289	TUNO-MUEBLES-MARY
+
+--------VECREDNOC1004X1-------------------
+ssh soporte2@181.225.41.18
+
+no interface TenGigabitEthernet0/3/0.3289
+ description RED1-VL483-TUNO-MUEBLES-MARY 
+ bandwidth 51200
+ encapsulation dot1Q 3289
+ ip address 172.23.245.89 255.255.255.252
+ service-policy input 50M
+ service-policy output 50M
+exit
+ip route 190.94.253.216 255.255.255.252 172.23.245.90 name RED1-VL3289-TUNO-MUEBLES-MARY
+
+interface TenGigabitEthernet0/1/0.1843
+ description RED1-VL483-TUNO-MUEBLES-MARY 
+ bandwidth 51200
+encapsulation dot1Q 1843
+ ip address 172.23.245.89 255.255.255.252
+ service-policy input 50M
+ service-policy output 50M
+exit
+ip route 190.94.253.216 255.255.255.252 172.23.245.90 name GPON-VL1843-TUNO-MUEBLES-MARY
+
+----------------CCSJ4500CREX2------------
+ssh soporte2@172.23.253.59
+
+set vlan TUNO-MUEBLES-MARY vlan-id 1843
+set interfaces ae13 unit 0 family ethernet-switching vlan members TUNO-MUEBLES-MARY
+set interfaces xe-0/0/14 unit 0 family ethernet-switching vlan members TUNO-MUEBLES-MARY
+
+----------------CCSC4500TUNOX1------------
+ssh soporte2@172.23.253.20
+
+vlan 1843
+name TUNO-MUEBLES-MARY
+interface po4
+switchport trunk allowed vlan add 1843
+
+

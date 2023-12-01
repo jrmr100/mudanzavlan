@@ -1,0 +1,44 @@
+########################################
+1853	3305	TUNO-ICL-FREIGHT
+
+--------VECREDNOC1004X1-------------------
+ssh soporte2@181.225.41.18
+
+no interface TenGigabitEthernet0/3/0.3305
+ description ICL-FREIGHT;ID:26614
+ bandwidth 51200
+ encapsulation dot1Q 3305
+ ip address 172.23.240.81 255.255.255.252
+ service-policy input 50M
+ service-policy output 50M
+exit
+ip route 190.94.200.64 255.255.255.252 172.23.240.82 name GPON-VL3305-TUNO-ICL-FREIGHT
+ip route 190.94.197.28 255.255.255.252 172.23.240.82 name GPON-VL3305-TUNO-ICL-FREIGHT
+
+interface TenGigabitEthernet0/1/0.1853
+ description ICL-FREIGHT;ID:26614
+ bandwidth 51200
+encapsulation dot1Q 1853
+ ip address 172.23.240.81 255.255.255.252
+ service-policy input 50M
+ service-policy output 50M
+exit
+ip route 190.94.200.64 255.255.255.252 172.23.240.82 name GPON-VL1853-TUNO-ICL-FREIGHT
+ip route 190.94.197.28 255.255.255.252 172.23.240.82 name GPON-VL1853-TUNO-ICL-FREIGHT
+
+----------------CCSJ4500CREX2------------
+ssh soporte2@172.23.253.59
+
+set vlan TUNO-ICL-FREIGHT vlan-id 1853
+set interfaces ae13 unit 0 family ethernet-switching vlan members TUNO-ICL-FREIGHT
+set interfaces xe-0/0/14 unit 0 family ethernet-switching vlan members TUNO-ICL-FREIGHT
+
+----------------CCSC4500TUNOX1------------
+ssh soporte2@172.23.253.20
+
+vlan 1853
+name TUNO-ICL-FREIGHT
+interface po4
+switchport trunk allowed vlan add 1853
+
+

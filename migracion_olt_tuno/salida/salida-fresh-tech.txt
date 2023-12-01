@@ -1,0 +1,45 @@
+########################################
+453	453	TUNO-GAMA-STA MONICA
+
+--------VECREDNOC1004X1-------------------
+ssh soporte2@181.225.41.18
+
+no interface TenGigabitEthernet1/0/3.1805
+ description TUNO-FRESH-T-CHAGMOS
+ bandwith 71680
+ encapsulation dot1Q 1805
+ ip address 172.23.240.41 255.255.255.252
+ service-policy input 70M
+ service-policy output 70M
+
+
+interface TenGigabitEthernet0/1/0.1805
+  description FRESH-T-CHAGMOS;ID:
+ bandwidth 71680
+ encapsulation dot1Q 1805
+ ip address 172.23.240.41 255.255.255.252
+ service-policy input 70M
+ service-policy output 70M
+
+----------------CCSJ4500CREX2------------
+ssh soporte2@172.23.253.59
+
+
+del interfaces ae6 unit 0 family ethernet-switching vlan members TUNO-FRESH-T-CHAGMOS
+del interfaces  xe-0/0/8 unit 0 family ethernet-switching vlan members TUNO-FRESH-T-CHAGMOS
+del interfaces   xe-0/0/9 unit 0 family ethernet-switching vlan members TUNO-FRESH-T-CHAGMOS
+del vlan TUNO-FRESH-T-CHAGMOS vlan-id 1805
+
+set vlan TUNO-FRESH-T-CHAGMOS vlan-id 1805
+set interfaces ae13 unit 0 family ethernet-switching vlan members TUNO-FRESH-T-CHAGMOS
+set interfaces xe-0/0/14 unit 0 family ethernet-switching vlan members TUNO-FRESH-T-CHAGMOS
+
+----------------CCSC4500TUNOX1------------
+ssh soporte2@172.23.253.20
+
+vlan 1805
+name TUNO-FRESH-T-CHAGMOS
+interface po4
+switchport trunk allowed vlan add 1805
+
+

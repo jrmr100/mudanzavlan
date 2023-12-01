@@ -1,0 +1,42 @@
+########################################
+1845	3292	TUNO-CLUB-VALLE-ARR
+
+--------VECREDNOC1004X1-------------------
+ssh soporte2@181.225.41.18
+
+no interface TenGigabitEthernet0/3/0.3292
+ description CLUB-VALLE-ARRIBA;ID:26259
+ bandwidth 307200
+ encapsulation dot1Q 3292
+ ip address 172.23.244.137 255.255.255.252
+ service-policy input 300M
+ service-policy output 300M
+exit
+ip route 181.225.53.80 255.255.255.248 172.23.244.138 name GPON-VL3292-CLUB-VALLE-ARRIBA
+
+interface TenGigabitEthernet0/1/0.1845
+ description CLUB-VALLE-ARRIBA;ID:26259
+ bandwidth 307200
+encapsulation dot1Q 1845
+ ip address 172.23.244.137 255.255.255.252
+ service-policy input 300M
+ service-policy output 300M
+exit
+ip route 181.225.53.80 255.255.255.248 172.23.244.138 name GPON-VL1845-CLUB-VALLE-ARRIBA
+
+----------------CCSJ4500CREX2------------
+ssh soporte2@172.23.253.59
+
+set vlan TUNO-CLUB-VALLE-ARR vlan-id 1845
+set interfaces ae13 unit 0 family ethernet-switching vlan members TUNO-CLUB-VALLE-ARR
+set interfaces xe-0/0/14 unit 0 family ethernet-switching vlan members TUNO-CLUB-VALLE-ARR
+
+----------------CCSC4500TUNOX1------------
+ssh soporte2@172.23.253.20
+
+vlan 1845
+name TUNO-CLUB-VALLE-ARR
+interface po4
+switchport trunk allowed vlan add 1845
+
+

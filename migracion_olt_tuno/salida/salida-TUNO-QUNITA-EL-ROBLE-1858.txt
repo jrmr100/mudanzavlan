@@ -1,0 +1,42 @@
+########################################
+1858	3311	TUNO-QUNITA-EL-ROBLE
+
+--------VECREDNOC1004X1-------------------
+ssh soporte2@181.225.41.18
+
+no interface TenGigabitEthernet0/3/0.3311
+ description QUNITA-EL-ROBLE;ID:26623
+ bandwidth 153600
+ encapsulation dot1Q 3311
+ ip address 172.23.242.221 255.255.255.252
+ service-policy input 150M
+ service-policy output 150M
+exit
+ip route 190.94.210.184 255.255.255.252 172.23.242.222 name GPON-VL3311-TUNO-QUNITA-EL-ROBLE
+
+interface TenGigabitEthernet0/1/0.1858
+ description QUNITA-EL-ROBLE;ID:26623
+ bandwidth 153600
+encapsulation dot1Q 1858
+ ip address 172.23.242.221 255.255.255.252
+ service-policy input 150M
+ service-policy output 150M
+exit
+ip route 190.94.210.184 255.255.255.252 172.23.242.222 name GPON-VL1858-TUNO-QUNITA-EL-ROBLE
+
+----------------CCSJ4500CREX2------------
+ssh soporte2@172.23.253.59
+
+set vlan TUNO-QUNITA-EL-ROBLE vlan-id 1858
+set interfaces ae13 unit 0 family ethernet-switching vlan members TUNO-QUNITA-EL-ROBLE
+set interfaces xe-0/0/14 unit 0 family ethernet-switching vlan members TUNO-QUNITA-EL-ROBLE
+
+----------------CCSC4500TUNOX1------------
+ssh soporte2@172.23.253.20
+
+vlan 1858
+name TUNO-QUNITA-EL-ROBLE
+interface po4
+switchport trunk allowed vlan add 1858
+
+

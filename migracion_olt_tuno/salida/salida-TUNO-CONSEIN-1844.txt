@@ -1,0 +1,42 @@
+########################################
+1844	3291	TUNO-CONSEIN
+
+--------VECREDNOC1004X1-------------------
+ssh soporte2@181.225.41.18
+
+no interface TenGigabitEthernet0/3/0.3291
+ description GPON-VL3291-CONSEIN;ID:22645
+ bandwidth 51200
+ encapsulation dot1Q 3291
+ ip address 172.23.253.249 255.255.255.252
+ service-policy input 50M
+ service-policy output 50M
+exit
+ip route 181.225.42.56 255.255.255.248 172.23.253.250 name GPON-VL3291-TUNO-CONSEIN
+
+interface TenGigabitEthernet0/1/0.1844
+ description GPON-VL3291-CONSEIN;ID:22645
+ bandwidth 51200
+encapsulation dot1Q 1844
+ ip address 172.23.253.249 255.255.255.252
+ service-policy input 50M
+ service-policy output 50M
+exit
+ip route 181.225.42.56 255.255.255.248 172.23.253.250 name GPON-VL1844-TUNO-CONSEIN
+
+----------------CCSJ4500CREX2------------
+ssh soporte2@172.23.253.59
+
+set vlan TUNO-CONSEIN vlan-id 1844
+set interfaces ae13 unit 0 family ethernet-switching vlan members TUNO-CONSEIN
+set interfaces xe-0/0/14 unit 0 family ethernet-switching vlan members TUNO-CONSEIN
+
+----------------CCSC4500TUNOX1------------
+ssh soporte2@172.23.253.20
+
+vlan 1844
+name TUNO-CONSEIN
+interface po4
+switchport trunk allowed vlan add 1844
+
+

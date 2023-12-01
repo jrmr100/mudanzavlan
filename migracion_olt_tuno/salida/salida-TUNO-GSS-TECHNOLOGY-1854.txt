@@ -1,0 +1,44 @@
+########################################
+1854	3307	TUNO-GSS-TECHNOLOGY
+
+--------VECREDNOC1004X1-------------------
+ssh soporte2@181.225.41.18
+
+no interface TenGigabitEthernet0/3/0.3307
+ description GSS-TECHNOLOGY;ID:26586
+ bandwidth 61440
+ encapsulation dot1Q 3307
+ ip address 172.23.240.33 255.255.255.252
+ service-policy input 60M
+ service-policy output 60M
+exit
+ip route 190.94.200.20 255.255.255.252 172.23.240.34 name GPON-VL3307-TUNO-GSS-TECHNOLOGY
+ip route 190.94.197.60 255.255.255.252 172.23.240.34 name GPON-VL3307-TUNO-GSS-TECHNOLOGY
+
+interface TenGigabitEthernet0/1/0.1854
+ description GSS-TECHNOLOGY;ID:26586
+ bandwidth 61440
+encapsulation dot1Q 1854
+ ip address 172.23.240.33 255.255.255.252
+ service-policy input 60M
+ service-policy output 60M
+exit
+ip route 190.94.200.20 255.255.255.252 172.23.240.34 name GPON-VL1854-TUNO-GSS-TECHNOLOGY
+ip route 190.94.197.60 255.255.255.252 172.23.240.34 name GPON-VL1854-TUNO-GSS-TECHNOLOGY
+
+----------------CCSJ4500CREX2------------
+ssh soporte2@172.23.253.59
+
+set vlan TUNO-GSS-TECHNOLOGY vlan-id 1854
+set interfaces ae13 unit 0 family ethernet-switching vlan members TUNO-GSS-TECHNOLOGY
+set interfaces xe-0/0/14 unit 0 family ethernet-switching vlan members TUNO-GSS-TECHNOLOGY
+
+----------------CCSC4500TUNOX1------------
+ssh soporte2@172.23.253.20
+
+vlan 1854
+name TUNO-GSS-TECHNOLOGY
+interface po4
+switchport trunk allowed vlan add 1854
+
+

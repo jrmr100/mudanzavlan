@@ -1,0 +1,42 @@
+########################################
+1847	3295	TUNO-LA-PAGODA-CM
+
+--------VECREDNOC1004X1-------------------
+ssh soporte2@181.225.41.18
+
+no interface TenGigabitEthernet0/3/0.3295
+ description TUNO-LA-PAGODA-CM
+ bandwidth 51200
+ encapsulation dot1Q 3295
+ ip address 172.23.241.161 255.255.255.252
+ service-policy input 50M
+ service-policy output 50M
+exit
+ip route 190.94.244.224 255.255.255.252 172.23.241.162 name RED1-VL3295-TUNO-LA-PAGODA-CM
+
+interface TenGigabitEthernet0/1/0.1847
+ description TUNO-LA-PAGODA-CM
+ bandwidth 51200
+encapsulation dot1Q 1847
+ ip address 172.23.241.161 255.255.255.252
+ service-policy input 50M
+ service-policy output 50M
+exit
+ip route 190.94.244.224 255.255.255.252 172.23.241.162 name GPON-VL1847-TUNO-LA-PAGODA-CM
+
+----------------CCSJ4500CREX2------------
+ssh soporte2@172.23.253.59
+
+set vlan TUNO-LA-PAGODA-CM vlan-id 1847
+set interfaces ae13 unit 0 family ethernet-switching vlan members TUNO-LA-PAGODA-CM
+set interfaces xe-0/0/14 unit 0 family ethernet-switching vlan members TUNO-LA-PAGODA-CM
+
+----------------CCSC4500TUNOX1------------
+ssh soporte2@172.23.253.20
+
+vlan 1847
+name TUNO-LA-PAGODA-CM
+interface po4
+switchport trunk allowed vlan add 1847
+
+

@@ -1,0 +1,42 @@
+########################################
+1850	3298	TUNO-ROBIN-AGENCY
+
+--------VECREDNOC1004X1-------------------
+ssh soporte2@181.225.41.18
+
+no interface TenGigabitEthernet0/3/0.3298
+ description TUNO-ROBIN-AGENCY
+ bandwidth 51200
+ encapsulation dot1Q 3298
+ ip address 172.23.241.49 255.255.255.252
+ service-policy input 50M
+ service-policy output 50M
+exit
+ip route 190.94.244.244 255.255.255.252 172.23.241.50 name GPON-VL3298-TUNO-ROBIN-AGENCY
+
+interface TenGigabitEthernet0/1/0.1850
+ description TUNO-ROBIN-AGENCY
+ bandwidth 51200
+encapsulation dot1Q 1850
+ ip address 172.23.241.49 255.255.255.252
+ service-policy input 50M
+ service-policy output 50M
+exit
+ip route 190.94.244.244 255.255.255.252 172.23.241.50 name GPON-VL1850-TUNO-ROBIN-AGENCY
+
+----------------CCSJ4500CREX2------------
+ssh soporte2@172.23.253.59
+
+set vlan TUNO-ROBIN-AGENCY vlan-id 1850
+set interfaces ae13 unit 0 family ethernet-switching vlan members TUNO-ROBIN-AGENCY
+set interfaces xe-0/0/14 unit 0 family ethernet-switching vlan members TUNO-ROBIN-AGENCY
+
+----------------CCSC4500TUNOX1------------
+ssh soporte2@172.23.253.20
+
+vlan 1850
+name TUNO-ROBIN-AGENCY
+interface po4
+switchport trunk allowed vlan add 1850
+
+

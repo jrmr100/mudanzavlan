@@ -1,0 +1,72 @@
+LIBER-QUINTA-SOLERA GALI-ACCESS-SALUD TUNO-DANCINGDOLLY TUNO-HECTICUS TUNO-CONSEIN TUNO-ISARQ TUNO-LOBBY-AH TUNO-MUEBLES-MARY TUNO-AUDIO-CONCEPT TUNO-TOLONET-FIB TUNO-FINAL-CURVE
+ TUNO-MODUSISTEMA TUNO-INTERVIT TUNO-TOP-FOOD TUNO-UNION-EUROPEA-MUD TUNO-EMB-RUSIA TUNO-ECHO-LINK TUNO-QTA-MARY TUNO-QUINTA-EL-MAISSANCO TUNO-PASEO-L-M TUNO-CLUB-VALLE-ARRIBA
+ TUNO-ESTIVANELI TUNO-CONAVEN TUNO-COELLO-CVA-MER TUNO-WORLD-TRADING GALI-FONDO-DE-VALOR TUNO-TELCORP GALI-ZURICH LIBER-CONDOMI-BANCOP LIBER-SOLUCIONESTI
+            LIBER-DAV-DUBBING TUNO-GAMA-SM-VPN TUNO-GAMA-SM-SW CUBO-IMPORTADORA-MERAKI CUBO-MUDANZAS-INTER GALI-NATIONAL-CARGO LIBER-MORE LIBER-SHAAREI-SHALOM 
+CUBO-MARSHAL CUBO-GRANOS-DIGITA CUBO-ALCOHOLES-DEL-CARIBE CUBO-CONDOMINIO CUBO-PIZZOLANTE CUBO-BBO-CAPITAL CUBO-ALFONSORCHUAO CUBO-OLTP CUBO-ALTUM CUBO-POSCOMERCIAL 
+GALI-INST-ITALIANO GALI-2NET-EMB-ITALIA TUNO-BANKING BOL-CASIO-PPAL-MGM LIBER-CLI-SANTIAGO-L CUBO-PRIMTEK-CCCT TUNO-FAROCA-FINACIERA ELUN-GAMA-SB-SW-VPN LEB-2NET-IPSFA 
+PCR-FONDO-DE-VALORES-QNTA LEB-EXC-GAMA-M-VPN
+            LEB-EXC-GAMA-M CRED-2NET-BARON-BOY LEV3-WIFIPOPCCS CRED-GRAFICAS-CROMAT CRED-2NET-PROCTER-GA CRED-C-CRED-TC-SW TUNO-C-CRED-CCBM-VPN TUNO-C-CRED-CCBM-SW 
+CRED-IPNET-HUMBOLDT CRED-2NET-CONCRESA
+
+
+del interfaces  xe-0/0/8 unit 0 family ethernet-switching vlan members TUNO-STMORITZ-IP-BAN, TUNO-STMORITZ-SW-BAN, TUNO-STMORITZ-VPN
+
+
+del interfaces  xe-0/0/8 unit 0 family ethernet-switching vlan members TUNO-CLUB-PTO-AZUL
+del interfaces  xe-0/0/8 unit 0 family ethernet-switching vlan members TUNO-ESP-ORIENTALES
+del interfaces  xe-0/0/8 unit 0 family ethernet-switching vlan members TUNO-COPIKON
+del interfaces  xe-0/0/8 unit 0 family ethernet-switching vlan members TUNO-LOCATEL-SM
+del interfaces  xe-0/0/8 unit 0 family ethernet-switching vlan members TUNO-CORP-CALL-77
+del interfaces  xe-0/0/8 unit 0 family ethernet-switching vlan members TUNO-EXCLU-VAGU
+del interfaces  xe-0/0/8 unit 0 family ethernet-switching vlan members TUNO-REINALDO
+del interfaces  xe-0/0/8 unit 0 family ethernet-switching vlan members TUNO-MDA-TV
+del interfaces  xe-0/0/8 unit 0 family ethernet-switching vlan members TUNO-ASA-STEKI
+del interfaces  xe-0/0/8 unit 0 family ethernet-switching vlan members TUNO-SKYTEX
+del interfaces  xe-0/0/8 unit 0 family ethernet-switching vlan members TUNO-SKYTEX-2
+del interfaces  xe-0/0/8 unit 0 family ethernet-switching vlan members TUNO-PRODEC
+del interfaces  xe-0/0/8 unit 0 family ethernet-switching vlan members TUNO-MOBRITECK-IMP
+del interfaces  xe-0/0/8 unit 0 family ethernet-switching vlan members TUNO-WORLD-TRADING
+del interfaces  xe-0/0/8 unit 0 family ethernet-switching vlan members TUNO-TOP-FOOD
+del interfaces  xe-0/0/8 unit 0 family ethernet-switching vlan members TUNO-QUINTA-EL-MAISSANCO
+del interfaces  xe-0/0/8 unit 0 family ethernet-switching vlan members TUNO-COELLO-CVA-MER
+del interfaces  xe-0/0/8 unit 0 family ethernet-switching vlan members TUNO-DEST-CARUPANO
+del interfaces  xe-0/0/8 unit 0 family ethernet-switching vlan members TUNO-YEET-DE-VEN
+del interfaces  xe-0/0/8 unit 0 family ethernet-switching vlan members TUNO-DANCINGDOLLY
+del interfaces  xe-0/0/8 unit 0 family ethernet-switching vlan members TUNO-ESTIVANELI
+del interfaces  xe-0/0/8 unit 0 family ethernet-switching vlan members TUNO-TOLONET-FIB 
+del interfaces  xe-0/0/8 unit 0 family ethernet-switching vlan members TUNO-PASEO-L-M
+del interfaces  xe-0/0/8 unit 0 family ethernet-switching vlan members TUNO-EMB-RUSIA
+del interfaces  xe-0/0/8 unit 0 family ethernet-switching vlan members TUNO-LOBBY-AH
+del interfaces  xe-0/0/8 unit 0 family ethernet-switching vlan members TUNO-QTA-MARY
+del interfaces  xe-0/0/8 unit 0 family ethernet-switching vlan members TUNO-FINAL-CURVE
+del interfaces  xe-0/0/8 unit 0 family ethernet-switching vlan members TUNO-AUDIO-CONCEPT
+del interfaces  xe-0/0/8 unit 0 family ethernet-switching vlan members TUNO-CONAVEN
+del interfaces  xe-0/0/8 unit 0 family ethernet-switching vlan members TUNO-MODUSISTEMA
+del interfaces  xe-0/0/8 unit 0 family ethernet-switching vlan members TUNO-BANKING
+del interfaces  xe-0/0/8 unit 0 family ethernet-switching vlan members TUNO-ECHO-LINK
+del interfaces  xe-0/0/8 unit 0 family ethernet-switching vlan members TUNO-UNION-EUROPEA-MUD
+del interfaces  xe-0/0/8 unit 0 family ethernet-switching vlan members TUNO-HECTICUS
+del interfaces  xe-0/0/8 unit 0 family ethernet-switching vlan members TUNO-MUEBLES-MARY
+del interfaces  xe-0/0/8 unit 0 family ethernet-switching vlan members TUNO-CONSEIN
+del interfaces  xe-0/0/8 unit 0 family ethernet-switching vlan members TUNO-CLUB-VALLE-ARRIBA
+del interfaces  xe-0/0/8 unit 0 family ethernet-switching vlan members TUNO-FARMA-HB-CHRMOS
+del interfaces  xe-0/0/8 unit 0 family ethernet-switching vlan members TUNO-LA-PAGODA-CM
+del interfaces  xe-0/0/8 unit 0 family ethernet-switching vlan members TUNO-CARROFERTA
+del interfaces  xe-0/0/8 unit 0 family ethernet-switching vlan members TUNO-DUMI-TORROSA
+del interfaces  xe-0/0/8 unit 0 family ethernet-switching vlan members TUNO-ROBIN-AGENCY
+del interfaces  xe-0/0/8 unit 0 family ethernet-switching vlan members TUNO-AVANTI
+del interfaces  xe-0/0/8 unit 0 family ethernet-switching vlan members TUNO-SOL-COELLO-BFC
+del interfaces  xe-0/0/8 unit 0 family ethernet-switching vlan members TUNO-2NET-HUMBOLTD
+del interfaces  xe-0/0/8 unit 0 family ethernet-switching vlan members TUNO-2NET-BETA
+del interfaces  xe-0/0/8 unit 0 family ethernet-switching vlan members TUNO-2NET-MAYORAL
+del interfaces  xe-0/0/8 unit 0 family ethernet-switching vlan members TUNO-GAMA-STA MONICA
+del interfaces  xe-0/0/8 unit 0 family ethernet-switching vlan members TUNO-ICL-FREIGHT
+del interfaces  xe-0/0/8 unit 0 family ethernet-switching vlan members TUNO-GSS-TECHNOLOGY
+del interfaces  xe-0/0/8 unit 0 family ethernet-switching vlan members TUNO-GRUPO-ROCALDENT
+del interfaces  xe-0/0/8 unit 0 family ethernet-switching vlan members TUNO-2NET-TEMPORAL
+del interfaces  xe-0/0/8 unit 0 family ethernet-switching vlan members TUNO-EXC-GAMA-LM
+del interfaces  xe-0/0/8 unit 0 family ethernet-switching vlan members TUNO-QUNITA-EL-ROBLE
+del interfaces  xe-0/0/8 unit 0 family ethernet-switching vlan members TUNO-VALEVEN
+del interfaces  xe-0/0/8 unit 0 family ethernet-switching vlan members GALI-PANEL-SYSTEMS
+del interfaces  xe-0/0/8 unit 0 family ethernet-switching vlan members TUNO-LASER-LAS-MERCE
+del interfaces  xe-0/0/8 unit 0 family ethernet-switching vlan members TUNO-FRESH-T-CHAGMOS

@@ -1,0 +1,42 @@
+########################################
+1859	3312	TUNO-VALEVEN
+
+--------VECREDNOC1004X1-------------------
+ssh soporte2@181.225.41.18
+
+no interface TenGigabitEthernet0/3/0.3312
+ description TUNO-VALEVEN;ID:26782
+ bandwidth 51200
+ encapsulation dot1Q 3312
+ ip address 172.23.247.241 255.255.255.252
+ service-policy input 50M
+ service-policy output 50M
+exit
+ip route 181.225.53.152 255.255.255.248 172.23.247.242 name GPON-VL3312-TUNO-VALEVEN
+
+interface TenGigabitEthernet0/1/0.1859
+ description TUNO-VALEVEN;ID:26782
+ bandwidth 51200
+encapsulation dot1Q 1859
+ ip address 172.23.247.241 255.255.255.252
+ service-policy input 50M
+ service-policy output 50M
+exit
+ip route 181.225.53.152 255.255.255.248 172.23.247.242 name GPON-VL1859-TUNO-VALEVEN
+
+----------------CCSJ4500CREX2------------
+ssh soporte2@172.23.253.59
+
+set vlan TUNO-VALEVEN vlan-id 1859
+set interfaces ae13 unit 0 family ethernet-switching vlan members TUNO-VALEVEN
+set interfaces xe-0/0/14 unit 0 family ethernet-switching vlan members TUNO-VALEVEN
+
+----------------CCSC4500TUNOX1------------
+ssh soporte2@172.23.253.20
+
+vlan 1859
+name TUNO-VALEVEN
+interface po4
+switchport trunk allowed vlan add 1859
+
+

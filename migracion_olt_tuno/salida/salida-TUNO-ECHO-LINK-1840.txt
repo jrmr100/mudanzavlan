@@ -1,0 +1,42 @@
+########################################
+1840	3286	TUNO-ECHO-LINK
+
+--------VECREDNOC1004X1-------------------
+ssh soporte2@181.225.41.18
+
+no interface TenGigabitEthernet0/3/0.3286
+ description RED1-VL3286-TUNO-ECHO-LINK
+ bandwidth 51200
+ encapsulation dot1Q 3286
+ ip address 172.23.247.157 255.255.255.252
+ service-policy input 50M
+ service-policy output 50M
+exit
+ip route 190.94.208.228 255.255.255.252 172.23.247.158 name RED1-VL3286-TUNO-ECHO-LINK
+
+interface TenGigabitEthernet0/1/0.1840
+ description RED1-VL3286-TUNO-ECHO-LINK
+ bandwidth 51200
+encapsulation dot1Q 1840
+ ip address 172.23.247.157 255.255.255.252
+ service-policy input 50M
+ service-policy output 50M
+exit
+ip route 190.94.208.228 255.255.255.252 172.23.247.158 name GPON-VL1840-TUNO-ECHO-LINK
+
+----------------CCSJ4500CREX2------------
+ssh soporte2@172.23.253.59
+
+set vlan TUNO-ECHO-LINK vlan-id 1840
+set interfaces ae13 unit 0 family ethernet-switching vlan members TUNO-ECHO-LINK
+set interfaces xe-0/0/14 unit 0 family ethernet-switching vlan members TUNO-ECHO-LINK
+
+----------------CCSC4500TUNOX1------------
+ssh soporte2@172.23.253.20
+
+vlan 1840
+name TUNO-ECHO-LINK
+interface po4
+switchport trunk allowed vlan add 1840
+
+

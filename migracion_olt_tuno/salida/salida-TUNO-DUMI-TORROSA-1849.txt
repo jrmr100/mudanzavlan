@@ -1,0 +1,42 @@
+########################################
+1849	3297	TUNO-DUMI-TORROSA
+
+--------VECREDNOC1004X1-------------------
+ssh soporte2@181.225.41.18
+
+no interface TenGigabitEthernet0/3/0.3297
+ description TUNO-DUMI-TORROSA
+ bandwidth 102400
+ encapsulation dot1Q 3297
+ ip address 172.23.241.109 255.255.255.252
+ service-policy input 100M
+ service-policy output 100M
+exit
+ip route 190.94.244.184 255.255.255.252 172.23.241.110 name GPON-VL3297-TUNO-DUMI-TORROSA
+
+interface TenGigabitEthernet0/1/0.1849
+ description TUNO-DUMI-TORROSA
+ bandwidth 102400
+encapsulation dot1Q 1849
+ ip address 172.23.241.109 255.255.255.252
+ service-policy input 100M
+ service-policy output 100M
+exit
+ip route 190.94.244.184 255.255.255.252 172.23.241.110 name GPON-VL1849-TUNO-DUMI-TORROSA
+
+----------------CCSJ4500CREX2------------
+ssh soporte2@172.23.253.59
+
+set vlan TUNO-DUMI-TORROSA vlan-id 1849
+set interfaces ae13 unit 0 family ethernet-switching vlan members TUNO-DUMI-TORROSA
+set interfaces xe-0/0/14 unit 0 family ethernet-switching vlan members TUNO-DUMI-TORROSA
+
+----------------CCSC4500TUNOX1------------
+ssh soporte2@172.23.253.20
+
+vlan 1849
+name TUNO-DUMI-TORROSA
+interface po4
+switchport trunk allowed vlan add 1849
+
+

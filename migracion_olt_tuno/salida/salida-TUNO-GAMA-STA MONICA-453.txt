@@ -1,0 +1,44 @@
+########################################
+453	453	TUNO-GAMA-STA MONICA
+
+--------VECREDNOC1004X1-------------------
+ssh soporte2@181.225.41.18
+
+no interface TenGigabitEthernet0/3/0.453
+ description GAMA-STA-MON-IP;ID:26091
+ bandwidth 20480
+ encapsulation dot1Q 453
+ ip address 172.23.243.85 255.255.255.252
+ service-policy input 20M
+ service-policy output 20M
+exit
+ip route 190.94.197.148 255.255.255.252 172.23.243.86 name GPON-VL453-TUNO-GAMA-STA-MON-IP
+ip route 190.94.193.116 255.255.255.252 172.23.243.86 name GPON-VL453-TUNO-GAMA-STA-MON-IP
+
+interface TenGigabitEthernet0/1/0.453
+ description GAMA-STA-MONICA;ID:26091
+ bandwidth 20480
+encapsulation dot1Q 453
+ ip address 172.23.243.85 255.255.255.252
+ service-policy input 20M
+ service-policy output 20M
+exit
+ip route 190.94.197.148 255.255.255.252 172.23.243.86 name GPON-VL453-TUNO-GAMA-STA-MONICA
+ip route 190.94.193.116 255.255.255.252 172.23.243.86 name GPON-VL453-TUNO-GAMA-STA-MONICA
+
+----------------CCSJ4500CREX2------------
+ssh soporte2@172.23.253.59
+
+set vlan TUNO-GAMA-STA-MONICA vlan-id 453
+set interfaces ae13 unit 0 family ethernet-switching vlan members TUNO-GAMA-STA-MONICA
+set interfaces xe-0/0/14 unit 0 family ethernet-switching vlan members TUNO-GAMA-STA-MONICA
+
+----------------CCSC4500TUNOX1------------
+ssh soporte2@172.23.253.20
+
+vlan 453
+name TUNO-GAMA-STA-MONICA
+interface po4
+switchport trunk allowed vlan add 453
+
+

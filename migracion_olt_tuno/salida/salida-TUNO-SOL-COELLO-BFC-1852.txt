@@ -1,0 +1,46 @@
+########################################
+1852	3301	TUNO-SOL-COELLO-BFC
+
+--------VECREDNOC1004X1-------------------
+ssh soporte2@181.225.41.18
+
+no interface TenGigabitEthernet0/3/0.3301
+ description SOL-COELLO-BFC;ID:26329
+ bandwidth 81920
+ encapsulation dot1Q 3301
+ ip address 172.23.240.129 255.255.255.252
+ service-policy input 80M
+ service-policy output 80M
+exit
+ip route 190.94.198.32 255.255.255.248 172.23.240.130 name GPON-VL3301-TUNO-SOL-COELLO-BFC
+ip route 190.94.198.40 255.255.255.248 172.23.240.130 name GPON-VL3301-TUNO-SOL-COELLO-BFC
+ip route 190.94.198.48 255.255.255.248 172.23.240.130 name GPON-VL3301-TUNO-SOL-COELLO-BFC
+
+interface TenGigabitEthernet0/1/0.1852
+ description SOL-COELLO-BFC;ID:26329
+ bandwidth 81920
+encapsulation dot1Q 1852
+ ip address 172.23.240.129 255.255.255.252
+ service-policy input 80M
+ service-policy output 80M
+exit
+ip route 190.94.198.32 255.255.255.248 172.23.240.130 name GPON-VL1852-TUNO-SOL-COELLO-BFC
+ip route 190.94.198.40 255.255.255.248 172.23.240.130 name GPON-VL1852-TUNO-SOL-COELLO-BFC
+ip route 190.94.198.48 255.255.255.248 172.23.240.130 name GPON-VL1852-TUNO-SOL-COELLO-BFC
+
+----------------CCSJ4500CREX2------------
+ssh soporte2@172.23.253.59
+
+set vlan TUNO-SOL-COELLO-BFC vlan-id 1852
+set interfaces ae13 unit 0 family ethernet-switching vlan members TUNO-SOL-COELLO-BFC
+set interfaces xe-0/0/14 unit 0 family ethernet-switching vlan members TUNO-SOL-COELLO-BFC
+
+----------------CCSC4500TUNOX1------------
+ssh soporte2@172.23.253.20
+
+vlan 1852
+name TUNO-SOL-COELLO-BFC
+interface po4
+switchport trunk allowed vlan add 1852
+
+

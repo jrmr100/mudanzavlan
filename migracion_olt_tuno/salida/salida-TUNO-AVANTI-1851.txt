@@ -1,0 +1,44 @@
+########################################
+1851	3300	TUNO-AVANTI
+
+--------VECREDNOC1004X1-------------------
+ssh soporte2@181.225.41.18
+
+no interface TenGigabitEthernet0/3/0.3300
+ description AVANTI;ID:26345
+ bandwidth 102400
+ encapsulation dot1Q 3300
+ ip address 172.23.240.69 255.255.255.252
+ service-policy input 100M
+ service-policy output 100M
+exit
+ip route 190.94.200.68 255.255.255.252 172.23.240.70 name GPON-VL3300-TUNO-AVANTI
+ip route 190.94.197.140 255.255.255.252 172.23.240.70 name GPON-VL3300-TUNO-AVANTI
+
+interface TenGigabitEthernet0/1/0.1851
+ description AVANTI;ID:26345
+ bandwidth 102400
+encapsulation dot1Q 1851
+ ip address 172.23.240.69 255.255.255.252
+ service-policy input 100M
+ service-policy output 100M
+exit
+ip route 190.94.200.68 255.255.255.252 172.23.240.70 name GPON-VL1851-TUNO-AVANTI
+ip route 190.94.197.140 255.255.255.252 172.23.240.70 name GPON-VL1851-TUNO-AVANTI
+
+----------------CCSJ4500CREX2------------
+ssh soporte2@172.23.253.59
+
+set vlan TUNO-AVANTI vlan-id 1851
+set interfaces ae13 unit 0 family ethernet-switching vlan members TUNO-AVANTI
+set interfaces xe-0/0/14 unit 0 family ethernet-switching vlan members TUNO-AVANTI
+
+----------------CCSC4500TUNOX1------------
+ssh soporte2@172.23.253.20
+
+vlan 1851
+name TUNO-AVANTI
+interface po4
+switchport trunk allowed vlan add 1851
+
+

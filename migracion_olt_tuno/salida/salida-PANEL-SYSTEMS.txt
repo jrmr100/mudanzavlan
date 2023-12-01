@@ -1,0 +1,43 @@
+########################################
+453	453	TUNO-GAMA-STA MONICA
+
+--------VECREDNOC1004X1-------------------
+ssh soporte2@181.225.41.18
+
+no interface TenGigabitEthernet0/3/0.3222
+ description PANEL-SYSTEMS;ID:26308
+ bandwidth 61440
+ encapsulation dot1Q 3222
+ ip address 172.23.243.53 255.255.255.252
+ service-policy input 60M
+ service-policy output 60M
+exit
+ip route 190.94.244.8 255.255.255.252 172.23.243.54 name GPON-VL3222-GALI-PANEL-SYSTEMS
+
+interface TenGigabitEthernet0/1/0.1861
+ description PANEL-SYSTEMS;ID:26308
+ bandwidth 61440
+ encapsulation dot1Q 1861
+ ip address 172.23.243.53 255.255.255.252
+ service-policy input 60M
+ service-policy output 60M
+exit
+ip route 190.94.244.8 255.255.255.252 172.23.243.54 name GPON-VL1861-TUNO-PANEL-SYSTEM
+
+----------------CCSJ4500CREX2------------
+ssh soporte2@172.23.253.59
+
+
+set vlan TUNO-PANEL-SYSTEM vlan-id 1861
+set interfaces ae13 unit 0 family ethernet-switching vlan members TUNO-PANEL-SYSTEM
+set interfaces xe-0/0/14 unit 0 family ethernet-switching vlan members TUNO-PANEL-SYSTEM
+
+----------------CCSC4500TUNOX1------------
+ssh soporte2@172.23.253.20
+
+vlan 1861
+name TUNO-PANEL-SYSTEM
+interface po4
+switchport trunk allowed vlan add 1861
+
+
