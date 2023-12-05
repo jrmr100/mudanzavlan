@@ -1,31 +1,32 @@
 ########################################
 VLAN_NUEVA	VLAN_VIEJA	NOMBRE_VLAN
 
---------VECREDNOC1004X1-------------------
-ssh soporte2@181.225.41.18
+--------VELEBNOC1006X1-------------------
+ssh soporte2@181.225.41.25
 
 no DATOS_INTERFACE_VIEJA
 exit
 DATOS_RUTAS_VIEJA
 
-interface TenGigabitEthernet0/1/0.VLAN_NUEVA
+interface Po4.VLAN_NUEVA
 DATOS_INTERFACE_NUEVA
 exit
 DATOS_RUTAS_NUEVA
 
-----------------CCSJ4500CREX2------------
-ssh soporte2@172.23.253.59
+----------------CCSJ4500LEBX1--------------
+ssh soporte2@172.23.253.28
 
 set vlan NOMBRE_VLAN vlan-id VLAN_NUEVA
-set interfaces ae13 unit 0 family ethernet-switching vlan members NOMBRE_VLAN
-set interfaces xe-0/0/14 unit 0 family ethernet-switching vlan members NOMBRE_VLAN
+set interfaces ae8 unit 0 family ethernet-switching vlan members NOMBRE_VLAN
+set interfaces ae16 unit 0 family ethernet-switching vlan members NOMBRE_VLAN
 
-----------------CCSC4500TUNOX1------------
-ssh soporte2@172.23.253.20
+
+----------------CCSC4500BOLEX1------------
+ssh soporte2@172.23.253.21
 
 vlan VLAN_NUEVA
 name NOMBRE_VLAN
-interface po4
+interface Te1/10
 switchport trunk allowed vlan add VLAN_NUEVA
 
 
