@@ -3,6 +3,9 @@ txt_vlan_vieja = "migracion_olt_boleita/lista_vlan_vieja.txt"
 txt_nombres_vlan = "migracion_olt_boleita/lista_nombres_vlan.txt"
 txt_salida = "migracion_olt_boleita/salida/salida-"
 txt_plantilla_config = "migracion_olt_boleita/plantilla_config.txt"
+txt_router_config = "migracion_olt_boleita/router_config.txt"
+interface_anterior = "interface Port-channel6."
+interface_nueva = "interface Port-channel4."
 
 
 interface_vieja = """interface TenGigabitEthernet0/3/0.3313

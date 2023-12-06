@@ -13,8 +13,8 @@ with open(datos.txt_vlan_vieja, "r") as vlan_vieja:
 with open(datos.txt_nombres_vlan, "r") as nombres_vlan:
     lista_nombres_vlan = nombres_vlan.readlines()
 
-with open(datos.txt_plantilla_config, "r") as plantilla_config:
-    lista_plantilla_config = plantilla_config.readlines()
+with open(datos.txt_router_config, "r") as router_config:
+    lista_router_config = router_config.readlines()
 
 def reemplazo_valores(tipo_valor, index_lista, linea):
     linea_nueva = ""
@@ -28,12 +28,37 @@ def reemplazo_valores(tipo_valor, index_lista, linea):
         linea_nueva = linea.replace("NOMBRE_VLAN", lista_nombres_vlan[index_lista][:-1])
         return linea_nueva
     elif tipo_valor == 4:
-        linea_nueva = linea.replace("DATOS_INTERFACE_VIEJA", datos.interface_vieja)
+        linea_nueva = linea.replace("DATOS_INTERFACE_VIEJA", lista_almacen_configs[index_lista][:-1])
         return linea_nueva
     elif tipo_valor == 5:
         linea_nueva = linea.replace("DATOS_RUTAS_VIEJA", datos.rutas_ip)
         return linea_nueva
 
+
+# creo archivo con la configuracion vieja del cliente
+lista_almacen_configs = []
+for linea_vlan in lista_vlan_vieja:
+    almacen_router_config = ""
+    marcar_int = 0
+    for linea_router_config in lista_router_config:
+        if datos.interface_anterior + linea_vlan in linea_router_config:
+                almacen_router_config = almacen_router_config + linea_router_config
+                marcar_int = 1
+        elif marcar_int == 1 and "description" in linea_router_config:
+            almacen_router_config = almacen_router_config + linea_router_config
+        elif marcar_int == 1 and "bandwidth" in linea_router_config:
+            almacen_router_config = almacen_router_config + linea_router_config
+        elif marcar_int == 1 and "encapsulation" in linea_router_config:
+            almacen_router_config = almacen_router_config + linea_router_config
+        elif marcar_int == 1 and "ip address" in linea_router_config:
+            almacen_router_config = almacen_router_config + linea_router_config
+        elif marcar_int == 1 and "service-policy input" in linea_router_config:
+            almacen_router_config = almacen_router_config + linea_router_config
+        elif marcar_int == 1 and "service-policy output" in linea_router_config:
+            almacen_router_config = almacen_router_config + linea_router_config
+        elif marcar_int == 1 and linea_router_config == "!\n":
+            lista_almacen_configs.append(almacen_router_config)
+            marcar_int = 0
 
 lista_salida = []
 size_lista = len(lista_vlan_nueva)  # Declaro el tamaño de la lista
