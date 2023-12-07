@@ -5,13 +5,10 @@ VLAN_NUEVA	VLAN_VIEJA	NOMBRE_VLAN
 ssh soporte2@181.225.41.25
 
 no DATOS_INTERFACE_VIEJA
-exit
-DATOS_RUTAS_VIEJA
 
 interface Po4.VLAN_NUEVA
 DATOS_INTERFACE_NUEVA
-exit
-DATOS_RUTAS_NUEVA
+
 
 ----------------CCSJ4500LEBX1--------------
 ssh soporte2@172.23.253.28
@@ -28,5 +25,10 @@ vlan VLAN_NUEVA
 name NOMBRE_VLAN
 interface Te1/10
 switchport trunk allowed vlan add VLAN_NUEVA
+
+TROUBLESHOOTING
+ping NEXTHOP
+sh mac address-table vlan VLAN_NUEVA
+show ethernet-switching table vlan VLAN_NUEVA
 
 

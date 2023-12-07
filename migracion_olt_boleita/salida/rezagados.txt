@@ -1,0 +1,238 @@
+########################################
+671 671	BOL-2NET-TECNOAVILA
+
+
+
+
+----------------CCSJ4500LEBX1--------------
+ssh soporte2@172.23.253.28
+
+
+del interfaces  xe-0/0/30 unit 0 family ethernet-switching vlan members BOL-2NET-TECNOAVILA
+set interfaces ae16 unit 0 family ethernet-switching vlan members BOL-2NET-TECNOAVILA
+
+
+----------------CCSC4500BOLEX1------------
+ssh soporte2@172.23.253.21
+
+vlan 671
+name BOL-2NET-TECNOAVILA
+interface Te1/10
+switchport trunk allowed vlan add 671
+
+########################################
+617 617	BOL-MECADOMI-LD
+
+
+
+
+----------------CCSJ4500LEBX1--------------
+ssh soporte2@172.23.253.28
+
+
+del interfaces  xe-0/0/30 unit 0 family ethernet-switching vlan members BOL-MECADOMI-LD
+set interfaces ae16 unit 0 family ethernet-switching vlan members BOL-MECADOMI-LD
+
+
+----------------CCSC4500BOLEX1------------
+ssh soporte2@172.23.253.21
+
+vlan 617
+name BOL-MECADOMI-LD
+interface Te1/10
+switchport trunk allowed vlan add 617
+
+########################################
+1625 1625	PCR-TOP-ACUARIO
+
+
+
+
+----------------CCSJ4500LEBX1--------------
+ssh soporte2@172.23.253.28
+
+
+del interfaces  xe-0/0/30 unit 0 family ethernet-switching vlan members BOL-MECADOMI-LD
+set interfaces ae16 unit 0 family ethernet-switching vlan members BOL-MECADOMI-LD
+
+
+----------------CCSC4500BOLEX1------------
+ssh soporte2@172.23.253.21
+
+vlan 1625
+name PCR-TOP-ACUARIO
+interface Te1/10
+switchport trunk allowed vlan add 1625
+
+########################################
+633 633	BOL-PEPSICO-PANAM
+
+
+VELEBNOC1002X1 
+ssh soporte2@181.225.41.24
+
+
+interface Port-channel3.633
+ description RED1-VL633-PEPSICO-PANAM;ID:26066
+ bandwidth 81920
+ encapsulation dot1Q 633
+ ip address 172.23.248.61 255.255.255.252
+ service-policy input 80M
+ service-policy output 80M
+exit
+ip route 190.94.253.156 255.255.255.252 172.23.248.62 name RED1-VL633-BOL-PEPSICO-PANAM
+ip route 190.94.253.232 255.255.255.252 172.23.248.62 name RED1-VL633-BOL-PEPSICO-PANAM
+
+
+VELEBNOC1006X1
+ssh soporte2@181.225.41.25
+
+
+interface Port-channel4.633
+ description PEPSICO-PANAM;ID:26066
+ bandwidth 81920
+ encapsulation dot1Q 633
+ ip address 172.23.248.61 255.255.255.252
+ service-policy input 80M
+ service-policy output 80M
+exit
+ip route 190.94.253.156 255.255.255.252 172.23.248.62 name GPON-VL633-BOL-PEPSICO-PANAM
+ip route 190.94.253.232 255.255.255.252 172.23.248.62 name GPON-VL633-BOL-PEPSICO-PANAM
+
+
+----------------CCSJ4500LEBX1--------------
+ssh soporte2@172.23.253.28
+
+
+del interfaces ae20 unit 0 family ethernet-switching vlan members BOL-PEPSICO-PANAM
+del interfaces  ge-0/0/17 unit 0 family ethernet-switching vlan members BOL-PEPSICO-PANAM
+del interfaces   xe-0/0/30 unit 0 family ethernet-switching vlan members BOL-PEPSICO-PANAM
+
+set interfaces ae8 unit 0 family ethernet-switching vlan members BOL-PEPSICO-PANAM
+set interfaces ae16 unit 0 family ethernet-switching vlan members BOL-PEPSICO-PANAM
+
+
+----------------CCSC4500BOLEX1------------
+ssh soporte2@172.23.253.21
+
+vlan 633
+name BOL-PEPSICO-PANAM
+interface Te1/10
+switchport trunk allowed vlan add 633
+
+TROUBLESHOOTING
+ping NEXTHOP
+sh mac address-table vlan 633
+show ethernet-switching table vlan 633
+
+########################################
+612 612	 BOL-2NET-PBG
+
+
+
+
+----------------CCSJ4500LEBX1--------------
+ssh soporte2@172.23.253.28
+
+
+del interfaces  xe-0/0/30 unit 0 family ethernet-switching vlan members BOL-2NET-PBG
+set interfaces ae16 unit 0 family ethernet-switching vlan members BOL-2NET-PBG
+set interfaces ae24 unit 0 family ethernet-switching vlan members BOL-2NET-PBG
+
+
+----------------CCSC4500BOLEX1------------
+ssh soporte2@172.23.253.21
+
+vlan 612
+name BOL-2NET-PBG
+interface Te1/10
+switchport trunk allowed vlan add 612
+
+########################################
+2327 3481 BOL-RES-LIZZANO
+
+--------VELEBNOC1006X1-------------------
+ssh soporte2@181.225.41.25
+
+no interface Port-channel6.3481
+ description RES-LIZZANO;ID:4
+ bandwidth 51200
+ encapsulation dot1Q 3481
+ ip address 172.23.242.241 255.255.255.252
+ service-policy input 50M
+ service-policy output 50M
+
+exit
+ip route 190.94.200.240 255.255.255.252 172.23.242.242 name GPON-VL3481-2327
+
+interface Po4.2327
+ description RES-LIZZANO;ID:4
+ bandwidth 51200
+ encapsulation dot1Q 2327
+ ip address 172.23.242.241 255.255.255.252
+ service-policy input 50M
+ service-policy output 50M
+exit
+ip route 190.94.200.240 255.255.255.252 172.23.242.242 name GPON-VL2327-BOL-RES-LIZZANO
+
+----------------CCSJ4500LEBX1--------------
+ssh soporte2@172.23.253.28
+
+set vlan BOL-RES-LIZZANO vlan-id 2327
+set interfaces ae8 unit 0 family ethernet-switching vlan members BOL-RES-LIZZANO
+set interfaces ae16 unit 0 family ethernet-switching vlan members BOL-RES-LIZZANO
+
+
+----------------CCSC4500BOLEX1------------
+ssh soporte2@172.23.253.21
+
+vlan 2327
+name BOL-RES-LIZZANO
+interface Te1/10
+switchport trunk allowed vlan add 2327
+
+########################################
+2305 3157	BOL-CORP-TECNILOTTO
+
+--------VELEBNOC1006X1-------------------
+ssh soporte2@181.225.41.25
+
+no interface Port-channel6.3157
+ description CORP-TECNILOTTO;ID:26597
+ bandwidth 51200
+ encapsulation dot1Q 3157
+ ip address 172.23.241.61 255.255.255.252
+ service-policy input 50M
+ service-policy output 50M
+
+
+exit
+ip route 190.94.197.4 255.255.255.252 172.23.241.62 name GPON-VL3157-LEB-CORP-TECNILOTTO
+ip route 190.94.200.0 255.255.255.252 172.23.241.62 name GPON-VL3157-LEB-CORP-TECNILOTTO
+
+interface Po4.2305
+ description CORP-TECNILOTTO;ID:26597
+ bandwidth 51200
+ encapsulation dot1Q 2305
+ ip address 172.23.241.61 255.255.255.252
+ service-policy input 50M
+ service-policy output 50M
+exit
+ip route 190.94.197.4 255.255.255.252 172.23.241.62 name GPON-VL2305-BOL-CORP-TECNILOTTO
+ip route 190.94.200.0 255.255.255.252 172.23.241.62 name GPON-VL2305-BOL-CORP-TECNILOTTO
+
+----------------CCSJ4500LEBX1--------------
+ssh soporte2@172.23.253.28
+
+set vlan BOL-CORP-TECNILOTTO vlan-id 2305
+set interfaces ae8 unit 0 family ethernet-switching vlan members BOL-CORP-TECNILOTTO
+set interfaces ae16 unit 0 family ethernet-switching vlan members BOL-CORP-TECNILOTTO
+
+
+----------------CCSC4500BOLEX1------------
+ssh soporte2@172.23.253.21
+
+vlan 2305
+name BOL-CORP-TECNILOTTO
+interface Te1/10
+switchport trunk allowed vlan add 2305
