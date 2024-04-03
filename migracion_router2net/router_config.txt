@@ -1,0 +1,1133 @@
+Current configuration : 51544 bytes
+!
+! Last configuration change at 14:19:52 VET Wed Mar 27 2024 by soporte2
+! NVRAM config last updated at 14:19:55 VET Wed Mar 27 2024 by soporte2
+!
+version 15.5
+service timestamps debug datetime localtime show-timezone
+service timestamps log datetime localtime show-timezone
+no platform punt-keepalive disable-kernel-core
+!
+hostname 2NET1004X1
+!
+boot-start-marker
+boot-end-marker
+!
+!
+vrf definition Mgmt-intf
+ !
+ address-family ipv4
+ exit-address-family
+ !
+ address-family ipv6
+ exit-address-family
+!
+!
+no aaa new-model
+clock timezone VET -4 0
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+
+
+
+no ip domain lookup
+ip domain name ifxnw.com.ve
+!
+!         
+!
+ipv6 unicast-routing
+!
+!
+!
+!
+!
+!
+!
+subscriber templating
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+!
+!
+!
+archive
+ log config
+  logging enable
+hw-module subslot 0/0 enable lan
+hw-module subslot 0/1 enable lan
+hw-module subslot 0/3 enable lan
+hw-module subslot 1/0 enable lan
+hw-module subslot 1/1 enable lan
+!
+spanning-tree extend system-id
+!
+username jcrespo privilege 15 secret 5 $1$Sup1$VME8.VY3oDAP2mrbavlwg1
+username soporte2 privilege 15 secret 5 $1$XZyK$uIKQbP5/.mXQf2rWx/3e1/
+!
+redundancy
+ mode none
+!
+!
+!
+!
+controller wanphy 0/0/0
+!
+controller wanphy 0/1/0
+!         
+controller wanphy 0/3/0
+!
+controller wanphy 1/0/0
+!
+controller wanphy 1/1/0
+!
+controller wanphy 1/2/0
+!
+!
+!
+lldp run
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+! 
+! 
+! 
+! 
+! 
+! 
+!
+!
+interface Port-channel1
+ mtu 9216
+ ip address 172.23.255.226 255.255.255.252
+ load-interval 30
+ ipv6 address 2803:D480:0:68::3/64
+!
+interface Port-channel2
+ description OSPF-OLD_MK
+ mtu 9216
+ no ip address
+ ip mtu 1500
+ load-interval 30
+ shutdown 
+ ipv6 mtu 1500
+!
+interface Port-channel3
+ no ip address
+ load-interval 30
+!
+interface Port-channel3.116
+ description LEBH-MX204TOCISCO
+ encapsulation dot1Q 116
+ ip address 172.23.255.121 255.255.255.252
+!
+interface Port-channel3.121
+ description LEBH-2NET-OLT-MGMT
+ encapsulation dot1Q 121
+ ip address 172.16.200.33 255.255.255.252
+!
+interface Port-channel3.123
+ description LEB-MKFOROLT
+ encapsulation dot1Q 123
+ ip address 172.16.10.233 255.255.255.252
+ shutdown
+!
+interface Port-channel3.204
+ description MCCY-2NET-PAR-CAIZA
+ encapsulation dot1Q 204
+ ip address 172.16.10.145 255.255.255.252
+ shutdown
+!
+interface Port-channel3.215
+ description MCCY-FAROCA-CSP
+ encapsulation dot1Q 215
+ ip address 172.16.10.53 255.255.255.252
+!
+interface Port-channel3.220
+ description MCCY-FAROCA-MCY-EXP
+ encapsulation dot1Q 220
+ ip address 172.16.10.29 255.255.255.252
+!
+interface Port-channel3.221
+ description MCCY-FAROCA-T-CALIFO
+ encapsulation dot1Q 221
+ ip address 172.16.10.33 255.255.255.252
+!
+interface Port-channel3.225
+ description MCCY-2NET-MAGNOLIAS
+ encapsulation dot1Q 225
+ ip address 172.16.10.89 255.255.255.252
+!
+interface Port-channel3.227
+ description MCCY-2NET-RES-ISLAS
+ encapsulation dot1Q 227
+ ip address 172.16.10.101 255.255.255.252
+!
+interface Port-channel3.228
+ description MCCY-2NET-VISTA-HERMOSA
+ encapsulation dot1Q 228
+ ip address 172.16.11.1 255.255.255.252
+!
+interface Port-channel3.229
+ description MCCY-2NET-CAIZA-DOLO
+ encapsulation dot1Q 229
+ ip address 172.16.11.49 255.255.255.252
+ shutdown
+!
+interface Port-channel3.230
+ description MCCY-2NET-CAIZA-MARI
+ encapsulation dot1Q 230
+ ip address 172.16.11.53 255.255.255.252
+ shutdown
+!
+interface Port-channel3.231
+ description MCCY-2NET-CAIZA-DAIM
+ encapsulation dot1Q 231
+ ip address 172.16.11.45 255.255.255.252
+ shutdown
+!
+interface Port-channel3.232
+ description MCCY-2NET-CAIZA-TURU
+ encapsulation dot1Q 232
+ ip address 172.16.11.57 255.255.255.252
+ shutdown
+!
+interface Port-channel3.297
+ description CRED-FAROCA-SANTA-FE
+ encapsulation dot1Q 297
+ ip address 172.16.10.9 255.255.255.252
+ ip ospf network point-to-point
+ shutdown
+!
+interface Port-channel3.459
+ description MAYORAL_PLAZA
+ encapsulation dot1Q 459
+ ip address 172.16.10.217 255.255.255.252
+!
+interface Port-channel3.472
+ description TUNO-DIST-DASIMERCA
+ encapsulation dot1Q 472
+ ip address 172.16.11.33 255.255.255.252
+!
+interface Port-channel3.473
+ description TUNO-SEINCA-SALUD
+ encapsulation dot1Q 473
+ ip address 172.16.11.37 255.255.255.252
+!
+interface Port-channel3.505
+ description PCR-2NET-305 
+ encapsulation dot1Q 505
+ ip address 172.16.10.117 255.255.255.252
+ ip ospf network point-to-point
+!
+interface Port-channel3.529
+ description PC-2NET-EL-BOSCAL
+ encapsulation dot1Q 529
+ ip address 172.16.10.105 255.255.255.252
+!
+interface Port-channel3.607
+ description BOL-INV-COBO
+ encapsulation dot1Q 607
+ ip address 172.16.11.77 255.255.255.252
+!
+interface Port-channel3.612
+ description BOL-2NET-PBG
+ encapsulation dot1Q 612
+ ip address 172.16.10.193 255.255.255.252
+!
+interface Port-channel3.617
+ description BOL-MECADOMI-LD
+ encapsulation dot1Q 617
+ ip address 172.16.10.241 255.255.255.252
+!
+interface Port-channel3.671
+ description BOL-2NET-TECNOAVILA
+ encapsulation dot1Q 671
+ ip address 172.16.10.129 255.255.255.252
+!         
+interface Port-channel3.964
+ description ELUN-FAROCA-VENEZO
+ encapsulation dot1Q 964
+ ip address 172.16.10.49 255.255.255.252
+ ip ospf network point-to-point
+!
+interface Port-channel3.969
+ description ELUN-2NET-EL-INDIO
+ encapsulation dot1Q 969
+ ip address 172.16.10.153 255.255.255.252
+!
+interface Port-channel3.982
+ description ELUN-FAROCA-TFINANCI
+ encapsulation dot1Q 982
+ ip address 172.16.10.41 255.255.255.252
+!
+interface Port-channel3.1039
+ description CC_PLAZA_VZLA-LEBRUM
+ encapsulation dot1Q 1039
+ ip address 172.16.10.205 255.255.255.252
+!
+interface Port-channel3.1040
+ description LIB-2NET-CHAPELLIN
+ encapsulation dot1Q 1040
+ ip address 172.16.10.225 255.255.255.252
+!
+interface Port-channel3.1091
+ description CUBO-2NET-DIAMEN
+ encapsulation dot1Q 1091
+ ip address 172.16.10.237 255.255.255.252
+!
+interface Port-channel3.1102
+ description CITYMARKET-LEBRUN
+ encapsulation dot1Q 1102
+ ip address 172.16.10.5 255.255.255.252
+ ip ospf network point-to-point
+ shutdown
+!
+interface Port-channel3.1125
+ description LEB-2NET-GALPON
+ encapsulation dot1Q 1125
+ ip address 172.16.10.197 255.255.255.252
+!
+interface Port-channel3.1126
+ description LEB-2NET-DUPONT
+ encapsulation dot1Q 1126
+ ip address 172.16.10.201 255.255.255.252
+!
+interface Port-channel3.1132
+ description LA_LUCHA-LEBRUM
+ encapsulation dot1Q 1132
+ ip address 172.16.10.213 255.255.255.252
+!
+interface Port-channel3.1162
+ description ANAUC-2NET
+ encapsulation dot1Q 1162
+ ip address 172.16.10.61 255.255.255.252
+!
+interface Port-channel3.1166
+ description ANAUC-2NET-BET-EL
+ encapsulation dot1Q 1166
+ ip address 172.16.10.165 255.255.255.252
+!
+interface Port-channel3.1266
+ description CAU-2NET-STA-MARTA
+ encapsulation dot1Q 1266
+ ip address 172.16.10.85 255.255.255.252
+!
+interface Port-channel3.1267
+ description CAU-2NET-CC-PROF
+ encapsulation dot1Q 1267
+ ip address 172.16.10.69 255.255.255.252
+!
+interface Port-channel3.1272
+ description CAU-2NET-LOM-DEL-SOL
+ encapsulation dot1Q 1272
+ ip address 172.16.10.113 255.255.255.252
+!
+interface Port-channel3.1301
+ description STG-2NET-ST-GUILLAN
+ encapsulation dot1Q 1301
+ ip address 172.16.10.149 255.255.255.252
+!
+interface Port-channel3.1312
+ description STG-2NET-TRIANGULO
+ encapsulation dot1Q 1312
+ ip address 172.16.11.13 255.255.255.252
+!
+interface Port-channel3.1316
+ description STG-2NET-METO-CENT
+ encapsulation dot1Q 1316
+ ip address 172.16.10.245 255.255.255.252
+!
+interface Port-channel3.1317
+ description STG-2NET-VILLA-PARAI
+ encapsulation dot1Q 1317
+ ip address 172.16.10.249 255.255.255.252
+!
+interface Port-channel3.1550
+ description PCR-FAROCA-CORNICHE
+ encapsulation dot1Q 1550
+ ip address 172.16.10.25 255.255.255.252
+ shutdown
+!
+interface Port-channel3.1566
+ description GALI-FAROCA-MANSION-CA
+ encapsulation dot1Q 1566
+ ip address 172.16.10.21 255.255.255.252
+!
+interface Port-channel3.1571
+ description GALI-FAROCA-CCLARO
+ encapsulation dot1Q 1571
+ ip address 172.16.10.37 255.255.255.252
+!
+interface Port-channel3.1572
+ description CONSULADO_LEBRUN
+ encapsulation dot1Q 1572
+ ip address 172.16.10.65 255.255.255.252
+!
+interface Port-channel3.1616
+ description PCR-2NET-T-ALTAMIRA
+ encapsulation dot1Q 1616
+ ip address 172.16.10.93 255.255.255.252
+ ip ospf network point-to-point
+!
+interface Port-channel3.1676
+ description LEB-FAROCA-DORAL
+ encapsulation dot1Q 1676
+ ip address 172.16.1.201 255.255.255.248
+ ip ospf network point-to-point
+ shutdown
+!
+interface Port-channel3.1685
+ description LEBRUM_ANITA
+ encapsulation dot1Q 1685
+ ip address 172.16.1.249 255.255.255.248
+!
+interface Port-channel3.1704
+ description LEB-FAROCA-VISTAL-TRANSP
+ encapsulation dot1Q 1704
+ ip address 172.16.0.1 255.255.255.192
+!
+interface Port-channel3.1705
+ description LEB-FAROCA-TR2
+ encapsulation dot1Q 1705
+ ip address 172.16.3.41 255.255.255.252
+!
+interface Port-channel3.1728
+ encapsulation dot1Q 1728
+ ip address 192.168.100.1 255.255.255.0
+!
+interface Port-channel3.1741
+ description LEB-2NET-PAPAGAYO
+ encapsulation dot1Q 1741
+ ip address 172.16.10.97 255.255.255.252
+!
+interface Port-channel3.1748
+ description LEB-LAB-PPPoE-mgmt
+ encapsulation dot1Q 1748
+ ip address 10.1.0.1 255.255.255.0
+!
+interface Port-channel3.1749
+ description LEB-LAB-PPPoE-data
+ encapsulation dot1Q 1749
+ ip address 10.2.1.1 255.255.255.252
+!
+interface Port-channel3.1758
+ description PCR-FAROCA-DELTA
+ encapsulation dot1Q 1758
+ ip address 172.16.10.57 255.255.255.252
+ ip ospf network point-to-point
+!
+interface Port-channel3.1769
+ description PCR-2NET-RES-130
+ encapsulation dot1Q 1769
+ ip address 172.16.10.121 255.255.255.252
+!
+interface Port-channel3.1775
+ description PCR-2NET-DAKAR
+ encapsulation dot1Q 1775
+ ip address 172.16.10.189 255.255.255.252
+!
+interface Port-channel3.1802
+ description TUNO-2NET-PILONES
+ encapsulation dot1Q 1802
+ ip address 172.16.11.17 255.255.255.252
+!
+interface Port-channel3.1804
+ description TUNO-2NET-BETA
+ encapsulation dot1Q 1804
+ ip address 172.16.10.141 255.255.255.252
+ ip ospf network point-to-point
+!
+interface Port-channel3.1806
+ encapsulation dot1Q 1806
+ ip address 172.16.10.177 255.255.255.252
+!
+interface Port-channel3.1863
+ description TUNO-2NET-C-ROCA-GPS
+ encapsulation dot1Q 1863
+ ip address 172.16.11.9 255.255.255.252
+!
+interface Port-channel3.1869
+ description TUNO-MAT-BOSSIO
+ encapsulation dot1Q 1869
+ ip address 172.16.11.81 255.255.255.252
+!
+interface Port-channel3.1952
+ description CRED-COLEGIO-PENON
+ encapsulation dot1Q 1952
+ ip address 172.16.10.109 255.255.255.252
+ ip ospf network point-to-point
+ shutdown
+!
+interface Port-channel3.1954
+ description CRED-2NET-RES-GUAIR
+ encapsulation dot1Q 1954
+ ip address 172.16.10.133 255.255.255.252
+!
+interface Port-channel3.1955
+ description CRED-2NET-GUAYMARAL
+ encapsulation dot1Q 1955
+ ip address 172.16.10.157 255.255.255.252
+!
+interface Port-channel3.1956
+ description CRED-2NET-BARON-BOY
+ encapsulation dot1Q 1956
+ ip address 172.16.10.161 255.255.255.252
+!
+interface Port-channel3.1959
+ description CRED-2NET-CONCRESA
+ encapsulation dot1Q 1959
+ ip address 172.16.10.253 255.255.255.252
+!
+interface Port-channel3.2005
+ description EMBAJADA_ITALIA_MARCO
+ encapsulation dot1Q 2005
+ ip address 172.16.10.169 255.255.255.252
+!
+interface Port-channel3.2007
+ description GALI-2NET-C-PROF-MIR
+ encapsulation dot1Q 2007
+ ip address 172.16.10.185 255.255.255.252
+!
+interface Port-channel3.2011
+ description GALI-2NET-OBOTICARIO
+ encapsulation dot1Q 2011
+ ip address 172.16.10.229 255.255.255.252
+!
+interface Port-channel3.2023
+ description GALI-AG-FUTBOL-2NET
+ encapsulation dot1Q 2023
+ ip address 172.16.11.69 255.255.255.252
+!
+interface Port-channel3.2672
+ description CRED-GRAFICAS-CROMAT
+ encapsulation dot1Q 2672
+ ip address 172.16.10.181 255.255.255.252
+!
+interface Port-channel3.2673
+ description CRED-2NET-PROCTER-GA
+ encapsulation dot1Q 2673
+ ip address 172.16.10.73 255.255.255.252
+!
+interface Port-channel3.3651
+ description CDZ-CIRCULO-MILITAR
+ encapsulation dot1Q 3651
+ ip address 172.16.10.77 255.255.255.252
+!
+interface Port-channel3.3652
+ description CDZ-2NET-RES-HUMBOLD
+ encapsulation dot1Q 3652
+ ip address 172.16.10.137 255.255.255.252
+!
+interface Port-channel3.3653
+ description CDZ-2NET-T-FINANCIE
+ encapsulation dot1Q 3653
+ ip address 172.16.10.1 255.255.255.252
+!
+interface Port-channel3.3656
+ description CDZ-2NET-IPSFA
+ encapsulation dot1Q 3656
+ ip address 172.16.10.81 255.255.255.252
+!
+interface Port-channel3.3657
+ description CDZ-2NET-EL-VALLE
+ encapsulation dot1Q 3657
+ ip address 172.16.10.173 255.255.255.252
+ ip ospf network point-to-point
+!
+interface Port-channel3.3663
+ description CDZ-DK-SANTA-MONICA
+ encapsulation dot1Q 3663
+ ip address 172.16.11.25 255.255.255.252
+!
+interface Port-channel3.3664
+ description CDZ-TRIGAL-STA-MONIC
+ encapsulation dot1Q 3664
+ ip address 172.16.11.29 255.255.255.252
+!
+interface TenGigabitEthernet0/0/0
+ mtu 9216
+ no ip address
+ channel-group 1 mode active
+!
+interface TenGigabitEthernet0/1/0
+ no ip address
+ channel-group 3 mode active
+!
+interface TenGigabitEthernet0/2/0
+ no ip address
+ channel-group 3 mode active
+!
+interface TenGigabitEthernet0/3/0
+ mtu 9216 
+ no ip address
+ channel-group 1 mode active
+!
+interface TenGigabitEthernet1/0/0
+ no ip address
+ shutdown
+!
+interface TenGigabitEthernet1/1/0
+ mtu 9216
+ no ip address
+ shutdown
+!
+interface TenGigabitEthernet1/2/0
+ no ip address
+ shutdown
+!
+interface GigabitEthernet0
+ vrf forwarding Mgmt-intf
+ no ip address
+ shutdown
+ negotiation auto
+!
+router ospf 1
+ redistribute connected subnets
+ redistribute static subnets
+ redistribute ospf 11 subnets
+ network 172.23.255.120 0.0.0.3 area 0
+!
+router ospf 11
+ network 172.16.1.200 0.0.0.7 area 1
+ network 172.16.10.4 0.0.0.3 area 1
+ network 172.16.10.8 0.0.0.3 area 1
+ network 172.16.10.56 0.0.0.3 area 1
+ network 172.16.10.92 0.0.0.3 area 1
+ network 172.16.10.108 0.0.0.3 area 1
+ default-information originate always
+!
+ip forward-protocol nd
+!
+no ip http server
+no ip http secure-server
+ip tftp source-interface GigabitEthernet0
+ip route 0.0.0.0 0.0.0.0 172.23.255.225
+ip route 10.10.14.0 255.255.254.0 172.16.10.226 name VL1040-LIB-2NET-CHAPELLIN
+ip route 10.10.16.0 255.255.254.0 172.16.10.114 name VL1272-CAU-2NET-LOM-DEL-SOL
+ip route 10.10.20.0 255.255.254.0 172.16.10.250 name STG-2NET-VILLA-PARAI
+ip route 10.10.40.0 255.255.254.0 172.16.10.54 name MCCY-FAROCA-CSP
+ip route 10.10.44.0 255.255.254.0 172.16.10.226 name VL1040-LIB-2NET-CHAPELLIN
+ip route 10.10.50.0 255.255.254.0 172.16.10.50 name VL964-ELUN-FAROCA-VENEZO
+ip route 10.10.54.0 255.255.254.0 172.16.11.2 name MCCY-2NET-VISTA-HERMOSA
+ip route 10.10.56.0 255.255.254.0 172.16.10.106 name PC-2NET-EL-BOSCAL
+ip route 10.10.90.0 255.255.254.0 172.16.10.114 name VL1272-CAU-2NET-LOM-DEL-SOL
+ip route 10.10.102.0 255.255.254.0 172.16.10.226 name VL-982-CENTRO-LATINO
+ip route 10.10.108.0 255.255.254.0 172.16.10.62 name VL1162-ANAUC-2NET
+ip route 10.10.152.0 255.255.254.0 172.16.10.250 name STG-2NET-VILLA-PARA
+ip route 10.10.168.0 255.255.254.0 172.16.10.50 name VL964-ELUN-FAROCA-VENEZO
+ip route 10.10.170.0 255.255.254.0 172.16.10.246 name STG-2NET-METO-CENT
+ip route 10.10.178.0 255.255.254.0 172.16.10.142 name VL1804-TUNO-2NET-BETA
+ip route 10.10.190.0 255.255.254.0 172.16.10.174 name VL3657-CDZ-2NET-EL-VALLE
+ip route 10.10.198.0 255.255.254.0 172.16.11.50 name VL-229-MCCY-2NET-CAIZA-DOLO
+ip route 10.10.226.0 255.255.254.0 172.16.10.250 name STG-2NET-VILLA-PARAI
+ip route 10.10.244.1 255.255.255.255 172.16.10.190 name VL1775-PCR-2NET-DAKAR
+ip route 10.10.250.0 255.255.254.0 172.16.10.146 name VL204-MCCY-2NET-PAR-CAIZA
+ip route 10.12.10.0 255.255.254.0 172.16.10.146 name VL204-MCCY-2NET-PAR-CAIZA
+ip route 10.12.12.0 255.255.254.0 172.16.11.46 name VL-231-MCCY-2NET-CAIZA-DAIM
+ip route 10.12.16.0 255.255.254.0 172.16.11.50 name VL-229-MCCY-2NET-CAIZA-DOLO
+ip route 10.12.18.0 255.255.254.0 172.16.10.146 name VL204-MCCY-2NET-PAR-CAIZA
+ip route 10.12.20.0 255.255.254.0 172.16.10.146 name VL204-MCCY-2NET-PAR-CAIZA
+ip route 10.12.24.0 255.255.254.0 172.16.10.174 name VL3657-CDZ-2NET-EL-VALLE
+ip route 10.12.26.0 255.255.255.252 172.16.11.10 name VL-1863-TUNO-2NET-C-ROCA-GPS
+ip route 10.12.52.0 255.255.254.0 172.16.11.50 name VL-229-MCCY-2NET-CAIZA-DOLO
+ip route 10.12.58.0 255.255.254.0 172.16.10.50 name VL964-ELUN-FAROCA-VENEZO
+ip route 10.12.60.0 255.255.254.0 172.16.10.206 name VL1039-CC_PLAZA_VZLA-LEBRUM
+ip route 10.12.66.0 255.255.254.0 172.16.10.226 name VL1040-LIB-2NET-CHAPELLIN
+ip route 10.12.72.0 255.255.254.0 172.16.10.174 name VL3657-CDZ-2NET-EL-VALLE
+ip route 10.12.74.0 255.255.254.0 172.16.10.162 name CRED-2NET-BARON-BOY
+ip route 10.12.92.0 255.255.254.0 172.16.11.46 name VL-231-MCCY-2NET-CAIZA-DAIM
+ip route 10.12.96.0 255.255.254.0 172.16.10.78 name VL3651-CDZ-CIRCULO-MILITAR
+ip route 10.12.98.0 255.255.254.0 172.16.10.78 name VL3651-CDZ-CIRCULO-MILITAR
+ip route 10.12.100.0 255.255.254.0 172.16.10.78 name VL3651-CDZ-CIRCULO-MILITAR
+ip route 10.12.102.0 255.255.254.0 172.16.10.78 name VL3651-CDZ-CIRCULO-MILITAR
+ip route 10.12.110.0 255.255.254.0 172.16.10.174 name VL3657-CDZ-2NET-EL-VALLE
+ip route 10.12.112.0 255.255.254.0 172.16.10.174 name VL3657-CDZ-2NET-EL-VALLE
+ip route 10.12.114.0 255.255.254.0 172.16.10.242 name VL617-BOL-MECADOMI-LD
+ip route 10.12.148.0 255.255.254.0 172.16.11.54 name VL-230-MCCY-2NET-CAIZA-MARI
+ip route 10.12.150.0 255.255.254.0 172.16.11.54 name VL-230-MCCY-2NET-CAIZA-MARI
+ip route 10.12.164.0 255.255.254.0 172.16.10.2 name VL3653-CDZ-2NET-T-FINANCIE
+ip route 10.12.172.0 255.255.254.0 172.16.10.250 name STG-2NET-VILLA-PARAI
+ip route 10.12.176.0 255.255.254.0 172.16.11.14 name VL-1312-STG-2NET-TRIANGULO
+ip route 10.12.178.0 255.255.254.0 172.16.10.250 name STG-2NET-VILLA-PARAI
+ip route 10.12.184.0 255.255.254.0 172.16.10.78 name VL3651-CDZ-CIRCULO-MILITAR
+ip route 10.12.200.0 255.255.254.0 172.16.10.250 name STG-2NET-VILLA-PARAI
+ip route 10.12.202.0 255.255.254.0 172.16.10.78 name VL3651-CDZ-CIRCULO-MILITAR
+ip route 10.12.204.0 255.255.254.0 172.16.11.18 name VL1802-TUNO-2NET-PILONES
+ip route 10.12.242.0 255.255.254.0 172.16.10.2 name VL3653-CDZ-2NET-T-FINANCIE
+ip route 10.12.244.0 255.255.254.0 172.16.11.58 name VL232-MCCY-2NET-CAIZA-TURU
+ip route 10.13.0.0 255.255.254.0 172.16.11.66 name VL-2100-LY-2NET-MONTALBAN
+ip route 10.13.2.0 255.255.254.0 172.16.11.66 name VL-2100-LY-2NET-MONTALBAN
+ip route 10.13.4.0 255.255.254.0 172.16.11.66 name VL-2100-LY-2NET-MONTALBAN
+ip route 10.13.6.0 255.255.254.0 172.16.11.66 name VL-2100-LY-2NET-MONTALBAN
+ip route 10.100.0.0 255.255.255.252 172.16.10.50 name VL964-ELUN-FAROCA-VENEZO
+ip route 10.255.255.12 255.255.255.255 172.16.10.106 name PC-2NET-EL-BOSCAL
+ip route 10.255.255.13 255.255.255.255 172.16.10.38 name VL1571-GALI-FAROCA-CCLARO
+ip route 10.255.255.14 255.255.255.255 172.16.10.54 name VL215-MCCY-FAROCA-CSP
+ip route 10.255.255.20 255.255.255.255 172.16.10.22 name GALI-FAROCA-MANSION-CA
+ip route 10.255.255.22 255.255.255.255 172.16.10.70 name VL1267-CAU-2NET-CC-PROF
+ip route 10.255.255.24 255.255.255.255 172.16.10.58 name VL1758-PCR-FAROCA-DELTA
+ip route 10.255.255.27 255.255.255.255 172.16.10.2 name VL3653-CDZ-2NET-T-FINANCIE
+ip route 10.255.255.28 255.255.255.255 172.16.0.6 name VL1704-LEB-FAROCA-VISTAL-TRANSP
+ip route 10.255.255.29 255.255.255.255 172.16.10.134 name CRED-2NET-RES-GUAIR
+ip route 10.255.255.31 255.255.255.255 172.16.10.50 name VL964-ELUN-FAROCA-VENEZO
+ip route 10.255.255.33 255.255.255.255 172.16.11.46 name VL-231-MCCY-2NET-CAIZA-DAIM
+ip route 10.255.255.36 255.255.255.255 172.16.10.114 name VL1272-CAU-2NET-LOM-DEL-SOL
+ip route 10.255.255.39 255.255.255.255 172.16.10.42 name VL-982-CENTRO-LATINO
+ip route 10.255.255.40 255.255.255.255 172.16.1.204 name LEB-FAROCA-DORAL
+ip route 10.255.255.41 255.255.255.255 172.16.10.62 name ANAUC-2NET
+ip route 10.255.255.42 255.255.255.255 172.16.10.30 name MCCY-FAROCA-MCY-EXP
+ip route 10.255.255.43 255.255.255.255 172.16.10.90 name MCCY-2NET-MAGNOLIAS
+ip route 10.255.255.45 255.255.255.255 172.16.1.252 name VL1685-LEBRUM_ANITA
+ip route 10.255.255.46 255.255.255.255 172.16.10.82 name VL3656-CDZ-2NET-IPSFA
+ip route 10.255.255.48 255.255.255.255 172.16.10.114 name VL1272-CAU-2NET-LOM-DEL-SOL
+ip route 10.255.255.49 255.255.255.255 172.16.10.86 name CAU-2NET-STA-MARTA
+ip route 10.255.255.50 255.255.255.255 172.16.10.50 name VL964-ELUN-FAROCA-VENEZO
+ip route 10.255.255.52 255.255.255.255 172.16.10.2 name VL3653-CDZ-2NET-T-FINANCIE
+ip route 10.255.255.53 255.255.255.255 172.16.10.94 name PCR-2NET-T-ALTAMIRA
+ip route 10.255.255.55 255.255.255.255 172.16.10.102 name MCCY-2NET-RES-ISLAS
+ip route 10.255.255.56 255.255.255.255 172.16.10.106 name VL529-PC-2NET-EL-BOSCAL
+ip route 10.255.255.58 255.255.255.255 172.16.10.118 name VL505-PCR-2NET-305
+ip route 10.255.255.59 255.255.255.255 172.16.10.122 name VL1769-PCR-2NET-RES-130
+ip route 10.255.255.61 255.255.255.255 172.16.10.106 name VL529-PC-2NET-EL-BOSCAL
+ip route 10.255.255.62 255.255.255.255 172.16.10.50 name VL964-ELUN-FAROCA-VENEZO
+ip route 10.255.255.63 255.255.255.255 172.16.10.166 name VL1166-ANAUC-2NET-BET-EL
+ip route 10.255.255.64 255.255.255.255 172.16.10.146 name MCCY-2NET-PAR-CAIZA
+ip route 10.255.255.65 255.255.255.255 172.16.10.138 name VL-3652-CDZ-2NET-RES-HUMBOLD
+ip route 10.255.255.66 255.255.255.255 172.16.10.142 name VL1804-TUNO-2NET-BETA
+ip route 10.255.255.67 255.255.255.255 172.16.10.50 name VL964-ELUN-FAROCA-VENEZO
+ip route 10.255.255.69 255.255.255.255 172.16.10.150 name VL1301-STG-2NET
+ip route 10.255.255.70 255.255.255.255 172.16.10.118 name VL505-PCR-2NET-305
+ip route 10.255.255.72 255.255.255.255 172.16.10.174 name VL3657-CDZ-2NET-EL-VALLE
+ip route 10.255.255.73 255.255.255.255 172.16.10.146 name MCCY-2NET-PAR-CAIZA
+ip route 10.255.255.74 255.255.255.255 172.16.10.154 name VL969-ELUN-2NET-EL-INDIO
+ip route 10.255.255.75 255.255.255.255 172.16.10.226 name VL1040-LIB-2NET-CHAPELLIN
+ip route 10.255.255.76 255.255.255.255 172.16.11.50 name VL-229-MCCY-2NET-CAIZA-DOLO
+ip route 10.255.255.77 255.255.255.255 172.16.10.246 name STG-2NET-METO-CENT
+ip route 10.255.255.79 255.255.255.255 172.16.10.146 name MCCY-2NET-PAR-CAIZA
+ip route 10.255.255.80 255.255.255.255 172.16.10.162 name VL1956-CRED-2NET-BARON-BOY
+ip route 10.255.255.81 255.255.255.255 172.16.10.174 name CDZ-2NET-EL-VALLE
+ip route 10.255.255.82 255.255.255.255 172.16.10.250 name STG-2NET-VILLA-PARAI
+ip route 10.255.255.83 255.255.255.255 172.16.10.66 name VL1572-CONSULADO_LEBRUN
+ip route 10.255.255.84 255.255.255.255 172.16.10.178 name VL1806-TUNO-2NET-QTA-MARACA
+ip route 10.255.255.85 255.255.255.255 172.16.10.182 name VL2672-CRED-GRAFICAS-CROMAT
+ip route 10.255.255.86 255.255.255.255 192.168.100.2 name VL1728-LEB-2NET-MOD-PB
+ip route 10.255.255.87 255.255.255.255 172.16.10.34 name MCCY-FAROCA-T-CALIFO
+ip route 10.255.255.88 255.255.255.255 172.16.10.170 name VL2005-EMBAJADA_ITALIA_MARCO
+ip route 10.255.255.91 255.255.255.255 172.16.3.42 name VL1705-LEB-FAROCA-TR2
+ip route 10.255.255.92 255.255.255.255 172.16.10.186 name VL2007-GALI-2NET-C-PROF-MIR
+ip route 10.255.255.93 255.255.255.255 172.16.10.190 name VL1775-PCR-2NET-DAKAR
+ip route 10.255.255.94 255.255.255.255 172.16.10.74 name VL2673-CRED-2NET-PROCTER-GA
+ip route 10.255.255.96 255.255.255.255 172.16.10.174 name VL3657-CDZ-2NET-EL-VALLE
+ip route 10.255.255.97 255.255.255.255 172.16.10.194 name VL612-BOL-2NET-PBG
+ip route 10.255.255.99 255.255.255.255 172.16.10.154 name ELUN-2NET-EL-INDIO
+ip route 10.255.255.100 255.255.255.255 172.16.10.198 name VL1125-LEB-2NET-GALPON
+ip route 10.255.255.101 255.255.255.255 172.16.10.202 name VL1126-LEB-2NET-DUPONT
+ip route 10.255.255.102 255.255.255.255 172.16.10.206 name VL1039-CC_PLAZA_VZLA-LEBRUM
+ip route 10.255.255.104 255.255.255.255 172.16.10.214 name VL1132-LA_LUCHA-LEBRUM
+ip route 10.255.255.105 255.255.255.255 172.16.10.174 name VL3657-CDZ-2NET-EL-VALLE
+ip route 10.255.255.106 255.255.255.255 172.16.10.218 name VL459-2NET1004X1
+ip route 10.255.255.108 255.255.255.255 172.16.10.230 name GALI-2NET-OBOTICARIO
+ip route 10.255.255.109 255.255.255.255 172.16.10.162 name CRED-2NET-BARON-BOY
+ip route 10.255.255.111 255.255.255.255 172.16.10.238 name CUBO-2NET-DIAMEN
+ip route 10.255.255.111 255.255.255.255 172.16.11.2 name MCCY-2NET-VISTA-HERMOSA
+ip route 10.255.255.112 255.255.255.255 172.16.10.254 name VL1959-CRED-2NET-CONCRESA
+ip route 10.255.255.113 255.255.255.255 172.16.10.78 name VL3651-CDZ-CIRCULO-MILITAR
+ip route 10.255.255.114 255.255.255.255 172.16.10.78 name VL3651-CDZ-CIRCULO-MILITAR
+ip route 10.255.255.115 255.255.255.255 172.16.10.242 name VL617-BOL-MECADOMI-LD
+ip route 10.255.255.116 255.255.255.255 172.16.10.2 name VL3653-CDZ-2NET-T-FINANCIE
+ip route 10.255.255.117 255.255.255.255 172.16.10.118 name VL505-PCR-2NET-305
+ip route 10.255.255.118 255.255.255.255 172.16.11.54 name VL-230-MCCY-2NET-CAIZA-MARI
+ip route 10.255.255.119 255.255.255.255 172.16.10.146 name VL204-MCCY-2NET-PAR-CAIZA
+ip route 10.255.255.120 255.255.255.255 172.16.10.2 name VL3653-CDZ-2NET-T-FINANCIE
+ip route 10.255.255.121 255.255.255.255 172.16.11.10 name VL-1863-TUNO-2NET-C-ROCA-GPS
+ip route 10.255.255.122 255.255.255.255 172.16.11.14 name VL-1312-STG-2NET-TRIANGULO
+ip route 10.255.255.123 255.255.255.255 172.16.10.250 name STG-2NET-VILLA-PARAI
+ip route 10.255.255.124 255.255.255.255 172.16.10.78 name VL3651-CDZ-CIRCULO-MILITAR
+ip route 10.255.255.125 255.255.255.255 172.16.10.78 name VL3651-CDZ-CIRCULO-MILITAR
+ip route 10.255.255.126 255.255.255.255 172.16.11.18 name VL1802-TUNO-2NET-PILONES
+ip route 10.255.255.129 255.255.255.255 172.16.10.250 name STG-2NET-VILLA-PARAI
+ip route 10.255.255.131 255.255.255.255 172.16.11.26 name VL3663-CDZ-DK-SANTA-MONICA
+ip route 10.255.255.132 255.255.255.255 172.16.11.30 name VL3664-CDZ-TRIGAL-STA-MONIC
+ip route 10.255.255.133 255.255.255.255 172.16.11.34 name VL-472-TUNO-DIST-DASIMERCA
+ip route 10.255.255.134 255.255.255.255 172.16.11.38 name VL-473-TUNO-SEINCA-SALUD
+ip route 10.255.255.135 255.255.255.255 172.16.11.58 name VL232-MCCY-2NET-CAIZA-TURU
+ip route 10.255.255.137 255.255.255.255 172.16.11.70 name VL-2023-GALI-AG-FUTBOL-2NET
+ip route 10.255.255.139 255.255.255.255 172.16.11.78 name VL-607-BOL-INV-COBO
+ip route 10.255.255.140 255.255.255.255 172.16.11.82 name VL-1869-TUNO-MAT-BOSSIO
+ip route 100.255.255.1 255.255.255.255 172.16.10.226 name VL1040-LIB-2NET-CHAPELLIN
+ip route 100.255.255.6 255.255.255.255 172.16.10.250 name STG-2NET-VILLA-PARAI
+ip route 172.16.1.224 255.255.255.248 172.16.10.250 name STG-2NET-VILLA-PARAI
+ip route 172.16.1.248 255.255.255.248 172.16.1.252 name VL1685-LEBRUM_ANITA
+ip route 172.16.2.16 255.255.255.248 172.16.10.146 name VL204-MCCY-2NET-PAR-CAIZA
+ip route 172.16.2.34 255.255.255.255 172.16.10.50 name VL964-ELUN-FAROCA-VENEZO
+ip route 172.16.2.35 255.255.255.255 172.16.10.50 name VL964-ELUN-FAROCA-VENEZO
+ip route 172.16.2.36 255.255.255.255 172.16.10.50 name VL964-ELUN-FAROCA-VENEZO
+ip route 172.16.2.44 255.255.255.255 172.16.10.50 name VL964-ELUN-FAROCA-VENEZO
+ip route 172.16.2.48 255.255.255.248 172.16.10.50 name VL964-ELUN-FAROCA-VENEZO
+ip route 172.16.2.88 255.255.255.248 172.16.10.2 name VL3653-CDZ-2NET-T-FINANCIE
+ip route 172.16.2.104 255.255.255.252 172.16.10.106 name PC-2NET-EL-BOSCAL
+ip route 172.16.2.108 255.255.255.252 172.16.10.146 name MCCY-2NET-PAR-CAIZA
+ip route 172.16.2.120 255.255.255.252 172.16.10.50 name VL964-ELUN-FAROCA-VENEZO
+ip route 172.16.2.128 255.255.255.248 172.16.10.106 name PC-2NET-EL-BOSCAL
+ip route 172.16.2.136 255.255.255.248 172.16.10.78 name VL3651-CDZ-CIRCULO-MILITAR
+ip route 172.16.2.148 255.255.255.255 172.16.10.78 name VL3651-CDZ-CIRCULO-MILITAR
+ip route 172.16.2.172 255.255.255.255 172.16.10.38 name VL1571-GALI-FAROCA-CCLARO
+ip route 172.16.2.178 255.255.255.255 172.16.10.146 name MCCY-2NET-PAR-CAIZA
+ip route 172.16.2.184 255.255.255.248 172.16.10.50 name VL964-ELUN-FAROCA-VENEZO
+ip route 172.16.2.204 255.255.255.255 172.16.10.78 name VL3651-CDZ-CIRCULO-MILITAR
+ip route 172.16.2.208 255.255.255.248 172.16.10.226 name VL1040-LIB-2NET-CHAPELLIN
+ip route 172.16.2.216 255.255.255.248 172.16.10.146 name VL204-MCCY-2NET-PAR-CAIZA
+ip route 172.16.2.224 255.255.255.252 172.16.10.50 name VL964-ELUN-FAROCA-VENEZO
+ip route 172.16.2.236 255.255.255.255 172.16.10.78 name VL3651-CDZ-CIRCULO-MILITAR
+ip route 172.16.2.240 255.255.255.248 172.16.10.250 name STG-2NET-VILLA-PARAI
+ip route 172.16.3.2 255.255.255.255 172.16.10.78 name VL3651-CDZ-CIRCULO-MILITAR
+ip route 172.16.3.4 255.255.255.252 172.16.10.174 name VL3657-CDZ-2NET-EL-VALLE
+ip route 172.16.3.44 255.255.255.255 172.16.10.78 name VL3651-CDZ-CIRCULO-MILITAR
+ip route 172.16.3.48 255.255.255.252 172.16.10.174 name VL3657-CDZ-2NET-EL-VALLE
+ip route 172.16.3.76 255.255.255.252 172.16.10.174 name VL3657-CDZ-2NET-EL-VALLE
+ip route 172.16.3.80 255.255.255.252 172.16.10.174 name CDZ-2NET-EL-VALLE
+ip route 172.16.3.84 255.255.255.252 172.16.10.146 name VL204-MCCY-2NET-PAR-CAIZA
+ip route 172.16.3.88 255.255.255.252 172.16.10.78 name VL3651-CDZ-CIRCULO-MILITAR
+ip route 172.16.3.92 255.255.255.252 172.16.10.78 name VL3651-CDZ-CIRCULO-MILITAR
+ip route 172.16.3.96 255.255.255.252 172.16.10.174 name VL3657-CDZ-2NET-EL-VALLE
+ip route 172.16.3.100 255.255.255.252 172.16.10.118 name VL505-PCR-2NET-305
+ip route 172.16.3.108 255.255.255.252 172.16.10.146 name VL204-MCCY-2NET-PAR-CAIZA
+ip route 172.16.3.116 255.255.255.252 172.16.10.78 name VL3651-CDZ-CIRCULO-MILITAR
+ip route 172.16.3.120 255.255.255.252 172.16.10.250 name STG-2NET-VILLA-PARAI
+ip route 172.16.3.124 255.255.255.252 172.16.10.146 name MCCY-2NET-PAR-CAIZA
+ip route 172.16.4.0 255.255.255.248 172.16.10.162 name CRED-2NET-BARON-BOY
+ip route 172.16.4.8 255.255.255.248 172.16.10.146 name MCCY-2NET-PAR-CAIZA
+ip route 172.16.4.16 255.255.255.248 172.16.10.2 name VL3653-CDZ-2NET-T-FINANCIE
+ip route 172.16.4.24 255.255.255.248 172.16.10.250 name STG-2NET-VILLA-PARAI
+ip route 172.16.4.32 255.255.255.248 172.16.10.78 name VL3651-CDZ-CIRCULO-MILITAR
+ip route 172.16.10.48 255.255.255.252 172.16.10.50 name VL964-ELUN-FAROCA-VENEZO
+ip route 172.16.10.49 255.255.255.255 172.16.10.50 name VL964-ELUN-FAROCA-VENEZO
+ip route 172.16.10.62 255.255.255.255 172.16.10.62 name VL1162-ANAUC-2NET
+ip route 172.16.10.140 255.255.255.252 172.16.10.142 name VL1804-TUNO-2NET-BETA
+ip route 172.16.10.182 255.255.255.255 172.16.10.182 name VL2672-CRED-GRAFICAS-CROMAT
+ip route 172.16.20.0 255.255.255.248 172.16.10.146 name VL204-MCCY-2NET-PAR-CAIZA
+ip route 172.16.100.0 255.255.255.240 172.16.10.146 name VL204-MCCY-2NET-PAR-CAIZA
+ip route 172.16.200.0 255.255.255.252 172.16.10.174 name VL3657-CDZ-2NET-EL-VALLE
+ip route 172.16.200.4 255.255.255.252 172.16.10.190 name VL1775-PCR-2NET-DAKAR
+ip route 172.16.200.10 255.255.255.255 172.16.10.78 name VL3651-CDZ-CIRCULO-MILITAR
+ip route 172.16.200.12 255.255.255.252 172.16.10.78 name VL3651-CDZ-CIRCULO-MILITAR
+ip route 172.16.200.16 255.255.255.252 172.16.10.214 name VL1132-LA_LUCHA-LEBRUM
+ip route 172.16.200.20 255.255.255.252 172.16.10.154 name ELUN-2NET-EL-INDIO
+ip route 172.16.200.28 255.255.255.252 172.16.10.218 name VL459-2NET1004X1
+ip route 172.16.200.36 255.255.255.252 172.16.11.50 name VL-229-MCCY-2NET-CAIZA-DOLO
+ip route 172.16.200.44 255.255.255.252 172.16.10.174 name CDZ-2NET-EL-VALLE
+ip route 172.16.200.48 255.255.255.252 172.16.10.50 name VL964-ELUN-FAROCA-VENEZO
+ip route 172.16.200.56 255.255.255.252 172.16.10.154 name ELUN-2NET-EL-INDIO
+ip route 172.16.200.60 255.255.255.252 172.16.10.162 name CRED-2NET-BARON-BOY
+ip route 172.16.200.64 255.255.255.252 172.16.11.46 name VL-231-MCCY-2NET-CAIZA-DAIM
+ip route 172.16.200.68 255.255.255.252 172.16.10.78 name VL3651-CDZ-CIRCULO-MILITAR
+ip route 172.16.200.72 255.255.255.252 172.16.10.2 name VL3653-CDZ-2NET-T-FINANCIE
+ip route 172.16.200.80 255.255.255.252 172.16.11.54 name VL-230-MCCY-2NET-CAIZA-MARI
+ip route 172.16.200.92 255.255.255.252 172.16.10.2 name VL3653-CDZ-2NET-T-FINANCIE
+ip route 172.16.200.100 255.255.255.252 172.16.11.14 name VL-1312-STG-2NET-TRIANGULO
+ip route 172.16.200.108 255.255.255.252 172.16.10.250 name STG-2NET-VILLA-PARAI
+ip route 172.16.200.112 255.255.255.252 172.16.10.78 name VL3651-CDZ-CIRCULO-MILITAR
+ip route 172.16.200.120 255.255.255.252 172.16.10.250 name STG-2NET-VILLA-PARAI
+ip route 172.16.200.124 255.255.255.252 172.16.11.18 name VL1802-TUNO-2NET-PILONES
+ip route 172.16.200.128 255.255.255.252 172.16.10.78 name VL3651-CDZ-CIRCULO-MILITAR
+ip route 172.16.200.148 255.255.255.252 172.16.11.58 name VL232-MCCY-2NET-CAIZA-TURU
+ip route 172.16.200.160 255.255.255.252 172.16.11.66 name VL-2100-LY-2NET-MONTALBAN
+ip route 181.225.53.216 255.255.255.248 172.16.10.106 name VL529-PC-2NET-EL-BOSCAL
+ip route 190.94.212.1 255.255.255.255 172.16.0.6 name VL1704-LEB-FAROCA-VISTAL-TRANSP
+ip route 190.94.212.2 255.255.255.255 172.16.0.6 name VL1704-LEB-FAROCA-VISTAL-TRANSP
+ip route 190.94.212.3 255.255.255.255 172.16.0.6 name VL1704-LEB-FAROCA-VISTAL-TRANSP
+ip route 190.94.212.4 255.255.255.255 172.16.0.6 name VL1704-LEB-FAROCA-VISTAL-TRANSP
+ip route 190.94.212.5 255.255.255.255 172.16.0.6 name VL1704-LEB-FAROCA-VISTAL-TRANSP
+ip route 190.94.212.6 255.255.255.255 172.16.10.54 name VL215-MCCY-FAROCA-CSP
+ip route 190.94.212.7 255.255.255.255 172.16.1.252 name VL1685-LEBRUM_ANITA
+ip route 190.94.212.8 255.255.255.255 172.16.10.22 name GALI-FAROCA-MANSION-CA
+ip route 190.94.212.9 255.255.255.255 172.16.10.22 name GALI-FAROCA-MANSION-CA
+ip route 190.94.212.10 255.255.255.255 172.16.10.38 name VL1571-GALI-FAROCA-CCLARO
+ip route 190.94.212.11 255.255.255.255 172.16.10.38 name VL1571-GALI-FAROCA-CCLARO
+ip route 190.94.212.12 255.255.255.255 172.16.10.38 name VL1571-GALI-FAROCA-CCLARO
+ip route 190.94.212.13 255.255.255.255 172.16.10.38 name VL1571-GALI-FAROCA-CCLARO
+ip route 190.94.212.14 255.255.255.255 172.16.10.38 name VL1571-GALI-FAROCA-CCLARO
+ip route 190.94.212.15 255.255.255.255 172.16.10.38 name VL1571-GALI-FAROCA-CCLARO
+ip route 190.94.212.16 255.255.255.255 172.16.10.38 name VL1571-GALI-FAROCA-CCLARO
+ip route 190.94.212.17 255.255.255.255 172.16.10.58 name VL1758-PCR-FAROCA-DELTA
+ip route 190.94.212.18 255.255.255.255 172.16.10.58 name VL1758-PCR-FAROCA-DELTA
+ip route 190.94.212.19 255.255.255.255 172.16.1.204 name LEB-FAROCA-DORAL
+ip route 190.94.212.33 255.255.255.255 172.16.10.50 name VL964-ELUN-FAROCA-VENEZO
+ip route 190.94.212.34 255.255.255.255 172.16.10.50 name VL964-ELUN-FAROCA-VENEZO
+ip route 190.94.212.35 255.255.255.255 172.16.10.54 name VL-215-MCCY-FAROCA-CSP
+ip route 190.94.212.36 255.255.255.255 172.16.10.50 name VL964-ELUN-FAROCA-VENEZO
+ip route 190.94.212.37 255.255.255.255 172.16.10.50 name VL964-ELUN-FAROCA-VENEZO
+ip route 190.94.212.38 255.255.255.255 172.16.10.50 name VL964-ELUN-FAROCA-VENEZO
+ip route 190.94.212.39 255.255.255.255 172.16.10.50 name VL964-ELUN-FAROCA-VENEZO
+ip route 190.94.212.40 255.255.255.255 172.16.10.50 name VL964-ELUN-FAROCA-VENEZO
+ip route 190.94.212.41 255.255.255.255 172.16.10.50 name VL964-ELUN-FAROCA-VENEZO
+ip route 190.94.212.42 255.255.255.255 172.16.10.50 name VL964-ELUN-FAROCA-VENEZO
+ip route 190.94.212.43 255.255.255.255 172.16.10.50 name VL964-ELUN-FAROCA-VENEZO
+ip route 190.94.212.44 255.255.255.255 172.16.10.50 name VL964-ELUN-FAROCA-VENEZO
+ip route 190.94.212.45 255.255.255.255 172.16.10.50 name VL964-ELUN-FAROCA-VENEZO
+ip route 190.94.212.46 255.255.255.255 172.16.10.50 name VL964-ELUN-FAROCA-VENEZO
+ip route 190.94.212.47 255.255.255.255 172.16.10.50 name VL964-ELUN-FAROCA-VENEZO
+ip route 190.94.212.48 255.255.255.255 172.16.10.50 name VL964-ELUN-FAROCA-VENEZO
+ip route 190.94.212.49 255.255.255.255 172.16.10.86 name CAU-2NET-STA-MARTA
+ip route 190.94.212.50 255.255.255.255 172.16.10.42 name VL-982-CENTRO-LATINO
+ip route 190.94.212.51 255.255.255.255 172.16.10.30 name MCCY-FAROCA-MCY-EXP
+ip route 190.94.212.52 255.255.255.255 172.16.10.30 name MCCY-FAROCA-MCY-EXP
+ip route 190.94.212.53 255.255.255.255 172.16.10.30 name MCCY-FAROCA-MCY-EXP
+ip route 190.94.212.54 255.255.255.255 172.16.10.90 name MCCY-2NET-MAGNOLIAS
+ip route 190.94.212.54 255.255.255.255 172.16.10.30 name MCCY-FAROCA-MCY-EXP
+ip route 190.94.212.55 255.255.255.255 172.16.10.90 name MCCY-2NET-MAGNOLIAS
+ip route 190.94.212.56 255.255.255.255 172.16.10.90 name MCCY-2NET-MAGNOLIAS
+ip route 190.94.212.57 255.255.255.255 172.16.10.90 name MCCY-2NET-MAGNOLIAS
+ip route 190.94.212.58 255.255.255.255 172.16.10.90 name MCCY-2NET-MAGNOLIAS
+ip route 190.94.212.59 255.255.255.255 172.16.10.134 name CRED-2NET-RES-GUAIR
+ip route 190.94.212.60 255.255.255.255 172.16.10.134 name CRED-2NET-RES-GUAIR
+ip route 190.94.212.61 255.255.255.255 172.16.10.134 name CRED-2NET-RES-GUAIR
+ip route 190.94.212.62 255.255.255.255 172.16.10.134 name CRED-2NET-RES-GUAIR
+ip route 190.94.212.63 255.255.255.255 172.16.10.134 name CRED-2NET-RES-GUAIR
+ip route 190.94.212.67 255.255.255.255 172.16.10.34 name MCCY-FAROCA-T-CALIFO
+ip route 190.94.212.71 255.255.255.255 172.16.10.50 name VL964-ELUN-FAROCA-VENEZO
+ip route 190.94.212.72 255.255.255.255 172.16.10.50 name VL964-ELUN-FAROCA-VENEZO
+ip route 190.94.212.76 255.255.255.255 172.16.10.254 name VL1959-CRED-2NET-CONCRESA
+ip route 190.94.212.80 255.255.255.255 172.16.10.158 name CRED-2NET-GUAYMARAL
+ip route 190.94.212.81 255.255.255.255 172.16.10.102 name MCCY-2NET-RES-ISLAS
+ip route 190.94.212.82 255.255.255.255 172.16.10.2 name VL3653-CDZ-2NET-T-FINANCIE
+ip route 190.94.212.83 255.255.255.255 172.16.10.122 name VL1769-PCR-2NET-RES-130
+ip route 190.94.212.85 255.255.255.255 172.16.10.2 name VL3653-CDZ-2NET-T-FINANCIE
+ip route 190.94.212.86 255.255.255.255 172.16.10.2 name VL3653-CDZ-2NET-T-FINANCIE
+ip route 190.94.212.87 255.255.255.255 172.16.10.2 name VL3653-CDZ-2NET-T-FINANCIE
+ip route 190.94.212.88 255.255.255.255 172.16.10.2 name VL3653-CDZ-2NET-T-FINANCIE
+ip route 190.94.212.89 255.255.255.255 172.16.10.2 name VL3653-CDZ-2NET-T-FINANCIE
+ip route 190.94.212.91 255.255.255.255 172.16.10.2 name VL3653-CDZ-2NET-T-FINANCIE
+ip route 190.94.212.92 255.255.255.255 172.16.10.226 name VL1040-LIB-2NET-CHAPELLIN
+ip route 190.94.212.93 255.255.255.255 172.16.10.226 name VL1040-LIB-2NET-CHAPELLIN
+ip route 190.94.212.94 255.255.255.255 172.16.10.226 name VL1040-LIB-2NET-CHAPELLIN
+ip route 190.94.212.95 255.255.255.255 172.16.10.226 name VL1040-LIB-2NET-CHAPELLIN
+ip route 190.94.212.96 255.255.255.255 172.16.10.226 name VL1040-LIB-2NET-CHAPELLIN
+ip route 190.94.212.97 255.255.255.255 172.16.10.118 name VL505-PCR-2NET-305
+ip route 190.94.212.98 255.255.255.255 172.16.10.118 name VL505-PCR-2NET-305
+ip route 190.94.212.99 255.255.255.255 172.16.10.118 name VL505-PCR-2NET-305
+ip route 190.94.212.100 255.255.255.255 172.16.10.118 name VL505-PCR-2NET-305
+ip route 190.94.212.101 255.255.255.255 172.16.10.118 name VL505-PCR-2NET-305
+ip route 190.94.212.102 255.255.255.255 172.16.10.118 name VL505-PCR-2NET-305
+ip route 190.94.212.103 255.255.255.255 192.168.100.2 name VL1728-LEB-2NET-MOD-PB
+ip route 190.94.212.104 255.255.255.255 172.16.10.118 name VL505-PCR-2NET-305
+ip route 190.94.212.105 255.255.255.255 172.16.10.118 name VL505-PCR-2NET-305
+ip route 190.94.212.106 255.255.255.255 172.16.10.154 name ELUN-2NET-EL-INDIO
+ip route 190.94.212.107 255.255.255.255 172.16.10.162 name VL1956-CRED-2NET-BARON-BOY
+ip route 190.94.212.109 255.255.255.255 172.16.10.78 name VL3651-CDZ-CIRCULO-MILITAR
+ip route 190.94.212.110 255.255.255.255 172.16.10.70 name VL1267-CAU-2NET-CC-PROF
+ip route 190.94.212.111 255.255.255.255 172.16.10.82 name VL3656-CDZ-2NET-IPSFA
+ip route 190.94.212.124 255.255.255.255 172.16.10.106 name PC-2NET-EL-BOSCAL
+ip route 190.94.212.126 255.255.255.255 172.16.10.170 name VL2005-EMBAJADA_ITALIA_MARCO
+ip route 190.94.212.127 255.255.255.255 172.16.10.22 name GALI-FAROCA-MANSION-CA
+ip route 190.94.212.128 255.255.255.255 172.16.10.22 name GALI-FAROCA-MANSION-CA
+ip route 190.94.212.129 255.255.255.255 172.16.10.54 name VL215-MCCY-FAROCA-CSP
+ip route 190.94.212.130 255.255.255.255 172.16.10.54 name VL215-MCCY-FAROCA-CSP
+ip route 190.94.212.131 255.255.255.255 172.16.10.54 name VL215-MCCY-FAROCA-CSP
+ip route 190.94.212.132 255.255.255.255 172.16.10.54 name VL215-MCCY-FAROCA-CSP
+ip route 190.94.212.133 255.255.255.255 172.16.10.54 name VL215-MCCY-FAROCA-CSP
+ip route 190.94.212.137 255.255.255.255 172.16.10.178 name VL1806-TUNO-2NET-QTA-MARACA
+ip route 190.94.212.139 255.255.255.255 172.16.10.250 name STG-2NET-VILLA-PARAI
+ip route 190.94.212.140 255.255.255.255 172.16.10.250 name STG-2NET-VILLA-PARAI
+ip route 190.94.212.141 255.255.255.255 172.16.10.250 name STG-2NET-VILLA-PARAI
+ip route 190.94.212.142 255.255.255.255 172.16.10.250 name STG-2NET-VILLA-PARAI
+ip route 190.94.212.143 255.255.255.255 172.16.10.250 name STG-2NET-VILLA-PARAI
+ip route 190.94.212.144 255.255.255.252 172.16.10.162 name VL1956-CRED-2NET-BARON-BOY
+ip route 190.94.212.148 255.255.255.255 172.16.10.114 name VL1272-CAU-2NET-LOM-DEL-SOL
+ip route 190.94.212.149 255.255.255.255 172.16.10.218 name VL459-2NET1004X1
+ip route 190.94.212.150 255.255.255.255 172.16.10.198 name VL1125-LEB-2NET-GALPON
+ip route 190.94.212.151 255.255.255.255 172.16.10.202 name VL1126-LEB-2NET-DUPONT
+ip route 190.94.212.152 255.255.255.255 172.16.10.174 name VL3657-CDZ-2NET-EL-VALLE
+ip route 190.94.212.156 255.255.255.252 172.16.10.30 name MCCY-FAROCA-MCY-EXP
+ip route 190.94.212.160 255.255.255.252 172.16.10.146 name MCCY-2NET-PAR-CAIZA
+ip route 190.94.212.164 255.255.255.255 172.16.10.194 name VL612-BOL-2NET-PBG
+ip route 190.94.212.165 255.255.255.255 172.16.10.182 name VL2672-CRED-GRAFICAS-CROMAT
+ip route 190.94.212.166 255.255.255.255 172.16.10.174 name VL3657-CDZ-2NET-EL-VALLE
+ip route 190.94.212.167 255.255.255.255 172.16.10.166 name VL1166-ANAUC-2NET-BET-EL
+ip route 190.94.212.168 255.255.255.255 172.16.10.54 name VL215-MCCY-FAROCA-CSP
+ip route 190.94.212.169 255.255.255.255 172.16.10.166 name VL1166-ANAUC-2NET-BET-EL
+ip route 190.94.212.170 255.255.255.255 172.16.10.106 name VL529-PC-2NET-EL-BOSCAL
+ip route 190.94.212.171 255.255.255.255 172.16.10.194 name VL612-BOL-2NET-PBG
+ip route 190.94.212.173 255.255.255.255 172.16.10.130 name BOL-2NET-TECNOAVILA
+ip route 190.94.212.174 255.255.255.255 172.16.10.146 name MCCY-2NET-PAR-CAIZA
+ip route 190.94.212.175 255.255.255.255 172.16.10.146 name MCCY-2NET-PAR-CAIZA
+ip route 190.94.212.176 255.255.255.255 172.16.0.6 name VL1704-LEB-FAROCA-VISTAL-TRANSP
+ip route 190.94.212.177 255.255.255.255 172.16.10.2 name VL3653-CDZ-2NET-T-FINANCIE
+ip route 190.94.212.178 255.255.255.255 172.16.11.54 name VL-230-MCCY-2NET-CAIZA-MARI
+ip route 190.94.212.179 255.255.255.255 172.16.10.78 name VL3651-CDZ-CIRCULO-MILITAR
+ip route 190.94.212.180 255.255.255.255 172.16.10.78 name VL3651-CDZ-CIRCULO-MILITAR
+ip route 190.94.212.181 255.255.255.255 172.16.10.78 name VL3651-CDZ-CIRCULO-MILITAR
+ip route 190.94.212.182 255.255.255.255 172.16.10.78 name VL3651-CDZ-CIRCULO-MILITAR
+ip route 190.94.212.183 255.255.255.255 172.16.10.78 name VL3651-CDZ-CIRCULO-MILITAR
+ip route 190.94.212.184 255.255.255.255 172.16.10.154 name VL969-ELUN-2NET-EL-INDIO
+ip route 190.94.212.185 255.255.255.255 172.16.10.154 name VL969-ELUN-2NET-EL-INDIO
+ip route 190.94.212.186 255.255.255.255 172.16.10.154 name VL969-ELUN-2NET-EL-INDIO
+ip route 190.94.212.187 255.255.255.255 172.16.10.154 name VL969-ELUN-2NET-EL-INDIO
+ip route 190.94.212.188 255.255.255.255 172.16.10.154 name VL969-ELUN-2NET-EL-INDIO
+ip route 190.94.212.189 255.255.255.255 172.16.10.154 name VL969-ELUN-2NET-EL-INDIO
+ip route 190.94.212.190 255.255.255.255 172.16.10.142 name VL1804-TUNO-2NET-BETA
+ip route 190.94.212.191 255.255.255.255 172.16.10.106 name VL529-PC-2NET-EL-BOSCAL
+ip route 190.94.212.196 255.255.255.255 172.16.0.6 name VL1704-LEB-FAROCA-VISTAL-TRANSP
+ip route 190.94.212.197 255.255.255.255 172.16.10.230 name GALI-2NET-OBOTICARIO
+ip route 190.94.212.198 255.255.255.255 172.16.10.238 name CUBO-2NET-DIAMEN
+ip route 190.94.212.199 255.255.255.255 172.16.11.10 name VL-1863-TUNO-2NET-C-ROCA-GPS
+ip route 190.94.212.200 255.255.255.255 172.16.11.50 name VL-229-MCCY-2NET-CAIZA-DOLO
+ip route 190.94.212.201 255.255.255.255 172.16.3.42 name VL1705-LEB-FAROCA-TR2
+ip route 190.94.212.202 255.255.255.255 172.16.10.174 name VL3657-CDZ-2NET-EL-VALLE
+ip route 190.94.212.203 255.255.255.255 172.16.10.174 name VL3657-CDZ-2NET-EL-VALLE
+ip route 190.94.212.204 255.255.255.255 172.16.10.174 name VL3657-CDZ-2NET-EL-VALLE
+ip route 190.94.212.205 255.255.255.255 172.16.10.174 name VL3657-CDZ-2NET-EL-VALLE
+ip route 190.94.212.207 255.255.255.255 172.16.10.186 name VL2007-GALI-2NET-C-PROF-MIR
+ip route 190.94.212.208 255.255.255.255 172.16.11.46 name VL-231-MCCY-2NET-CAIZA-DAIM
+ip route 190.94.212.209 255.255.255.255 172.16.10.214 name VL1132-LA_LUCHA-LEBRUM
+ip route 190.94.212.212 255.255.255.255 172.16.10.190 name VL1775-PCR-2NET-DAKAR
+ip route 190.94.212.214 255.255.255.255 172.16.10.74 name VL2673-CRED-2NET-PROCTER-GA
+ip route 190.94.212.215 255.255.255.255 172.16.10.54 name VL215-MCCY-FAROCA-CSP
+ip route 190.94.212.216 255.255.255.255 172.16.10.242 name VL617-BOL-MECADOMI-LD
+ip route 190.94.212.217 255.255.255.255 172.16.10.190 name PCR-2NET-DAKAR
+ip route 190.94.212.218 255.255.255.255 172.16.10.162 name CRED-2NET-BARON-BOY
+ip route 190.94.212.219 255.255.255.255 172.16.10.78 name VL3651-CDZ-CIRCULO-MILITAR
+ip route 190.94.212.220 255.255.255.255 172.16.10.246 name STG-2NET-METO-CENT
+ip route 190.94.212.221 255.255.255.255 172.16.10.254 name VL1959-CRED-2NET-CONCRESA
+ip route 190.94.212.222 255.255.255.255 172.16.10.78 name VL3651-CDZ-CIRCULO-MILITAR
+ip route 190.94.212.223 255.255.255.255 172.16.10.78 name VL3651-CDZ-CIRCULO-MILITAR
+ip route 190.94.212.224 255.255.255.252 172.16.10.106 name VL529-PC-2NET-EL-BOSCAL
+ip route 190.94.212.228 255.255.255.255 172.16.10.66 name VL1572-CONSULADO_LEBRUN
+ip route 190.94.212.229 255.255.255.255 172.16.10.150 name VL1301-STG-2NET
+ip route 190.94.212.230 255.255.255.255 172.16.10.138 name VL-3652-CDZ-2NET-RES-HUMBOLD
+ip route 190.94.212.231 255.255.255.255 172.16.11.2 name MCCY-2NET-VISTA-HERMOSA
+ip route 190.94.212.232 255.255.255.252 172.16.10.226 name VL1040-LIB-2NET-CHAPELLIN
+ip route 190.94.212.240 255.255.255.255 172.16.11.14 name VL-1312-STG-2NET-TRIANGULO
+ip route 190.94.212.241 255.255.255.255 172.16.10.250 name STG-2NET-VILLA-PARAI
+ip route 190.94.212.242 255.255.255.255 172.16.10.62 name ANAUC-2NET
+ip route 190.94.212.243 255.255.255.255 172.16.10.118 name VL505-PCR-2NET-305
+ip route 190.94.212.244 255.255.255.255 172.16.11.38 name VL-473-TUNO-SEINCA-SALUD
+ip route 190.94.212.245 255.255.255.255 172.16.11.34 name VL-472-TUNO-DIST-DASIMERCA
+ip route 190.94.212.246 255.255.255.255 172.16.11.58 name VL232-MCCY-2NET-CAIZA-TURU
+ip route 190.94.212.247 255.255.255.255 172.16.11.30 name VL3664-CDZ-TRIGAL-STA-MONIC
+ip route 190.94.212.249 255.255.255.255 172.16.10.206 name VL1039-CC_PLAZA_VZLA-LEBRUM
+ip route 190.94.212.251 255.255.255.255 172.16.10.94 name PCR-2NET-T-ALTAMIRA
+ip route 190.94.212.252 255.255.255.255 172.16.10.78 name VL3651-CDZ-CIRCULO-MILITAR
+ip route 190.94.212.253 255.255.255.255 172.16.10.78 name VL3651-CDZ-CIRCULO-MILITAR
+ip route 190.94.212.254 255.255.255.255 172.16.11.18 name VL1802-TUNO-2NET-PILONES
+ip route 190.94.212.255 255.255.255.255 172.16.11.26 name VL3663-CDZ-DK-SANTA-MONICA
+ip route 190.94.213.0 255.255.255.252 172.16.11.66 name VL-2100-LY-2NET-MONTALBAN
+ip route 190.94.213.4 255.255.255.255 172.16.11.70 name VL-2023-GALI-AG-FUTBOL-2NET
+ip route 190.94.213.5 255.255.255.255 172.16.11.78 name VL-607-BOL-INV-COBO
+ip route 190.94.213.6 255.255.255.255 172.16.11.82 name VL-1869-TUNO-MAT-BOSSIO
+ip route 190.94.245.228 255.255.255.255 172.16.10.50 name VL964-ELUN-FAROCA-VENEZO
+ip route 192.94.212.134 255.255.255.255 172.16.10.146 name VL204-MCCY-2NET-PAR-CAIZA
+ip route 192.94.212.135 255.255.255.255 172.16.10.146 name VL204-MCCY-2NET-PAR-CAIZA
+ip route 192.94.212.136 255.255.255.255 172.16.10.146 name VL204-MCCY-2NET-PAR-CAIZA
+ip route 192.168.10.0 255.255.255.248 172.16.10.146 name MCCY-2NET-PAR-CAIZA
+ip route 192.168.11.0 255.255.255.0 172.16.10.134 name CRED-2NET-RES-GUAIR
+ip route 192.168.20.0 255.255.255.0 172.16.10.90 name MCCY-2NET-MAGNOLIAS
+ip route 192.168.30.0 255.255.255.248 172.16.10.134 name CRED-2NET-RES-GUAIR
+ip route 192.168.40.0 255.255.255.248 172.16.10.30 name MCCY-FAROCA-MCY-EXP
+ip route 192.168.60.2 255.255.255.255 172.16.10.30 name MCCY-FAROCA-MCY-EXP
+ip route 192.168.70.0 255.255.255.0 172.16.10.78 name VL3651-CDZ-CIRCULO-MILITAR
+ip route 192.168.78.0 255.255.255.0 172.16.10.2 name VL3653-CDZ-2NET-T-FINANCIE
+ip route 192.168.80.0 255.255.255.248 172.16.10.2 name VL3653-CDZ-2NET-T-FINANCIE
+ip route 192.168.90.0 255.255.255.248 172.16.10.70 name VL1267-CAU-2NET-CC-PROF
+ip route 192.168.105.2 255.255.255.255 192.168.100.2 name VL1728-LEB-2NET-MOD-PB
+ip route 192.168.105.3 255.255.255.255 192.168.100.2 name VL1728-LEB-2NET-MOD-PB
+ip route 192.168.200.0 255.255.255.0 172.16.10.146 name MCCY-2NET-PAR-CAIZA
+ip route 192.169.40.2 255.255.255.255 172.16.10.118 name VL505-PCR-2NET-305
+ip route 192.169.60.0 255.255.255.248 172.16.10.94 name PCR-2NET-T-ALTAMIRA
+ip route 192.169.70.0 255.255.255.248 172.16.10.106 name VL529-PC-2NET-EL-BOSCAL
+ip route 192.169.80.0 255.255.255.248 172.16.10.82 name VL3656-CDZ-2NET-IPSFA
+ip route 192.169.90.2 255.255.255.255 172.16.10.70 name VL1267-CAU-2NET-CC-PROF
+ip route 192.169.100.0 255.255.255.248 172.16.10.138 name VL-3652-CDZ-2NET-RES-HUMBOLD
+ip route 192.169.110.0 255.255.255.248 172.16.10.142 name VL1804-TUNO-2NET-BETA
+ip route 192.169.120.0 255.255.255.248 172.16.10.174 name VL3657-CDZ-2NET-EL-VALLE
+ip route 192.169.130.2 255.255.255.255 172.16.10.166 name VL1166-ANAUC-2NET-BET-EL
+ip route 192.169.140.2 255.255.255.255 172.16.10.174 name VL3657-CDZ-2NET-EL-VALLE
+ip route 192.169.160.2 255.255.255.255 172.16.10.158 name VL1955-CRED-2NET-GUAYMARAL
+ip route 192.169.170.2 255.255.255.255 172.16.10.226 name VL1040-LIB-2NET-CHAPELLIN
+ip route 192.169.180.0 255.255.255.248 172.16.10.154 name VL969-ELUN-2NET-EL-INDIO
+ip route 192.169.190.0 255.255.255.248 172.16.10.246 name STG-2NET-METO-CENT
+ip route 192.169.210.2 255.255.255.255 172.16.11.50 name VL-229-MCCY-2NET-CAIZA-DOLO
+ip route 192.169.220.0 255.255.255.248 172.16.10.162 name VL1956-CRED-2NET-BARON-BOY
+ip route 192.169.240.0 255.255.255.248 172.16.10.174 name CDZ-2NET-EL-VALLE
+ip route 192.169.250.0 255.255.255.248 172.16.10.250 name STG-2NET-VILLA-PARAI
+ip route 192.170.10.2 255.255.255.255 172.16.10.54 name VL215-MCCY-FAROCA-CSP
+ip route 192.170.20.2 255.255.255.255 172.16.10.78 name VL3651-CDZ-CIRCULO-MILITAR
+ip route 192.170.40.2 255.255.255.255 172.16.10.174 name VL3657-CDZ-2NET-EL-VALLE
+ip route 192.170.50.0 255.255.255.248 172.16.10.178 name VL1806-TUNO-2NET-QTA-MARACA
+ip route 192.170.70.2 255.255.255.255 172.16.10.78 name VL3651-CDZ-CIRCULO-MILITAR
+ip route 192.170.90.0 255.255.255.248 172.16.10.162 name VL1956-CRED-2NET-BARON-BOY
+ip route 192.170.100.2 255.255.255.255 172.16.10.162 name VL1956-CRED-2NET-BARON-BOY
+ip route 192.170.110.2 255.255.255.255 172.16.10.146 name VL204-MCCY-2NET-PAR-CAIZA
+ip ssh version 2
+!
+ip access-list standard ACCESO-TELNET092021
+ permit 181.225.41.13
+ permit 181.225.41.64 0.0.0.15
+ permit 181.225.42.0 0.0.0.7
+ deny   any
+!
+access-list 99 permit 190.94.212.103
+access-list 99 permit 181.225.41.64 0.0.0.15
+access-list 99 deny   any
+ipv6 route ::/0 2803:D480:0:68::8053
+!
+snmp-server community 2NETIFX RO 99
+snmp-server community ifxpublic RO 99
+!
+!
+ipv6 access-list ACCESO-TELNET092021V6
+ deny ipv6 any any
+!
+control-plane
+!
+ !
+ !
+ !
+ !
+!
+!
+!
+!
+!
+line con 0
+ stopbits 1
+line aux 0
+ stopbits 1
+line vty 0 4
+ access-class ACCESO-TELNET092021 in
+ ipv6 access-class ACCESO-TELNET092021V6 in
+ login local
+ transport input ssh
+line vty 5 15
+ access-class ACCESO-TELNET092021 in
+ ipv6 access-class ACCESO-TELNET092021V6 in
+ login local
+ transport input ssh
+!
+ntp server 181.225.41.75
+!
+end
