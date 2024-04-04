@@ -37,3 +37,16 @@ sh mac address-table vlan VLAN_NUEVA
 show ethernet-switching table vlan VLAN_NUEVA
 
 
+
+2NET1004X1
+- quitar las estaticas 
+- quitar subinterfaces del po3
+
+2NETJMX204X1
+- quitar las estaticas hacia 1004
+- Agregar la subinterfaces al puerto AE1
+- Agregar las estaticas
+
+LEBJ4500X1
+- quitar la vlan del puerto ae24
+
