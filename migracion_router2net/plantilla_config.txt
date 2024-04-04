@@ -46,4 +46,22 @@ ping NEXTHOP
 sh mac address-table vlan VLAN_NUEVA
 show ethernet-switching table vlan VLAN_NUEVA
 
+RUTA:
+ssh soporte2@172.23.253.22 LEBJ5110HX1
+
+1004
+quitar la subint
+quitar las estaticas
+
+2NETJMX204X1
+quitar la estatica hacia 1004
+crear la interface en ae1
+agregar las estaticas
+
+LEBJ4500X1
+quitar la vlan del ae24
+
+
+
+
 
