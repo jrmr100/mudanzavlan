@@ -75,9 +75,6 @@ hw-module subslot 1/1 enable lan
 !
 spanning-tree extend system-id
 !
-username jcrespo privilege 15 secret 5 $1$Sup1$VME8.VY3oDAP2mrbavlwg1
-username soporte2 privilege 15 secret 5 $1$XZyK$uIKQbP5/.mXQf2rWx/3e1/
-!
 redundancy
  mode none
 !
