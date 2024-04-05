@@ -181,6 +181,15 @@ for index_lista in range(size_lista):
                 linea_plantilla_config = linea_plantilla_config.replace("RUTAS_ESTATICAS_JUN", rutas_jun)
             else:
                 linea_plantilla_config = linea_plantilla_config.replace("RUTAS_ESTATICAS_JUN", "NO TIENE ESTATICAS")
+        if "NEXTHOP" in linea_plantilla_config:
+            if "ip route" in almacen_interface:
+                list_almacen_interface = almacen_interface.split("\n")
+                for item_almacen_interface in list_almacen_interface:
+                    if "ip route" in item_almacen_interface:
+                        list_item_almacen_interface = item_almacen_interface.split(" ")
+                        nexthop = list_item_almacen_interface[5]
+                        
+                linea_plantilla_config = linea_plantilla_config.replace("NEXTHOP", nexthop)
             
         lista_salida.append(linea_plantilla_config)  
     string_salida = ""
