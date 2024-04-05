@@ -1,67 +1,21 @@
 ########################################
 VLAN: VLAN_NUEVA	NOMBRE_VLAN
 
-----------------CCSJ4500LEBX1--------------
-ssh soporte2@172.23.253.28
-
-set vlan NOMBRE_VLAN vlan-id VLAN_NUEVA
-set interfaces ae8 unit 0 family ethernet-switching vlan members NOMBRE_VLAN
-set interfaces ae16 unit 0 family ethernet-switching vlan members NOMBRE_VLAN
-commit sync
-
-
-
---------VELEBNOC1006X1-------------------
-ssh soporte2@181.225.41.25
+-----2NET1004X1------
+ssh soporte2@172.23.255.226
 
 no DATOS_INTERFACE_VIEJA
 
-config t
-interface Po4.VLAN_NUEVA
-DATOS_INTERFACE_NUEVA
-end
 
+-----2NETJMX204X1-----
+ssh soporte2@172.23.245.170
 
-----------------CCSJ4500LEBX1--------------
-ssh soporte2@172.23.253.28
-
-set vlan NOMBRE_VLAN vlan-id VLAN_NUEVA
-set interfaces ae20 unit 0 family ethernet-switching vlan members NOMBRE_VLAN
-set interfaces ae16 unit 0 family ethernet-switching vlan members NOMBRE_VLAN
-commit sync
-
-
-----------------CCSC4500BOLEX1------------
-ssh soporte2@172.23.253.21
-
-vlan VLAN_NUEVA
-name NOMBRE_VLAN
-interface Te1/10
-switchport trunk allowed vlan add VLAN_NUEVA
-exit
-
+set interface ae1 unit VLAN_NUEVA description NOMBRE_VLAN
+set interface ae1 unit VLAN_NUEVA vlan-id VLAN_NUEVA
+set interface ae1 unit VLAN_NUEVA family inet address IP_ADDRESS_BIT
+RUTAS_ESTATICAS_JUN
 
 TROUBLESHOOTING
 ping NEXTHOP
 sh mac address-table vlan VLAN_NUEVA
 show ethernet-switching table vlan VLAN_NUEVA
-
-RUTA:
-ssh soporte2@172.23.253.22 LEBJ5110HX1
-
-1004
-quitar la subint
-quitar las estaticas
-
-2NETJMX204X1
-quitar la estatica hacia 1004
-crear la interface en ae1
-agregar las estaticas
-
-LEBJ4500X1
-quitar la vlan del ae24
-
-
-
-
-
