@@ -264,7 +264,7 @@ interface Port-channel3.671
  description BOL-2NET-TECNOAVILA
  encapsulation dot1Q 671
  ip address 172.16.10.129 255.255.255.252
-!         
+!
 interface Port-channel3.964
  description ELUN-FAROCA-VENEZO
  encapsulation dot1Q 964
