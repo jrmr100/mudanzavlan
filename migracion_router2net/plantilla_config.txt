@@ -15,7 +15,16 @@ set interface ae1 unit VLAN_NUEVA vlan-id VLAN_NUEVA
 set interface ae1 unit VLAN_NUEVA family inet address IP_ADDRESS_BIT
 RUTAS_ESTATICAS_JUN
 
-TROUBLESHOOTING
+###########TROUBLESHOOTING############33
+LEBJ5110HX1 - AE8
+ssh soporte2@172.23.245.170
+
+CCSJ5120LEBX1
+ssh soporte2@172.23.253.57
+
+CCSJ4500LEBX1
+ssh soporte2@172.23.253.28
+
 ping NEXTHOP
 sh mac address-table vlan VLAN_NUEVA
 show ethernet-switching table vlan VLAN_NUEVA
