@@ -106,9 +106,11 @@ for linea_vlan in lista_vlan_vieja:
             # Busco las IP estaticas usando el nexthop
             almacen_route = ""
             for linea_router_router_config2 in lista_router_config:
-                if "ip route" in linea_router_router_config2 and\
-                     next_hop in linea_router_router_config2:
-                    almacen_route = almacen_route + "no " + linea_router_router_config2
+                if "ip route" == linea_router_router_config2[:8]:
+                    lista_linea_router_router_config2 = linea_router_router_config2.split(" ")
+                    linea_nexthop = lista_linea_router_router_config2[4] 
+                    if next_hop == linea_nexthop:
+                        almacen_route = almacen_route + "no " + linea_router_router_config2
             lista_almacen_configs.append(almacen_router_config + "exit\n" + almacen_route)
             marcar_int = 0
 
