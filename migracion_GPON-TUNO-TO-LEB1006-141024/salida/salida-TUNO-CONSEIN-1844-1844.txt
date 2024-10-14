@@ -1,0 +1,37 @@
+########################################
+VLAN: 1844	TUNO-CONSEIN
+
+---------- VECREDNOC1004X1-----------
+ssh soporte2@181.225.41.18
+
+no interface TenGigabitEthernet0/1/0.1844
+ description GPON-VL3291-CONSEIN;ID:22645
+ bandwidth 51200
+ encapsulation dot1Q 1844
+ ip address 172.23.253.249 255.255.255.252
+ service-policy input 50M
+ service-policy output 50M
+exit
+no ip route 181.225.42.56 255.255.255.248 172.23.253.250 name GPON-VL1844-TUNO-CONSEIN
+
+---------LEB1006X1-----------
+ssh soporte2@181.225.41.25
+
+config t
+interface Po8.1844
+ description GPON-VL3291-CONSEIN;ID:22645
+ bandwidth 51200
+encapsulation dot1Q 1844
+ ip address 172.23.253.249 255.255.255.252
+ service-policy input 50M
+ service-policy output 50M
+exit
+ip route 181.225.42.56 255.255.255.248 172.23.253.250 name GPON-VL1844-TUNO-CONSEIN
+end
+
+
+###########TROUBLESHOOTING############
+
+ping 172.23.253.250
+sh mac address-table vlan 1844
+show ethernet-switching table vlan 1844

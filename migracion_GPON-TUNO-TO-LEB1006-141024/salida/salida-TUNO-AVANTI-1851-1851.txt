@@ -1,0 +1,39 @@
+########################################
+VLAN: 1851	TUNO-AVANTI
+
+---------- VECREDNOC1004X1-----------
+ssh soporte2@181.225.41.18
+
+no interface TenGigabitEthernet0/1/0.1851
+ description AVANTI;ID:26345
+ bandwidth 102400
+ encapsulation dot1Q 1851
+ ip address 172.23.240.69 255.255.255.252
+ service-policy input 100M
+ service-policy output 100M
+exit
+no ip route 190.94.197.140 255.255.255.252 172.23.240.70 name GPON-VL1851-TUNO-AVANTI
+no ip route 190.94.200.68 255.255.255.252 172.23.240.70 name GPON-VL1851-TUNO-AVANTI
+
+---------LEB1006X1-----------
+ssh soporte2@181.225.41.25
+
+config t
+interface Po8.1851
+ description AVANTI;ID:26345
+ bandwidth 102400
+encapsulation dot1Q 1851
+ ip address 172.23.240.69 255.255.255.252
+ service-policy input 100M
+ service-policy output 100M
+exit
+ip route 190.94.197.140 255.255.255.252 172.23.240.70 name GPON-VL1851-TUNO-AVANTI
+ip route 190.94.200.68 255.255.255.252 172.23.240.70 name GPON-VL1851-TUNO-AVANTI
+end
+
+
+###########TROUBLESHOOTING############
+
+ping 172.23.240.70
+sh mac address-table vlan 1851
+show ethernet-switching table vlan 1851

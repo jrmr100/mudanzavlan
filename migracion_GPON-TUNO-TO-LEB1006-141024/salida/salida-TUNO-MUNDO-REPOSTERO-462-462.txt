@@ -1,0 +1,37 @@
+########################################
+VLAN: 462	TUNO-MUNDO-REPOSTERO
+
+---------- VECREDNOC1004X1-----------
+ssh soporte2@181.225.41.18
+
+no interface TenGigabitEthernet0/1/0.462
+ description TUNO-MUNDO-REPOSTERO;ID:26824
+ bandwidth 51200
+ encapsulation dot1Q 462
+ ip address 172.23.238.97 255.255.255.252
+ service-policy input 50M
+ service-policy output 50M
+exit
+no ip route 190.94.224.96 255.255.255.248 172.23.238.98 name GPON-VL462-TUNO-MUNDO-REPOSTERO
+
+---------LEB1006X1-----------
+ssh soporte2@181.225.41.25
+
+config t
+interface Po8.462
+ description TUNO-MUNDO-REPOSTERO;ID:26824
+ bandwidth 51200
+encapsulation dot1Q 462
+ ip address 172.23.238.97 255.255.255.252
+ service-policy input 50M
+ service-policy output 50M
+exit
+ip route 190.94.224.96 255.255.255.248 172.23.238.98 name GPON-VL462-TUNO-MUNDO-REPOSTERO
+end
+
+
+###########TROUBLESHOOTING############
+
+ping 172.23.238.98
+sh mac address-table vlan 462
+show ethernet-switching table vlan 462

@@ -1,0 +1,37 @@
+########################################
+VLAN: 1838	TUNO-MODUSISTEMA
+
+---------- VECREDNOC1004X1-----------
+ssh soporte2@181.225.41.18
+
+no interface TenGigabitEthernet0/1/0.1838
+ description MODUSISTEMA;ID:26111
+ bandwidth 51200
+ encapsulation dot1Q 1838
+ ip address 172.23.247.21 255.255.255.252
+ service-policy input 50M
+ service-policy output 50M
+exit
+no ip route 190.94.208.120 255.255.255.248 172.23.247.22 name GPON-VL1838-TUNO-MODUSISTEMA
+
+---------LEB1006X1-----------
+ssh soporte2@181.225.41.25
+
+config t
+interface Po8.1838
+ description MODUSISTEMA;ID:26111
+ bandwidth 51200
+encapsulation dot1Q 1838
+ ip address 172.23.247.21 255.255.255.252
+ service-policy input 50M
+ service-policy output 50M
+exit
+ip route 190.94.208.120 255.255.255.248 172.23.247.22 name GPON-VL1838-TUNO-MODUSISTEMA
+end
+
+
+###########TROUBLESHOOTING############
+
+ping 172.23.247.22
+sh mac address-table vlan 1838
+show ethernet-switching table vlan 1838

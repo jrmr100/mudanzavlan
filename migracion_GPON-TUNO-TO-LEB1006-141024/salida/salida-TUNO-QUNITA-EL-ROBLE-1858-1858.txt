@@ -1,0 +1,39 @@
+########################################
+VLAN: 1858	TUNO-QUNITA-EL-ROBLE
+
+---------- VECREDNOC1004X1-----------
+ssh soporte2@181.225.41.18
+
+no interface TenGigabitEthernet0/1/0.1858
+ description QUNITA-EL-ROBLE;ID:26623
+ bandwidth 153600
+ encapsulation dot1Q 1858
+ ip address 172.23.242.221 255.255.255.252
+ service-policy input 150M
+ service-policy output 150M
+exit
+no ip route 64.76.228.67 255.255.255.255 172.23.242.222 name GPON-VL1858-TUNO-QUNITA-EL-ROBLE-ARIN-CIRION
+no ip route 190.94.210.184 255.255.255.252 172.23.242.222 name GPON-VL1858-TUNO-QUNITA-EL-ROBLE
+
+---------LEB1006X1-----------
+ssh soporte2@181.225.41.25
+
+config t
+interface Po8.1858
+ description QUNITA-EL-ROBLE;ID:26623
+ bandwidth 153600
+encapsulation dot1Q 1858
+ ip address 172.23.242.221 255.255.255.252
+ service-policy input 150M
+ service-policy output 150M
+exit
+ip route 64.76.228.67 255.255.255.255 172.23.242.222 name GPON-VL1858-TUNO-QUNITA-EL-ROBLE-ARIN-CIRION
+ip route 190.94.210.184 255.255.255.252 172.23.242.222 name GPON-VL1858-TUNO-QUNITA-EL-ROBLE
+end
+
+
+###########TROUBLESHOOTING############
+
+ping 172.23.242.222
+sh mac address-table vlan 1858
+show ethernet-switching table vlan 1858

@@ -1,0 +1,2371 @@
+Building configuration...
+
+Current configuration : 84533 bytes
+!
+! Last configuration change at 19:22:21 VET Sat Oct 12 2024 by jcrespo
+! NVRAM config last updated at 19:22:21 VET Sat Oct 12 2024 by jcrespo
+!
+version 16.12
+service timestamps debug datetime localtime show-timezone
+service timestamps log datetime localtime show-timezone
+service password-encryption
+service call-home
+platform qfp utilization monitor load 80
+platform punt-keepalive disable-kernel-core
+!
+hostname CRED1006X1
+!
+boot-start-marker
+boot-end-marker
+!
+!
+vrf definition Mgmt-intf
+ !
+ address-family ipv4
+ exit-address-family
+ !
+ address-family ipv6
+ exit-address-family
+!
+enable secret 9 $9$dscc1W//sGkaNE$MXY.6Cy7jf4Iu8SlPvZd/Tepzo02016L8Q4cz5deftQ
+!
+no aaa new-model
+clock timezone VET -4 0
+call-home
+ contact-email-addr jcrespo@ifxnw.com.ve
+ profile "CiscoTAC-1"
+  active
+  destination transport-method http
+  no destination transport-method email
+!
+!
+!
+!
+!
+!
+!
+ip name-server 181.225.41.65 181.225.41.66 8.8.8.8
+ip domain lookup source-interface Loopback0
+!
+!
+!
+login on-success log
+ipv6 unicast-routing
+!
+!
+!
+!
+!
+!
+!
+subscriber templating
+!
+!
+!
+!
+!
+!
+mpls label protocol ldp
+no mpls ip propagate-ttl
+no mpls ldp advertise-labels
+mpls ldp advertise-labels for LOOPBACKS
+mpls traffic-eng tunnels
+no mpls traffic-eng auto-bw timers
+clns routing
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+!
+!
+!
+crypto pki trustpoint SLA-TrustPoint
+ enrollment terminal
+ revocation-check crl
+!
+crypto pki trustpoint TP-self-signed-3163431592
+ enrollment selfsigned
+ subject-name cn=IOS-Self-Signed-Certificate-3163431592
+ revocation-check none
+ rsakeypair TP-self-signed-3163431592
+!
+!
+crypto pki certificate chain SLA-TrustPoint
+ certificate ca 01
+  30820321 30820209 A0030201 02020101 300D0609 2A864886 F70D0101 0B050030
+  32310E30 0C060355 040A1305 43697363 6F312030 1E060355 04031317 43697363
+  6F204C69 63656E73 696E6720 526F6F74 20434130 1E170D31 33303533 30313934
+  3834375A 170D3338 30353330 31393438 34375A30 32310E30 0C060355 040A1305
+  43697363 6F312030 1E060355 04031317 43697363 6F204C69 63656E73 696E6720
+  526F6F74 20434130 82012230 0D06092A 864886F7 0D010101 05000382 010F0030
+  82010A02 82010100 A6BCBD96 131E05F7 145EA72C 2CD686E6 17222EA1 F1EFF64D
+  CBB4C798 212AA147 C655D8D7 9471380D 8711441E 1AAF071A 9CAE6388 8A38E520
+  1C394D78 462EF239 C659F715 B98C0A59 5BBB5CBD 0CFEBEA3 700A8BF7 D8F256EE
+  4AA4E80D DB6FD1C9 60B1FD18 FFC69C96 6FA68957 A2617DE7 104FDC5F EA2956AC
+  7390A3EB 2B5436AD C847A2C5 DAB553EB 69A9A535 58E9F3E3 C0BD23CF 58BD7188
+  68E69491 20F320E7 948E71D7 AE3BCC84 F10684C7 4BC8E00F 539BA42B 42C68BB7
+  C7479096 B4CB2D62 EA2F505D C7B062A4 6811D95B E8250FC4 5D5D5FB8 8F27D191
+  C55F0D76 61F9A4CD 3D992327 A8BB03BD 4E6D7069 7CBADF8B DF5F4368 95135E44
+  DFC7C6CF 04DD7FD1 02030100 01A34230 40300E06 03551D0F 0101FF04 04030201
+  06300F06 03551D13 0101FF04 05300301 01FF301D 0603551D 0E041604 1449DC85
+  4B3D31E5 1B3E6A17 606AF333 3D3B4C73 E8300D06 092A8648 86F70D01 010B0500
+  03820101 00507F24 D3932A66 86025D9F E838AE5C 6D4DF6B0 49631C78 240DA905
+  604EDCDE FF4FED2B 77FC460E CD636FDB DD44681E 3A5673AB 9093D3B1 6C9E3D8B
+  D98987BF E40CBD9E 1AECA0C2 2189BB5C 8FA85686 CD98B646 5575B146 8DFC66A8
+  467A3DF4 4D565700 6ADF0F0D CF835015 3C04FF7C 21E878AC 11BA9CD2 55A9232C
+  7CA7B7E6 C1AF74F6 152E99B7 B1FCF9BB E973DE7F 5BDDEB86 C71E3B49 1765308B
+  5FB0DA06 B92AFE7F 494E8A9E 07B85737 F3A58BE1 1A48A229 C37C1E69 39F08678
+  80DDCD16 D6BACECA EEBC7CF9 8428787B 35202CDC 60E4616A B623CDBD 230E3AFB
+  418616A9 4093E049 4D10AB75 27E86F73 932E35B5 8862FDAE 0275156F 719BB2F0
+  D697DF7F 28
+  	quit
+crypto pki certificate chain TP-self-signed-3163431592
+ certificate self-signed 01
+  30820330 30820218 A0030201 02020101 300D0609 2A864886 F70D0101 05050030
+  31312F30 2D060355 04031326 494F532D 53656C66 2D536967 6E65642D 43657274
+  69666963 6174652D 33313633 34333135 3932301E 170D3232 31323031 31353236
+  35395A17 0D333030 31303130 30303030 305A3031 312F302D 06035504 03132649
+  4F532D53 656C662D 5369676E 65642D43 65727469 66696361 74652D33 31363334
+  33313539 32308201 22300D06 092A8648 86F70D01 01010500 0382010F 00308201
+  0A028201 0100A4F6 7C8D76EE 69E8AC7E 3D986851 19C9AE94 06BF4E63 2149D34B
+  3FA03C55 F94ABA45 1E1C3E8D 81961AC7 6856AEB7 C26589A6 D10C5A43 5C949B8F
+  82A44965 012EF6C3 5BDF02B3 96BBC963 B5FD08B0 8E865DEC B4B5784B 9A335257
+  74C9018F D675D80F 3A03CC46 9D979613 07666B48 BEBF01DB AEC1B6DC ADA57F3E
+  A2439EE6 5C78E660 23327931 6E7C53F2 CCBEAD30 A022E43F C6A247EF 9C7C6B22
+  4EEFAEE5 FA2C4B06 7887ABFA 87480667 CCB50803 7FDE8F77 21EF333A 4E24DB5B
+  6D4593FF 4F39B52D C539AE50 21573C25 78CD9833 D6CAC5D2 75DD4081 8241E95D
+  A6506C64 7D9B6D7A 094185B4 674EF545 520FC4FC E12B4A56 0EB88D7C F28B51BA
+  B1B6F88B 805D0203 010001A3 53305130 0F060355 1D130101 FF040530 030101FF
+  301F0603 551D2304 18301680 14EF2BCB A6F96CB0 180AE3F1 B659F4F6 0B6B31A5
+  93301D06 03551D0E 04160414 EF2BCBA6 F96CB018 0AE3F1B6 59F4F60B 6B31A593
+  300D0609 2A864886 F70D0101 05050003 82010100 5CA6AA87 18E3F770 6C2A4A17
+  E737C648 0B919F9B 66564145 A604FEDD 6DDEC7E1 A4499324 8749ED8D 8B623746
+  9A14E145 C17B5092 7A985502 F7424267 D5B99527 41E84997 DD885AC4 866874F7
+  3222D2DF 1BF64708 BC78E46A 8187C599 D6BD99D5 C11B8A74 8CDC8DF1 7175AFE8
+  22C71234 A3C31034 C8A29663 15E4452D C6F6AF2C 5807FD56 A60F8789 EBDAD354
+  53595C9E A290A462 5C2F47FC 313F6AF8 A1E5F208 6803980A 11BA58B0 5CC13B9F
+  BC311699 6B871B43 FD193ABC 6E2F1F17 3A49891B B7321464 942CA186 DE33347E
+  54D5AA10 7E67719D EE7AD65D 56DBD8F2 BED23F53 CAB999CD AECE90F7 47F6FC6D
+  02B2B199 DE042B43 8FBA0553 903BF417 425610F3
+  	quit
+!
+crypto pki certificate pool
+ cabundle nvram:ios_core.p7b
+!
+!
+license udi pid ASR1006-X sn FXS222301LW
+license boot level advipservices
+archive
+ path ftp://181.225.41.67/$h-$t
+ write-memory
+memory free low-watermark processor 990917
+!
+!
+spanning-tree extend system-id
+diagnostic bootup level minimal
+!
+username jcrespo privilege 15 secret 9 $9$AC1.OKHx4Yud5k$YjFHOSjn4U/06JTXYxzkzFfvIGTYf9PHZf0vOR9klbE
+username in2boneC privilege 15 secret 9 $9$42DLPaHkDru6ek$tKEG0i04lxafpWcvxEgfn.VeLPM2IG3KZq7E7MojUC2
+username soporte2 privilege 15 secret 9 $9$lvScTPjTc18Cwk$COG54U35bcgVZDDqAzMMzAJnv.xRBo7ShbBhnE7Xv0Q
+!
+redundancy
+ mode sso
+!
+!
+!
+!
+!
+!
+track 5 ip sla 5 reachability
+!
+track 25 ip sla 2125 reachability
+!
+lldp run
+!
+policy-map 800M
+ class class-default
+  police cir 819200000
+   conform-action transmit
+   exceed-action drop
+policy-map 8G
+ class class-default
+  police cir 8192000000 conform-action transmit  exceed-action drop
+policy-map COELLO-T_POLAR
+ class class-default
+  police cir 1536000000 conform-action transmit  exceed-action drop
+policy-map SIMPLETV-SAT
+ class class-default
+  police cir 512000000 conform-action transmit  exceed-action drop
+policy-map PCR-DATINVOZ-TDELTA
+ class class-default
+  police cir 2048000000 conform-action transmit  exceed-action drop
+policy-map SILVERDATA-EU
+ class class-default
+  police cir 7168000000 conform-action transmit  exceed-action drop
+policy-map SIN-VENVISION-TEMP
+ class class-default
+  police cir 1024000000 conform-action transmit  exceed-action drop
+policy-map 300M
+ class class-default
+  police cir 300720000
+   conform-action transmit
+   exceed-action drop
+policy-map QUALCOM
+ class class-default
+  police cir 1843200000 conform-action transmit  exceed-action drop
+policy-map TECNOIMPULSO
+ class class-default
+  police cir 2048000000 conform-action transmit  exceed-action drop
+policy-map 200M
+ class class-default
+  police cir 204800000 conform-action transmit  exceed-action drop
+policy-map 600M
+ class class-default
+  police cir 614400000 conform-action transmit  exceed-action drop
+policy-map TELENET
+ class class-default
+  police cir 614400000 conform-action transmit  exceed-action drop
+policy-map 240M
+ class class-default
+  police cir 245760000 conform-action transmit  exceed-action drop
+policy-map 250M
+ class class-default
+  police cir 256000000 conform-action transmit  exceed-action drop
+policy-map CCSRED
+ class class-default
+  police cir 512000000 conform-action transmit  exceed-action drop
+policy-map COELLO-EL_BOSQUE
+ class class-default
+  police cir 512000000 conform-action transmit  exceed-action drop
+policy-map GALI-TELENET
+ class class-default
+  police cir 409600000 conform-action transmit  exceed-action drop
+policy-map IRVENET
+ class class-default
+  police cir 1126400000 conform-action transmit  exceed-action drop
+policy-map SD-LAPAZ
+ class class-default
+  police cir 1843200000 conform-action transmit  exceed-action drop
+policy-map 40M
+ class class-default
+  police cir 40960000 bc 1280000
+   conform-action transmit
+   exceed-action drop
+policy-map 90M
+ class class-default
+  police cir 92160000 conform-action transmit  exceed-action drop
+policy-map GALI-LyH-NETWORKS
+ class class-default
+  police cir 1024000000 conform-action transmit  exceed-action drop
+policy-map 70M
+ class class-default
+  police cir 71680000 bc 2240000
+   conform-action transmit
+   exceed-action drop
+policy-map 110M
+ class class-default
+  police cir 112640000 bc 3520000
+   conform-action transmit
+   exceed-action drop
+policy-map TELENET-CENTRO
+ class class-default
+  police cir 614400000 conform-action transmit  exceed-action drop
+policy-map INV-PENA
+ class class-default
+  police cir 204800000 conform-action transmit  exceed-action drop
+policy-map 7-LINK
+ class class-default
+  police cir 1024000000 conform-action transmit  exceed-action drop
+policy-map SILVERDATA-CIMA
+ class class-default
+  police cir 5222400000 conform-action transmit  exceed-action drop
+policy-map GALI-INTERNET-DED
+ class class-default
+  police cir 122880000 conform-action transmit  exceed-action drop
+policy-map 400M
+ class class-default
+  police cir 409600000 conform-action transmit  exceed-action drop
+policy-map SUPERCABLE
+ class class-default
+  police cir 25600000000 conform-action transmit  exceed-action drop
+policy-map PLAN_SUAREZ_STAMON
+ class class-default
+  police cir 76800000 conform-action transmit  exceed-action drop
+policy-map 30M
+ class class-default
+  police cir 30720000 bc 960000
+   conform-action transmit
+   exceed-action drop
+policy-map 195M
+ class class-default
+  police cir 199680000 conform-action transmit  exceed-action drop
+policy-map 500M
+ class class-default
+  police cir 512000000 conform-action transmit  exceed-action drop
+policy-map 20M
+ class class-default
+  police cir 20480000 bc 640000
+   conform-action transmit
+   exceed-action drop
+policy-map 100M
+ class class-default
+  police cir 102400000 conform-action transmit  exceed-action drop
+policy-map 50M
+ class class-default
+  police cir 51200000 conform-action transmit  exceed-action drop
+policy-map 60M
+ class class-default
+  police cir 61440000 conform-action transmit  exceed-action drop
+policy-map 1G
+ class class-default
+  police cir 1024000000 conform-action transmit  exceed-action drop
+policy-map SINAI-QTA-SAMIRA-1
+ class class-default
+  police cir 409600000 conform-action transmit  exceed-action drop
+policy-map CDZ-SILVERD-RES-HUMB
+ class class-default
+  police cir 1433600000 conform-action transmit  exceed-action drop
+policy-map 350M
+ class class-default
+  police cir 358400000 conform-action transmit  exceed-action drop
+policy-map 360M
+ class class-default
+  police cir 368640000 bc 11520000
+   conform-action transmit
+   exceed-action drop
+policy-map QTASOLERA
+ class class-default
+  police cir 358400000 conform-action transmit  exceed-action drop
+policy-map VIPTEL
+ class class-default
+  police cir 4096000000 conform-action transmit  exceed-action drop
+policy-map SILVERDATA
+ class class-default
+  police cir 1689600000 conform-action transmit  exceed-action drop
+policy-map 150M
+ class class-default
+  police cir 156672000 bc 4896000
+   conform-action transmit
+   exceed-action drop
+policy-map 6G
+ class class-default
+  police cir 6144000000 conform-action transmit  exceed-action drop
+policy-map INV-PENA-LY
+ class class-default
+  police cir 1843200000 conform-action transmit  exceed-action drop
+policy-map NTIS-LETONIA
+ class class-default
+  police cir 122880000 conform-action transmit  exceed-action drop
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ description VECCSNOC7206X2#
+ ip address 181.225.41.19 255.255.255.255
+ ip router isis
+ ipv6 address 2803:D480:0:73::19/128
+!
+interface Port-channel1
+ description CCSJ5120CREDX1_ae1(BACKBONE)
+ mtu 9000
+ no ip address
+ ip mtu 8000
+ load-interval 30
+ hold-queue 1000 in
+ hold-queue 1000 out
+!
+interface Port-channel1.9
+ description CC-BACKBONE-L3-IFX
+ encapsulation dot1Q 9
+ ip address 172.23.249.5 255.255.255.240
+ ip mtu 8000
+ ip router isis
+ ipv6 address 2803:D480:0:80:0:3E80:0:5/124
+ ipv6 mtu 8000
+ mpls ip
+ mpls mtu 4470
+ ipv6 ospf 9 area 0
+ clns mtu 8983
+!
+interface Port-channel1.30
+ description CRED-LEBRUN
+ encapsulation dot1Q 30
+ ip address 172.23.249.35 255.255.255.240
+ ip mtu 8000
+ ip router isis
+ ipv6 address 2803:D480:0:66::C002/64
+ ipv6 mtu 8000
+ mpls ip
+ mpls mtu 4470
+ ipv6 ospf 30 area 0
+ clns mtu 8983
+!
+interface Port-channel2
+ description CCSJ5120CREDX1_ae2(PROVIDERS)
+ mtu 9000
+ no ip address
+ ip mtu 8000
+ load-interval 30
+ hold-queue 1000 in
+ hold-queue 1000 out
+!
+interface Port-channel2.1
+ encapsulation dot1Q 1
+ ip address 172.23.249.97 255.255.255.240 secondary
+ ip address 172.23.253.1 255.255.255.192
+ ip access-group ACCESO-TELNET092021 out
+!
+interface Port-channel2.99
+ encapsulation dot1Q 99 native
+!
+interface Port-channel2.915
+ description LEV3-CL_IP - FRO2006909960
+ bandwidth 10240000
+ encapsulation dot1Q 915
+ ip address 4.15.156.46 255.255.255.252
+ ip mtu 8972
+ ipv6 address 2001:1900:2100::50C6/126
+ ipv6 mtu 8972
+!
+interface Port-channel2.918
+ description LEV3-CIR2023_IP2/81-5304M9D
+ encapsulation dot1Q 918
+ ip address 8.242.241.178 255.255.255.252
+ ipv6 address 2001:13B1:8000::62/126
+!
+interface Port-channel2.928
+ description TIS-00000063226 / ZNT004UMI2MI2NN / PEW:EQX5-224941869850
+ bandwidth 10240000
+ encapsulation dot1Q 928
+ ip address 89.221.41.91 255.255.255.254
+ ipv6 address 2001:41A8:4020:2::20A/126
+!
+interface Port-channel2.943
+ description TIS-10000006901 / ZNT001UMI2MI2NN / PEW:EQX5-224941869850
+ bandwidth 5120000
+ encapsulation dot1Q 943
+ ip address 195.22.199.77 255.255.255.254
+ ipv6 address 2001:41A8:4020:2::19A/126
+!
+interface Port-channel3
+ description CCSJ5120CREDX1_ae3(cust)
+ mtu 9000
+ no ip address
+ ip mtu 8000
+ load-interval 30
+ load-balancing vlan
+ hold-queue 1000 in
+ hold-queue 1000 out
+!
+interface Port-channel3.2
+ description IFXVE-OFICINAS(INTERNET-MCCY)
+ encapsulation dot1Q 2
+ ip address 181.225.42.1 255.255.255.248
+ ipv6 address 2803:D480:0:80::3EB1/124
+!
+interface Port-channel3.255
+ description BANTEL;ID:25987
+ bandwidth 1024000
+ encapsulation dot1Q 255
+ ip address 172.23.253.245 255.255.255.252 secondary
+ ip address 200.62.9.157 255.255.255.252
+ service-policy input 1G
+ service-policy output 1G
+!
+interface Port-channel3.261
+ description CRED-SIMPLETV-SA-MGM
+ encapsulation dot1Q 261
+ ip address 172.23.249.217 255.255.255.248 secondary
+ ip address 181.225.48.145 255.255.255.248
+ ipv6 address 2803:D480:0:96::8053/64
+ service-policy input SIMPLETV-SAT
+ service-policy output SIMPLETV-SAT
+!
+interface Port-channel3.264
+ description CRED-VIPTEL
+ bandwidth 4096000
+ encapsulation dot1Q 264
+ ip address 200.62.26.197 255.255.255.252
+ shutdown
+ ipv6 address 2803:D480:0:69::8053/64
+ service-policy input VIPTEL
+ service-policy output VIPTEL
+!
+interface Port-channel3.266
+ description CRED-SUPERCABLE
+ bandwidth 25600000
+ encapsulation dot1Q 266
+ ip address 190.94.208.205 255.255.255.252
+ ipv6 address 2803:D480:0:65::8053/64
+ service-policy input SUPERCABLE
+ service-policy output SUPERCABLE
+!
+interface Port-channel3.281
+ description CRED-UNITEL-VDP-2022_1
+ bandwidth 1000000
+ encapsulation dot1Q 281
+ ip address 172.23.253.237 255.255.255.252
+!
+interface Port-channel3.283
+ description CRED-UNITEL-CAR-2022_1
+ bandwidth 1000000
+ encapsulation dot1Q 283
+ ip address 172.23.250.25 255.255.255.252
+!
+interface Port-channel3.298
+ description CRED-7LINK
+ bandwidth 1024000
+ encapsulation dot1Q 298
+ ip address 181.225.44.21 255.255.255.252
+ shutdown
+ service-policy input 7-LINK
+ service-policy output 7-LINK
+!
+interface Port-channel3.463
+ description TUNO-PRIMTEK-PREMIER;ID:26320
+ bandwidth 819200
+ encapsulation dot1Q 463
+ ip address 190.94.198.161 255.255.255.248
+ service-policy input 800M
+ service-policy output 800M
+!
+interface Port-channel3.477
+ description CONDOMINIO-TUNO;ID:4
+ bandwidth 10240
+ encapsulation dot1Q 477
+ ip address 172.23.248.241 255.255.255.252
+ service-policy input 50M
+ service-policy output 50M
+!
+interface Port-channel3.556
+ description GALI-LyH-NETWORKS
+ bandwidth 1024000
+ encapsulation dot1Q 556
+ ip address 172.23.241.13 255.255.255.252
+ shutdown
+ ipv6 address 2803:D480:0:88::8053/64
+ service-policy input GALI-LyH-NETWORKS
+ service-policy output GALI-LyH-NETWORKS
+!
+interface Port-channel3.575
+ description TELENET-T-EASO;ID:26245
+ bandwidth 409600
+ encapsulation dot1Q 575
+ ip address 172.23.241.253 255.255.255.252
+ service-policy input GALI-TELENET
+ service-policy output GALI-TELENET
+!
+interface Port-channel3.577
+ description MS-INT-20;ID:26059
+ bandwidth 153600
+ encapsulation dot1Q 577
+ ip address 172.23.254.5 255.255.255.252 secondary
+ ip address 190.94.211.25 255.255.255.248
+ shutdown
+ service-policy input 150M
+ service-policy output 150M
+!
+interface Port-channel3.581
+ description GALI-MS-DALIA-R;ID:26059
+ bandwidth 112640
+ encapsulation dot1Q 581
+ ip address 172.23.253.117 255.255.255.252
+ service-policy input 110M
+ service-policy output 110M
+!
+interface Port-channel3.590
+ description GALI-TECNOIMPULSO
+ bandwidth 2048000
+ encapsulation dot1Q 590
+ ip address 190.94.245.89 255.255.255.248
+ ipv6 address 2803:D480:0:91::8053/64
+ service-policy input TECNOIMPULSO
+ service-policy output TECNOIMPULSO
+!
+interface Port-channel3.802
+ description DIST-ASIVEN21;ID:26737
+ bandwidth 51200
+ encapsulation dot1Q 802
+ ip address 172.23.240.117 255.255.255.252
+ service-policy input 50M
+ service-policy output 50M
+!
+interface Port-channel3.803
+ description AP-MUD;ID:26637
+ bandwidth 153600
+ encapsulation dot1Q 803
+ ip address 172.23.251.49 255.255.255.252
+ service-policy input 150M
+ service-policy output 150M
+!
+interface Port-channel3.809
+ description PORCELANA-PAST;ID:25986
+ bandwidth 71680
+ encapsulation dot1Q 809
+ ip address 172.23.240.121 255.255.255.252
+ service-policy input 70M
+ service-policy output 70M
+!
+interface Port-channel3.953
+ description ELUN-SILVERDATA-TF;ID:26508
+ bandwidth 7168000
+ encapsulation dot1Q 953
+ ip address 190.94.244.113 255.255.255.252
+ ipv6 address 2803:D480:0:90::8053/64
+ service-policy input SILVERDATA-EU
+ service-policy output SILVERDATA-EU
+!
+interface Port-channel3.954
+ description BNC;ID:21599
+ bandwidth 102400
+ encapsulation dot1Q 954
+ ip address 181.225.43.161 255.255.255.248
+ service-policy input 100M
+ service-policy output 100M
+!
+interface Port-channel3.957
+ description BNC4_OLD-EDC456;ID:21599
+ bandwidth 20480
+ encapsulation dot1Q 957
+ ip address 181.225.41.97 255.255.255.240
+ service-policy input 20M
+ service-policy output 20M
+!
+interface Port-channel3.976
+ description ELUN-TELENET-TORRE-F
+ bandwidth 614400
+ encapsulation dot1Q 976
+ ip address 172.23.243.129 255.255.255.252
+ service-policy input TELENET-CENTRO
+ service-policy output TELENET-CENTRO
+!
+interface Port-channel3.979
+ description INV-PENA;ID:26328
+ bandwidth 1024000
+ encapsulation dot1Q 979
+ ip address 172.23.244.77 255.255.255.252
+ service-policy input INV-PENA
+ service-policy output INV-PENA
+!
+interface Port-channel3.984
+ description PRIMTEK-ELVENEZ;ID:26320
+ bandwidth 512000
+ encapsulation dot1Q 984
+ ip address 190.94.198.177 255.255.255.248
+ service-policy input 500M
+ service-policy output 500M
+!
+interface Port-channel3.993
+ description CVA-CENTRO;ID:26329
+ bandwidth 102400
+ encapsulation dot1Q 993
+ ip address 172.23.245.205 255.255.255.252
+ service-policy input 100M
+ service-policy output 100M
+!
+interface Port-channel3.1017
+ description COELLO-VEGA;ID:26329
+ bandwidth 512000
+ encapsulation dot1Q 1017
+ ip address 172.23.247.181 255.255.255.252
+ service-policy input COELLO-EL_BOSQUE
+ service-policy output COELLO-EL_BOSQUE
+!
+interface Port-channel3.1022
+ description LIBER-QUALCOM
+ bandwidth 1843200
+ encapsulation dot1Q 1022
+ ip address 190.94.209.57 255.255.255.248
+ ipv6 address 2803:D480:0:70::8053/64
+ service-policy input QUALCOM
+ service-policy output QUALCOM
+!
+interface Port-channel3.1041
+ description CARACAS-RED-TELECOM;ID:26256
+ bandwidth 512000
+ encapsulation dot1Q 1041
+ ip address 190.94.243.89 255.255.255.248
+ ipv6 address 2803:D480:0:7B::8053/64
+ service-policy input 90M
+ service-policy output 90M
+!
+interface Port-channel3.1042
+ description DORAL-PRAG;ID:26056
+ encapsulation dot1Q 1042
+ ip address 172.23.245.125 255.255.255.252
+!
+interface Port-channel3.1046
+ description BPLAZA-IP;ID:26317
+ bandwidth 102400
+ encapsulation dot1Q 1046
+ ip address 172.23.255.113 255.255.255.252
+ service-policy input 100M
+ service-policy output 100M
+!
+interface Port-channel3.1049
+ description LIBER-GTITHOST
+ bandwidth 204800
+ encapsulation dot1Q 1049
+ ip address 181.225.43.137 255.255.255.248
+ service-policy input 200M
+ service-policy output 200M
+!
+interface Port-channel3.1054
+ description CUBO-PRIMTEK-CCCT;ID:26320
+ bandwidth 819200
+ encapsulation dot1Q 1054
+ ip address 190.94.251.209 255.255.255.248
+ service-policy input 800M
+ service-policy output 800M
+!
+interface Port-channel3.1069
+ description CUBO-PLATC-EU
+ bandwidth 291840
+ encapsulation dot1Q 1069
+ ip address 190.94.209.121 255.255.255.248
+ shutdown
+ ipv6 address 2803:D480:0:83::8053/64
+!
+interface Port-channel3.1167
+ description FUND-ALCALDIA;ID:26637
+ bandwidth 20480
+ encapsulation dot1Q 1167
+ ip address 172.23.240.177 255.255.255.252
+ service-policy input 20M
+ service-policy output 20M
+!
+interface Port-channel3.1211
+ description SINAI-MK_RES
+ encapsulation dot1Q 1211
+ ip address 172.23.255.117 255.255.255.252
+ ipv6 address 2803:D480:0:62::8053/64
+!
+interface Port-channel3.1213
+ description SIN-VENVISION-TEMP
+ bandwidth 1024000
+ encapsulation dot1Q 1213
+ ip address 181.225.47.209 255.255.255.240
+ service-policy input SIN-VENVISION-TEMP
+ service-policy output SIN-VENVISION-TEMP
+!
+interface Port-channel3.1218
+ description SINAI-IRVENET
+ bandwidth 1126400
+ encapsulation dot1Q 1218
+ ip address 172.23.241.37 255.255.255.252
+ service-policy input IRVENET
+ service-policy output IRVENET
+!
+interface Port-channel3.1221
+ description SINAI-QTA-SAMIRA-1
+ bandwidth 409600
+ encapsulation dot1Q 1221
+ ip address 190.94.209.73 255.255.255.248
+ service-policy input SINAI-QTA-SAMIRA-1
+ service-policy output SINAI-QTA-SAMIRA-1
+!
+interface Port-channel3.1222
+ description SINAI-QTA-SAMIRA-1
+ bandwidth 409600
+ encapsulation dot1Q 1222
+ ip address 190.94.198.97 255.255.255.248
+ service-policy input 400M
+ service-policy output 400M
+!
+interface Port-channel3.1225
+ description SINAI-VENEVIS-PLUS-2
+ bandwidth 40960
+ encapsulation dot1Q 1225
+ ip address 181.225.53.33 255.255.255.248
+ service-policy input 40M
+ service-policy output 40M
+!
+interface Port-channel3.1304
+ description TEKKOA-MIRADOR;ID:
+ bandwidth 204800
+ encapsulation dot1Q 1304
+ ip address 172.23.240.113 255.255.255.252
+ service-policy input 200M
+ service-policy output 200M
+!
+interface Port-channel3.1534
+ description MK_RES1;ID:4
+ encapsulation dot1Q 1534
+ ip address 172.23.253.213 255.255.255.252
+ ipv6 address 2803:D480:1:100::8053/64
+!
+interface Port-channel3.1565
+ description TELENET;ID:26245
+ bandwidth 614400
+ encapsulation dot1Q 1565
+ ip address 172.23.244.133 255.255.255.252
+ service-policy input TELENET
+ service-policy output TELENET
+!
+interface Port-channel3.1574
+ description GALI-INTERNET-DED
+ bandwidth 245760
+ encapsulation dot1Q 1574
+ ip address 172.23.241.217 255.255.255.252
+ service-policy input GALI-INTERNET-DED
+ service-policy output GALI-INTERNET-DED
+!
+interface Port-channel3.1602
+ description PC-INT-DED-PASCAL
+ bandwidth 61440
+ encapsulation dot1Q 1602
+ ip address 190.94.250.221 255.255.255.252
+ service-policy input 30M
+ service-policy output 30M
+!
+interface Port-channel3.1646
+ description GAMA-LPG;ID:26091
+ bandwidth 51200
+ encapsulation dot1Q 1646
+ ip address 172.23.244.197 255.255.255.252
+ service-policy input 50M
+ service-policy output 50M
+!
+interface Port-channel3.1765
+ description PCR-NTIS-C-LETONIA
+ bandwidth 122880
+ encapsulation dot1Q 1765
+ ip address 172.23.242.65 255.255.255.252
+ service-policy input NTIS-LETONIA
+ service-policy output NTIS-LETONIA
+!
+interface Port-channel3.1862
+ description TUNO-FDV-EL-TOLON;ID:26198
+ bandwidth 204800
+ encapsulation dot1Q 1862
+ ip address 172.23.238.37 255.255.255.252
+ service-policy input 200M
+ service-policy output 200M
+!
+interface Port-channel3.1930
+ description LIBER-SOL-COELLO-P6
+ bandwidth 1536000
+ encapsulation dot1Q 1930
+ ip address 172.23.245.21 255.255.255.252
+ service-policy input COELLO-T_POLAR
+ service-policy output COELLO-T_POLAR
+!
+interface Port-channel3.1932
+ bandwidth 358400
+ encapsulation dot1Q 1932
+ ip address 172.23.246.69 255.255.255.252
+ service-policy input QTASOLERA
+ service-policy output QTASOLERA
+!
+interface Port-channel3.1949
+ description CORPOELEC-SB;ID:4
+ bandwidth 307200
+ encapsulation dot1Q 1949
+ ip address 172.23.242.209 255.255.255.252
+ service-policy input 360M
+ service-policy output 360M
+!
+interface Port-channel3.1951
+ description VIVAX-PYG;ID:21679
+ bandwidth 112640
+ encapsulation dot1Q 1951
+ ip address 172.23.254.173 255.255.255.252
+ ip mtu 1500
+!
+interface Port-channel3.1953
+ description CRED-PS-LA-TRINIDAD
+ encapsulation dot1Q 1953
+ ip address 172.23.252.193 255.255.255.252
+ service-policy input 200M
+ service-policy output 200M
+!
+interface Port-channel3.1960
+ description CRED-CONSORCIO-CRED;ID:26607
+ bandwidth 204800
+ encapsulation dot1Q 1960
+ ip address 172.23.240.141 255.255.255.252
+ ip access-group CREDICARD out
+ service-policy input 200M
+ service-policy output 200M
+!
+interface Port-channel3.2101
+ description LY-LOCATEL-LY
+ encapsulation dot1Q 2101
+ ip address 172.23.238.21 255.255.255.252
+ service-policy input 100M
+ service-policy output 100M
+!
+interface Port-channel3.2102
+ description LY-INVERSIONES-PENA; ID:26328
+ bandwidth 1843200
+ encapsulation dot1Q 2102
+ ip address 181.225.53.201 255.255.255.248
+ service-policy input INV-PENA-LY
+ service-policy output INV-PENA-LY
+!
+interface Port-channel3.2104
+ description LY-SILVERDATA-LA-PAZ
+ bandwidth 1843200
+ encapsulation dot1Q 2104
+ ip address 172.23.237.229 255.255.255.252
+ ipv6 address 2803:D480:0:93::8053/64
+ service-policy input SD-LAPAZ
+ service-policy output SD-LAPAZ
+!
+interface Port-channel3.3597
+ description DAYCO-CUBO-BC
+ encapsulation dot1Q 3597
+ ip address 172.23.250.89 255.255.255.252
+!
+interface Port-channel3.3655
+ description CDZ-SILVERDATA-CIMA
+ bandwidth 5222400
+ encapsulation dot1Q 3655
+ ip address 190.94.199.185 255.255.255.252
+ ipv6 address 2803:D480:0:77::8053/64
+ service-policy input SILVERDATA-CIMA
+ service-policy output SILVERDATA-CIMA
+!
+interface Port-channel3.3658
+ description CDZ-SILVERD-RES-HUMB
+ bandwidth 1433600
+ encapsulation dot1Q 3658
+ ip address 190.94.193.185 255.255.255.252
+ ipv6 address 2803:D480:0:74::8053/64
+ service-policy input CDZ-SILVERD-RES-HUMB
+ service-policy output CDZ-SILVERD-RES-HUMB
+!
+interface Port-channel3.3659
+ description TECN-INSTAPAGO;ID:26628
+ bandwidth 51200
+ encapsulation dot1Q 3659
+ ip address 172.23.242.237 255.255.255.252
+ service-policy input 50M
+ service-policy output 50M
+!
+interface Port-channel3.3660
+ description P-SUAREZ-STA-MON;ID:26183
+ bandwidth 51200
+ encapsulation dot1Q 3660
+ ip address 172.23.238.5 255.255.255.252 secondary
+ ip address 172.23.242.245 255.255.255.252
+ service-policy input PLAN_SUAREZ_STAMON
+ service-policy output PLAN_SUAREZ_STAMON
+!
+interface Port-channel3.3665
+ description CDZ-SPEC-SEC-SERV-C;ID:26876
+ bandwidth 61440
+ encapsulation dot1Q 3665
+ ip address 172.23.237.5 255.255.255.252
+ service-policy input 60M
+ service-policy output 60M
+!
+interface Port-channel3.3666
+ description CDZ-XDATA-EL-VALLE;ID:26608
+ bandwidth 512000
+ encapsulation dot1Q 3666
+ ip address 172.23.237.209 255.255.255.252
+ service-policy input 500M
+ service-policy output 500M
+!
+interface Port-channel3.4055
+ description FRESH-TECHS;ID:26556
+ bandwidth 614400
+ encapsulation dot1Q 4055
+ ip address 190.94.199.101 255.255.255.252
+!
+interface Port-channel3.4065
+ description GAL-SIMPLETV-RO-1
+ bandwidth 102400
+ encapsulation dot1Q 4065
+ ip address 172.23.237.237 255.255.255.252
+ service-policy input 100M
+ service-policy output 100M
+!
+interface HundredGigE0/0/0
+ description CCSJ5120CREDX1_Eth0/0/55
+ mtu 9000
+ no ip address
+ load-interval 30
+ channel-group 2 mode active
+!
+interface FortyGigabitEthernet0/1/0
+ description CCSJ5120CREDX1_Eth0/0/52
+ mtu 9000
+ no ip address
+ shutdown
+!
+interface FortyGigabitEthernet0/1/1
+ description CCSJ5120CREDX1_Eth0/0/50
+ mtu 9000
+ no ip address
+ load-interval 30
+ shutdown
+!
+interface HundredGigE1/0/0
+ description CCSJ5120CREDX1_Eth0/0/53
+ mtu 9000
+ no ip address
+ load-interval 30
+ channel-group 1 mode active
+!
+interface HundredGigE1/1/0
+ description CCSJ5120CREDX1_Eth0/0/51
+ mtu 9000
+ no ip address
+ load-interval 30
+ channel-group 3 mode active
+!
+interface GigabitEthernet0
+ vrf forwarding Mgmt-intf
+ no ip address
+ negotiation auto
+!
+router ospf 9
+ router-id 181.225.41.19
+ redistribute connected
+ redistribute static
+ redistribute ospf 30 metric 254
+ network 172.23.249.0 0.0.0.15 area 0
+ default-information originate always
+!
+router ospf 30
+ router-id 172.23.249.35
+ redistribute connected
+ redistribute static
+ redistribute ospf 9 metric 254
+ network 172.23.249.32 0.0.0.15 area 0
+ default-information originate
+!
+router isis
+ net 49.0001.0000.0000.0136.00
+ is-type level-2-only
+ metric-style wide level-2
+ mpls traffic-eng router-id Loopback0
+ mpls traffic-eng level-2
+!
+router bgp 8053
+ bgp router-id 181.225.41.19
+ no bgp fast-external-fallover
+ bgp log-neighbor-changes
+ no bgp default ipv4-unicast
+ neighbor iBGP-VECCS peer-group
+ neighbor iBGP-VECCS remote-as 8053
+ neighbor iBGP-VECCS description iBGP session with IFX RR
+ neighbor iBGP-VECCS ebgp-multihop 255
+ neighbor iBGP-VECCS update-source Loopback0
+ neighbor iBGP-VECCSV6 peer-group
+ neighbor iBGP-VECCSV6 remote-as 8053
+ neighbor iBGP-VECCSV6 description iBGP session with IFX RR
+ neighbor iBGP-VECCSV6 ebgp-multihop 255
+ neighbor iBGP-VECCSV6 update-source Loopback0
+ neighbor eBGP-CIRION-IPV6 peer-group
+ neighbor eBGP-CIRION-IPV6 remote-as 3356
+ neighbor eBGP-CIRION-IPV6 shutdown
+ neighbor eBGP-CIRION-IPV6 update-source Port-channel2.915
+ neighbor eBGP-CIRION-IPV4 peer-group
+ neighbor eBGP-CIRION-IPV4 remote-as 3356
+ neighbor eBGP-CIRION-IPV4 shutdown
+ neighbor eBGP-CIRION-IPV4 update-source Port-channel2.915
+ neighbor eBGP-SUPERCABLE peer-group
+ neighbor eBGP-SUPERCABLE remote-as 22313
+ neighbor eBGP-SUPERCABLE update-source Port-channel3.266
+ neighbor eBGP-SUPERCABLE-V6 peer-group
+ neighbor eBGP-SUPERCABLE-V6 remote-as 22313
+ neighbor eBGP-SUPERCABLE-V6 update-source Port-channel3.266
+ neighbor eBGP-CIRION_AG23-IPV6 peer-group
+ neighbor eBGP-CIRION_AG23-IPV6 remote-as 3549
+ neighbor eBGP-CIRION_AG23-IPV6 shutdown
+ neighbor eBGP-CIRION_AG23-IPV6 password 7 0522203717696F2E4B554541
+ neighbor eBGP-CIRION_AG23-IPV6 update-source Port-channel2.918
+ neighbor eBGP-CIRION_AG23-IPV4 peer-group
+ neighbor eBGP-CIRION_AG23-IPV4 remote-as 3549
+ neighbor eBGP-CIRION_AG23-IPV4 shutdown
+ neighbor eBGP-CIRION_AG23-IPV4 password 7 11203F3D21372A2B567A7977
+ neighbor eBGP-CIRION_AG23-IPV4 update-source Port-channel2.918
+ neighbor eBGP-TECNOIMP-IPV4 peer-group
+ neighbor eBGP-TECNOIMP-IPV4 remote-as 273029
+ neighbor eBGP-TECNOIMP-IPV4 update-source Port-channel3.590
+ neighbor eBGP-TECNOIMP-IPV6 peer-group
+ neighbor eBGP-TECNOIMP-IPV6 remote-as 273029
+ neighbor eBGP-TECNOIMP-IPV6 transport connection-mode passive
+ neighbor eBGP-TECNOIMP-IPV6 update-source Port-channel3.590
+ neighbor eBGP-FRESH-TECHV4 peer-group
+ neighbor eBGP-FRESH-TECHV4 remote-as 267811
+ neighbor eBGP-FRESH-TECHV4 ebgp-multihop 3
+ neighbor eBGP-FRESH-TECHV4 update-source Loopback0
+ neighbor eBGP-SPARKLE-IPV4 peer-group
+ neighbor eBGP-SPARKLE-IPV4 remote-as 6762
+ neighbor eBGP-SPARKLE-IPV4 update-source Port-channel2.943
+ neighbor eBGP-SPARKLE-IPV6 peer-group
+ neighbor eBGP-SPARKLE-IPV6 remote-as 6762
+ neighbor eBGP-SPARKLE-IPV6 update-source Port-channel2.943
+ neighbor eBGP-SPARKLE2-IPV4 peer-group
+ neighbor eBGP-SPARKLE2-IPV4 remote-as 6762
+ neighbor eBGP-SPARKLE2-IPV4 update-source Port-channel2.928
+ neighbor eBGP-SPARKLE2-IPV6 peer-group
+ neighbor eBGP-SPARKLE2-IPV6 remote-as 6762
+ neighbor eBGP-SPARKLE2-IPV6 update-source Port-channel2.928
+ neighbor eBGP-BANTEL peer-group
+ neighbor eBGP-BANTEL remote-as 27648
+ neighbor eBGP-BANTEL update-source Port-channel3.255
+ neighbor eBGP-SILVERDATA-IPV4 peer-group
+ neighbor eBGP-SILVERDATA-IPV4 remote-as 272854
+ neighbor eBGP-SILVERDATA-IPV4 update-source Port-channel3.3655
+ neighbor eBGP-SILVERDATA-IPV6 peer-group
+ neighbor eBGP-SILVERDATA-IPV6 remote-as 272854
+ neighbor eBGP-SILVERDATA-IPV6 transport connection-mode passive
+ neighbor eBGP-SILVERDATA-IPV6 update-source Port-channel3.3655
+ neighbor eBGP-SILVERDATA_CFL-IPV4 peer-group
+ neighbor eBGP-SILVERDATA_CFL-IPV4 remote-as 272854
+ neighbor eBGP-SILVERDATA_CFL-IPV4 update-source Port-channel3.953
+ neighbor eBGP-SILVERDATA_CFL-IPV6 peer-group
+ neighbor eBGP-SILVERDATA_CFL-IPV6 remote-as 272854
+ neighbor eBGP-SILVERDATA_CFL-IPV6 transport connection-mode passive
+ neighbor eBGP-SILVERDATA_CFL-IPV6 update-source Port-channel3.953
+ neighbor eBGP-SILVERDATA_LP-IPV4 peer-group
+ neighbor eBGP-SILVERDATA_LP-IPV4 remote-as 272854
+ neighbor eBGP-SILVERDATA_LP-IPV4 update-source Port-channel3.2104
+ neighbor eBGP-SILVERDATA_LP-IPV6 peer-group
+ neighbor eBGP-SILVERDATA_LP-IPV6 remote-as 272854
+ neighbor eBGP-SILVERDATA_LP-IPV6 transport connection-mode passive
+ neighbor eBGP-SILVERDATA_LP-IPV6 update-source Port-channel3.2104
+ neighbor eBGP-SIMPLETV peer-group
+ neighbor eBGP-SIMPLETV remote-as 263806
+ neighbor eBGP-SIMPLETV update-source Port-channel3.261
+ neighbor eBGP-SIMPLETV-V6 peer-group
+ neighbor eBGP-SIMPLETV-V6 remote-as 263806
+ neighbor eBGP-SIMPLETV-V6 update-source Port-channel3.261
+ neighbor 4.15.156.45 peer-group eBGP-CIRION-IPV4
+ neighbor 8.242.241.177 peer-group eBGP-CIRION_AG23-IPV4
+ neighbor 2001:13B1:8000::61 peer-group eBGP-CIRION_AG23-IPV6
+ neighbor 2001:1900:2100::50C5 peer-group eBGP-CIRION-IPV6
+ neighbor 2001:41A8:4020:2::199 peer-group eBGP-SPARKLE-IPV6
+ neighbor 2001:41A8:4020:2::209 peer-group eBGP-SPARKLE2-IPV6
+ neighbor 2803:D480:0:65::2 peer-group eBGP-SUPERCABLE-V6
+ neighbor 2803:D480:0:73::18 peer-group iBGP-VECCSV6
+ neighbor 2803:D480:0:73::25 peer-group iBGP-VECCSV6
+ neighbor 2803:D480:0:73::29 peer-group iBGP-VECCSV6
+ neighbor 2803:D480:0:77::2 peer-group eBGP-SILVERDATA-IPV6
+ neighbor 2803:D480:0:90::2 peer-group eBGP-SILVERDATA_CFL-IPV6
+ neighbor 2803:D480:0:91::2 peer-group eBGP-TECNOIMP-IPV6
+ neighbor 2803:D480:0:93::2 peer-group eBGP-SILVERDATA_LP-IPV6
+ neighbor 2803:D480:0:96::2 peer-group eBGP-SIMPLETV-V6
+ neighbor 2803:D480:0:96::3 peer-group eBGP-SIMPLETV-V6
+ neighbor 2803:D480:0:96::4 peer-group eBGP-SIMPLETV-V6
+ neighbor 2803:D480:0:96::5 peer-group eBGP-SIMPLETV-V6
+ neighbor 2803:D480:0:96::6 peer-group eBGP-SIMPLETV-V6
+ neighbor 89.221.41.90 peer-group eBGP-SPARKLE2-IPV4
+ neighbor 172.23.237.230 peer-group eBGP-SILVERDATA_LP-IPV4
+ neighbor 181.225.41.18 peer-group iBGP-VECCS
+ neighbor 181.225.41.25 peer-group iBGP-VECCS
+ neighbor 181.225.41.29 peer-group iBGP-VECCS
+ neighbor 181.225.48.146 peer-group eBGP-SIMPLETV
+ neighbor 181.225.48.147 peer-group eBGP-SIMPLETV
+ neighbor 181.225.48.148 peer-group eBGP-SIMPLETV
+ neighbor 181.225.48.149 peer-group eBGP-SIMPLETV
+ neighbor 181.225.48.150 peer-group eBGP-SIMPLETV
+ neighbor 190.94.199.102 peer-group eBGP-FRESH-TECHV4
+ neighbor 190.94.199.102 fall-over bfd
+ neighbor 190.94.199.186 peer-group eBGP-SILVERDATA-IPV4
+ neighbor 190.94.208.206 peer-group eBGP-SUPERCABLE
+ neighbor 190.94.244.114 peer-group eBGP-SILVERDATA_CFL-IPV4
+ neighbor 190.94.245.92 peer-group eBGP-TECNOIMP-IPV4
+ neighbor 195.22.199.76 peer-group eBGP-SPARKLE-IPV4
+ neighbor 200.62.9.158 peer-group eBGP-BANTEL
+ !
+ address-family ipv4
+  bgp dampening
+  network 45.195.12.0 mask 255.255.254.0 route-map SILVERDATA
+  network 154.197.1.0 mask 255.255.255.0 route-map SILVERDATA
+  network 181.225.32.0 mask 255.255.224.0 route-map IFXVE-IPV4
+  network 190.94.192.0 mask 255.255.224.0 route-map IFXVE-IPV4
+  network 190.94.224.0 mask 255.255.224.0 route-map IFXVE-IPV4
+  network 200.1.119.0 route-map VIPTEL-IPV4
+  network 200.85.64.0 route-map YVING-IPV4
+  network 200.124.121.0 route-map VENSITE-IPV4
+  network 201.218.180.0 mask 255.255.252.0 route-map VIPTEL-IPV4
+  neighbor iBGP-VECCS send-community both
+  neighbor iBGP-VECCS route-reflector-client
+  neighbor iBGP-VECCS next-hop-self
+  neighbor iBGP-VECCS default-originate
+  neighbor iBGP-VECCS soft-reconfiguration inbound
+  neighbor eBGP-CIRION-IPV4 next-hop-self
+  neighbor eBGP-CIRION-IPV4 route-map eBGP-CIRION-IN-V4 in
+  neighbor eBGP-CIRION-IPV4 route-map eBGP-CIRION-OUT-V4 out
+  neighbor eBGP-SUPERCABLE next-hop-self
+  neighbor eBGP-SUPERCABLE default-originate
+  neighbor eBGP-SUPERCABLE soft-reconfiguration inbound
+  neighbor eBGP-SUPERCABLE prefix-list DENY-ALL out
+  neighbor eBGP-SUPERCABLE route-map eBGP-SUPERCABLE-IN in
+  neighbor eBGP-CIRION_AG23-IPV4 send-community both
+  neighbor eBGP-CIRION_AG23-IPV4 next-hop-self
+  neighbor eBGP-CIRION_AG23-IPV4 remove-private-as all replace-as
+  neighbor eBGP-CIRION_AG23-IPV4 route-map eBGP-CIRION_AG23-IN-V4 in
+  neighbor eBGP-CIRION_AG23-IPV4 route-map eBGP-CIRION_AG23-OUT-V4 out
+  neighbor eBGP-TECNOIMP-IPV4 next-hop-self
+  neighbor eBGP-TECNOIMP-IPV4 default-originate
+  neighbor eBGP-TECNOIMP-IPV4 soft-reconfiguration inbound
+  neighbor eBGP-TECNOIMP-IPV4 route-map eBGP-TECNOIMP-IN-V4 in
+  neighbor eBGP-FRESH-TECHV4 next-hop-self
+  neighbor eBGP-FRESH-TECHV4 default-originate
+  neighbor eBGP-FRESH-TECHV4 soft-reconfiguration inbound
+  neighbor eBGP-FRESH-TECHV4 prefix-list DENY-ALL out
+  neighbor eBGP-FRESH-TECHV4 route-map eBGP-FRESH-TECH-INV4 in
+  neighbor eBGP-SPARKLE-IPV4 next-hop-self
+  neighbor eBGP-SPARKLE-IPV4 remove-private-as all replace-as
+  neighbor eBGP-SPARKLE-IPV4 route-map eBGP-SPARKLE-IN-V4 in
+  neighbor eBGP-SPARKLE-IPV4 route-map eBGP-SPARKLE-OUT-V4 out
+  neighbor eBGP-SPARKLE2-IPV4 next-hop-self
+  neighbor eBGP-SPARKLE2-IPV4 remove-private-as all replace-as
+  neighbor eBGP-SPARKLE2-IPV4 route-map eBGP-SPARKLE2-IN-V4 in
+  neighbor eBGP-SPARKLE2-IPV4 route-map eBGP-SPARKLE2-OUT-V4 out
+  neighbor eBGP-BANTEL next-hop-self
+  neighbor eBGP-BANTEL default-originate
+  neighbor eBGP-BANTEL soft-reconfiguration inbound
+  neighbor eBGP-BANTEL prefix-list DENY-ALL out
+  neighbor eBGP-BANTEL route-map eBGP-BANTEL-IN in
+  neighbor eBGP-SILVERDATA-IPV4 next-hop-self
+  neighbor eBGP-SILVERDATA-IPV4 default-originate
+  neighbor eBGP-SILVERDATA-IPV4 soft-reconfiguration inbound
+  neighbor eBGP-SILVERDATA-IPV4 prefix-list DENY-ALL out
+  neighbor eBGP-SILVERDATA-IPV4 route-map eBGP-SILVERDATA-IN-V4 in
+  neighbor eBGP-SILVERDATA_CFL-IPV4 next-hop-self
+  neighbor eBGP-SILVERDATA_CFL-IPV4 default-originate
+  neighbor eBGP-SILVERDATA_CFL-IPV4 soft-reconfiguration inbound
+  neighbor eBGP-SILVERDATA_CFL-IPV4 prefix-list DENY-ALL out
+  neighbor eBGP-SILVERDATA_CFL-IPV4 route-map eBGP-SILVERDATA-IN-V4 in
+  neighbor eBGP-SILVERDATA_LP-IPV4 next-hop-self
+  neighbor eBGP-SILVERDATA_LP-IPV4 default-originate
+  neighbor eBGP-SILVERDATA_LP-IPV4 soft-reconfiguration inbound
+  neighbor eBGP-SILVERDATA_LP-IPV4 prefix-list DENY-ALL out
+  neighbor eBGP-SILVERDATA_LP-IPV4 route-map eBGP-SILVERDATA-IN-V4 in
+  neighbor eBGP-SIMPLETV next-hop-self
+  neighbor eBGP-SIMPLETV default-originate
+  neighbor eBGP-SIMPLETV soft-reconfiguration inbound
+  neighbor eBGP-SIMPLETV route-map eBGP-SIMPLETV-IN in
+  neighbor 4.15.156.45 activate
+  neighbor 8.242.241.177 activate
+  neighbor 89.221.41.90 activate
+  neighbor 172.23.237.230 activate
+  neighbor 181.225.41.18 activate
+  neighbor 181.225.41.25 activate
+  neighbor 181.225.41.29 activate
+  neighbor 181.225.48.146 activate
+  neighbor 181.225.48.147 activate
+  neighbor 181.225.48.148 activate
+  neighbor 181.225.48.149 activate
+  neighbor 181.225.48.150 activate
+  neighbor 190.94.199.102 activate
+  neighbor 190.94.199.186 activate
+  neighbor 190.94.208.206 activate
+  neighbor 190.94.244.114 activate
+  neighbor 190.94.245.92 activate
+  neighbor 195.22.199.76 activate
+  neighbor 200.62.9.158 activate
+ exit-address-family
+ !
+ address-family ipv6
+  bgp dampening
+  network 2801:0:200::/48 route-map VENSITE-IPV6
+  network 2803:7C10::/32 route-map VIPTEL2021-ORIGINATEV6
+  network 2803:C290::/40 route-map SILVERDATA-IPV6
+  network 2803:C290:100::/40 route-map SILVERDATA-IPV6
+  network 2803:D480::/32 route-map VECCSNOC-ORIGINATE
+  neighbor iBGP-VECCSV6 send-community both
+  neighbor iBGP-VECCSV6 route-reflector-client
+  neighbor iBGP-VECCSV6 next-hop-self
+  neighbor iBGP-VECCSV6 default-originate
+  neighbor iBGP-VECCSV6 soft-reconfiguration inbound
+  neighbor eBGP-CIRION-IPV6 next-hop-self
+  neighbor eBGP-CIRION-IPV6 route-map eBGP-CIRION-OUT-V6 out
+  neighbor eBGP-SUPERCABLE route-map eBGP-SUPERCABLE-IN in
+  neighbor eBGP-SUPERCABLE-V6 next-hop-self
+  neighbor eBGP-SUPERCABLE-V6 default-originate
+  neighbor eBGP-SUPERCABLE-V6 soft-reconfiguration inbound
+  neighbor eBGP-SUPERCABLE-V6 route-map eBGP-SIMPLETV-IN-V6 in
+  neighbor eBGP-CIRION_AG23-IPV6 send-community both
+  neighbor eBGP-CIRION_AG23-IPV6 next-hop-self
+  neighbor eBGP-CIRION_AG23-IPV6 remove-private-as all replace-as
+  neighbor eBGP-CIRION_AG23-IPV6 route-map eBGP-CIRION_AG23-OUT-V6 out
+  neighbor eBGP-TECNOIMP-IPV6 next-hop-self
+  neighbor eBGP-TECNOIMP-IPV6 default-originate
+  neighbor eBGP-TECNOIMP-IPV6 route-map eBGP-TECNOIMP-IN-V6 in
+  neighbor eBGP-SPARKLE-IPV6 next-hop-self
+  neighbor eBGP-SPARKLE-IPV6 remove-private-as all replace-as
+  neighbor eBGP-SPARKLE-IPV6 route-map eBGP-SPARKLE-OUT-V6 out
+  neighbor eBGP-SPARKLE2-IPV6 next-hop-self
+  neighbor eBGP-SPARKLE2-IPV6 remove-private-as all replace-as
+  neighbor eBGP-SPARKLE2-IPV6 route-map eBGP-SPARKLE2-IN-V6 in
+  neighbor eBGP-SPARKLE2-IPV6 route-map eBGP-SPARKLE2-OUT-V6 out
+  neighbor eBGP-SILVERDATA-IPV6 next-hop-self
+  neighbor eBGP-SILVERDATA-IPV6 default-originate
+  neighbor eBGP-SILVERDATA-IPV6 soft-reconfiguration inbound
+  neighbor eBGP-SILVERDATA-IPV6 prefix-list DENY-ALL-V6 out
+  neighbor eBGP-SILVERDATA-IPV6 route-map eBGP-SPARKLE-IN-V6 in
+  neighbor eBGP-SILVERDATA_CFL-IPV6 next-hop-self
+  neighbor eBGP-SILVERDATA_CFL-IPV6 default-originate
+  neighbor eBGP-SILVERDATA_CFL-IPV6 soft-reconfiguration inbound
+  neighbor eBGP-SILVERDATA_CFL-IPV6 prefix-list DENY-ALL-V6 out
+  neighbor eBGP-SILVERDATA_CFL-IPV6 route-map eBGP-SILVERDATA-IN-V6 in
+  neighbor eBGP-SILVERDATA_LP-IPV6 next-hop-self
+  neighbor eBGP-SILVERDATA_LP-IPV6 default-originate
+  neighbor eBGP-SILVERDATA_LP-IPV6 soft-reconfiguration inbound
+  neighbor eBGP-SILVERDATA_LP-IPV6 prefix-list DENY-ALL-V6 out
+  neighbor eBGP-SILVERDATA_LP-IPV6 route-map eBGP-SILVERDATA-IN-V6 in
+  neighbor eBGP-SIMPLETV-V6 next-hop-self
+  neighbor eBGP-SIMPLETV-V6 default-originate
+  neighbor eBGP-SIMPLETV-V6 soft-reconfiguration inbound
+  neighbor eBGP-SIMPLETV-V6 route-map eBGP-SIMPLETV-IN-V6 in
+  neighbor 2001:13B1:8000::61 activate
+  neighbor 2001:1900:2100::50C5 activate
+  neighbor 2001:41A8:4020:2::199 activate
+  neighbor 2001:41A8:4020:2::209 activate
+  neighbor 2803:D480:0:65::2 activate
+  neighbor 2803:D480:0:73::18 activate
+  neighbor 2803:D480:0:73::25 activate
+  neighbor 2803:D480:0:73::29 activate
+  neighbor 2803:D480:0:77::2 activate
+  neighbor 2803:D480:0:90::2 activate
+  neighbor 2803:D480:0:91::2 activate
+  neighbor 2803:D480:0:93::2 activate
+  neighbor 2803:D480:0:96::2 activate
+  neighbor 2803:D480:0:96::3 activate
+  neighbor 2803:D480:0:96::4 activate
+  neighbor 2803:D480:0:96::5 activate
+  neighbor 2803:D480:0:96::6 activate
+ exit-address-family
+!
+ip forward-protocol nd
+!
+ip bgp-community new-format
+ip community-list standard IFX-VE-8053-5 permit 8053:5
+ip community-list standard IFX-VE-8053-1 permit 8053:1
+ip community-list standard IFX-VE-8053-2 permit 8053:2
+ip community-list standard IFX-VE-8053-3 permit 8053:3
+ip community-list standard IFX-VE-8053-4 permit 8053:4
+ip community-list standard IFX-VE-8053-BACKUP permit 8053:2411
+ip community-list standard IFX-VE-8053-BACKUP permit 8053:2412
+ip community-list standard IFX-VE-8053-6 permit 8053:6
+ip community-list standard IFX-VE-8053-7 permit 8053:7
+ip community-list standard IFX-VE-8053-8 permit 8053:8
+ip tcp path-mtu-discovery
+ip ftp username ifxve
+ip ftp password 7 045704152D006F653C29363E34333A21676675
+no ip http server
+no ip http secure-server
+ip route 200.109.230.0 255.255.254.0 4.15.156.45 102 name CIRION-CANTV-DEFAULT track 5
+ip route 8.8.4.0 255.255.255.0 4.15.156.45 track 5
+ip route 0.0.0.0 0.0.0.0 89.221.41.90 100 name SPARKLEV2_10G track 5
+ip route 181.225.44.168 255.255.255.248 172.23.253.238 name RED1-CRED-UNITEL-VDP-2022_1 track 25
+ip route 190.94.205.16 255.255.255.240 172.23.253.238 name RED1-CRED-UNITEL-VDP-2022_1 track 25
+ip route 190.94.205.112 255.255.255.240 172.23.253.238 name RED1-CRED-UNITEL-VDP-2022_1 track 25
+ip route 190.94.205.0 255.255.255.240 172.23.253.238 254 name RED1-CRED-UNITEL-VDP-2022_1 track 25
+ip route 8.25.194.0 255.255.255.0 Null0 name TWITTER/X
+ip route 8.25.195.0 255.255.255.0 Null0 name TWITTER/X
+ip route 8.25.196.0 255.255.255.0 Null0 name TWITTER/X
+ip route 8.25.197.0 255.255.255.0 Null0 name TWITTER/X
+ip route 45.160.225.64 255.255.255.224 172.23.242.66 name RED1-VL1765-PCR-NTIS-C-LETONIA
+ip route 45.170.110.1 255.255.255.255 190.94.209.58 name RED1-VL1022-LIBER-QUALCOM
+ip route 45.195.12.0 255.255.254.0 Null0 254 name SILVERDATA-GENERATE
+ip route 45.195.12.0 255.255.255.0 190.94.244.114 name RED1-VL953-ELUN-SILVERDATA-TF
+ip route 52.142.5.164 255.255.255.255 195.22.199.76 name FOR-BBO-06092023
+ip route 64.63.0.0 255.255.255.0 Null0 name TWITTER/X
+ip route 64.63.1.0 255.255.255.0 Null0 name TWITTER/X
+ip route 64.63.2.0 255.255.255.0 Null0 name TWITTER/X
+ip route 64.63.3.0 255.255.255.0 Null0 name TWITTER/X
+ip route 64.63.4.0 255.255.255.0 Null0 name TWITTER/X
+ip route 64.63.5.0 255.255.255.0 Null0 name TWITTER/X
+ip route 64.63.6.0 255.255.255.0 Null0 name TWITTER/X
+ip route 64.63.7.0 255.255.255.0 Null0 name TWITTER/X
+ip route 64.63.8.0 255.255.255.0 Null0 name TWITTER/X
+ip route 64.63.9.0 255.255.255.0 Null0 name TWITTER/X
+ip route 64.63.10.0 255.255.255.0 Null0 name TWITTER/X
+ip route 64.63.11.0 255.255.255.0 Null0 name TWITTER/X
+ip route 64.63.12.0 255.255.255.0 Null0 name TWITTER/X
+ip route 64.63.13.0 255.255.255.0 Null0 name TWITTER/X
+ip route 64.63.14.0 255.255.255.0 Null0 name TWITTER/X
+ip route 64.63.15.0 255.255.255.0 Null0 name TWITTER/X
+ip route 64.63.16.0 255.255.255.0 Null0 name TWITTER/X
+ip route 64.63.17.0 255.255.255.0 Null0 name TWITTER/X
+ip route 64.63.18.0 255.255.255.0 Null0 name TWITTER/X
+ip route 64.63.19.0 255.255.255.0 Null0 name TWITTER/X
+ip route 64.63.20.0 255.255.255.0 Null0 name TWITTER/X
+ip route 64.63.21.0 255.255.255.0 Null0 name TWITTER/X
+ip route 64.63.22.0 255.255.255.0 Null0 name TWITTER/X
+ip route 64.63.23.0 255.255.255.0 Null0 name TWITTER/X
+ip route 64.63.24.0 255.255.255.0 Null0 name TWITTER/X
+ip route 64.63.25.0 255.255.255.0 Null0 name TWITTER/X
+ip route 64.63.26.0 255.255.255.0 Null0 name TWITTER/X
+ip route 64.63.27.0 255.255.255.0 Null0 name TWITTER/X
+ip route 64.63.28.0 255.255.255.0 Null0 name TWITTER/X
+ip route 64.63.29.0 255.255.255.0 Null0 name TWITTER/X
+ip route 64.63.30.0 255.255.255.0 Null0 name TWITTER/X
+ip route 64.63.31.0 255.255.255.0 Null0 name TWITTER/X
+ip route 64.76.228.69 255.255.255.255 181.225.42.5 name IFXVE-OFICINAS
+ip route 69.12.56.0 255.255.255.0 Null0 name TWITTER/X
+ip route 69.12.57.0 255.255.255.0 Null0 name TWITTER/X
+ip route 69.12.58.0 255.255.255.0 Null0 name TWITTER/X
+ip route 69.12.59.0 255.255.255.0 Null0 name TWITTER/X
+ip route 69.12.60.0 255.255.255.0 Null0 name TWITTER/X
+ip route 69.12.61.0 255.255.255.0 Null0 name TWITTER/X
+ip route 69.12.62.0 255.255.255.0 Null0 name TWITTER/X
+ip route 69.12.63.0 255.255.255.0 Null0 name TWITTER/X
+ip route 69.195.160.0 255.255.255.0 Null0 name TWITTER/X
+ip route 69.195.161.0 255.255.255.0 Null0 name TWITTER/X
+ip route 69.195.162.0 255.255.255.0 Null0 name TWITTER/X
+ip route 69.195.163.0 255.255.255.0 Null0 name TWITTER/X
+ip route 69.195.164.0 255.255.255.0 Null0 name TWITTER/X
+ip route 69.195.165.0 255.255.255.0 Null0 name TWITTER/X
+ip route 69.195.166.0 255.255.255.0 Null0 name TWITTER/X
+ip route 69.195.167.0 255.255.255.0 Null0 name TWITTER/X
+ip route 69.195.168.0 255.255.255.0 Null0 name TWITTER/X
+ip route 69.195.169.0 255.255.255.0 Null0 name TWITTER/X
+ip route 69.195.170.0 255.255.255.0 Null0 name TWITTER/X
+ip route 69.195.171.0 255.255.255.0 Null0 name TWITTER/X
+ip route 69.195.172.0 255.255.255.0 Null0 name TWITTER/X
+ip route 69.195.173.0 255.255.255.0 Null0 name TWITTER/X
+ip route 69.195.174.0 255.255.255.0 Null0 name TWITTER/X
+ip route 69.195.175.0 255.255.255.0 Null0 name TWITTER/X
+ip route 69.195.176.0 255.255.255.0 Null0 name TWITTER/X
+ip route 69.195.177.0 255.255.255.0 Null0 name TWITTER/X
+ip route 69.195.178.0 255.255.255.0 Null0 name TWITTER/X
+ip route 69.195.179.0 255.255.255.0 Null0 name TWITTER/X
+ip route 69.195.180.0 255.255.255.0 Null0 name TWITTER/X
+ip route 69.195.181.0 255.255.255.0 Null0 name TWITTER/X
+ip route 69.195.182.0 255.255.255.0 Null0 name TWITTER/X
+ip route 69.195.183.0 255.255.255.0 Null0 name TWITTER/X
+ip route 69.195.184.0 255.255.255.0 Null0 name TWITTER/X
+ip route 69.195.185.0 255.255.255.0 Null0 name TWITTER/X
+ip route 69.195.186.0 255.255.255.0 Null0 name TWITTER/X
+ip route 69.195.187.0 255.255.255.0 Null0 name TWITTER/X
+ip route 69.195.188.0 255.255.255.0 Null0 name TWITTER/X
+ip route 69.195.189.0 255.255.255.0 Null0 name TWITTER/X
+ip route 69.195.190.0 255.255.255.0 Null0 name TWITTER/X
+ip route 69.195.191.0 255.255.255.0 Null0 name TWITTER/X
+ip route 103.252.112.0 255.255.255.0 Null0 name TWITTER/X
+ip route 103.252.113.0 255.255.255.0 Null0 name TWITTER/X
+ip route 103.252.114.0 255.255.255.0 Null0 name TWITTER/X
+ip route 103.252.115.0 255.255.255.0 Null0 name TWITTER/X
+ip route 104.244.40.0 255.255.255.0 Null0 name TWITTER/X
+ip route 104.244.41.0 255.255.255.0 Null0 name TWITTER/X
+ip route 104.244.42.0 255.255.255.0 Null0 name TWITTER/X
+ip route 104.244.43.0 255.255.255.0 Null0 name TWITTER/X
+ip route 104.244.44.0 255.255.255.0 Null0 name TWITTER/X
+ip route 104.244.45.0 255.255.255.0 Null0 name TWITTER/X
+ip route 104.244.46.0 255.255.255.0 Null0 name TWITTER/X
+ip route 104.244.47.0 255.255.255.0 Null0 name TWITTER/X
+ip route 154.197.1.0 255.255.255.0 190.94.199.186 name RED1-VL3655-CDZ-SILVERDATA-CIMA
+ip route 154.197.1.0 255.255.255.0 Null0 254 name SILVERDATA-ORIGINATE
+ip route 154.197.1.0 255.255.255.128 190.94.199.186 name RED1-VL3655-CDZ-SILVERDATA-CIMA
+ip route 172.23.249.192 255.255.255.248 172.23.253.214 name RED1-VL1534-PCR-MK_RES1
+ip route 172.23.249.200 255.255.255.248 172.23.255.118 name RED1-VL1211-SINAI-MK_RES
+ip route 172.23.249.208 255.255.255.248 172.23.253.214 name RED1-VL1534-PCR-MK_RES1
+ip route 172.23.254.44 255.255.255.252 172.23.253.214 name RED1-VL1534-PCR-MK_RES1
+ip route 172.23.254.48 255.255.255.252 172.23.253.214 name RED1-VL1534-PCR-MK_RES1
+ip route 172.23.254.64 255.255.255.252 172.23.252.194 name RED1-VL1953-CRED-PS-LA-TRINIDAD
+ip route 181.208.153.194 255.255.255.255 4.15.156.45
+ip route 181.225.32.0 255.255.224.0 Null0 254 name IFX-REDIST
+ip route 181.225.40.88 255.255.255.248 172.23.254.174 name RED1-VL1951-CRED-VIVAX-PYG
+ip route 181.225.40.96 255.255.255.248 172.23.254.174 name RED1-VL1951-CRED-VIVAX-PYG
+ip route 181.225.41.49 255.255.255.255 172.23.242.66 name RED1-VL1765-PCR-NTIS-C-LETONIA
+ip route 181.225.41.144 255.255.255.255 181.225.42.3 name IFXVE-OFICINAS-CHACAITO
+ip route 181.225.41.148 255.255.255.255 181.225.42.5 name IFXVE-OFICINAS
+ip route 181.225.41.153 255.255.255.255 181.225.42.5 name IFXVE-OFICINAS
+ip route 181.225.41.208 255.255.255.240 172.23.255.114 name RED1-VL1046-LIBER-BPLAZA-IP
+ip route 181.225.42.8 255.255.255.248 172.23.252.194 name RED1-VL1953-CRED-PS-LA-TRINIDAD
+ip route 181.225.43.56 255.255.255.248 172.23.241.14 name RED1-VL556-GALI-LyH-NETWORKS
+ip route 181.225.43.112 255.255.255.248 172.23.251.50 name GPON-VL803-TMER-AP-MUD
+ip route 181.225.44.16 255.255.255.252 181.225.44.22 name RED1-VL298-CRED-7LINK
+ip route 181.225.44.40 255.255.255.248 172.23.245.22 name RED1-VL1930-LIBER-S-COELLO-P6
+ip route 181.225.44.232 255.255.255.248 172.23.247.182 name GPON-VLAN1017-LIBER-COELLO-VEGA
+ip route 181.225.47.64 255.255.255.240 172.23.240.142 name RED1-VL1960-CRED-CONSORCIO-CRED
+ip route 181.225.47.96 255.255.255.248 190.94.244.114 name RED1-VL953-ELUN-SILVERDATA-TF
+ip route 181.225.47.104 255.255.255.248 190.94.199.186 name RED1-VL3655-CDZ-SILVERDATA-CIMA
+ip route 181.225.47.176 255.255.255.240 172.23.245.22 name GPON-VL1930-LIBER-S-COELLO-P6
+ip route 181.225.50.0 255.255.255.248 172.23.242.210 name GPON-VL1949-LIB-CORPOELEC-SB
+ip route 181.225.53.16 255.255.255.248 172.23.247.182 name GPON-VLAN1017-LIBER-COELLO-VEGA
+ip route 181.225.53.64 255.255.255.248 172.23.253.214 name RED1-VL1534-PCR-MK_RES1
+ip route 181.225.53.136 255.255.255.248 172.23.245.22 name GPON-VL1930-LIBER-S-COELLO-P6
+ip route 181.225.53.248 255.255.255.248 172.23.237.210 name RED1-VL3666-CDZ-XDATA-EL-VALLE
+ip route 188.64.224.0 255.255.255.0 Null0 name TWITTER/X
+ip route 188.64.225.0 255.255.255.0 Null0 name TWITTER/X
+ip route 188.64.226.0 255.255.255.0 Null0 name TWITTER/X
+ip route 188.64.227.0 255.255.255.0 Null0 name TWITTER/X
+ip route 188.64.228.0 255.255.255.0 Null0 name TWITTER/X
+ip route 188.64.229.0 255.255.255.0 Null0 name TWITTER/X
+ip route 188.64.230.0 255.255.255.0 Null0 name TWITTER/X
+ip route 188.64.231.0 255.255.255.0 Null0 name TWITTER/X
+ip route 190.94.192.0 255.255.224.0 Null0 254
+ip route 190.94.193.12 255.255.255.252 172.23.244.198 name RED1-VL1646-PCR-GAMA-LPG
+ip route 190.94.193.224 255.255.255.252 172.23.240.114 name RED1-VL1304-STG-TEKKOA-MIRADOR
+ip route 190.94.193.232 255.255.255.252 172.23.240.122 name RED1-VL809-TMER-PORCELANA-PAST
+ip route 190.94.193.252 255.255.255.252 172.23.240.178 name RED1-VL1167-ANAUC-FUND-ALCALDIA
+ip route 190.94.194.192 255.255.255.252 172.23.237.238 name RED1-VL4065-GAL-SIMPLETV-RO-1
+ip route 190.94.198.16 255.255.255.248 172.23.241.38 name RED1-VL1218-SINAI-IRVENET
+ip route 190.94.198.200 255.255.255.248 172.23.240.142 name RED1-VL1960-CRED-CONSORCIO-CRED
+ip route 190.94.199.0 255.255.255.252 172.23.253.118 name RED1-VL581-GALI-MS-DALIA-R
+ip route 190.94.199.56 255.255.255.252 172.23.241.14 name RED1-VL556-GALI-LyH-NETWORKS
+ip route 190.94.200.176 255.255.255.252 172.23.242.238 name RED1-VL3659-CDZ-TECN-INSTAPAGO
+ip route 190.94.200.244 255.255.255.252 172.23.242.246 name RED1-VL3660-CDZ-P-SUAREZ-STA-MON
+ip route 190.94.201.148 255.255.255.252 172.23.237.230 name RED1-VL2104-LY-SILVERDATA-LA-PAZ
+ip route 190.94.208.68 255.255.255.252 172.23.248.242 name RED1-VL477-TUNO-CONDOMINIO-TUNO
+ip route 190.94.209.0 255.255.255.248 172.23.252.194 name RED1-VL1953-CRED-PS-LA-TRINIDAD
+ip route 190.94.218.192 255.255.255.224 172.23.255.118 name RED1-VL1211-SINAI-MK_RES
+ip route 190.94.218.224 255.255.255.224 172.23.255.118 name RED1-VL1211-SINAI-MK_RES
+ip route 190.94.224.0 255.255.224.0 Null0 254
+ip route 190.94.224.12 255.255.255.252 172.23.238.22 name RED1-VL2101-LY-LOCATEL-LY
+ip route 190.94.224.84 255.255.255.252 172.23.238.38 name GPON-VL1862-TUNO-FDV-EL-TOLON
+ip route 190.94.224.140 255.255.255.252 172.23.241.38 name RED1-VL1218-SINAI-IRVENET
+ip route 190.94.224.152 255.255.255.252 172.23.237.6 name RED1-VL3665-CDZ-SPEC-SEC-SERV-C
+ip route 190.94.243.80 255.255.255.248 172.23.240.118 name RED1-VL802-TMER-DIST-ASIVEN21
+ip route 190.94.243.96 255.255.255.255 172.23.253.214 name RED1-VL1534-PCR-MK_RES1
+ip route 190.94.243.104 255.255.255.248 172.23.241.218 name RED1-VL1574-GALI-INTERNET-DED
+ip route 190.94.243.120 255.255.255.248 172.23.244.78 name RED1-VL979-ELUN-INV-PENA
+ip route 190.94.243.224 255.255.255.248 181.225.44.20 name RED1-VL298-CRED-7LINK
+ip route 190.94.245.96 255.255.255.248 172.23.245.126 10 name RED1-VL1042-LIBER-DORAL-PRAG
+ip route 190.94.250.216 255.255.255.252 172.23.244.78 name RED1-VL979-ELUN-INV-PENA
+ip route 190.94.252.4 255.255.255.252 172.23.246.70 name GPON-VL1932-LIBER-QUINTA-SOLERA
+ip route 190.94.253.0 255.255.255.252 172.23.246.70 name GPON-VL1932-LIBER-QUINTA-SOLERA
+ip route 190.94.253.244 255.255.255.252 172.23.245.206 name GPON-VL993-ELUN-CVA-CENTRO
+ip route 199.16.156.0 255.255.255.0 Null0 name TWITTER/X
+ip route 199.16.157.0 255.255.255.0 Null0 name TWITTER/X
+ip route 199.16.158.0 255.255.255.0 Null0 name TWITTER/X
+ip route 199.16.159.0 255.255.255.0 Null0 name TWITTER/X
+ip route 199.59.148.0 255.255.255.0 Null0 name TWITTER/X
+ip route 199.59.149.0 255.255.255.0 Null0 name TWITTER/X
+ip route 199.59.150.0 255.255.255.0 Null0 name TWITTER/X
+ip route 199.59.151.0 255.255.255.0 Null0 name TWITTER/X
+ip route 199.96.56.0 255.255.255.0 Null0 name TWITTER/X
+ip route 199.96.57.0 255.255.255.0 Null0 name TWITTER/X
+ip route 199.96.58.0 255.255.255.0 Null0 name TWITTER/X
+ip route 199.96.59.0 255.255.255.0 Null0 name TWITTER/X
+ip route 199.96.60.0 255.255.255.0 Null0 name TWITTER/X
+ip route 199.96.61.0 255.255.255.0 Null0 name TWITTER/X
+ip route 199.96.62.0 255.255.255.0 Null0 name TWITTER/X
+ip route 199.96.63.0 255.255.255.0 Null0 name TWITTER/X
+ip route 200.74.192.0 255.255.254.0 4.15.156.45 name DAYCO-TELECOM-FORCED
+ip route 202.160.128.0 255.255.255.0 Null0 name TWITTER/X
+ip route 202.160.129.0 255.255.255.0 Null0 name TWITTER/X
+ip route 202.160.130.0 255.255.255.0 Null0 name TWITTER/X
+ip route 202.160.131.0 255.255.255.0 Null0 name TWITTER/X
+ip route 208.84.85.6 255.255.255.255 181.225.42.6 name PROYECTO-ZELLE-JC
+ip route 208.84.85.12 255.255.255.252 172.23.246.70 name GPON-VL1932-LIBER-QUINTA-SOLERA
+ip route 209.237.192.0 255.255.255.0 Null0 name TWITTER/X
+ip route 209.237.193.0 255.255.255.0 Null0 name TWITTER/X
+ip route 209.237.194.0 255.255.255.0 Null0 name TWITTER/X
+ip route 209.237.195.0 255.255.255.0 Null0 name TWITTER/X
+ip route 209.237.196.0 255.255.255.0 Null0 name TWITTER/X
+ip route 209.237.197.0 255.255.255.0 Null0 name TWITTER/X
+ip route 209.237.198.0 255.255.255.0 Null0 name TWITTER/X
+ip route 209.237.199.0 255.255.255.0 Null0 name TWITTER/X
+ip route 209.237.200.0 255.255.255.0 Null0 name TWITTER/X
+ip route 209.237.201.0 255.255.255.0 Null0 name TWITTER/X
+ip route 209.237.202.0 255.255.255.0 Null0 name TWITTER/X
+ip route 209.237.203.0 255.255.255.0 Null0 name TWITTER/X
+ip route 209.237.204.0 255.255.255.0 Null0 name TWITTER/X
+ip route 209.237.205.0 255.255.255.0 Null0 name TWITTER/X
+ip route 209.237.206.0 255.255.255.0 Null0 name TWITTER/X
+ip route 209.237.207.0 255.255.255.0 Null0 name TWITTER/X
+ip route 209.237.208.0 255.255.255.0 Null0 name TWITTER/X
+ip route 209.237.209.0 255.255.255.0 Null0 name TWITTER/X
+ip route 209.237.210.0 255.255.255.0 Null0 name TWITTER/X
+ip route 209.237.211.0 255.255.255.0 Null0 name TWITTER/X
+ip route 209.237.212.0 255.255.255.0 Null0 name TWITTER/X
+ip route 209.237.213.0 255.255.255.0 Null0 name TWITTER/X
+ip route 209.237.214.0 255.255.255.0 Null0 name TWITTER/X
+ip route 209.237.215.0 255.255.255.0 Null0 name TWITTER/X
+ip route 209.237.216.0 255.255.255.0 Null0 name TWITTER/X
+ip route 209.237.217.0 255.255.255.0 Null0 name TWITTER/X
+ip route 209.237.218.0 255.255.255.0 Null0 name TWITTER/X
+ip route 209.237.219.0 255.255.255.0 Null0 name TWITTER/X
+ip route 209.237.220.0 255.255.255.0 Null0 name TWITTER/X
+ip route 209.237.221.0 255.255.255.0 Null0 name TWITTER/X
+ip route 209.237.222.0 255.255.255.0 Null0 name TWITTER/X
+ip route 209.237.223.0 255.255.255.0 Null0 name TWITTER/X
+!
+ip access-list standard ACCESO-TELNET092021
+ 10 permit 181.225.41.13
+ 20 permit 181.225.41.64 0.0.0.15
+ 30 permit 181.225.42.0 0.0.0.7
+ 40 deny   any
+ip access-list standard CDN-MAY2021-V4
+ 10 permit 181.225.46.0 0.0.0.32
+ 20 permit 181.225.43.136 0.0.0.7
+ 30 permit 181.225.46.128 0.0.0.7
+ 40 permit 181.225.45.0 0.0.0.32
+ 50 permit 181.225.41.64 0.0.0.15
+ 60 permit 181.225.41.0 0.0.0.15
+ip access-list standard LOOPBACKS
+ 10 permit 181.225.46.240 0.0.0.15
+ 20 permit 181.225.41.16 0.0.0.15
+!
+ip access-list extended CREDICARD
+ 30 deny   ip host 107.174.252.17 any
+ 40 deny   ip host 63.223.67.145 any
+ 50 deny   ip host 23.27.3.149 any
+ 60 deny   ip host 64.226.156.195 any
+ 70 deny   ip host 209.141.33.240 any
+ 80 deny   ip host 166.88.55.50 any
+ 90 deny   ip host 166.1.9.3 any
+ 100 deny   ip host 50.114.84.128 any
+ 110 deny   ip host 166.88.55.202 any
+ 120 deny   ip host 107.175.254.29 any
+ 130 deny   ip host 23.226.224.10 any
+ 140 deny   ip host 23.27.3.116 any
+ 150 deny   ip host 193.41.68.162 any
+ 160 deny   ip host 181.215.184.234 any
+ 170 deny   ip host 95.164.151.76 any
+ 180 deny   ip host 107.174.252.52 any
+ 190 deny   ip host 23.95.90.80 any
+ 200 deny   ip host 89.116.56.15 any
+ 210 deny   ip host 204.188.217.132 any
+ 220 deny   ip host 193.41.68.208 any
+ 230 deny   ip host 193.41.68.198 any
+ 240 deny   ip host 168.181.229.92 any
+ 250 deny   ip host 50.114.84.213 any
+ 260 deny   ip host 50.114.105.67 any
+ 270 deny   ip host 50.114.85.161 any
+ 280 deny   ip host 63.223.67.51 any
+ 290 deny   ip host 63.223.67.72 any
+ 300 deny   ip host 64.113.0.165 any
+ 310 deny   ip host 191.101.148.197 any
+ 320 deny   ip host 45.152.177.97 any
+ 330 deny   ip host 23.27.3.71 any
+ 340 deny   ip host 185.68.245.143 any
+ 350 deny   ip host 166.88.55.114 any
+ 360 deny   ip host 161.97.157.178 any
+ 370 deny   ip host 23.26.229.35 any
+ 380 deny   ip host 23.26.228.211 any
+ 390 deny   ip host 185.240.121.157 any
+ 400 deny   ip host 138.36.93.25 any
+ 410 deny   ip host 138.36.92.84 any
+ 420 deny   ip host 23.26.228.112 any
+ 430 deny   ip host 38.45.65.93 any
+ 440 deny   ip host 2.59.60.4 any
+ 450 permit ip any any
+!
+!
+ip prefix-list DENY-ALL seq 99 deny 0.0.0.0/0 le 32
+!
+ip prefix-list FROMLACNIC seq 80 permit 190.94.192.0/19
+ip prefix-list FROMLACNIC seq 81 permit 190.94.224.0/19
+ip prefix-list FROMLACNIC seq 82 permit 181.225.32.0/19
+!
+ip prefix-list IFXVE-IPV4 seq 80 permit 181.225.32.0/19
+ip prefix-list IFXVE-IPV4 seq 81 permit 190.94.192.0/19
+ip prefix-list IFXVE-IPV4 seq 82 permit 190.94.224.0/19
+!
+ip prefix-list IFXVE-IPV4-CIRION_AG23 seq 10 permit 181.225.41.0/24
+ip prefix-list IFXVE-IPV4-CIRION_AG23 seq 11 permit 181.225.42.0/24
+ip prefix-list IFXVE-IPV4-CIRION_AG23 seq 12 permit 190.94.194.0/24
+ip prefix-list IFXVE-IPV4-CIRION_AG23 seq 13 permit 190.94.195.0/24
+ip prefix-list IFXVE-IPV4-CIRION_AG23 seq 14 permit 190.94.214.0/24
+ip prefix-list IFXVE-IPV4-CIRION_AG23 seq 16 permit 190.94.251.0/24
+ip prefix-list IFXVE-IPV4-CIRION_AG23 seq 17 permit 190.94.199.0/24
+ip prefix-list IFXVE-IPV4-CIRION_AG23 seq 19 permit 190.94.241.0/24
+ip prefix-list IFXVE-IPV4-CIRION_AG23 seq 21 permit 190.94.245.0/24
+ip prefix-list IFXVE-IPV4-CIRION_AG23 seq 25 permit 190.94.250.0/24
+ip prefix-list IFXVE-IPV4-CIRION_AG23 seq 27 permit 181.225.47.0/24
+ip prefix-list IFXVE-IPV4-CIRION_AG23 seq 28 permit 181.225.48.0/24
+ip prefix-list IFXVE-IPV4-CIRION_AG23 seq 29 permit 181.225.43.0/24
+ip prefix-list IFXVE-IPV4-CIRION_AG23 seq 30 permit 190.94.210.0/24
+ip prefix-list IFXVE-IPV4-CIRION_AG23 seq 31 permit 181.225.53.0/24
+ip prefix-list IFXVE-IPV4-CIRION_AG23 seq 99 deny 0.0.0.0/0 le 32
+!
+ip prefix-list SILVERDATA-V4 seq 5 permit 154.194.54.0/24
+ip prefix-list SILVERDATA-V4 seq 6 permit 154.197.1.0/24
+ip prefix-list SILVERDATA-V4 seq 7 permit 154.194.44.0/24
+ip prefix-list SILVERDATA-V4 seq 8 permit 45.195.12.0/23 le 24
+ip prefix-list SILVERDATA-V4 seq 9 permit 154.194.13.0/24
+ip prefix-list SILVERDATA-V4 seq 10 permit 154.194.14.0/24
+ip prefix-list SILVERDATA-V4 seq 99 deny 0.0.0.0/0 le 32
+!
+ip prefix-list VENSITE-IPV4 seq 80 permit 200.124.121.0/24
+!
+ip prefix-list VIPTEL-IPV4 seq 80 permit 200.1.119.0/24
+ip prefix-list VIPTEL-IPV4 seq 81 permit 201.218.180.0/22
+!
+ip prefix-list VIPTEL2021-ORIGINATE seq 80 permit 201.218.180.0/22 le 24
+!
+ip prefix-list YVING-IPV4 seq 80 permit 200.85.64.0/24
+!
+ip prefix-list eBGP-BANTEL-IN seq 5 permit 201.222.0.0/20 le 24
+ip prefix-list eBGP-BANTEL-IN seq 10 permit 98.159.160.0/20 le 24
+ip prefix-list eBGP-BANTEL-IN seq 15 permit 45.179.12.0/22 le 24
+ip prefix-list eBGP-BANTEL-IN seq 99 deny 0.0.0.0/0 le 32
+!
+ip prefix-list eBGP-FRESH-TECH-INV4 seq 5 permit 45.169.143.0/24
+ip prefix-list eBGP-FRESH-TECH-INV4 seq 99 deny 0.0.0.0/0 le 32
+!
+ip prefix-list eBGP-GTIHOST-V4-IN seq 5 permit 38.51.56.0/22 le 24
+ip prefix-list eBGP-GTIHOST-V4-IN seq 99 deny 0.0.0.0/0 le 32
+!
+ip prefix-list eBGP-QUALCOM-IN seq 1 permit 45.170.110.0/23 le 24
+ip prefix-list eBGP-QUALCOM-IN seq 99 deny 0.0.0.0/0 le 32
+!
+ip prefix-list eBGP-SIMPLETV-IN seq 10 permit 138.185.64.0/23 le 24
+ip prefix-list eBGP-SIMPLETV-IN seq 11 permit 38.74.224.0/21 le 24
+ip prefix-list eBGP-SIMPLETV-IN seq 99 deny 0.0.0.0/0 le 32
+!
+ip prefix-list eBGP-SUPERCABLE-IN seq 10 permit 190.123.176.0/20 le 24
+ip prefix-list eBGP-SUPERCABLE-IN seq 11 permit 190.123.160.0/20 le 24
+ip prefix-list eBGP-SUPERCABLE-IN seq 12 permit 190.103.48.0/20 le 24
+ip prefix-list eBGP-SUPERCABLE-IN seq 13 permit 190.103.32.0/20 le 24
+ip prefix-list eBGP-SUPERCABLE-IN seq 14 permit 200.35.240.0/20 le 24
+ip prefix-list eBGP-SUPERCABLE-IN seq 15 permit 200.35.224.0/20 le 24
+ip prefix-list eBGP-SUPERCABLE-IN seq 16 permit 200.35.192.0/19 le 24
+ip prefix-list eBGP-SUPERCABLE-IN seq 99 deny 0.0.0.0/0 le 32
+!
+ip prefix-list eBGP-TECNOIMP-IN-V4 seq 11 permit 200.24.104.0/22 le 24
+ip prefix-list eBGP-TECNOIMP-IN-V4 seq 99 deny 0.0.0.0/0 le 32
+ip sla 5
+ icmp-echo 89.221.41.90
+ip sla schedule 5 life forever start-time now
+ip sla 2125
+ icmp-echo 172.23.253.238
+ip sla schedule 2125 life forever start-time now
+ip access-list standard 99
+ 10 permit 181.225.41.64 0.0.0.15
+ 20 deny   any
+ipv6 route 2803:C290::/40 2803:D480:0:77::2 name RED1-VL3655-CDZ-SILVERDATA-CIMA
+ipv6 route 2803:C290:100::/40 2803:D480:0:90::2 name RED1-VL953-ELUN-SILVERDATA
+ipv6 route 2803:C290:300::/40 2803:D480:0:77::2 name RED1-VL3655-CDZ-SILVERDATA-CIMA
+ipv6 route 2803:C290::/32 Null0 254 name SILVERDATA-ORIGINATE
+ipv6 route 2803:D480:0:7C::/64 2803:D480:0:80::3EB2 name IFXVE-OFICINAS
+ipv6 route 2803:D480:0:7E::/64 2803:D480:0:80::3EB2 name IFXVE-OFICINAS
+ipv6 route 2803:D480:0:7F::/64 2803:D480:0:80::3EB2 name IFXVE-OFICINAS
+ipv6 route 2803:D480:1:100::/56 2803:D480:1:100::2 name RED1-VL1534-PCR-MK_RES1
+ipv6 route 2803:D480:2:100::/56 2803:D480:0:62::2021 name RED1-VL1211-SINAI-MK_RES
+ipv6 route 2803:D480:3:300::/56 2803:D480:1:100::2 name RED1-VL1534-PCR-MK_RES1
+ipv6 route 2803:D480:201::/48 2803:D480:1:100::2 name RED1-VL1534-PCR-MK_RES1
+ipv6 route 2803:D480:207::/48 2803:D480:0:62::2021 name RED1-VL1211-SINAI-MK_RES
+ipv6 route 2803:D480::/32 Null0 254 name IFXVE-IPV6
+ipv6 router ospf 9
+ router-id 181.225.41.19
+ default-information originate
+ redistribute connected
+ redistribute static
+ redistribute ospf 30 metric 254
+!
+ipv6 router ospf 30
+ router-id 172.23.249.35
+ default-information originate
+ redistribute connected
+ redistribute ospf 9 metric 254
+ redistribute static
+!
+!
+!
+ipv6 prefix-list DENY-ALL-IPV6 seq 5 deny ::/0 le 128
+!
+ipv6 prefix-list DENY-ALL-V6 seq 100 deny ::/0 le 128
+!
+ipv6 prefix-list IFXVE-IPV6 seq 80 permit 2803:D480::/32
+!
+ipv6 prefix-list SILVERDATA-V6 seq 5 permit 2803:C290::/32 le 48
+ipv6 prefix-list SILVERDATA-V6 seq 99 deny ::/0 le 128
+!
+ipv6 prefix-list VENSITE-IPV6 seq 80 permit 2801:0:200::/48
+!
+ipv6 prefix-list VIPTEL-IPV6 seq 80 permit 2803:7C10::/32
+!
+ipv6 prefix-list eBGP-CIRION-OUT-V6 seq 80 permit 2803:D480::/32
+ipv6 prefix-list eBGP-CIRION-OUT-V6 seq 83 permit 2803:780::/32
+!
+ipv6 prefix-list eBGP-QUALCOMV6-IN seq 1 permit 2803:F7A0::/32 le 48
+ipv6 prefix-list eBGP-QUALCOMV6-IN seq 99 deny ::/0 le 128
+!
+ipv6 prefix-list eBGP-SIMPLETV-IN-V6 seq 10 permit 2803:6240::/32 le 48
+ipv6 prefix-list eBGP-SIMPLETV-IN-V6 seq 99 deny ::/0 le 128
+!
+ipv6 prefix-list eBGP-SUPERCABLE-IN-V6 seq 10 permit 2803:B400::/32 le 48
+ipv6 prefix-list eBGP-SUPERCABLE-IN-V6 seq 99 deny ::/0 le 128
+!
+ipv6 prefix-list eBGP-TECNOIMP-IN-V6 seq 11 permit 2803:8B90::/32 le 128
+ipv6 prefix-list eBGP-TECNOIMP-IN-V6 seq 99 deny ::/0 le 128
+!
+route-map SILVERDATA permit 10
+!
+route-map eBGP-SPARKLE2-IN-V4 permit 99
+ set local-preference 99
+!
+route-map eBGP-SPARKLE2-IN-V6 permit 99
+ set local-preference 101
+!
+route-map eBGP-QUALCOMV6-IN permit 10
+ match ipv6 address prefix-list eBGP-QUALCOMV6-IN
+ set local-preference 110
+ set community 8053:6
+!
+route-map eBGP-CIRION-OUT-V4 permit 10
+ match ip address prefix-list IFXVE-IPV4
+ set as-path prepend 8053 8053 8053
+!
+route-map eBGP-CIRION-OUT-V4 permit 13
+ match ip address prefix-list VIPTEL-IPV4
+ set as-path prepend 271884 271884 271884
+!
+route-map eBGP-CIRION-OUT-V4 permit 15
+ match ip address prefix-list YVING-IPV4
+!
+route-map eBGP-CIRION-OUT-V4 permit 16
+ match ip address prefix-list VENSITE-IPV4
+ set as-path prepend 262203
+!
+route-map eBGP-CIRION-OUT-V4 permit 17
+ match ip address prefix-list SILVERDATA-V4
+ set as-path prepend 272854 272854 272854 272854 272854
+!
+route-map eBGP-CIRION-OUT-V4 permit 20
+ match community IFX-VE-8053-1
+ set as-path prepend 8053 8053 8053 8053 8053 8053
+!
+route-map eBGP-CIRION-OUT-V4 permit 21
+ match community IFX-VE-8053-2
+ set as-path prepend 8053
+!
+route-map eBGP-CIRION-OUT-V4 permit 22
+ match community IFX-VE-8053-3
+ set as-path prepend 8053 8053
+!
+route-map eBGP-CIRION-OUT-V4 permit 23
+ match community IFX-VE-8053-4
+ set as-path prepend 8053 8053 8053
+!
+route-map eBGP-CIRION-OUT-V4 permit 24
+ match community IFX-VE-8053-5
+ set as-path prepend 8053 8053 8053 8053
+!
+route-map eBGP-CIRION-OUT-V4 permit 25
+ match community IFX-VE-8053-6
+ set as-path prepend 8053 8053 8053 8053 8053
+!
+route-map eBGP-CIRION-OUT-V4 permit 26
+ match community IFX-VE-8053-7
+ set as-path prepend 8053 8053 8053 8053 8053 8053
+!
+route-map eBGP-CIRION-OUT-V4 permit 98
+ match community IFX-VE-8053-BACKUP
+ set as-path prepend 8053 8053 8053 8053
+!
+route-map eBGP-CIRION-OUT-V4 permit 99
+ match ip address prefix-list DENY-ALL
+!
+route-map eBGP-GTIHOST-V4-IN permit 10
+ match ip address prefix-list eBGP-GTIHOST-V4-IN
+ set local-preference 110
+ set community 8053:6
+!
+route-map eBGP-CIRION-OUT-V6 permit 10
+ match ipv6 address prefix-list IFXVE-IPV6
+!
+route-map eBGP-CIRION-OUT-V6 permit 12
+ match ipv6 address prefix-list VENSITE-IPV6
+ set as-path prepend 262203
+!
+route-map eBGP-CIRION-OUT-V6 permit 14
+ match ipv6 address prefix-list VIPTEL-IPV6
+ set as-path prepend 271884
+!
+route-map eBGP-CIRION-OUT-V6 permit 17
+ match ipv6 address prefix-list SILVERDATA-V6
+ set as-path prepend 8053 272854
+!
+route-map eBGP-CIRION-OUT-V6 permit 20
+ match community IFX-VE-8053-1
+ set as-path prepend 8053 8053 8053 8053 8053 8053
+!
+route-map eBGP-CIRION-OUT-V6 permit 21
+ match community IFX-VE-8053-2
+!
+route-map eBGP-CIRION-OUT-V6 permit 22
+ match community IFX-VE-8053-3
+ set as-path prepend 8053 8053
+!
+route-map eBGP-CIRION-OUT-V6 permit 23
+ match community IFX-VE-8053-4
+ set as-path prepend 8053 8053 8053
+!
+route-map eBGP-CIRION-OUT-V6 permit 24
+ match community IFX-VE-8053-5
+ set as-path prepend 8053 8053 8053 8053
+!
+route-map eBGP-CIRION-OUT-V6 permit 25
+ match community IFX-VE-8053-6
+ set as-path prepend 8053 8053 8053 8053 8053
+!
+route-map eBGP-CIRION-OUT-V6 permit 26
+ match community IFX-VE-8053-7
+ set as-path prepend 8053 8053 8053 8053 8053 8053
+!
+route-map eBGP-CIRION-OUT-V6 permit 99
+ match ipv6 address prefix-list DENY-ALL-V6
+!
+route-map eBGP-BANTEL-IN permit 10
+ match ip address prefix-list eBGP-BANTEL-IN
+ set local-preference 110
+ set community 8053:7
+!
+route-map eBGP-FRESH-TECH-INV4 permit 10
+ match ip address prefix-list eBGP-FRESH-TECH-INV4
+ set local-preference 110
+ set community 8053:7
+!
+route-map eBGP-SPARKLE-IN-V6 permit 99
+ set local-preference 101
+!
+route-map eBGP-SPARKLE-IN-V4 permit 99
+ set local-preference 99
+!
+route-map eBGP-CIRION-IN_AG23-V4 permit 10
+ set local-preference 96
+!
+route-map eBGP-CIRION_AG23-IN-V4 permit 10
+ set local-preference 96
+!
+route-map eBGP-SIMPLETV-IN permit 10
+ match ip address prefix-list eBGP-SIMPLETV-IN
+ set local-preference 110
+ set community 8053:7
+!
+route-map eBGP-SUPERCABLE-IN permit 10
+ match ip address prefix-list eBGP-SUPERCABLE-IN
+ set local-preference 110
+ set community 8053:7
+!
+route-map eBGP-SPARKLE2-OUT-V4 permit 10
+ match ip address prefix-list IFXVE-IPV4
+ set as-path prepend 8053 8053 8053 8053
+!
+route-map eBGP-SPARKLE2-OUT-V4 permit 13
+ match ip address prefix-list VIPTEL-IPV4
+ set as-path prepend 8053 8053 8053 8053 271884
+!
+route-map eBGP-SPARKLE2-OUT-V4 permit 15
+ match ip address prefix-list YVING-IPV4
+ set as-path prepend 8053 8053 8053 8053 8053
+!
+route-map eBGP-SPARKLE2-OUT-V4 permit 16
+ match ip address prefix-list VENSITE-IPV4
+ set as-path prepend 8053 8053 8053 8053 8053 262203
+!
+route-map eBGP-SPARKLE2-OUT-V4 permit 19
+ match ip address prefix-list SILVERDATA-V4
+ set as-path prepend 8053 8053 8053 8053 8053 272854
+!
+route-map eBGP-SPARKLE2-OUT-V4 permit 20
+ match community IFX-VE-8053-1
+ set as-path prepend 8053 8053 8053 8053
+!
+route-map eBGP-SPARKLE2-OUT-V4 permit 21
+ match community IFX-VE-8053-2
+ set as-path prepend 8053 8053 8053 8053 8053
+!
+route-map eBGP-SPARKLE2-OUT-V4 permit 22
+ match community IFX-VE-8053-3
+ set as-path prepend 8053 8053 8053 8053 8053 8053
+!
+route-map eBGP-SPARKLE2-OUT-V4 permit 23
+ match community IFX-VE-8053-4
+ set as-path prepend 8053
+!
+route-map eBGP-SPARKLE2-OUT-V4 permit 24
+ match community IFX-VE-8053-5
+ set as-path prepend 8053 8053
+!
+route-map eBGP-SPARKLE2-OUT-V4 permit 25
+ match community IFX-VE-8053-6
+ set as-path prepend 8053 8053 8053
+!
+route-map eBGP-SPARKLE2-OUT-V4 permit 26
+ match community IFX-VE-8053-7
+ set local-preference 90
+ set as-path prepend 8053 8053 8053 8053 8053 8053 8053 8053 8053 8053
+!
+route-map eBGP-SPARKLE2-OUT-V4 permit 60
+ match community IFX-VE-8053-20
+ set as-path prepend 8053 8053 8053
+!
+route-map eBGP-SPARKLE2-OUT-V4 permit 98
+ match community IFX-VE-8053-BACKUP
+ set as-path prepend 8053 8053 8053 8053
+!
+route-map eBGP-SPARKLE2-OUT-V4 permit 99
+ match ip address prefix-list DENY-ALL
+ set local-preference 99
+!
+route-map SILVERDATA-IPV6 permit 10
+!
+route-map eBGP-SPARKLE2-OUT-V6 permit 10
+ match ipv6 address prefix-list IFXVE-IPV6
+ set as-path prepend 8053 8053 8053 8053 8053
+!
+route-map eBGP-SPARKLE2-OUT-V6 permit 13
+ match ipv6 address prefix-list VENSITE-IPV6
+ set as-path prepend 8053 8053 8053 8053 8053 262203
+!
+route-map eBGP-SPARKLE2-OUT-V6 permit 14
+ match ipv6 address prefix-list VIPTEL-IPV6
+ set as-path prepend 8053 8053 8053 8053 8053 271884
+!
+route-map eBGP-SPARKLE2-OUT-V6 permit 19
+ match ipv6 address prefix-list SILVERDATA-V6
+ set as-path prepend 8053 8053 8053 8053 8053 272854
+!
+route-map eBGP-SPARKLE2-OUT-V6 permit 20
+ match community IFX-VE-8053-1
+ set as-path prepend 8053 8053 8053 8053
+!
+route-map eBGP-SPARKLE2-OUT-V6 permit 21
+ match community IFX-VE-8053-2
+ set as-path prepend 8053 8053 8053 8053 8053
+!
+route-map eBGP-SPARKLE2-OUT-V6 permit 22
+ match community IFX-VE-8053-3
+ set as-path prepend 8053 8053 8053 8053 8053 8053
+!
+route-map eBGP-SPARKLE2-OUT-V6 permit 23
+ match community IFX-VE-8053-4
+ set as-path prepend 8053
+!
+route-map eBGP-SPARKLE2-OUT-V6 permit 24
+ match community IFX-VE-8053-5
+ set as-path prepend 8053 8053
+!
+route-map eBGP-SPARKLE2-OUT-V6 permit 25
+ match community IFX-VE-8053-6
+ set as-path prepend 8053 8053 8053
+!
+route-map eBGP-SPARKLE2-OUT-V6 permit 26
+ match community IFX-VE-8053-7
+ set as-path prepend 8053 8053 8053 8053
+!
+route-map eBGP-SPARKLE2-OUT-V6 permit 99
+ match ipv6 address prefix-list DENY-ALL-IPV6
+!
+route-map eBGP-SPARKLE-OUT-V6 permit 10
+ match ipv6 address prefix-list IFXVE-IPV6
+ set as-path prepend 8053 8053 8053 8053 8053
+!
+route-map eBGP-SPARKLE-OUT-V6 permit 13
+ match ipv6 address prefix-list VENSITE-IPV6
+ set as-path prepend 8053 8053 8053 8053 8053 8053 262203
+!
+route-map eBGP-SPARKLE-OUT-V6 permit 14
+ match ipv6 address prefix-list VIPTEL-IPV6
+ set as-path prepend 8053 8053 8053 8053 271884
+!
+route-map eBGP-SPARKLE-OUT-V6 permit 17
+ match ipv6 address prefix-list SILVERDATA-V6
+ set as-path prepend 8053 8053 8053 8053 8053 8053 272854
+!
+route-map eBGP-SPARKLE-OUT-V6 permit 20
+ match community IFX-VE-8053-1
+ set as-path prepend 8053
+!
+route-map eBGP-SPARKLE-OUT-V6 permit 21
+ match community IFX-VE-8053-2
+ set as-path prepend 8053 8053
+!
+route-map eBGP-SPARKLE-OUT-V6 permit 22
+ match community IFX-VE-8053-3
+ set as-path prepend 8053 8053 8053
+!
+route-map eBGP-SPARKLE-OUT-V6 permit 23
+ match community IFX-VE-8053-4
+ set as-path prepend 8053 8053 8053 8053
+!
+route-map eBGP-SPARKLE-OUT-V6 permit 24
+ match community IFX-VE-8053-5
+ set as-path prepend 8053 8053 8053 8053 8053
+!
+route-map eBGP-SPARKLE-OUT-V6 permit 25
+ match community IFX-VE-8053-6
+ set as-path prepend 8053 8053 8053 8053 8053 8053
+!
+route-map eBGP-SPARKLE-OUT-V6 permit 26
+ match community IFX-VE-8053-7
+ set as-path prepend 8053 8053 8053 8053 8053 8053 8053
+!
+route-map eBGP-SPARKLE-OUT-V6 permit 99
+ match ipv6 address prefix-list DENY-ALL-IPV6
+!
+route-map eBGP-SPARKLE-OUT-V4 permit 10
+ match ip address prefix-list IFXVE-IPV4
+ set as-path prepend 8053 8053 8053 8053 8053
+!
+route-map eBGP-SPARKLE-OUT-V4 permit 13
+ match ip address prefix-list VIPTEL-IPV4
+ set as-path prepend 8053 8053 8053 8053 8053 271884
+!
+route-map eBGP-SPARKLE-OUT-V4 permit 15
+ match ip address prefix-list YVING-IPV4
+ set as-path prepend 8053 8053 8053 8053 8053
+!
+route-map eBGP-SPARKLE-OUT-V4 permit 16
+ match ip address prefix-list VENSITE-IPV4
+ set as-path prepend 8053 8053 8053 8053 8053 262203
+!
+route-map eBGP-SPARKLE-OUT-V4 permit 17
+ match ip address prefix-list SILVERDATA-V4
+ set as-path prepend 8053 8053 8053 8053 8053 272854
+!
+route-map eBGP-SPARKLE-OUT-V4 permit 20
+ match community IFX-VE-8053-1
+ set as-path prepend 8053
+!
+route-map eBGP-SPARKLE-OUT-V4 permit 21
+ match community IFX-VE-8053-2
+ set as-path prepend 8053 8053
+!
+route-map eBGP-SPARKLE-OUT-V4 permit 22
+ match community IFX-VE-8053-3
+ set as-path prepend 8053 8053 8053
+!
+route-map eBGP-SPARKLE-OUT-V4 permit 23
+ match community IFX-VE-8053-4
+ set as-path prepend 8053 8053 8053 8053
+!
+route-map eBGP-SPARKLE-OUT-V4 permit 24
+ match community IFX-VE-8053-5
+ set as-path prepend 8053 8053 8053 8053 8053
+!
+route-map eBGP-SPARKLE-OUT-V4 permit 25
+ match community IFX-VE-8053-6
+ set as-path prepend 8053 8053 8053 8053 8053 8053
+!
+route-map eBGP-SPARKLE-OUT-V4 permit 26
+ match community IFX-VE-8053-7
+ set local-preference 90
+ set as-path prepend 8053 8053 8053 8053 8053 8053 8053 8053 8053 8053
+!
+route-map eBGP-SPARKLE-OUT-V4 permit 60
+ match community IFX-VE-8053-20
+ set as-path prepend 8053 8053 8053 8053 8053 8053 8053 8053 8053
+!
+route-map eBGP-SPARKLE-OUT-V4 permit 98
+ match community IFX-VE-8053-BACKUP
+ set as-path prepend 8053 8053 8053 8053 8053
+!
+route-map eBGP-SPARKLE-OUT-V4 permit 99
+ match ip address prefix-list DENY-ALL
+!
+route-map eBGP-CIRION-IN-V4 permit 10
+ set local-preference 97
+!
+route-map eBGP-SUPERCABLE-IN-V6 permit 10
+ match ipv6 address prefix-list eBGP-SUPERCABLE-IN-V6
+ set local-preference 110
+ set community 8053:7
+!
+route-map eBGP-SIMPLETV-IN-V6 permit 10
+ match ipv6 address prefix-list eBGP-SIMPLETV-IN-V6
+ set local-preference 110
+ set community 8053:7
+!
+route-map eBGP-CIRION-OUT_AG23-V4 permit 99
+ match ip address prefix-list DENY-ALL
+!
+route-map eBGP-CIRION_AG23-OUT-V4 permit 10
+ match ip address prefix-list IFXVE-IPV4
+ set as-path prepend 8053 8053 8053
+ set community 3549:697
+!
+route-map eBGP-CIRION_AG23-OUT-V4 permit 13
+ match ip address prefix-list VIPTEL-IPV4
+ set as-path prepend 271884 271884 271884
+ set community 3549:697
+!
+route-map eBGP-CIRION_AG23-OUT-V4 permit 15
+ match ip address prefix-list YVING-IPV4
+ set community 3549:697
+!
+route-map eBGP-CIRION_AG23-OUT-V4 permit 16
+ match ip address prefix-list VENSITE-IPV4
+ set as-path prepend 262203 262203 262203
+ set community 3549:697
+!
+route-map eBGP-CIRION_AG23-OUT-V4 permit 17
+ match ip address prefix-list SILVERDATA-V4
+ set as-path prepend 272854
+ set community 3549:697
+!
+route-map eBGP-CIRION_AG23-OUT-V4 permit 20
+ match community IFX-VE-8053-1
+ set as-path prepend 8053
+ set community 3549:697
+!
+route-map eBGP-CIRION_AG23-OUT-V4 permit 21
+ match community IFX-VE-8053-2
+ set as-path prepend 8053 8053
+ set community 3549:697
+!
+route-map eBGP-CIRION_AG23-OUT-V4 permit 22
+ match community IFX-VE-8053-3
+ set as-path prepend 8053 8053 8053
+ set community 3549:697
+!
+route-map eBGP-CIRION_AG23-OUT-V4 permit 23
+ match community IFX-VE-8053-4
+ set as-path prepend 8053 8053 8053 8053
+ set community 3549:697
+!
+route-map eBGP-CIRION_AG23-OUT-V4 permit 24
+ match community IFX-VE-8053-5
+ set as-path prepend 8053 8053 8053 8053 8053
+ set community 3549:697
+!
+route-map eBGP-CIRION_AG23-OUT-V4 permit 25
+ match community IFX-VE-8053-6
+ set as-path prepend 8053 8053 8053 8053 8053
+ set community 3549:697
+!
+route-map eBGP-CIRION_AG23-OUT-V4 permit 98
+ match community IFX-VE-8053-BACKUP
+ set as-path prepend 8053 8053 8053 8053
+ set community 3549:697
+!
+route-map eBGP-CIRION_AG23-OUT-V4 permit 99
+ match ip address prefix-list DENY-ALL
+!
+route-map eBGP-CIRION-OUT_AG23-V6 permit 99
+ match ipv6 address prefix-list DENY-ALL-V6
+!
+route-map eBGP-CIRION_AG23-OUT-V6 permit 10
+ match ipv6 address prefix-list IFXVE-IPV6
+ set as-path prepend 8053 8053 8053 8053
+ set community 3549:697
+!
+route-map eBGP-CIRION_AG23-OUT-V6 permit 12
+ match ipv6 address prefix-list VENSITE-IPV6
+ set as-path prepend 262203
+ set community 3549:697
+!
+route-map eBGP-CIRION_AG23-OUT-V6 permit 14
+ match ipv6 address prefix-list VIPTEL-IPV6
+ set as-path prepend 271884
+ set community 3549:697
+!
+route-map eBGP-CIRION_AG23-OUT-V6 permit 15
+ match ipv6 address prefix-list SILVERDATA-V6
+ set as-path prepend 272854
+ set community 3549:697
+!
+route-map eBGP-CIRION_AG23-OUT-V6 permit 20
+ match community IFX-VE-8053-1
+ set as-path prepend 8053 8053
+ set community 3549:697
+!
+route-map eBGP-CIRION_AG23-OUT-V6 permit 21
+ match community IFX-VE-8053-2
+ set as-path prepend 8053 8053 8053
+ set community 3549:697
+!
+route-map eBGP-CIRION_AG23-OUT-V6 permit 22
+ match community IFX-VE-8053-3
+ set as-path prepend 8053 8053 8053 8053
+ set community 3549:697
+!
+route-map eBGP-CIRION_AG23-OUT-V6 permit 23
+ match community IFX-VE-8053-4
+ set as-path prepend 8053 8053 8053 8053 8053
+ set community 3549:697
+!
+route-map eBGP-CIRION_AG23-OUT-V6 permit 24
+ match community IFX-VE-8053-5
+ set as-path prepend 8053 8053 8053 8053 8053 8053
+ set community 3549:697
+!
+route-map eBGP-CIRION_AG23-OUT-V6 permit 25
+ match community IFX-VE-8053-6
+ set community 3549:697
+!
+route-map eBGP-CIRION_AG23-OUT-V6 permit 26
+ match community IFX-VE-8053-7
+ set as-path prepend 8053 8053 8053 8053 8053 8053
+ set community 3549:697
+!
+route-map eBGP-CIRION_AG23-OUT-V6 permit 99
+ match ipv6 address prefix-list DENY-ALL-V6
+!
+route-map eBGP-TECNOIMP-IN-V6 permit 10
+ match ipv6 address prefix-list eBGP-TECNOIMP-IN-V6
+ set local-preference 110
+ set community 8053:7
+!
+route-map eBGP-SILVERDATA-IN-V6 permit 10
+ match ipv6 address prefix-list SILVERDATA-V6
+ set local-preference 110
+ set community 8053:7
+!
+route-map eBGP-QUALCOM-IN permit 10
+ match ip address prefix-list eBGP-QUALCOM-IN
+ set local-preference 110
+ set community 8053:6
+!
+route-map eBGP-TECNOIMP-IN-V4 permit 10
+ match ip address prefix-list eBGP-TECNOIMP-IN-V4
+ set local-preference 110
+ set community 8053:7
+!
+route-map eBGP-SILVERDATA-IN-V4 permit 10
+ match ip address prefix-list SILVERDATA-V4
+ set local-preference 110
+ set community 8053:7
+!
+snmp-server community ifxpublic202424 RO 99
+snmp ifmib ifindex persist
+!
+!
+!
+ipv6 access-list ACCESO-TELNET092021V6
+ sequence 10 deny ipv6 any any
+!
+control-plane
+!
+!
+!
+!
+!
+!
+line con 0
+ logging synchronous
+ stopbits 1
+line aux 0
+ stopbits 1
+line vty 0 4
+ access-class ACCESO-TELNET092021 in
+ ipv6 access-class ACCESO-TELNET092021V6 in
+ login local
+ transport input ssh
+line vty 5 15
+ access-class ACCESO-TELNET092021 in
+ ipv6 access-class ACCESO-TELNET092021V6 in
+ login local
+ transport input ssh
+!
+ntp server 181.225.41.75
+!
+!
+!
+!
+!
+end

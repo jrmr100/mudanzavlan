@@ -1,0 +1,37 @@
+########################################
+VLAN: 1826	TUNO-DEST-CARUPANO
+
+---------- VECREDNOC1004X1-----------
+ssh soporte2@181.225.41.18
+
+no interface TenGigabitEthernet0/1/0.1826
+ description DEST-CARUPANO;ID:26284
+ bandwidth 40960
+ encapsulation dot1Q 1826
+ ip address 172.23.244.173 255.255.255.252
+ service-policy input 40M
+ service-policy output 40M
+exit
+no ip route 190.94.253.220 255.255.255.252 172.23.244.174 name GPON-VL1826-TUNO-DEST-CARUPANO
+
+---------LEB1006X1-----------
+ssh soporte2@181.225.41.25
+
+config t
+interface Po8.1826
+ description DEST-CARUPANO;ID:26284
+ bandwidth 40960
+encapsulation dot1Q 1826
+ ip address 172.23.244.173 255.255.255.252
+ service-policy input 40M
+ service-policy output 40M
+exit
+ip route 190.94.253.220 255.255.255.252 172.23.244.174 name GPON-VL1826-TUNO-DEST-CARUPANO
+end
+
+
+###########TROUBLESHOOTING############
+
+ping 172.23.244.174
+sh mac address-table vlan 1826
+show ethernet-switching table vlan 1826
