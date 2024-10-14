@@ -1,0 +1,37 @@
+########################################
+VLAN: 1812	TUNO-LOCATEL-SM
+
+---------- VECREDNOC1004X1-----------
+ssh soporte2@181.225.41.18
+
+no interface TenGigabitEthernet0/1/0.1812
+ description LOCATEL-SM;ID:25929
+ bandwidth 71680
+ encapsulation dot1Q 1812
+ ip address 172.23.253.101 255.255.255.252
+ service-policy input 70M
+ service-policy output 70M
+exit
+no ip route 181.225.48.216 255.255.255.248 172.23.253.102 name GPON-VL1812-TUNO-LOCATEL-SM
+
+---------LEB1006X1-----------
+ssh soporte2@181.225.41.25
+
+config t
+interface Po8.1812
+ description LOCATEL-SM;ID:25929
+ bandwidth 71680
+encapsulation dot1Q 1812
+ ip address 172.23.253.101 255.255.255.252
+ service-policy input 70M
+ service-policy output 70M
+exit
+ip route 181.225.48.216 255.255.255.248 172.23.253.102 name GPON-VL1812-TUNO-LOCATEL-SM
+end
+
+
+###########TROUBLESHOOTING############
+
+ping 172.23.253.102
+sh mac address-table vlan 1812
+show ethernet-switching table vlan 1812

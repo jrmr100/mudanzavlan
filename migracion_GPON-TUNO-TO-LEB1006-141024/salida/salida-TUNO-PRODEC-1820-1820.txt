@@ -1,0 +1,37 @@
+########################################
+VLAN: 1820	TUNO-PRODEC
+
+---------- VECREDNOC1004X1-----------
+ssh soporte2@181.225.41.18
+
+no interface TenGigabitEthernet0/1/0.1820
+ description PRODEC;ID:26240
+ bandwidth 51200
+ encapsulation dot1Q 1820
+ ip address 172.23.243.173 255.255.255.252
+ service-policy input 50M
+ service-policy output 50M
+exit
+no ip route 190.94.244.64 255.255.255.252 172.23.243.174 name GPON-VL1820-TUNO-PRODEC
+
+---------LEB1006X1-----------
+ssh soporte2@181.225.41.25
+
+config t
+interface Po8.1820
+ description PRODEC;ID:26240
+ bandwidth 51200
+encapsulation dot1Q 1820
+ ip address 172.23.243.173 255.255.255.252
+ service-policy input 50M
+ service-policy output 50M
+exit
+ip route 190.94.244.64 255.255.255.252 172.23.243.174 name GPON-VL1820-TUNO-PRODEC
+end
+
+
+###########TROUBLESHOOTING############
+
+ping 172.23.243.174
+sh mac address-table vlan 1820
+show ethernet-switching table vlan 1820

@@ -1,0 +1,37 @@
+########################################
+VLAN: 1823	TUNO-TOP-FOOD
+
+---------- VECREDNOC1004X1-----------
+ssh soporte2@181.225.41.18
+
+no interface TenGigabitEthernet0/1/0.1823
+ description TOP-FOOD;ID:
+ bandwidth 40960
+ encapsulation dot1Q 1823
+ ip address 172.23.244.5 255.255.255.252
+ service-policy input 40M
+ service-policy output 40M
+exit
+no ip route 190.94.250.152 255.255.255.252 172.23.244.6 name GPON-VL1823-TUNO-TOP-FOOD
+
+---------LEB1006X1-----------
+ssh soporte2@181.225.41.25
+
+config t
+interface Po8.1823
+ description TOP-FOOD;ID:
+ bandwidth 40960
+encapsulation dot1Q 1823
+ ip address 172.23.244.5 255.255.255.252
+ service-policy input 40M
+ service-policy output 40M
+exit
+ip route 190.94.250.152 255.255.255.252 172.23.244.6 name GPON-VL1823-TUNO-TOP-FOOD
+end
+
+
+###########TROUBLESHOOTING############
+
+ping 172.23.244.6
+sh mac address-table vlan 1823
+show ethernet-switching table vlan 1823

@@ -1,0 +1,35 @@
+########################################
+VLAN: 1805	 TUNO-FRESH-T-CHAGMOS
+
+---------- VECREDNOC1004X1-----------
+ssh soporte2@181.225.41.18
+
+no interface TenGigabitEthernet0/1/0.1805
+ description FRESH-T-CHAGMOS;ID:
+ bandwidth 71680
+ encapsulation dot1Q 1805
+ ip address 172.23.240.41 255.255.255.252
+ service-policy input 70M
+ service-policy output 70M
+exit
+
+---------LEB1006X1-----------
+ssh soporte2@181.225.41.25
+
+config t
+interface Po8.1805
+ description FRESH-T-CHAGMOS;ID:
+ bandwidth 71680
+encapsulation dot1Q 1805
+ ip address 172.23.240.41 255.255.255.252
+ service-policy input 70M
+ service-policy output 70M
+exit
+end
+
+
+###########TROUBLESHOOTING############
+
+ping NEXTHOP
+sh mac address-table vlan 1805
+show ethernet-switching table vlan 1805

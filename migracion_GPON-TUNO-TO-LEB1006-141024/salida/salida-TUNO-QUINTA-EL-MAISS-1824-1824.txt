@@ -1,0 +1,37 @@
+########################################
+VLAN: 1824	TUNO-QUINTA-EL-MAISS
+
+---------- VECREDNOC1004X1-----------
+ssh soporte2@181.225.41.18
+
+no interface TenGigabitEthernet0/1/0.1824
+ description QUINTA-EL-MAISS;ID:26254
+ bandwidth 51200
+ encapsulation dot1Q 1824
+ ip address 172.23.244.141 255.255.255.252
+ service-policy input 50M
+ service-policy output 50M
+exit
+no ip route 190.94.250.176 255.255.255.252 172.23.244.142 name GPON-VL1824-TUNO-QUINTA-EL-MAISS
+
+---------LEB1006X1-----------
+ssh soporte2@181.225.41.25
+
+config t
+interface Po8.1824
+ description QUINTA-EL-MAISS;ID:26254
+ bandwidth 51200
+encapsulation dot1Q 1824
+ ip address 172.23.244.141 255.255.255.252
+ service-policy input 50M
+ service-policy output 50M
+exit
+ip route 190.94.250.176 255.255.255.252 172.23.244.142 name GPON-VL1824-TUNO-QUINTA-EL-MAISS
+end
+
+
+###########TROUBLESHOOTING############
+
+ping 172.23.244.142
+sh mac address-table vlan 1824
+show ethernet-switching table vlan 1824

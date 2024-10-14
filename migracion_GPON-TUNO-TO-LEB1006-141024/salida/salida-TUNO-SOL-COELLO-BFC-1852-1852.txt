@@ -1,0 +1,41 @@
+########################################
+VLAN: 1852	TUNO-SOL-COELLO-BFC
+
+---------- VECREDNOC1004X1-----------
+ssh soporte2@181.225.41.18
+
+no interface TenGigabitEthernet0/1/0.1852
+ description SOL-COELLO-BFC;ID:26329
+ bandwidth 81920
+ encapsulation dot1Q 1852
+ ip address 172.23.240.129 255.255.255.252
+ service-policy input 80M
+ service-policy output 80M
+exit
+no ip route 190.94.198.32 255.255.255.248 172.23.240.130 name GPON-VL1852-TUNO-SOL-COELLO-BFC
+no ip route 190.94.198.40 255.255.255.248 172.23.240.130 name GPON-VL1852-TUNO-SOL-COELLO-BFC
+no ip route 190.94.198.48 255.255.255.248 172.23.240.130 name GPON-VL1852-TUNO-SOL-COELLO-BFC
+
+---------LEB1006X1-----------
+ssh soporte2@181.225.41.25
+
+config t
+interface Po8.1852
+ description SOL-COELLO-BFC;ID:26329
+ bandwidth 81920
+encapsulation dot1Q 1852
+ ip address 172.23.240.129 255.255.255.252
+ service-policy input 80M
+ service-policy output 80M
+exit
+ip route 190.94.198.32 255.255.255.248 172.23.240.130 name GPON-VL1852-TUNO-SOL-COELLO-BFC
+ip route 190.94.198.40 255.255.255.248 172.23.240.130 name GPON-VL1852-TUNO-SOL-COELLO-BFC
+ip route 190.94.198.48 255.255.255.248 172.23.240.130 name GPON-VL1852-TUNO-SOL-COELLO-BFC
+end
+
+
+###########TROUBLESHOOTING############
+
+ping 172.23.240.130
+sh mac address-table vlan 1852
+show ethernet-switching table vlan 1852

@@ -1,0 +1,37 @@
+########################################
+VLAN: 1834	TUNO-QTA-MARY
+
+---------- VECREDNOC1004X1-----------
+ssh soporte2@181.225.41.18
+
+no interface TenGigabitEthernet0/1/0.1834
+ description QTA-MARY;ID:
+ bandwidth 51200
+ encapsulation dot1Q 1834
+ ip address 172.23.248.77 255.255.255.252
+ service-policy input 50M
+ service-policy output 50M
+exit
+no ip route 190.94.253.196 255.255.255.252 172.23.248.78 name GPON-VL1834-TUNO-QTA-MARY
+
+---------LEB1006X1-----------
+ssh soporte2@181.225.41.25
+
+config t
+interface Po8.1834
+ description QTA-MARY;ID:
+ bandwidth 51200
+encapsulation dot1Q 1834
+ ip address 172.23.248.77 255.255.255.252
+ service-policy input 50M
+ service-policy output 50M
+exit
+ip route 190.94.253.196 255.255.255.252 172.23.248.78 name GPON-VL1834-TUNO-QTA-MARY
+end
+
+
+###########TROUBLESHOOTING############
+
+ping 172.23.248.78
+sh mac address-table vlan 1834
+show ethernet-switching table vlan 1834
