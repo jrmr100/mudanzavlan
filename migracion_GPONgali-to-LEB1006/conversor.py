@@ -119,7 +119,9 @@ for linea_vlan in lista_vlan_vieja:
 if len(lista_nombres_vlan) != len(lista_vlan_vieja) or\
    len(lista_nombres_vlan) != len(lista_vlan_nueva) or\
    len(lista_nombres_vlan) != len(lista_almacen_configs):
-       raise ValueError("Error!, Las listas fuentes no tienen el mismo tamaño")
+    print(lista_almacen_configs)
+
+    raise ValueError("Error!, Las listas fuentes no tienen el mismo tamaño")
 
 
 size_lista = len(lista_vlan_nueva)  # Declaro el tamaño de la lista
