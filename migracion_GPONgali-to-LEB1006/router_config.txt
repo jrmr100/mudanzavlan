@@ -1,8 +1,8 @@
 Building configuration...
 
-Current configuration : 171471 bytes
+Current configuration : 164257 bytes
 !
-! Last configuration change at 09:38:44 VET Tue Jul 16 2024 by soporte2
+! Last configuration change at 15:40:47 VET Wed Sep 18 2024 by soporte2
 !
 version 15.5
 service timestamps debug datetime localtime show-timezone
@@ -58,7 +58,7 @@ ipv6 unicast-routing
 subscriber templating
 !
 mpls label protocol ldp
-no mpls ip propagate-ttl 
+no mpls ip propagate-ttl
 no mpls ldp advertise-labels
 mpls ldp advertise-labels for LOOPBACKS
 mpls traffic-eng tunnels
@@ -103,169 +103,169 @@ lldp run
 !
 policy-map 800M
  class class-default
-  police cir 819200000 conform-action transmit  exceed-action drop 
+  police cir 819200000 conform-action transmit  exceed-action drop
 policy-map COELLO-T_POLAR
  class class-default
-  police cir 1177600000 conform-action transmit  exceed-action drop 
+  police cir 1177600000 conform-action transmit  exceed-action drop
 policy-map 700M
  class class-default
-  police cir 716800000 conform-action transmit  exceed-action drop 
+  police cir 716800000 conform-action transmit  exceed-action drop
 policy-map 300M
  class class-default
-  police cir 307200000 conform-action transmit  exceed-action drop 
+  police cir 307200000 conform-action transmit  exceed-action drop
 policy-map QUALCOM
  class class-default
-  police cir 819200000 conform-action transmit  exceed-action drop 
+  police cir 819200000 conform-action transmit  exceed-action drop
 policy-map TECNOIMPULSO
  class class-default
-  police cir 1024000000 conform-action transmit  exceed-action drop 
+  police cir 1024000000 conform-action transmit  exceed-action drop
 policy-map 200M
  class class-default
-  police cir 204800000 conform-action transmit  exceed-action drop 
+  police cir 204800000 conform-action transmit  exceed-action drop
 policy-map 600M
  class class-default
-  police cir 614400000 conform-action transmit  exceed-action drop 
+  police cir 614400000 conform-action transmit  exceed-action drop
 policy-map TELENET
  class class-default
-  police cir 716800000 conform-action transmit  exceed-action drop 
+  police cir 716800000 conform-action transmit  exceed-action drop
 policy-map 250M
  class class-default
-  police cir 256000000 conform-action transmit  exceed-action drop 
+  police cir 256000000 conform-action transmit  exceed-action drop
 policy-map 220M
  class class-default
-  police cir 225280000 conform-action transmit  exceed-action drop 
+  police cir 225280000 conform-action transmit  exceed-action drop
 policy-map CCSRED
  class class-default
-  police cir 768000000 conform-action transmit  exceed-action drop 
+  police cir 768000000 conform-action transmit  exceed-action drop
 policy-map 280M
  class class-default
-  police cir 286720000 conform-action transmit  exceed-action drop 
+  police cir 286720000 conform-action transmit  exceed-action drop
 policy-map COELLO-EL_BOSQUE
  class class-default
-  police cir 563200000 conform-action transmit  exceed-action drop 
+  police cir 563200000 conform-action transmit  exceed-action drop
 policy-map 5M
  class class-default
-  police cir 5120000 conform-action transmit  exceed-action drop 
+  police cir 5120000 conform-action transmit  exceed-action drop
 policy-map IRVENET
  class class-default
-  police cir 716800000 conform-action transmit  exceed-action drop 
+  police cir 716800000 conform-action transmit  exceed-action drop
 policy-map 40M
  class class-default
-  police cir 40960000 conform-action transmit  exceed-action drop 
+  police cir 40960000 conform-action transmit  exceed-action drop
 policy-map 80M
  class class-default
-  police cir 81920000 conform-action transmit  exceed-action drop 
+  police cir 81920000 conform-action transmit  exceed-action drop
 policy-map 90M
  class class-default
-  police cir 92160000 conform-action transmit  exceed-action drop 
+  police cir 92160000 conform-action transmit  exceed-action drop
 policy-map 2G
  class class-default
-  police cir 2048000000 conform-action transmit  exceed-action drop 
+  police cir 2048000000 conform-action transmit  exceed-action drop
 policy-map 70M
  class class-default
-  police cir 71680000 conform-action transmit  exceed-action drop 
+  police cir 71680000 conform-action transmit  exceed-action drop
 policy-map 180M
  class class-default
-  police cir 184320000 conform-action transmit  exceed-action drop 
+  police cir 184320000 conform-action transmit  exceed-action drop
 policy-map 160M
  class class-default
-  police cir 163840000 conform-action transmit  exceed-action drop 
+  police cir 163840000 conform-action transmit  exceed-action drop
 policy-map 110M
  class class-default
-  police cir 112640000 conform-action transmit  exceed-action drop 
+  police cir 112640000 conform-action transmit  exceed-action drop
 policy-map 35M
  class class-default
-  police cir 35120000 conform-action transmit  exceed-action drop 
+  police cir 35120000 conform-action transmit  exceed-action drop
 policy-map 140M
  class class-default
-  police cir 143360000 bc 26880000 conform-action transmit  exceed-action drop 
+  police cir 143360000 bc 26880000 conform-action transmit  exceed-action drop
 policy-map 170M
  class class-default
-  police cir 174080000 conform-action transmit  exceed-action drop 
+  police cir 174080000 conform-action transmit  exceed-action drop
 policy-map TELENET-CENTRO
  class class-default
-  police cir 409600000 conform-action transmit  exceed-action drop 
+  police cir 409600000 conform-action transmit  exceed-action drop
+policy-map SILVERDATA-CPITA
+ class class-default
+  police cir 30720000000 conform-action transmit  exceed-action drop
 policy-map 7-LINK
  class class-default
-  police cir 1024000000 conform-action transmit  exceed-action drop 
+  police cir 2048000000 conform-action transmit  exceed-action drop
 policy-map 900M
  class class-default
-  police cir 921600000 conform-action transmit  exceed-action drop 
+  police cir 921600000 conform-action transmit  exceed-action drop
 policy-map COELLO
  class class-default
-  police cir 512000000 conform-action transmit  exceed-action drop 
+  police cir 512000000 conform-action transmit  exceed-action drop
 policy-map 400M
  class class-default
-  police cir 409600000 conform-action transmit  exceed-action drop 
+  police cir 409600000 conform-action transmit  exceed-action drop
 policy-map SUPERCABLE
  class class-default
-  police cir 6656000000 conform-action transmit  exceed-action drop 
+  police cir 6656000000 conform-action transmit  exceed-action drop
 policy-map 30M
  class class-default
-  police cir 30720000 conform-action transmit  exceed-action drop 
+  police cir 30720000 conform-action transmit  exceed-action drop
 policy-map 500M
  class class-default
-  police cir 512000000 conform-action transmit  exceed-action drop 
+  police cir 512000000 conform-action transmit  exceed-action drop
 policy-map 10M
  class class-default
-  police cir 10240000 conform-action transmit  exceed-action drop 
+  police cir 10240000 conform-action transmit  exceed-action drop
 policy-map 120M
  class class-default
-  police cir 122880000 conform-action transmit  exceed-action drop 
+  police cir 122880000 conform-action transmit  exceed-action drop
 policy-map 20M
  class class-default
-  police cir 20480000 conform-action transmit  exceed-action drop 
+  police cir 20480000 conform-action transmit  exceed-action drop
 policy-map 100M
  class class-default
-  police cir 104448000 conform-action transmit  exceed-action drop 
+  police cir 104448000 conform-action transmit  exceed-action drop
 policy-map 4M
  class class-default
-  police cir 4096000 conform-action transmit  exceed-action drop 
+  police cir 4096000 conform-action transmit  exceed-action drop
 policy-map 130M
  class class-default
-  police cir 133120000 conform-action transmit  exceed-action drop 
+  police cir 133120000 conform-action transmit  exceed-action drop
 policy-map 50M
  class class-default
-  police cir 56320000 conform-action transmit  exceed-action drop 
+  police cir 56320000 conform-action transmit  exceed-action drop
 policy-map 60M
  class class-default
-  police cir 61440000 conform-action transmit  exceed-action drop 
+  police cir 61440000 conform-action transmit  exceed-action drop
 policy-map 1G
  class class-default
-  police cir 1024000000 conform-action transmit  exceed-action drop 
+  police cir 1024000000 conform-action transmit  exceed-action drop
 policy-map ORIENTALDES
  class class-default
-  police cir 112640000 conform-action transmit  exceed-action drop 
+  police cir 112640000 conform-action transmit  exceed-action drop
 policy-map 350M
  class class-default
-  police cir 358400000 conform-action transmit  exceed-action drop 
+  police cir 358400000 conform-action transmit  exceed-action drop
 policy-map 360M
  class class-default
-  police cir 368640000 conform-action transmit  exceed-action drop 
+  police cir 368640000 conform-action transmit  exceed-action drop
 policy-map VIPTEL
  class class-default
-  police cir 2048000000 conform-action transmit  exceed-action drop 
+  police cir 4096000000 conform-action transmit  exceed-action drop
 policy-map PLATCOMM-EU
  class class-default
-  police cir 307200000 conform-action transmit  exceed-action drop 
+  police cir 307200000 conform-action transmit  exceed-action drop
 policy-map 330M
  class class-default
-  police cir 337920000 conform-action transmit  exceed-action drop 
+  police cir 337920000 conform-action transmit  exceed-action drop
 policy-map SILVERDATA
  class class-default
-  police cir 16000000000 conform-action transmit  exceed-action drop 
+  police cir 16000000000 conform-action transmit  exceed-action drop
 policy-map 150M
  class class-default
-  police cir 156672000 conform-action transmit  exceed-action drop 
+  police cir 156672000 conform-action transmit  exceed-action drop
 policy-map UNITEL-STM-1
  class class-default
-  police cir 102400000 conform-action transmit  exceed-action drop 
+  police cir 102400000 conform-action transmit  exceed-action drop
 policy-map NTIS-LETONIA
  class class-default
-  police cir 122880000 conform-action transmit  exceed-action drop 
-!
-!
-! 
+  police cir 122880000 conform-action transmit  exceed-action drop
 !
 !
 !
@@ -277,17 +277,20 @@ policy-map NTIS-LETONIA
 !
 !
 !
-! 
-! 
-! 
-! 
-! 
-! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
 !
 !
 interface Loopback0
  ip address 181.225.41.18 255.255.255.255
- ip router isis 
+ ip router isis
  ipv6 address 2803:D480:0:73::18/128
 !
 interface Port-channel1
@@ -302,7 +305,7 @@ interface Port-channel1.9
  encapsulation dot1Q 9
  ip address 172.23.249.2 255.255.255.240
  ip mtu 8000
- ip router isis 
+ ip router isis
  ipv6 address 2803:D480:0:80:0:3E80:0:4/124
  ipv6 mtu 8000
  mpls ip
@@ -315,7 +318,7 @@ interface Port-channel1.30
  encapsulation dot1Q 30
  ip address 172.23.249.34 255.255.255.240
  ip mtu 8000
- ip router isis 
+ ip router isis
  ipv6 address 2803:D480:0:66::C001/64
  ipv6 mtu 8000
  mpls ip
@@ -347,6 +350,10 @@ interface Port-channel5
  no negotiation auto
 !
 interface Port-channel6
+ no ip address
+ no negotiation auto
+!
+interface Port-channel9
  no ip address
  no negotiation auto
 !
@@ -825,6 +832,7 @@ interface TenGigabitEthernet0/1/0.1839
  bandwidth 163840
  encapsulation dot1Q 1839
  ip address 172.23.243.177 255.255.255.252
+ shutdown
  service-policy input 160M
  service-policy output 160M
 !
@@ -853,7 +861,7 @@ interface TenGigabitEthernet0/1/0.1842
  service-policy output 50M
 !
 interface TenGigabitEthernet0/1/0.1843
- description RED1-VL483-TUNO-MUEBLES-MARY 
+ description RED1-VL483-TUNO-MUEBLES-MARY
  bandwidth 51200
  encapsulation dot1Q 1843
  ip address 172.23.245.89 255.255.255.252
@@ -1128,6 +1136,14 @@ interface TenGigabitEthernet0/3/0
  hold-queue 1000 in
  hold-queue 1000 out
 !
+interface TenGigabitEthernet0/3/0.259
+ description CRED-OPTICA-CARONI;ID:26938
+ bandwidth 30720
+ encapsulation dot1Q 259
+ ip address 172.23.253.89 255.255.255.252
+ service-policy input 30M
+ service-policy output 30M
+!
 interface TenGigabitEthernet0/3/0.1961
  description CRED-TECNOPRO-2018;ID:26833
  bandwidth 614400
@@ -1257,20 +1273,20 @@ interface TenGigabitEthernet0/3/0.3115
  service-policy output 50M
 !
 interface TenGigabitEthernet0/3/0.3116
- description EMPORIO-CHAC;ID:26581
- bandwidth 51200
+ description CRED-EMPORIO-CHAC;ID:26581
+ bandwidth 102400
  encapsulation dot1Q 3116
  ip address 172.23.240.93 255.255.255.252
- service-policy input 50M
- service-policy output 50M
+ service-policy input 100M
+ service-policy output 100M
 !
 interface TenGigabitEthernet0/3/0.3117
  description INDIGO-ENERGY;ID:25917
- bandwidth 92160
+ bandwidth 133120
  encapsulation dot1Q 3117
  ip address 172.23.240.197 255.255.255.252
- service-policy input 90M
- service-policy output 90M
+ service-policy input 130M
+ service-policy output 130M
 !
 interface TenGigabitEthernet0/3/0.3118
  description GAMA-PLUS-TRIN;ID:26091
@@ -1517,6 +1533,20 @@ interface TenGigabitEthernet1/0/2.257
  service-policy input 100M
  service-policy output 100M
 !
+interface TenGigabitEthernet1/0/2.261
+ description CRED-SIMPLETV-SA-MGM
+ encapsulation dot1Q 261
+ ip address 172.23.249.217 255.255.255.248
+!
+interface TenGigabitEthernet1/0/2.264
+ description CRED-VIPTEL
+ bandwidth 4096000
+ encapsulation dot1Q 264
+ ip address 200.62.26.197 255.255.255.252
+ ipv6 address 2803:D480:0:69::8053/64
+ service-policy input VIPTEL
+ service-policy output VIPTEL
+!
 interface TenGigabitEthernet1/0/2.269
  description CRED-SALOMON
  encapsulation dot1Q 269
@@ -1538,6 +1568,14 @@ interface TenGigabitEthernet1/0/2.278
  ip address 190.94.253.137 255.255.255.252
  service-policy input 40M
  service-policy output 40M
+!
+interface TenGigabitEthernet1/0/2.298
+ description CRED-7LINK
+ bandwidth 2048000
+ encapsulation dot1Q 298
+ ip address 181.225.44.21 255.255.255.252
+ service-policy input 7-LINK
+ service-policy output 7-LINK
 !
 interface TenGigabitEthernet1/0/2.961
  description MB-INT-1;ID:26059
@@ -1612,11 +1650,11 @@ interface TenGigabitEthernet1/0/2.1019
 !
 interface TenGigabitEthernet1/0/2.1020
  description PRIMTK-DOMUS-2;ID:26592
- bandwidth 204800
+ bandwidth 512000
  encapsulation dot1Q 1020
  ip address 172.23.240.9 255.255.255.252
- service-policy input 200M
- service-policy output 200M
+ service-policy input 500M
+ service-policy output 500M
 !
 interface TenGigabitEthernet1/0/2.1022
  description LIB-C-FRIO-CARNE-CCL;ID:26906
@@ -1727,14 +1765,6 @@ interface TenGigabitEthernet1/0/2.1050
  encapsulation dot1Q 1050
  ip address 172.23.238.13 255.255.255.252
 !
-interface TenGigabitEthernet1/0/2.1154
- description ANAU-UNION-ISRAELITA;ID:25927
- bandwidth 10240
- encapsulation dot1Q 1154
- ip address 190.94.218.9 255.255.255.248
- service-policy input 50M
- service-policy output 50M
-!
 interface TenGigabitEthernet1/0/2.1161
  description ANAUC-IESA;ID:26129
  bandwidth 102400
@@ -1759,21 +1789,13 @@ interface TenGigabitEthernet1/0/2.1165
  service-policy input 20M
  service-policy output 20M
 !
-interface TenGigabitEthernet1/0/2.1168
- description ANAUC-LOCATEL-SB;ID:26137
- bandwidth 20480
- encapsulation dot1Q 1168
- ip address 172.23.242.177 255.255.255.252
- service-policy input 20M
- service-policy output 20M
-!
 interface TenGigabitEthernet1/0/2.1169
  description PSUV;ID:4
- bandwidth 204800
+ bandwidth 409600
  encapsulation dot1Q 1169
  ip address 172.23.242.61 255.255.255.252
- service-policy input 200M
- service-policy output 200M
+ service-policy input 400M
+ service-policy output 400M
 !
 interface TenGigabitEthernet1/0/2.1900
  description NUBOTEK-FIBRA;ID:26119
@@ -2142,14 +2164,6 @@ interface TenGigabitEthernet1/0/2.3000
  service-policy input 50M
  service-policy output 50M
 !
-interface TenGigabitEthernet1/0/2.3001
- description LIB-COM-MOVILES-PXE;ID:26811
- bandwidth 102400
- encapsulation dot1Q 3001
- ip address 172.23.238.109 255.255.255.252
- service-policy input 100M
- service-policy output 100M
-!
 interface TenGigabitEthernet1/0/2.3002
  description LIB-QUINTA-INDI;ID:26773
  bandwidth 51200
@@ -2204,7 +2218,7 @@ interface TenGigabitEthernet1/0/3.506
  service-policy output 50M
 !
 interface TenGigabitEthernet1/0/3.507
- description PCR-FCHACON4 
+ description PCR-FCHACON4
  bandwidth 5120
  encapsulation dot1Q 507
  ip address 181.225.48.49 255.255.255.248
@@ -2452,60 +2466,20 @@ interface TenGigabitEthernet1/0/3.549
 !
 interface TenGigabitEthernet1/0/3.550
  description PCR-ABRAHAM
- bandwidth 112640
+ bandwidth 102400
  encapsulation dot1Q 550
  ip address 172.23.248.41 255.255.255.252
  ip mtu 1500
- service-policy input 110M
- service-policy output 110M
-!
-interface TenGigabitEthernet1/0/3.551
- description GALI-FONDO-GLOBAL
- bandwidth 40960
- encapsulation dot1Q 551
- ip address 172.23.255.229 255.255.255.252
- service-policy input 40M
- service-policy output 40M
+ service-policy input 100M
+ service-policy output 100M
 !
 interface TenGigabitEthernet1/0/3.552
  description ALCALDIA-CHACAO;ID:25550
- bandwidth 61440
+ bandwidth 102400
  encapsulation dot1Q 552
  ip address 172.23.255.209 255.255.255.252
- service-policy input 60M
- service-policy output 60M
-!
-interface TenGigabitEthernet1/0/3.553
- description INTERJURIS;ID:25986
- bandwidth 102400
- encapsulation dot1Q 553
- ip address 172.23.251.29 255.255.255.252
  service-policy input 100M
  service-policy output 100M
-!
-interface TenGigabitEthernet1/0/3.554
- description GALI-MAGISTRATURA:ID:26787
- bandwidth 102400
- encapsulation dot1Q 554
- ip address 172.23.238.57 255.255.255.252
- service-policy input 100M
- service-policy output 100M
-!
-interface TenGigabitEthernet1/0/3.555
- description GALI-EVEBA
- bandwidth 92160
- encapsulation dot1Q 555
- ip address 172.23.251.69 255.255.255.252
- service-policy input 90M
- service-policy output 90M
-!
-interface TenGigabitEthernet1/0/3.557
- description ARAQUE;ID:25989
- bandwidth 51200
- encapsulation dot1Q 557
- ip address 172.23.251.105 255.255.255.252
- service-policy input 50M
- service-policy output 50M
 !
 interface TenGigabitEthernet1/0/3.558
  description OVEJA-NEGRA;ID:26140
@@ -2514,46 +2488,6 @@ interface TenGigabitEthernet1/0/3.558
  ip address 172.23.251.125 255.255.255.252
  service-policy input 50M
  service-policy output 50M
-!
-interface TenGigabitEthernet1/0/3.560
- description GALI-C-FRIO-CARNE;ID:26906
- bandwidth 51200
- encapsulation dot1Q 560
- ip address 172.23.237.153 255.255.255.252
- service-policy input 50M
- service-policy output 50M
-!
-interface TenGigabitEthernet1/0/3.561
- description EDGAR-BENAIM;ID:
- bandwidth 51200
- encapsulation dot1Q 561
- ip address 172.23.241.57 255.255.255.252
- service-policy input 50M
- service-policy output 50M
-!
-interface TenGigabitEthernet1/0/3.564
- description ANAYANSI;ID:20651
- bandwidth 51200
- encapsulation dot1Q 564
- ip address 172.23.255.149 255.255.255.252
- service-policy input 50M
- service-policy output 50M
-!
-interface TenGigabitEthernet1/0/3.565
- description FAO;ID:26007
- bandwidth 102400
- encapsulation dot1Q 565
- ip address 172.23.250.9 255.255.255.252
- service-policy input 100M
- service-policy output 100M
-!
-interface TenGigabitEthernet1/0/3.566
- description GALI_ORIENTAL;ID:22833
- bandwidth 204800
- encapsulation dot1Q 566
- ip address 172.23.247.229 255.255.255.252
- service-policy input 200M
- service-policy output 200M
 !
 interface TenGigabitEthernet1/0/3.569
  description TORINO;ID:26026
@@ -2625,14 +2559,6 @@ interface TenGigabitEthernet1/0/3.594
  ip address 172.23.247.153 255.255.255.252
  service-policy input 140M
  service-policy output 140M
-!
-interface TenGigabitEthernet1/0/3.595
- description FINANTRUST;ID:26164
- bandwidth 20480
- encapsulation dot1Q 595
- ip address 172.23.247.233 255.255.255.252
- service-policy input 20M
- service-policy output 20M
 !
 interface TenGigabitEthernet1/0/3.598
  description BK2-T-PROVINC;ID:26785
@@ -2821,14 +2747,6 @@ interface TenGigabitEthernet1/0/3.1553
  ip address 172.23.245.57 255.255.255.252
  service-policy input 10M
 !
-interface TenGigabitEthernet1/0/3.1557
- description GALI-INV-CAYTAFA;ID:26370
- bandwidth 40960
- encapsulation dot1Q 1557
- ip address 172.23.241.89 255.255.255.252
- service-policy input 40M
- service-policy output 40M
-!
 interface TenGigabitEthernet1/0/3.1558
  description MENCEY-CONTAC;ID:26523
  bandwidth 102400
@@ -2885,14 +2803,6 @@ interface TenGigabitEthernet1/0/3.1569
  service-policy input 20M
  service-policy output 20M
 !
-interface TenGigabitEthernet1/0/3.1573
- description MAESTRE;ID:26235
- bandwidth 51200
- encapsulation dot1Q 1573
- ip address 172.23.246.177 255.255.255.252
- service-policy input 50M
- service-policy output 50M
-!
 interface TenGigabitEthernet1/0/3.1577
  description POR-LA-PASTORA;ID:26298
  bandwidth 61440
@@ -2901,27 +2811,11 @@ interface TenGigabitEthernet1/0/3.1577
  service-policy input 60M
  service-policy output 60M
 !
-interface TenGigabitEthernet1/0/3.1578
- description IT-BUSINESS;ID:26237
- bandwidth 51200
- encapsulation dot1Q 1578
- ip address 172.23.246.149 255.255.255.252
- service-policy input 50M
- service-policy output 50M
-!
 interface TenGigabitEthernet1/0/3.1579
  description VIVIR-SEGUROS;ID:26239
  bandwidth 51200
  encapsulation dot1Q 1579
  ip address 172.23.246.153 255.255.255.252
- service-policy input 50M
- service-policy output 50M
-!
-interface TenGigabitEthernet1/0/3.1580
- description GALI-LAN-SUPPORT
- bandwidth 51200
- encapsulation dot1Q 1580
- ip address 172.23.246.161 255.255.255.252
  service-policy input 50M
  service-policy output 50M
 !
@@ -2933,29 +2827,13 @@ interface TenGigabitEthernet1/0/3.1582
  service-policy input 100M
  service-policy output 100M
 !
-interface TenGigabitEthernet1/0/3.1583
- description HEFZI-BA;ID:26260
- bandwidth 51200
- encapsulation dot1Q 1583
- ip address 172.23.246.245 255.255.255.252
- service-policy input 50M
- service-policy output 50M
-!
-interface TenGigabitEthernet1/0/3.1585
- description ALPHATECH;ID:26265
- bandwidth 51200
- encapsulation dot1Q 1585
- ip address 172.23.246.61 255.255.255.252
- service-policy input 50M
- service-policy output 50M
-!
 interface TenGigabitEthernet1/0/3.1586
  description VECIIINO;ID:26264
- bandwidth 51200
+ bandwidth 122880
  encapsulation dot1Q 1586
  ip address 172.23.246.217 255.255.255.252
- service-policy input 50M
- service-policy output 50M
+ service-policy input 120M
+ service-policy output 120M
 !
 interface TenGigabitEthernet1/0/3.1587
  description PERLA-DEL-SUR;ID:26207
@@ -2972,14 +2850,6 @@ interface TenGigabitEthernet1/0/3.1588
  ip address 172.23.243.25 255.255.255.252
  service-policy input 50M
  service-policy output 50M
-!
-interface TenGigabitEthernet1/0/3.1590
- description DIVIDENDO-VOLUNTARIO;ID:26295
- bandwidth 102400
- encapsulation dot1Q 1590
- ip address 172.23.243.65 255.255.255.252
- service-policy input 100M
- service-policy output 100M
 !
 interface TenGigabitEthernet1/0/3.1592
  description OPTIDIALER;ID:26321
@@ -3013,29 +2883,13 @@ interface TenGigabitEthernet1/0/3.1595
  service-policy input 60M
  service-policy output 60M
 !
-interface TenGigabitEthernet1/0/3.1596
- description FONDO-DE-VALORES;ID:26198
- bandwidth 286720
- encapsulation dot1Q 1596
- ip address 172.23.248.169 255.255.255.252
- service-policy input 280M
- service-policy output 280M
-!
 interface TenGigabitEthernet1/0/3.1597
  description GPON-VL3230-PRIMTEK-27;ID:26258
- bandwidth 358400
+ bandwidth 819200
  encapsulation dot1Q 1597
  ip address 172.23.248.225 255.255.255.252
- service-policy input 350M
- service-policy output 350M
-!
-interface TenGigabitEthernet1/0/3.1598
- description ACCESS-SALUD;ID:26141
- bandwidth 153600
- encapsulation dot1Q 1598
- ip address 172.23.247.209 255.255.255.252
- service-policy input 150M
- service-policy output 150M
+ service-policy input 800M
+ service-policy output 800M
 !
 interface TenGigabitEthernet1/0/3.1599
  description VENAMCHAM;ID:26368
@@ -3047,11 +2901,11 @@ interface TenGigabitEthernet1/0/3.1599
 !
 interface TenGigabitEthernet1/0/3.1600
  description GALI-NATIONAL-CARGO
- bandwidth 102400
+ bandwidth 204800
  encapsulation dot1Q 1600
  ip address 172.23.244.25 255.255.255.252
- service-policy input 100M
- service-policy output 100M
+ service-policy input 200M
+ service-policy output 200M
 !
 interface TenGigabitEthernet1/0/3.1604
  description GRUPO-OSEO-PC;ID:26169
@@ -3205,7 +3059,7 @@ interface TenGigabitEthernet1/0/3.1644
  service-policy output 50M
 !
 interface TenGigabitEthernet1/0/3.1648
- description PCR-VIVA-SUPERCEN-SW 
+ description PCR-VIVA-SUPERCEN-SW
  encapsulation dot1Q 1648
  ip address 172.23.244.205 255.255.255.252
 !
@@ -3416,30 +3270,6 @@ interface TenGigabitEthernet1/0/3.1808
  encapsulation dot1Q 1808
  ip address 172.23.242.37 255.255.255.252
 !
-interface TenGigabitEthernet1/0/3.2000
- description CASIO-SAM-FERIA;ID:26307
- bandwidth 51200
- encapsulation dot1Q 2000
- ip address 172.23.240.161 255.255.255.252
- service-policy input 50M
- service-policy output 50M
-!
-interface TenGigabitEthernet1/0/3.2001
- description CASIO-SAM-ACUAR;ID:26307
- bandwidth 51200
- encapsulation dot1Q 2001
- ip address 172.23.240.165 255.255.255.252
- service-policy input 50M
- service-policy output 50M
-!
-interface TenGigabitEthernet1/0/3.2002
- description CASIO-SAM-STAND;ID:26307
- bandwidth 51200
- encapsulation dot1Q 2002
- ip address 172.23.240.169 255.255.255.252
- service-policy input 50M
- service-policy output 50M
-!
 interface TenGigabitEthernet1/0/3.2003
  description ASOC-CIVIL-DES;ID:26634
  bandwidth 51200
@@ -3472,66 +3302,10 @@ interface TenGigabitEthernet1/0/3.2008
  service-policy input 100M
  service-policy output 100M
 !
-interface TenGigabitEthernet1/0/3.2009
- description LAB-FISA;ID:26751
- bandwidth 163840
- encapsulation dot1Q 2009
- ip address 172.23.247.121 255.255.255.252
- service-policy input 160M
- service-policy output 160M
-!
-interface TenGigabitEthernet1/0/3.2010
- description MAXIPRINT;ID:26347
- bandwidth 51200
- encapsulation dot1Q 2010
- ip address 172.23.246.37 255.255.255.252
- service-policy input 50M
- service-policy output 50M
-!
-interface TenGigabitEthernet1/0/3.2014
- description DLV- SERVICES;ID:26801
- bandwidth 51200
- encapsulation dot1Q 2014
- ip address 172.23.238.193 255.255.255.252
- service-policy input 50M
- service-policy output 50M
-!
-interface TenGigabitEthernet1/0/3.2015
- description COND-T-RORAIMA;ID:4
- bandwidth 51200
- encapsulation dot1Q 2015
- ip address 172.23.238.85 255.255.255.252
- service-policy input 50M
- service-policy output 50M
-!
 interface TenGigabitEthernet1/0/3.2016
  description GALI-CONS-CRED-TP-SW
  encapsulation dot1Q 2016
  ip address 172.23.238.149 255.255.255.252
-!
-interface TenGigabitEthernet1/0/3.2018
- description GALI-EMPIRE-KEEWAY:ID:26598
- bandwidth 51200
- encapsulation dot1Q 2018
- ip address 172.23.238.161 255.255.255.252
- service-policy input 50M
- service-policy output 50M
-!
-interface TenGigabitEthernet1/0/3.2019
- description GALI-COND-T-XEROX;ID:4
- bandwidth 51200
- encapsulation dot1Q 2019
- ip address 172.23.238.225 255.255.255.252
- service-policy input 50M
- service-policy output 50M
-!
-interface TenGigabitEthernet1/0/3.2020
- description CRED-FARMAHORRO-CCC;ID:26621
- bandwidth 51200
- encapsulation dot1Q 2020
- ip address 172.23.238.201 255.255.255.252
- service-policy input 50M
- service-policy output 50M
 !
 interface TenGigabitEthernet1/0/3.2024
  description GALI-PRODATA-SERVICE;ID:26884
@@ -3554,22 +3328,6 @@ interface TenGigabitEthernet1/0/3.3596
  encapsulation dot1Q 3596
  ip address 172.23.251.1 255.255.255.252
 !
-interface TenGigabitEthernet1/0/3.4050
- description GALI-IGLESIA-C-ALEG
- bandwidth 102400
- encapsulation dot1Q 4050
- ip address 172.23.248.29 255.255.255.252
- service-policy input 100M
- service-policy output 100M
-!
-interface TenGigabitEthernet1/0/3.4051
- description GALI-GPS
- bandwidth 153600
- encapsulation dot1Q 4051
- ip address 172.23.251.165 255.255.255.252
- service-policy input 150M
- service-policy output 150M
-!
 interface TenGigabitEthernet1/0/3.4052
  description INST-ITALIANO;ID:26075
  bandwidth 10240
@@ -3587,32 +3345,6 @@ interface TenGigabitEthernet1/0/3.4053
  service-policy input 140M
  service-policy output 140M
 !
-interface TenGigabitEthernet1/0/3.4054
- description GALI-GRUPO-FALCON
- bandwidth 204800
- encapsulation dot1Q 4054
- ip address 172.23.243.121 255.255.255.252
- service-policy input 200M
- service-policy output 200M
-!
-interface TenGigabitEthernet1/0/3.4055
- description FRESH-TECHS;ID:26556
- bandwidth 614400
- encapsulation dot1Q 4055
- ip address 172.23.243.253 255.255.255.252
- shutdown
- bfd interval 50 min_rx 50 multiplier 5
- service-policy input 600M
- service-policy output 600M
-!
-interface TenGigabitEthernet1/0/3.4056
- description CORPORACION-XDV;ID:26377
- bandwidth 81920
- encapsulation dot1Q 4056
- ip address 172.23.243.241 255.255.255.252
- service-policy input 80M
- service-policy output 80M
-!
 interface TenGigabitEthernet1/0/3.4057
  description BEKESANTOS;ID:22647
  bandwidth 51200
@@ -3620,54 +3352,6 @@ interface TenGigabitEthernet1/0/3.4057
  ip address 172.23.247.213 255.255.255.252
  service-policy input 50M
  service-policy output 50M
-!
-interface TenGigabitEthernet1/0/3.4058
- description BIXA;ID:26189
- bandwidth 81920
- encapsulation dot1Q 4058
- ip address 172.23.245.137 255.255.255.252
- service-policy input 80M
- service-policy output 80M
-!
-interface TenGigabitEthernet1/0/3.4059
- description CONTRUCTORA-IHI;ID:26056
- bandwidth 92160
- encapsulation dot1Q 4059
- ip address 172.23.247.141 255.255.255.252
- service-policy input 90M
- service-policy output 90M
-!
-interface TenGigabitEthernet1/0/3.4060
- description GALI-CLARKEMODET
- bandwidth 153600
- encapsulation dot1Q 4060
- ip address 172.23.241.81 255.255.255.252
- service-policy input 150M
- service-policy output 150M
-!
-interface TenGigabitEthernet1/0/3.4061
- description GALI-GRUPO-LATAM
- bandwidth 51200
- encapsulation dot1Q 4061
- ip address 172.23.241.21 255.255.255.252
- service-policy input 50M
- service-policy output 50M
-!
-interface TenGigabitEthernet1/0/3.4062
- description GALI-CASIO-DIS-ROG
- bandwidth 51200
- encapsulation dot1Q 4062
- ip address 172.23.240.97 255.255.255.252
- service-policy input 50M
- service-policy output 50M
-!
-interface TenGigabitEthernet1/0/3.4063
- description VEN-CORPORATION;ID:26604
- bandwidth 102400
- encapsulation dot1Q 4063
- ip address 172.23.241.25 255.255.255.252
- service-policy input 100M
- service-policy output 100M
 !
 interface TenGigabitEthernet1/0/4
  description CCSJ4500CREX2_xe-0/0/11_ELUN_SINAI_STG
@@ -3696,6 +3380,14 @@ interface TenGigabitEthernet1/0/4.963
  service-policy input 50M
  service-policy output 50M
 !
+interface TenGigabitEthernet1/0/4.967
+ description ELUN-FARMACIA-LCT;ID:26137
+ bandwidth 20480
+ encapsulation dot1Q 967
+ ip address 172.23.242.177 255.255.255.252
+ service-policy input 20M
+ service-policy output 20M
+!
 interface TenGigabitEthernet1/0/4.977
  description IPNET-VENCRED-SW;ID:26531
  encapsulation dot1Q 977
@@ -3723,13 +3415,21 @@ interface TenGigabitEthernet1/0/4.980
  service-policy input 50M
  service-policy output 50M
 !
+interface TenGigabitEthernet1/0/4.981
+ description ELUN-INV-KAVA-17;ID:26845
+ bandwidth 51200
+ encapsulation dot1Q 981
+ ip address 172.23.237.165 255.255.255.252
+ service-policy input 50M
+ service-policy output 50M
+!
 interface TenGigabitEthernet1/0/4.983
  description ISP-SURINTEL;ID:26659
- bandwidth 307200
+ bandwidth 409600
  encapsulation dot1Q 983
  ip address 190.94.193.209 255.255.255.252
- service-policy input 300M
- service-policy output 300M
+ service-policy input 400M
+ service-policy output 400M
 !
 interface TenGigabitEthernet1/0/4.985
  description GUILLERMO-AMAR;ID:
@@ -3740,12 +3440,12 @@ interface TenGigabitEthernet1/0/4.985
  service-policy output 50M
 !
 interface TenGigabitEthernet1/0/4.986
- description SAFARI-BAKERY;ID:
- bandwidth 40960
+ description ELUN-CL-FENIX-SALUD;ID:26955
+ bandwidth 307200
  encapsulation dot1Q 986
- ip address 172.23.243.213 255.255.255.252
- service-policy input 40M
- service-policy output 40M
+ ip address 172.23.237.45 255.255.255.252
+ service-policy input 300M
+ service-policy output 300M
 !
 interface TenGigabitEthernet1/0/4.987
  description DIPROMULCA;ID:26136
@@ -3756,12 +3456,13 @@ interface TenGigabitEthernet1/0/4.987
  service-policy output 50M
 !
 interface TenGigabitEthernet1/0/4.988
- description CORP-LAZAM;ID:26053
- bandwidth 20480
+ description ELUN-BEIT-AVOT-CAM;ID:4
+ bandwidth 10240
  encapsulation dot1Q 988
- ip address 172.23.248.165 255.255.255.252
+ ip address 190.94.210.161 255.255.255.252
  ip mtu 1500
- service-policy output 50M
+ service-policy input 10M
+ service-policy output 10M
 !
 interface TenGigabitEthernet1/0/4.989
  description ELCO;ID:25990
@@ -3985,6 +3686,87 @@ interface TenGigabitEthernet1/0/4.1324
  service-policy input 50M
  service-policy output 50M
 !
+interface TenGigabitEthernet1/0/4.1325
+ description STG-LOCATEL-GP;ID:4
+ bandwidth 102400
+ encapsulation dot1Q 1325
+ ip address 172.23.253.81 255.255.255.252
+ service-policy input 100M
+ service-policy output 100M
+!
+interface TenGigabitEthernet1/0/4.1326
+ description STG-PRIMTEK-SAMBIL-C;ID:26320
+ bandwidth 204800
+ encapsulation dot1Q 1326
+ ip address 181.225.48.113 255.255.255.248
+ service-policy input 200M
+ service-policy output 200M
+!
+interface TenGigabitEthernet1/0/4.1328
+ description STG-FOODKART-CANDELARIA;ID:26962
+ bandwidth 51200
+ encapsulation dot1Q 1328
+ ip address 172.23.237.105 255.255.255.252
+ service-policy input 50M
+ service-policy output 50M
+!
+interface TenGigabitEthernet1/0/4.1329
+ description STG-FRUTAS-CMC;ID:26965
+ bandwidth 51200
+ encapsulation dot1Q 1329
+ ip address 172.23.237.169 255.255.255.252
+ service-policy input 50M
+ service-policy output 50M
+!
+interface TenGigabitEthernet1/0/4.2105
+ description LY-TRAKI-SAN-MARTIN;ID:26831
+ bandwidth 51200
+ encapsulation dot1Q 2105
+ ip address 172.23.250.217 255.255.255.252
+ service-policy input 50M
+ service-policy output 50M
+!
+interface TenGigabitEthernet1/0/4.2106
+ description LY-SILVERDATA-CARPTA
+ bandwidth 3076000
+ encapsulation dot1Q 2106
+ ip address 172.23.237.101 255.255.255.252
+ ipv6 address 2803:D480:0:94::8053/64
+ service-policy input SILVERDATA-CPITA
+ service-policy output SILVERDATA-CPITA
+!
+interface TenGigabitEthernet1/0/4.2350
+ description ELUN-YESHIVA-LUV;ID:4
+ bandwidth 10240
+ encapsulation dot1Q 2350
+ ip address 190.94.210.169 255.255.255.252
+ service-policy input 10M
+ service-policy output 10M
+!
+interface TenGigabitEthernet1/0/4.2351
+ description ELUN-UNION-ISRAELITA;ID:25927
+ bandwidth 10240
+ encapsulation dot1Q 2351
+ ip address 190.94.218.9 255.255.255.248
+ service-policy input 50M
+ service-policy output 50M
+!
+interface TenGigabitEthernet1/0/4.2352
+ description ELUN-MEDITRON;ID:26865
+ bandwidth 51200
+ encapsulation dot1Q 2352
+ ip address 172.23.238.189 255.255.255.252
+ service-policy input 50M
+ service-policy output 50M
+!
+interface TenGigabitEthernet1/0/4.2449
+ description ELUN-BEIT-AVOT-IP;ID:4
+ bandwidth 51200
+ encapsulation dot1Q 2449
+ ip address 172.23.245.33 255.255.255.252
+ service-policy input 50M
+ service-policy output 50M
+!
 interface TenGigabitEthernet1/0/5
  mtu 9216
  no ip address
@@ -4072,9 +3854,18 @@ router bgp 8053
  neighbor eBGP-FRESH-TECHV4 remote-as 267811
  neighbor eBGP-FRESH-TECHV4 ebgp-multihop 3
  neighbor eBGP-FRESH-TECHV4 update-source Loopback0
+ neighbor eBGP-LY-SILVERDATA-CARPTA-IPV4 peer-group
+ neighbor eBGP-LY-SILVERDATA-CARPTA-IPV4 remote-as 272854
+ neighbor eBGP-LY-SILVERDATA-CARPTA-IPV4 update-source TenGigabitEthernet1/0/4.2106
+ neighbor eBGP-LY-SILVERDATA-CARPTA-IPV6 peer-group
+ neighbor eBGP-LY-SILVERDATA-CARPTA-IPV6 remote-as 272854
+ neighbor eBGP-LY-SILVERDATA-CARPTA-IPV6 transport connection-mode passive
+ neighbor eBGP-LY-SILVERDATA-CARPTA-IPV6 update-source TenGigabitEthernet1/0/4.2106
  neighbor 2803:D480:0:73::19 peer-group iBGP-VECCSV6
  neighbor 2803:D480:0:73::29 peer-group iBGP-VECCSV6
  neighbor 2803:D480:0:7A::7789 peer-group eBGP-TOPV6
+ neighbor 2803:D480:0:94::2 peer-group eBGP-LY-SILVERDATA-CARPTA-IPV6
+ neighbor 172.23.237.102 peer-group eBGP-LY-SILVERDATA-CARPTA-IPV4
  neighbor 172.23.255.234 peer-group iBGP-CANTV-IFX
  neighbor 181.225.41.19 peer-group iBGP-VECCS
  neighbor 181.225.41.20 peer-group iBGP-VECCS
@@ -4177,6 +3968,12 @@ router bgp 8053
   neighbor eBGP-FRESH-TECHV4 soft-reconfiguration inbound
   neighbor eBGP-FRESH-TECHV4 prefix-list DENY-ALL out
   neighbor eBGP-FRESH-TECHV4 route-map eBGP-FRESH-TECH-INV4 in
+  neighbor eBGP-LY-SILVERDATA-CARPTA-IPV4 next-hop-self
+  neighbor eBGP-LY-SILVERDATA-CARPTA-IPV4 default-originate
+  neighbor eBGP-LY-SILVERDATA-CARPTA-IPV4 soft-reconfiguration inbound
+  neighbor eBGP-LY-SILVERDATA-CARPTA-IPV4 prefix-list DENY-ALL out
+  neighbor eBGP-LY-SILVERDATA-CARPTA-IPV4 route-map eBGP-SILVERDATA-IN-V4 in
+  neighbor 172.23.237.102 activate
   neighbor 172.23.255.234 activate
   neighbor 181.225.41.19 activate
   neighbor 181.225.41.29 activate
@@ -4202,9 +3999,15 @@ router bgp 8053
   neighbor eBGP-TOPV6 default-originate
   neighbor eBGP-TOPV6 soft-reconfiguration inbound
   neighbor eBGP-TOPV6 route-map eBGP-TOP-IN-V6 in
+  neighbor eBGP-LY-SILVERDATA-CARPTA-IPV6 next-hop-self
+  neighbor eBGP-LY-SILVERDATA-CARPTA-IPV6 default-originate
+  neighbor eBGP-LY-SILVERDATA-CARPTA-IPV6 soft-reconfiguration inbound
+  neighbor eBGP-LY-SILVERDATA-CARPTA-IPV6 prefix-list DENY-ALL-V6 out
+  neighbor eBGP-LY-SILVERDATA-CARPTA-IPV6 route-map eBGP-SILVERDATA-IN-V6 in
   neighbor 2803:D480:0:73::19 activate
   neighbor 2803:D480:0:73::29 activate
   neighbor 2803:D480:0:7A::7789 activate
+  neighbor 2803:D480:0:94::2 activate
  exit-address-family
 !
 ip forward-protocol nd
@@ -4228,7 +4031,7 @@ ip tftp source-interface GigabitEthernet0
 ip route 64.76.228.65 255.255.255.255 172.23.240.198 name GPON-VL3117-CRED-INDIGO-ENERGY
 ip route 64.76.228.66 255.255.255.255 172.23.240.46 name GPON-VL1948-LIB-QTA-APAMATE
 ip route 64.76.228.67 255.255.255.255 172.23.242.222 name GPON-VL1858-TUNO-QUNITA-EL-ROBLE-ARIN-CIRION
-ip route 64.76.228.69 255.255.255.255 181.225.42.5 name IFXVE-OFICINAS
+ip route 64.76.228.71 255.255.255.255 172.23.244.190 name GPON-1910-LIB-SANTEC
 ip route 160.20.218.0 255.255.254.0 Null0 254 name INACOM_LyH-IPV4
 ip route 172.23.244.44 255.255.255.252 172.23.247.62 name GPON-VL1944-LIBER-EVENPRO
 ip route 172.23.251.128 255.255.255.240 172.23.253.94 name TVZ-MTN-STM4
@@ -4237,6 +4040,7 @@ ip route 172.23.253.144 255.255.255.248 172.23.248.70 name RED1-VL583-GALI_RES
 ip route 172.23.254.72 255.255.255.248 172.23.253.94 name TVZ-MTN-STM4
 ip route 181.208.153.194 255.255.255.255 4.15.156.45
 ip route 181.225.32.0 255.255.224.0 Null0 254
+ip route 181.225.39.0 255.255.255.0 200.62.26.198 name RED1-VL264-VIPTEL
 ip route 181.225.40.0 255.255.255.0 Null0 254 name IFX-REDISTR
 ip route 181.225.40.0 255.255.255.248 172.23.238.78 name GPON-V1860-TUNO-LASER-LAS-MERCE
 ip route 181.225.40.104 255.255.255.248 172.23.245.10 name RED1-VL1527-PCR-DELLACQUA
@@ -4272,59 +4076,48 @@ ip route 181.225.43.64 255.255.255.248 172.23.241.18 name GPON-VL3107-CRED-LASER
 ip route 181.225.43.120 255.255.255.248 172.23.252.230 name GPON-VL989-ELUN-ELCO
 ip route 181.225.43.128 255.255.255.248 172.23.251.110 name RED1-VL959-ELUN-VENCREDSANB
 ip route 181.225.43.168 255.255.255.248 172.23.252.150 name GPON-VL992-ELUN-CARTONERA_CCS
-ip route 181.225.43.176 255.255.255.248 172.23.248.170 name GPON-VL1596-GALI-F-DE-VALORES
 ip route 181.225.43.184 255.255.255.248 172.23.252.242 name GPON-VL1919-LIBER-AISVE
 ip route 181.225.43.232 255.255.255.248 172.23.252.174 name RED1-VL1010-LIBER-CASA-E-BRASIL
 ip route 181.225.43.240 255.255.255.248 172.23.255.158 name RED1-VL1014-LIBER-COL-SINAI
-ip route 181.225.44.24 255.255.255.248 172.23.247.230 name GPON-VL566-GALI_ORIENTAL
+ip route 181.225.44.16 255.255.255.252 181.225.44.22 name RED1-VL298-CRED-7LINK
 ip route 181.225.44.40 255.255.255.248 172.23.245.22 name RED1-VL1930-LIBER-S-COELLO-P6
-ip route 181.225.44.56 255.255.255.248 172.23.251.70 name GPON-VL555-GALI-EVEBA
 ip route 181.225.44.64 255.255.255.248 172.23.240.198 name GPON-VL3117-CRED-INDIGO-ENERGY
-ip route 181.225.44.72 255.255.255.248 172.23.251.30 name RED1-VL3249-GALI-INTERJURIS
-ip route 181.225.44.80 255.255.255.248 172.23.255.230 name GPON-VL551-GALI-FONDOGLOBAL
-ip route 181.225.44.88 255.255.255.248 172.23.255.150 name GALI-ANAYANSI
-ip route 181.225.44.112 255.255.255.248 172.23.251.106 name GPON-VL557-GALI-ARAQUE
 ip route 181.225.44.120 255.255.255.248 172.23.255.210 name RED1-VL552-GALI-ALCALDIA
 ip route 181.225.44.136 255.255.255.248 172.23.253.206 name GPON-VL4053-GALI-MAZAR
-ip route 181.225.44.216 255.255.255.248 172.23.243.242 name GPON-VL4056-GALI-CORPORACION-XDV
+ip route 181.225.45.128 255.255.255.192 200.62.26.198 name RED1-VL264-VIPTEL
 ip route 181.225.46.0 255.255.255.0 Null0 254 name IFX-REDISTR
 ip route 181.225.47.128 255.255.255.240 172.23.237.198 name RED1-VL3005-LIBER-BANCOPLAZA-PPL
-ip route 181.225.47.144 255.255.255.240 172.23.248.170 name GPON-VL1596-GALI-F-DE-VALORES
 ip route 181.225.47.160 255.255.255.240 172.23.250.166 name GPON-VL570-GALI-PETROLERA-OFI
 ip route 181.225.47.176 255.255.255.240 172.23.245.22 name GPON-VL1930-LIBER-S-COELLO-P6
 ip route 181.225.47.224 255.255.255.240 172.23.254.82 name GPON-VL995-ELUN-SGF-AV-FA
 ip route 181.225.48.0 255.255.255.0 Null0 254
-ip route 181.225.48.16 255.255.255.248 172.23.250.10 name RED1-VL565-GALI-FAO
 ip route 181.225.48.56 255.255.255.248 POS0/0/7 name UNITEL-STM1-CARUPANO
 ip route 181.225.48.56 255.255.255.248 POS0/0/5 name UNITEL-STM42022
 ip route 181.225.48.72 255.255.255.248 172.23.253.206 name GPON-VL4053-GALI-MAZAR
-ip route 181.225.48.80 255.255.255.248 172.23.255.150 name GALI-ANAYANSI
 ip route 181.225.48.96 255.255.255.248 172.23.255.210 name RED1-VL552-GALI-ALCALDIA
 ip route 181.225.48.192 255.255.255.248 172.23.251.150 name GPON-VL1924-LIB-LAB-BEHRENS
 ip route 181.225.48.216 255.255.255.248 172.23.253.102 name GPON-VL1812-TUNO-LOCATEL-SM
+ip route 181.225.48.240 255.255.255.248 181.225.44.22 name RED1-VL298-CRED-7LINK
 ip route 181.225.53.0 255.255.255.0 Null0 254 name IFX-REDISTR
 ip route 181.225.53.0 255.255.255.248 172.23.247.34 name RED1-VL1518-PCR-OBELISCO
 ip route 181.225.53.8 255.255.255.248 172.23.241.18 name GPON-VL3107-CRED-LASER-COMPUTACION
 ip route 181.225.53.56 255.255.255.248 172.23.242.102 name GPON-VL1779-PC-SEG-ALT-PG-IP
 ip route 181.225.53.80 255.255.255.248 172.23.244.138 name GPON-VL1845-CLUB-VALLE-ARRIBA
-ip route 181.225.53.96 255.255.255.248 172.23.248.30 name GPON-VL4050-GALI-IGLESIA-C-ALEG
 ip route 181.225.53.136 255.255.255.248 172.23.245.22 name GPON-VL1930-LIBER-S-COELLO-P6
 ip route 181.225.53.144 255.255.255.248 172.23.242.22 name GPON-VL2008-GALI-WEWORK
 ip route 181.225.53.152 255.255.255.248 172.23.247.242 name GPON-VL1859-TUNO-VALEVEN
 ip route 181.225.53.168 255.255.255.248 172.23.237.2 name GPON-VL3135-CRED-GA-EF-COMPANY-S
 ip route 181.225.53.192 255.255.255.248 172.23.242.234 name GPON-VL1024-LIBER-DES-INVEST
 ip route 181.225.53.224 255.255.255.248 172.23.243.54 name GPON-VL1861-TUNO-PANEL-SYSTEM
+ip route 181.225.57.0 255.255.255.0 200.62.26.198 name RED1-VL264-VIPTEL
+ip route 181.225.58.0 255.255.254.0 200.62.26.198 name RED1-VL264-VIPTEL
 ip route 190.94.25.188 255.255.255.252 172.23.246.194 name GPON-VL1918-LIBER-COUNTRY-CLUB
 ip route 190.94.192.0 255.255.224.0 Null0 254
 ip route 190.94.193.0 255.255.255.252 172.23.254.34 name GPON-VL1857-TUNO-EXC-GAMA-LM
 ip route 190.94.193.4 255.255.255.252 172.23.240.38 name GPON-VL3119-CRED-GAMA-TAHONA
-ip route 190.94.193.16 255.255.255.252 172.23.240.162 name GPON-VL2000-GALI-CASIO-SAM-FERIA
-ip route 190.94.193.20 255.255.255.252 172.23.240.166 name GPON-VL2001-GALI-CASIO-SAM-ACUAR
-ip route 190.94.193.24 255.255.255.252 172.23.240.170 name GPON-VL2002-GALI-CASIO-SAM-STAND
 ip route 190.94.193.28 255.255.255.252 172.23.240.234 name GPON-VL1028-LIBER-CASIO-REC-L29
 ip route 190.94.193.32 255.255.255.252 172.23.240.226 name GPON-VL1032-LIBER-CASIO-REC-LAC
 ip route 190.94.193.36 255.255.255.252 172.23.240.102 name GPON-VL999-ELUN-CASIO-CENTRO
-ip route 190.94.193.40 255.255.255.252 172.23.241.58 name GPON-VL561-GALI-EDGAR-BENAIM
 ip route 190.94.193.44 255.255.255.252 172.23.240.6 name GPON-VL1018-LIBER-CASIO-REC-LC5
 ip route 190.94.193.48 255.255.255.252 172.23.250.66 name GPON-VL1785-PC-UNICEF-2DO-ENLACE
 ip route 190.94.193.52 255.255.255.252 172.23.240.22 name GPON-VL518-PC-GAMA-LPG-PATIO
@@ -4342,8 +4135,6 @@ ip route 190.94.193.120 255.255.255.252 172.23.240.90 name RED1-VL1803-TUNO-BIGC
 ip route 190.94.193.128 255.255.255.252 172.23.240.134 name GPON-VL1019-LIBER-QTA-SAMAN-2
 ip route 190.94.193.132 255.255.255.252 172.23.240.10 name RED1-VL1020-LIBER-PRIMTK-DOMUS-2
 ip route 190.94.193.144 255.255.255.252 172.23.240.86 name GPON-VL1947-LIBER-XDATA-T-DOMUS
-ip route 190.94.193.148 255.255.255.252 172.23.247.230 name GPON-VL566-GALI_ORIENTAL
-ip route 190.94.193.156 255.255.255.252 172.23.247.230 name GPON-VL566-GALI_ORIENTAL
 ip route 190.94.193.172 255.255.255.252 172.23.240.54 name GPON-VL1036-LIBER-SEG-ALTM-P3
 ip route 190.94.193.176 255.255.255.252 172.23.240.174 name RED1-VL1164-ANAUC-CLIN-ALFREDO-L
 ip route 190.94.193.192 255.255.255.252 172.23.240.46 name GPON-VL1948-LIB-QTA-APAMATE
@@ -4352,6 +4143,14 @@ ip route 190.94.193.204 255.255.255.252 172.23.242.150 name GPON-VL1776-PC-DAKAR
 ip route 190.94.193.236 255.255.255.252 172.23.240.246 name GPON-VL1038-LIBER-EMB-BRITANICA
 ip route 190.94.193.244 255.255.255.252 172.23.244.182 name GPON-VL2004-GALI-SERVIPORT-AGEN
 ip route 190.94.193.248 255.255.255.252 172.23.244.222 name GPON-VL1751-PCR-GAMA-SEDUVIGIS
+ip route 190.94.194.0 255.255.255.252 172.23.250.218 name GPON-VL2105-LY-TRAKI-SAN-MARTIN
+ip route 190.94.194.8 255.255.255.252 172.23.237.166 name GPON-VL981-ELUN-INV-KAVA-17
+ip route 190.94.194.12 255.255.255.252 172.23.237.106 name GPON-VL1328-STG-FOODKART-CANDELARIA
+ip route 190.94.194.68 255.255.255.252 172.23.253.82 name GPON-VL1325-STG-LOCATEL-GP
+ip route 190.94.194.72 255.255.255.252 172.23.240.94 name GPON-VL3116-CRED-EMPORIO-CHAC
+ip route 190.94.194.128 255.255.255.252 172.23.253.90 name GPON-VL259-CRED-OPTICA-CARONI
+ip route 190.94.194.136 255.255.255.252 172.23.237.170 name GPON-VL1329-STG-FRUTAS-CMC
+ip route 190.94.194.196 255.255.255.252 172.23.237.46 name GPON-VL986-ELUN-CL-FENIX-SALUD
 ip route 190.94.197.20 255.255.255.252 172.23.240.78 name GPON-VL3112-CRED-WECODE
 ip route 190.94.197.24 255.255.255.252 172.23.240.146 name GPON-VL997-ELUN-F-STANZIONE
 ip route 190.94.197.28 255.255.255.252 172.23.240.82 name GPON-VL1853-TUNO-ICL-FREIGHT
@@ -4368,8 +4167,6 @@ ip route 190.94.197.152 255.255.255.252 172.23.240.150 name GPON-VL1084-CUBO-VEN
 ip route 190.94.197.156 255.255.255.252 172.23.240.154 name GPON-VL3114-CRED-GAMA-EXP-TRINI
 ip route 190.94.197.164 255.255.255.252 172.23.240.90 name RED1-VL1803-TUNO-BIGCA-QTA-ANAU
 ip route 190.94.197.192 255.255.255.252 172.23.240.134 name GPON-VL1019-LIBER-QTA-SAMAN-2
-ip route 190.94.197.228 255.255.255.252 172.23.247.230 name GPON-VL566-GALI_ORIENTAL
-ip route 190.94.197.236 255.255.255.252 172.23.240.94 name GPON-VL3116-CRED-EMPORIO-CHAC
 ip route 190.94.198.0 255.255.255.248 172.23.243.178 name GPON-VL1839-TUNO-BANKING
 ip route 190.94.198.24 255.255.255.248 172.23.241.114 name GPON-VL1030-LIBER-MCGROUP-CALL-C
 ip route 190.94.198.32 255.255.255.248 172.23.240.130 name GPON-VL1852-TUNO-SOL-COELLO-BFC
@@ -4384,28 +4181,21 @@ ip route 190.94.198.136 255.255.255.248 172.23.241.134 name RED1-VL1080-CUBO-HER
 ip route 190.94.198.168 255.255.255.248 172.23.241.70 name GPON-VL1939-LIBER-TKONEKTO
 ip route 190.94.198.208 255.255.255.248 172.23.240.30 name GPON-VL1624-GALI-INTELICORP-MEDE
 ip route 190.94.198.216 255.255.255.248 172.23.240.30 name GPON-VL1624-GALI-INTELICORP-MEDE
-ip route 190.94.198.224 255.255.255.248 172.23.238.110 name GPON-VL3001-LIB-COM-MOVILES-PXE
 ip route 190.94.198.232 255.255.255.248 172.23.238.42 name GPON-VL1914-LIB-I-C-LA-FLORIDA
 ip route 190.94.199.4 255.255.255.252 172.23.244.190 name GPON-1910-LIB-SANTEC
 ip route 190.94.199.8 255.255.255.252 172.23.251.122 name GPON-VL1595-GALI-ZURICH
-ip route 190.94.199.16 255.255.255.252 172.23.248.170 name GPON-VL1596-GALI-F-DE-VALORES
 ip route 190.94.199.20 255.255.255.252 172.23.247.166 name RED1-VL1524-PCR-FONDO-DE-VALORES-QNTA
 ip route 190.94.199.28 255.255.255.252 172.23.243.62 name RED1-VL1753-PCR-PARAWA
 ip route 190.94.199.32 255.255.255.252 172.23.244.226 name RED1-VL3358-ELUN-FARMARATO
 ip route 190.94.199.36 255.255.255.252 172.23.244.230 name GPON-VL994-ELUN-HOTEL-ALEX
-ip route 190.94.199.48 255.255.255.252 172.23.251.166 name GPON-VL4051-GALI-GPS-40MB
-ip route 190.94.199.52 255.255.255.252 172.23.251.166 name GPON-VL4051-GALI-GPS-40MB
-ip route 190.94.199.64 255.255.255.252 172.23.243.66 name GPON-VL1590-GALI-DIV-VOLUNTARIO
 ip route 190.94.199.76 255.255.255.252 172.23.251.158 name GPON-VL1925-LIB-QUINTA-RE
 ip route 190.94.199.92 255.255.255.252 172.23.244.106 name RED1-VL1771-LEB-C-SANTIAGO-LEON
-ip route 190.94.199.100 255.255.255.252 172.23.243.254 name RED1-VL4055-GALI-FRESH-TECHS
 ip route 190.94.199.104 255.255.255.252 172.23.242.2 name GPON-VL1923-LIB-C-MENDEZ-GIMON
 ip route 190.94.199.108 255.255.255.252 172.23.242.6 name GPON-VL1012-LIB-ELECTROCOND
 ip route 190.94.199.112 255.255.255.252 172.23.242.70 name GPON-VL531-PC-OIM-QUINTA-AA
 ip route 190.94.199.116 255.255.255.252 172.23.242.74 name GPON-VL1732-CRED-PLANI-LOMBARDA
 ip route 190.94.199.128 255.255.255.252 172.23.243.126 name RED1-VL807-TMER-SAMSUNG-EUROB
 ip route 190.94.199.140 255.255.255.252 172.23.243.142 name GPON-VL813-TUNO-CORP-CALL-77
-ip route 190.94.199.144 255.255.255.252 172.23.243.122 name GPON-VL4054-GALI-GRUPO-FALCON
 ip route 190.94.199.160 255.255.255.252 172.23.243.230 name GPON-VL1768-PC-CISE
 ip route 190.94.199.164 255.255.255.252 172.23.241.66 name RED1-VL1638-PCR-PROAGRO
 ip route 190.94.199.168 255.255.255.252 172.23.242.134 name RED1-VL1766-PC-CONSULTORES-AMD
@@ -4417,15 +4207,12 @@ ip route 190.94.199.200 255.255.255.252 172.23.243.202 name GPON-VL1827-TUNO-YEE
 ip route 190.94.199.208 255.255.255.252 172.23.243.206 name GPON-VL985-ELUN-GUILLERMO-AMAR
 ip route 190.94.199.212 255.255.255.252 172.23.242.74 name GPON-VL1732-CRED-PLANI-LOMBARDA
 ip route 190.94.199.220 255.255.255.252 172.23.244.254 name RED1-VL1764-PCR-IFRC
-ip route 190.94.199.224 255.255.255.252 172.23.243.242 name GPON-VL4056-GALI-CORPORACION-XDV
 ip route 190.94.199.228 255.255.255.252 172.23.243.246 name GPON-VL1938-LIBER-QTA-BELVEDERE
 ip route 190.94.199.236 255.255.255.252 172.23.241.70 name GPON-VL1939-LIBER-TKONEKTO
 ip route 190.94.199.244 255.255.255.252 172.23.241.134 name RED1-VL1080-CUBO-HERBALIFE
-ip route 190.94.199.252 255.255.255.252 172.23.241.82 name GPON-VL4060-GALI-CLARKEMODET
 ip route 190.94.200.12 255.255.255.252 172.23.240.146 name GPON-VL997-ELUN-F-STANZIONE
 ip route 190.94.200.20 255.255.255.252 172.23.240.34 name GPON-VL1854-TUNO-GSS-TECHNOLOGY
 ip route 190.94.200.28 255.255.255.252 172.23.240.78 name GPON-VL3112-CRED-WECODE
-ip route 190.94.200.52 255.255.255.252 172.23.246.38 name GPON-VL2010-GALI-MAXIPRINT
 ip route 190.94.200.56 255.255.255.252 172.23.242.118 name GPON-VL3120-CRED-LASER-AIR-P6
 ip route 190.94.200.60 255.255.255.252 172.23.242.62 name GPON-VL1169-ANAUC-PSUV
 ip route 190.94.200.64 255.255.255.252 172.23.240.82 name GPON-VL1853-TUNO-ICL-FREIGHT
@@ -4448,21 +4235,20 @@ ip route 190.94.200.200 255.255.255.252 172.23.242.102 name GPON-VL1779-PC-SEG-A
 ip route 190.94.200.204 255.255.255.252 172.23.242.166 name GPON-VL1780-PC-GAESCA
 ip route 190.94.200.216 255.255.255.252 172.23.255.50 name RED1-VL546-PCR-CRUZ-ROJA
 ip route 190.94.200.224 255.255.255.252 172.23.242.170 name GPON-VL1781-PC-PNUD-T-HP
-ip route 190.94.200.232 255.255.255.252 172.23.247.122 name GPON-VL2009-GALI-LAB-FISA
-ip route 190.94.200.236 255.255.255.252 172.23.242.178 name RED1-VL1168-ANAUC-LOCATEL-SB
+ip route 190.94.200.236 255.255.255.252 172.23.242.178 name GPON-VL967-ELUN-FARMACIA-LCT
 ip route 190.94.200.248 255.255.255.252 172.23.242.122 name GPON-VL1308-STG-GAMA-PARAISO
 ip route 190.94.201.12 255.255.255.252 172.23.237.30 name GPON-VL1022-LIB-C-FRIO-CARNE-CCL
+ip route 190.94.201.32 255.255.255.252 181.225.44.22 name RED1-VL298-CRED-7LINK
 ip route 190.94.201.84 255.255.255.252 172.23.237.34 name GPON-VL3137-CRED-2NET-GFITNESS
 ip route 190.94.201.132 255.255.255.252 172.23.237.150 name RED1-VL1324-STG-STG-BANCO-PLZ-P-IP
 ip route 190.94.201.144 255.255.255.252 172.23.237.226 name GPON-VL3136-CRED-HIPER-PARAMO
-ip route 190.94.201.200 255.255.255.252 172.23.237.154 name GPON-VL560-GALI-C-FRIO-CARNE
 ip route 190.94.201.208 255.255.255.252 172.23.237.162 name RED1-GPON-VL963-ELUN-OPTIDIALER
+ip route 190.94.201.212 255.255.255.252 172.23.237.102 name RED1-VL2106-LY-SILVERDATA-CARPTA
 ip route 190.94.204.0 255.255.255.128 POS0/0/5 name UNITEL-STM42022
 ip route 190.94.205.128 255.255.255.128 POS0/0/5 name UNITEL-STM42022
 ip route 190.94.206.0 255.255.255.0 POS0/0/5 name UNITEL-STM42022
 ip route 190.94.207.0 255.255.255.0 POS0/0/5 name UNITEL-STM42022
 ip route 190.94.208.0 255.255.255.0 Null0 254 name IFX-REDISTR
-ip route 190.94.208.12 255.255.255.252 172.23.246.162 name GPON-VL1580-GALI-LAN-SUPPORT
 ip route 190.94.208.16 255.255.255.252 172.23.248.166 name GPON-VL988-ELUN-CORP-LAZAM
 ip route 190.94.208.28 255.255.255.252 172.23.254.86 name GPON-VL1822-TUNO-WORLD-TRADING
 ip route 190.94.208.52 255.255.255.252 172.23.250.82 name RED1-VL540-PCR-AIV-DEL-ESTE-CHACON
@@ -4474,9 +4260,7 @@ ip route 190.94.208.120 255.255.255.248 172.23.247.22 name GPON-VL1838-TUNO-MODU
 ip route 190.94.208.144 255.255.255.252 172.23.247.150 name RED1-VL1522-PCR-LEON-M&A
 ip route 190.94.208.152 255.255.255.252 172.23.245.62 name RED1-VL1610-PCR-LIBERTY-EXPRESS
 ip route 190.94.208.164 255.255.255.252 172.23.255.50 name RED1-VL546-PCR-CRUZ-ROJA
-ip route 190.94.208.168 255.255.255.252 172.23.240.98 name GALI-CASIO-DIS-ROG
 ip route 190.94.208.172 255.255.255.252 172.23.247.226 name RED1-PCR-VL1528-PCR-MARITIMA-MAROLA
-ip route 190.94.208.176 255.255.255.252 172.23.247.142 name GPON-VL4059-GALI-CONTRUCTORA-IHI
 ip route 190.94.208.184 255.255.255.252 172.23.245.2 name RED1-VL1073-CUBO-POSCOMERCIAL
 ip route 190.94.208.212 255.255.255.252 172.23.255.218 name GPON-VL1841-TUNO-UNION-EUROPEA-MUD
 ip route 190.94.208.216 255.255.255.252 172.23.247.134 name RED1-VL1521-PRC-RAMON-RAMIREZ
@@ -4494,7 +4278,6 @@ ip route 190.94.209.224 255.255.255.240 172.23.248.198 name RED1-VL1206-SINAI-VE
 ip route 190.94.209.240 255.255.255.248 172.23.248.82 name GPON-VL1937-LIBER-MORE
 ip route 190.94.210.0 255.255.255.0 Null0 254 name IFX-REDISTR
 ip route 190.94.210.0 255.255.255.252 172.23.250.82 name RED1-VL540-PCR-OR-TORAH
-ip route 190.94.210.4 255.255.255.252 172.23.250.186 name RED1-VL544-PCR-CORP-SISA-LPG
 ip route 190.94.210.12 255.255.255.252 172.23.241.130 name RED1-VL3407-LIBER-FARMA-HB
 ip route 190.94.210.33 255.255.255.255 172.23.246.234 name RED1-VL1632-PCR-ADM-MENGIM-NAT11
 ip route 190.94.210.60 255.255.255.252 172.23.248.2 name GPON-VL1833-TUNO-LOBBY-AH
@@ -4515,6 +4298,7 @@ ip route 190.94.211.64 255.255.255.248 172.23.244.246 name GPON-VL1599-GALI-VENA
 ip route 190.94.211.72 255.255.255.248 172.23.250.138 name RED1-VL532-LATINON-GAL
 ip route 190.94.211.184 255.255.255.248 172.23.253.94 name TVZ-MTN-STM4
 ip route 190.94.214.0 255.255.255.0 172.23.253.94 name TVZ-MTN-STM4
+ip route 190.94.215.0 255.255.255.0 200.62.26.198 name RED1-VL264-VIPTEL
 ip route 190.94.216.0 255.255.255.0 POS0/0/5 name UNITEL-STM42022
 ip route 190.94.217.0 255.255.255.0 POS0/0/5 name UNITEL-STM42022
 ip route 190.94.218.0 255.255.255.248 172.23.247.154 name GPON-VL594-GALI-ZUMA-SEGUROS
@@ -4540,21 +4324,16 @@ ip route 190.94.224.40 255.255.255.252 172.23.237.134 name GPON-1905-LIB-QTA-MIL
 ip route 190.94.224.44 255.255.255.252 172.23.238.46 name GPON-VL3000-LIB-QTA-OJO-OD-AGUA
 ip route 190.94.224.48 255.255.255.252 172.23.238.50 name GPON-VL1868-TUNO-T-AVILA-PISO-3
 ip route 190.94.224.52 255.255.255.252 172.23.238.54 name GPON-VL3129-CRED-INV-FUTURA
-ip route 190.94.224.56 255.255.255.252 172.23.238.58 name GPON-VL554-GALI-MAGISTRATURA
 ip route 190.94.224.64 255.255.255.252 172.23.238.10 name GPON-VL1314-STG-VECIINO-YAGUARA
 ip route 190.94.224.68 255.255.255.252 172.23.238.74 name GPON-V3125-CRED-DIS-CAP-COPOSA
 ip route 190.94.224.72 255.255.255.252 172.23.238.78 name GPON-V1860-TUNO-LASER-LAS-MERCE
-ip route 190.94.224.80 255.255.255.252 172.23.238.86 name GPON-VL2015-GALI-COND-T-RORAIMA
 ip route 190.94.224.96 255.255.255.248 172.23.238.98 name GPON-VL462-TUNO-MUNDO-REPOSTERO
 ip route 190.94.224.116 255.255.255.252 172.23.238.118 name GPON-VL3132-CRED-CLUB-ITALO
 ip route 190.94.224.120 255.255.255.252 172.23.238.122 name GPON-VL3131-CRED-AC-SOLIDARIA
 ip route 190.94.224.124 255.255.255.252 172.23.238.126 name GPON-VL3130-CRED-DELCOP
-ip route 190.94.224.160 255.255.255.252 172.23.238.162 name GPON-VL2018-GALI-EMPIRE-KEEWAY
 ip route 190.94.224.180 255.255.255.252 172.23.238.178 name GPON-VL1000-ELUN-CICPC-URDAN-2
 ip route 190.94.224.184 255.255.255.252 172.23.238.186 name GPON-VL3133-CRED-TRAKI-CIGARRAL
-ip route 190.94.224.192 255.255.255.252 172.23.238.194 name GPON-VL2014-GALI-DLV-SERVICES
-ip route 190.94.224.200 255.255.255.252 172.23.238.202 name GPON-VL2020-CRED-FARMAHORRO-CCC
-ip route 190.94.224.224 255.255.255.252 172.23.238.226 name GPON-VL2019-GALI-COND-T-XEROX
+ip route 190.94.224.188 255.255.255.252 172.23.238.190 name GPON-VL2352-ELUN-MEDITRON
 ip route 190.94.224.232 255.255.255.252 172.23.238.234 name GPON-VL1865-TUNO-INVER-MHM
 ip route 190.94.224.248 255.255.255.252 172.23.238.250 name GPON-VL1962-CRED-RIDERY-FERRETOT
 ip route 190.94.231.0 255.255.255.0 POS0/0/5 name UNITEL-STM42022
@@ -4564,10 +4343,6 @@ ip route 190.94.242.252 255.255.255.252 172.23.238.82 name GPON-VL1310-STG-TEK-C
 ip route 190.94.243.0 255.255.255.0 Null0 254
 ip route 190.94.243.72 255.255.255.248 172.23.245.54 name RED1-VL1161-ANAUC-IESA
 ip route 190.94.243.128 255.255.255.248 172.23.248.26 name GPON-VL4052-GALI-INST-ITALIANO
-ip route 190.94.243.136 255.255.255.248 172.23.250.186 name RED1-VL544-PCR-CORP-SISA-LPG
-ip route 190.94.243.152 255.255.255.248 172.23.247.230 name GPON-VL566-GALI_ORIENTAL
-ip route 190.94.243.160 255.255.255.248 172.23.247.230 name GPON-VL566-GALI_ORIENTAL
-ip route 190.94.243.176 255.255.255.248 172.23.247.234 name GPON-VL595-GALI-FINANTRUST
 ip route 190.94.243.192 255.255.255.248 172.23.253.94 name TVZ-MTN-STM4
 ip route 190.94.244.8 255.255.255.252 172.23.243.54 name GPON-VL1861-TUNO-PANEL-SYSTEM
 ip route 190.94.244.12 255.255.255.252 172.23.243.58 name GPON-VL1926-LIB-CLEA-TELECOM
@@ -4591,16 +4366,12 @@ ip route 190.94.244.120 255.255.255.252 172.23.241.174 name GPON-VL1814-TUNO-EXC
 ip route 190.94.244.124 255.255.255.252 172.23.241.54 name GPON-VL1912-LIBER-QTA-MARQUIS
 ip route 190.94.244.128 255.255.255.252 172.23.243.198 name PCR-BLUECHIP
 ip route 190.94.244.136 255.255.255.252 172.23.243.194 name GPON-VL1934-LIBER-CLI-SANTIAGO-L
-ip route 190.94.244.140 255.255.255.252 172.23.243.214 name GPON-VL986-ELUN-SAFARI-BAKERY
-ip route 190.94.244.156 255.255.255.252 172.23.241.26 name GPON-VL4063-GALI-VEN-CORPORATION
-ip route 190.94.244.160 255.255.255.252 172.23.241.90 name GPON-VL1557-GALI-INV-CAYTAFA
 ip route 190.94.244.164 255.255.255.252 172.23.241.250 name GPON-VL532-PC-MOHEDANO-P3
 ip route 190.94.244.168 255.255.255.252 172.23.241.222 name GPON-VL1846-TUNO-FARMA-HB-CHRMOS
 ip route 190.94.244.172 255.255.255.252 172.23.241.98 name GPON-VL1016-LIB-HERM-GALLEGA
 ip route 190.94.244.184 255.255.255.252 172.23.241.110 name GPON-VL1849-TUNO-DUMI-TORROSA
 ip route 190.94.244.188 255.255.255.252 172.23.241.242 name GPON-VL1774-PRC-ALIMENTOS-TUNAS
 ip route 190.94.244.192 255.255.255.252 172.23.241.194 name GPON-VL3102-GALI-METRO-MULTICENT
-ip route 190.94.244.196 255.255.255.252 172.23.241.22 name GPON-VL4061-GALI-GRUPO-LATAM
 ip route 190.94.244.200 255.255.255.252 172.23.241.86 name GPON-VL1907-LIBER-QUINTA-CAPIHUE
 ip route 190.94.244.204 255.255.255.252 172.23.241.150 name RED1-VL1767-PC-ESCALABEDS
 ip route 190.94.244.212 255.255.255.252 172.23.241.198 name GPON-VL1941-LIBER-QUINTA-VY
@@ -4616,16 +4387,17 @@ ip route 190.94.245.72 255.255.255.248 172.23.246.94 name GPON-VL1908-LIBER-DIRE
 ip route 190.94.245.144 255.255.255.248 172.23.244.94 name RED1-VL1620-PCR-ADANFARMA
 ip route 190.94.245.160 255.255.255.248 172.23.244.22 name GPON-VL1559-GALI-MRW
 ip route 190.94.245.168 255.255.255.248 172.23.248.66 name GPON-VL1835-TUNO-FINAL-CURVE
-ip route 190.94.245.184 255.255.255.248 172.23.247.230 name GPON-VL566-GALI_ORIENTAL
+ip route 190.94.246.0 255.255.255.0 200.62.26.198 name RED1-VL264-VIPTEL
 ip route 190.94.246.92 255.255.255.252 172.23.246.94 name GPON-VL1908-LIBER-DIRECTA-GROUP
+ip route 190.94.247.0 255.255.255.0 200.62.26.198 name RED1-VL264-VIPTEL
+ip route 190.94.248.0 255.255.255.0 200.62.26.198 name RED1-VL264-VIPTEL
+ip route 190.94.249.0 255.255.255.0 200.62.26.198 name RED1-VL264-VIPTEL
 ip route 190.94.250.0 255.255.255.252 172.23.245.58 name GPON-VL1553-GALI-AGEN-DE-FUTBOL
-ip route 190.94.250.16 255.255.255.252 172.23.245.138 name GPON-VL4058-GALI-BIXA
 ip route 190.94.250.28 255.255.255.252 172.23.245.142 name RED1-VL508-PCR-GARCIA-TUNON
 ip route 190.94.250.84 255.255.255.252 172.23.245.222 name RED1-VL1071-CUBO-ASESORIA-FINAN
 ip route 190.94.250.100 255.255.255.252 172.23.245.230 name RED1-VL1548-PCR-OBRAS-PUBLICAS
 ip route 190.94.250.108 255.255.255.252 172.23.245.234 name GPON-VL3290-TUNO-INTERVIT
 ip route 190.94.250.120 255.255.255.252 172.23.245.254 name GPON-VL1569-GALI-PERLA-DEL-SUR-2
-ip route 190.94.250.136 255.255.255.252 172.23.248.170 name GPON-VL1596-GALI-F-DE-VALORES
 ip route 190.94.250.148 255.255.255.252 172.23.248.46 name RED1-VL1611-PCR-QTA-SERRANA
 ip route 190.94.250.152 255.255.255.252 172.23.244.6 name GPON-VL1823-TUNO-TOP-FOOD
 ip route 190.94.250.160 255.255.255.252 172.23.244.14 name GPON-VL1558-GALI-MENCEY-CONTAC
@@ -4646,11 +4418,8 @@ ip route 190.94.251.32 255.255.255.248 172.23.243.154 name PCR-SOLUCIONES-EMP2
 ip route 190.94.251.48 255.255.255.248 172.23.247.62 name GPON-VL1944-LIBER-EVENPRO
 ip route 190.94.251.56 255.255.255.248 172.23.241.2 name GPON-VL3104-GPON-CRED-METRO-HOYADA
 ip route 190.94.251.72 255.255.255.248 172.23.246.34 name GPON-VL1931-LIBER-MICASITA
-ip route 190.94.251.80 255.255.255.248 172.23.246.162 name GPON-VL1580-GALI-LAN-SUPPORT
 ip route 190.94.251.88 255.255.255.248 172.23.246.198 name GPON-VL3211-GALI-REVERON-2
 ip route 190.94.251.96 255.255.255.248 172.23.246.118 name RED1-VL1639-PCR-GRUPO-PHX
-ip route 190.94.251.104 255.255.255.248 172.23.246.246 name GPON-VL1583-GALI-HEFZIBA
-ip route 190.94.251.112 255.255.255.248 172.23.246.162 name GPON-VL1580-GALI-LAN-SUPPORT
 ip route 190.94.251.120 255.255.255.248 172.23.243.2 name GPON-VL1922-LIB-SOFTECH
 ip route 190.94.251.128 255.255.255.248 172.23.254.86 name RED1-VL1822-TUNO-WORLD-TRADING
 ip route 190.94.251.160 255.255.255.248 172.23.246.186 name RED1-VL1629-PCR-SISNET
@@ -4675,15 +4444,12 @@ ip route 190.94.252.76 255.255.255.252 172.23.246.46 name GPON-VL1912-LIBER-QTA-
 ip route 190.94.252.84 255.255.255.252 172.23.246.138 name GPON-VL3201-GALI-PURO-PAGO
 ip route 190.94.252.88 255.255.255.252 172.23.246.142 name GPON-VL1577-GALI-POR-LA-PASTORA
 ip route 190.94.252.92 255.255.255.252 172.23.246.146 name GPON-VL1913-LIBER-QTA-PIKAPU
-ip route 190.94.252.96 255.255.255.252 172.23.246.150 name GPON-VL1578-GALI-IT-BUSINESS
-ip route 190.94.252.108 255.255.255.252 172.23.246.178 name GPON-VL1573-GALI-MAESTRE
 ip route 190.94.252.112 255.255.255.252 172.23.243.42 name GPON-VL1810-TUNO-ESP-ORIENTALES
 ip route 190.94.252.116 255.255.255.252 172.23.243.26 name GPON-VL1588-GALI-PROPERTY
 ip route 190.94.252.124 255.255.255.252 172.23.243.22 name GPON-VL1587-GALI-PERLA-DEL-SUR-2
 ip route 190.94.252.132 255.255.255.252 172.23.246.110 name GPON-VL3021-LIBER-QTA-SETORRAY
 ip route 190.94.252.136 255.255.255.252 172.23.246.170 name GPON-VL1915-LIBER-QTA-EL-RINCON
 ip route 190.94.252.140 255.255.255.252 172.23.246.174 name GPON-VL1916-LIBER-QTA-EL-SAMAN
-ip route 190.94.252.144 255.255.255.252 172.23.246.62 name GPON-VL1585-GALI-ALPHATECH
 ip route 190.94.252.148 255.255.255.252 172.23.246.50 name GPON-VL1917-LIBER-QTA-SALTAMONTES
 ip route 190.94.252.152 255.255.255.252 172.23.246.182 name RED1-VL1628-PCR-HELIOS
 ip route 190.94.252.156 255.255.255.252 172.23.246.186 name RED1-VL1629-PCR-SISNET
@@ -4695,16 +4461,15 @@ ip route 190.94.252.200 255.255.255.252 172.23.246.206 name GPON-VL1582-GALI-SIS
 ip route 190.94.252.228 255.255.255.252 172.23.246.230 name GPON-VL1912-LIBER-SALVAFOOD-PZA-VZLA
 ip route 190.94.252.232 255.255.255.252 172.23.246.234 name RED1-VL1632-PCR-ADM-MENGIM
 ip route 190.94.252.236 255.255.255.252 172.23.246.238 name RED1-VL1633-PCR-INVERCAPITAL
-ip route 190.94.252.244 255.255.255.252 172.23.246.246 name GPON-VL1583-GALI-HEFZIBA
 ip route 190.94.253.0 255.255.255.252 172.23.246.70 name GPON-VL1932-LIBER-QUINTA-SOLERA
 ip route 190.94.253.4 255.255.255.252 172.23.241.10 name GPON-VL1772-LEB-PANDURE
 ip route 190.94.253.20 255.255.255.252 172.23.247.190 name GPON-VL1902-LIBER-CONSULTORES-SC
 ip route 190.94.253.24 255.255.255.252 172.23.247.194 name GPON-VL1842-TUNO-HECTICUS
 ip route 190.94.253.32 255.255.255.252 172.23.247.202 name GPON-VL987-ELUN-DIPROMULCA
-ip route 190.94.253.40 255.255.255.252 172.23.247.210 name GPON-VL1598-GALI-ACCESS-SALUD
 ip route 190.94.253.44 255.255.255.252 172.23.253.202 name GPON-VL1919-LIB-SACVEN
 ip route 190.94.253.52 255.255.255.252 172.23.247.246 name GPON-VL1935-LIBER-CONDOMI-BANCOP
 ip route 190.94.253.76 255.255.255.252 172.23.250.230 name GPON-VL1832-TUNO-EMB-RUSIA
+ip route 190.94.253.80 255.255.255.252 172.23.245.34 name GPON-VL2449-ELUN-BEIT-AVOT-IP
 ip route 190.94.253.88 255.255.255.252 172.23.245.42 name RED1-VL1531-PCR-GRUPO-OSEO
 ip route 190.94.253.108 255.255.255.252 172.23.245.82 name RED1-VL1068-CUBO-ALCOHOLES-DEL-CARIBE
 ip route 190.94.253.116 255.255.255.252 172.23.250.230 name GPON-VL1832-TUNO-EMB-RUSIA
@@ -4712,17 +4477,15 @@ ip route 190.94.253.124 255.255.255.252 172.23.241.42 name GPON-VL3108-CRED-HERM
 ip route 190.94.253.140 255.255.255.252 172.23.248.22 name RED1-VL547-PCR-EFE
 ip route 190.94.253.160 255.255.255.252 172.23.248.110 name GPON-VL3103-CRED-UVI-TECH
 ip route 190.94.253.196 255.255.255.252 172.23.248.78 name GPON-VL1834-TUNO-QTA-MARY
-ip route 190.94.253.200 255.255.255.252 172.23.248.30 name GPON-VL4050-GALI-IGLESIA-C-ALEG
 ip route 190.94.253.204 255.255.255.252 172.23.248.34 name RED1-VL548-PCR-BRILUX
 ip route 190.94.253.208 255.255.255.252 172.23.248.38 name RED1-VL549-PCR-IKIGAI
 ip route 190.94.253.212 255.255.255.252 172.23.248.42 name RED1-VL550-PCR-ABRAHAM
 ip route 190.94.253.216 255.255.255.252 172.23.245.90 name GPON-VL1843-TUNO-MUEBLES-MARY
 ip route 190.94.253.220 255.255.255.252 172.23.244.174 name GPON-VL1826-TUNO-DEST-CARUPANO
-ip route 190.94.253.252 255.255.255.252 172.23.248.30 name GPON-VL4050-GALI-IGLESIA-C-ALEG
+ip route 200.1.119.0 255.255.255.0 200.62.26.198 name RED1-VL264-VIPTEL
+ip route 201.218.180.0 255.255.252.0 200.62.26.198 name RED1-VL264-VIPTEL
 ip route 208.84.85.3 255.255.255.255 172.23.247.134 name RED1-VL1521-PRC-RAMON-RAMIREZ
-ip route 208.84.85.4 255.255.255.255 172.23.243.242 name GPON-VL4056-GALI-CORPORACION-XDV
 ip route 208.84.85.6 255.255.255.255 181.225.42.6 name PROYECTO-ZELLE-JC
-ip route 208.84.85.7 255.255.255.255 172.23.244.190 name GPON-1910-LIB-SANTEC
 ip route 208.84.85.12 255.255.255.252 172.23.246.70 name GPON-VL1932-LIBER-QUINTA-SOLERA
 ip ssh version 2
 !
@@ -4781,6 +4544,14 @@ ip prefix-list PLATCOMM-IPV4 seq 80 permit 168.90.92.0/22 le 24
 ip prefix-list PLATCOMM-IPV4 seq 81 permit 208.84.81.0/24
 !
 ip prefix-list PLATCOMM-ORIGINATE seq 80 permit 168.90.92.0/22 le 24
+!
+ip prefix-list SILVERDATA-V4 seq 5 permit 154.194.54.0/24
+ip prefix-list SILVERDATA-V4 seq 6 permit 154.197.1.0/24
+ip prefix-list SILVERDATA-V4 seq 7 permit 154.194.44.0/24
+ip prefix-list SILVERDATA-V4 seq 8 permit 45.195.12.0/23 le 24
+ip prefix-list SILVERDATA-V4 seq 9 permit 154.194.13.0/24
+ip prefix-list SILVERDATA-V4 seq 10 permit 154.194.14.0/24
+ip prefix-list SILVERDATA-V4 seq 99 deny 0.0.0.0/0 le 32
 !
 ip prefix-list TVZ-IPV4 seq 80 permit 45.187.4.0/22 le 24
 !
@@ -4880,6 +4651,9 @@ ipv6 prefix-list IFXVE-V6 seq 10 permit 2803:D480::/32 le 48
 !
 ipv6 prefix-list INACOM_LyH-IPV6 seq 80 permit 2803:2720::/32
 ipv6 prefix-list INACOM_LyH-IPV6 seq 99 deny ::/0 le 128
+!
+ipv6 prefix-list SILVERDATA-V6 seq 5 permit 2803:C290::/32 le 48
+ipv6 prefix-list SILVERDATA-V6 seq 99 deny ::/0 le 128
 !
 ipv6 prefix-list TVZ-IPV6 seq 80 permit 2803:40E0::/32
 !
@@ -5153,10 +4927,20 @@ route-map INACOM_LyH-IPV4 permit 90
 route-map eBGP-CL-IN-V4 permit 10
  set local-preference 98
 !
+route-map eBGP-SILVERDATA-IN-V6 permit 10
+ match ipv6 address prefix-list SILVERDATA-V6
+ set local-preference 110
+ set community 8053:7
+!
 route-map eBGP-QUALCOM-IN permit 10
  match ip address prefix-list eBGP-QUALCOM-IN
  set local-preference 110
  set community 8053:1
+!
+route-map eBGP-SILVERDATA-IN-V4 permit 10
+ match ip address prefix-list SILVERDATA-V4
+ set local-preference 110
+ set community 8053:7
 !
 snmp-server community ifxpublic2018 RO 99
 snmp ifmib ifindex persist
