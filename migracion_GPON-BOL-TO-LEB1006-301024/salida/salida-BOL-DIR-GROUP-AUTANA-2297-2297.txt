@@ -1,0 +1,64 @@
+########################################
+VLAN: 2297	BOL-DIR-GROUP-AUTANA
+
+---------LEB1006X1-----------
+ssh soporte2@181.225.41.25
+
+config t
+no interface Port-channel4.2297
+ description BOL-DIR-GROUP-AUTANA
+ bandwidth 20480
+ encapsulation dot1Q 2297
+ ip address 172.23.245.117 255.255.255.252
+ service-policy input 20M
+ service-policy output 20M
+exit
+no ip route 190.94.245.64 255.255.255.248 172.23.245.118 name GPON-VL655-BOL-DIR-GROUP-AUTANA
+no ip route 190.94.250.4 255.255.255.252 172.23.245.118 name GPON-VL655-BOL-DIR-GROUP-AUTANA
+
+interface Port-channel10.2297
+ description BOL-DIR-GROUP-AUTANA
+ bandwidth 20480
+encapsulation dot1Q 2297
+ ip address 172.23.245.117 255.255.255.252
+ service-policy input 20M
+ service-policy output 20M
+exit
+ip route 190.94.245.64 255.255.255.248 172.23.245.118 name GPON-VL655-BOL-DIR-GROUP-AUTANA
+ip route 190.94.250.4 255.255.255.252 172.23.245.118 name GPON-VL655-BOL-DIR-GROUP-AUTANA
+end
+
+###########TROUBLESHOOTING############
+
+ping 172.23.245.118
+sh mac address-table vlan 2297
+show ethernet-switching table vlan 2297
+
+################################################################
+ELIMINAR RESIDUOS
+
+----------CCSJ4500LEBX1-----------------
+ssh soporte2@172.23.253.28
+
+run sh vlan 2297
+
+del interfaces ae8 unit 0 family ethernet-switching vlan members BOL-DIR-GROUP-AUTANA
+del interfaces ae16 unit 0 family ethernet-switching vlan members BOL-DIR-GROUP-AUTANA
+del vlans BOL-DIR-GROUP-AUTANA 2297
+commit synchronize
+
+
+---------CCSC4500BOLEX1-----------
+ssh soporte2@172.23.253.21
+
+config t
+interface TenGigabitEthernet1/10
+switchport trunk allowed vlan remove 2297
+exit
+no vlan 2297
+end
+
+
+
+
+

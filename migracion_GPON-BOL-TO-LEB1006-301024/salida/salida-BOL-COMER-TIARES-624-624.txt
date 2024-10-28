@@ -1,0 +1,62 @@
+########################################
+VLAN: 624	BOL-COMER-TIARES
+
+---------LEB1006X1-----------
+ssh soporte2@181.225.41.25
+
+config t
+no interface Port-channel4.624
+ description BOL-COMER-TIARES;ID:26829
+ bandwidth 102400
+ encapsulation dot1Q 624
+ ip address 172.23.238.181 255.255.255.252
+ service-policy input 100M
+ service-policy output 100M
+exit
+no ip route 190.94.224.172 255.255.255.252 172.23.238.182 name RED1-VL624-BOL-COMER-TIARES
+
+interface Port-channel10.624
+ description BOL-COMER-TIARES;ID:26829
+ bandwidth 102400
+encapsulation dot1Q 624
+ ip address 172.23.238.181 255.255.255.252
+ service-policy input 100M
+ service-policy output 100M
+exit
+ip route 190.94.224.172 255.255.255.252 172.23.238.182 name GPON-VL624-BOL-COMER-TIARES
+end
+
+###########TROUBLESHOOTING############
+
+ping 172.23.238.182
+sh mac address-table vlan 624
+show ethernet-switching table vlan 624
+
+################################################################
+ELIMINAR RESIDUOS
+
+----------CCSJ4500LEBX1-----------------
+ssh soporte2@172.23.253.28
+
+run sh vlan 624
+
+del interfaces ae8 unit 0 family ethernet-switching vlan members BOL-COMER-TIARES
+del interfaces ae16 unit 0 family ethernet-switching vlan members BOL-COMER-TIARES
+del vlans BOL-COMER-TIARES 624
+commit synchronize
+
+
+---------CCSC4500BOLEX1-----------
+ssh soporte2@172.23.253.21
+
+config t
+interface TenGigabitEthernet1/10
+switchport trunk allowed vlan remove 624
+exit
+no vlan 624
+end
+
+
+
+
+

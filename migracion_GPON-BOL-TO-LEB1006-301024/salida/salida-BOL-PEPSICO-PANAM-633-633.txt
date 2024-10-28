@@ -1,0 +1,64 @@
+########################################
+VLAN: 633	BOL-PEPSICO-PANAM
+
+---------LEB1006X1-----------
+ssh soporte2@181.225.41.25
+
+config t
+no interface Port-channel4.633
+ description PEPSICO-PANAM;ID:26066
+ bandwidth 81920
+ encapsulation dot1Q 633
+ ip address 172.23.248.61 255.255.255.252
+ service-policy input 80M
+ service-policy output 80M
+exit
+no ip route 190.94.253.156 255.255.255.252 172.23.248.62 name GPON-VL633-BOL-PEPSICO-PANAM
+no ip route 190.94.253.232 255.255.255.252 172.23.248.62 name GPON-VL633-BOL-PEPSICO-PANAM
+
+interface Port-channel10.633
+ description PEPSICO-PANAM;ID:26066
+ bandwidth 81920
+encapsulation dot1Q 633
+ ip address 172.23.248.61 255.255.255.252
+ service-policy input 80M
+ service-policy output 80M
+exit
+ip route 190.94.253.156 255.255.255.252 172.23.248.62 name GPON-VL633-BOL-PEPSICO-PANAM
+ip route 190.94.253.232 255.255.255.252 172.23.248.62 name GPON-VL633-BOL-PEPSICO-PANAM
+end
+
+###########TROUBLESHOOTING############
+
+ping 172.23.248.62
+sh mac address-table vlan 633
+show ethernet-switching table vlan 633
+
+################################################################
+ELIMINAR RESIDUOS
+
+----------CCSJ4500LEBX1-----------------
+ssh soporte2@172.23.253.28
+
+run sh vlan 633
+
+del interfaces ae8 unit 0 family ethernet-switching vlan members BOL-PEPSICO-PANAM
+del interfaces ae16 unit 0 family ethernet-switching vlan members BOL-PEPSICO-PANAM
+del vlans BOL-PEPSICO-PANAM 633
+commit synchronize
+
+
+---------CCSC4500BOLEX1-----------
+ssh soporte2@172.23.253.21
+
+config t
+interface TenGigabitEthernet1/10
+switchport trunk allowed vlan remove 633
+exit
+no vlan 633
+end
+
+
+
+
+

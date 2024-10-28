@@ -1,0 +1,62 @@
+########################################
+VLAN: 2301	BOL-HEBRAICA-CLUB
+
+---------LEB1006X1-----------
+ssh soporte2@181.225.41.25
+
+config t
+no interface Port-channel4.2301
+ description BOL-HEBRAICA-CLUB
+ bandwidth 51200
+ encapsulation dot1Q 2301
+ ip address 172.23.254.105 255.255.255.252
+ service-policy input 50M
+ service-policy output 50M
+exit
+no ip route 181.225.43.72 255.255.255.252 172.23.254.106 name GPON-VL2301-BOL-HEBRAICA-CLUB
+
+interface Port-channel10.2301
+ description BOL-HEBRAICA-CLUB
+ bandwidth 51200
+encapsulation dot1Q 2301
+ ip address 172.23.254.105 255.255.255.252
+ service-policy input 50M
+ service-policy output 50M
+exit
+ip route 181.225.43.72 255.255.255.252 172.23.254.106 name GPON-VL2301-BOL-HEBRAICA-CLUB
+end
+
+###########TROUBLESHOOTING############
+
+ping 172.23.254.106
+sh mac address-table vlan 2301
+show ethernet-switching table vlan 2301
+
+################################################################
+ELIMINAR RESIDUOS
+
+----------CCSJ4500LEBX1-----------------
+ssh soporte2@172.23.253.28
+
+run sh vlan 2301
+
+del interfaces ae8 unit 0 family ethernet-switching vlan members BOL-HEBRAICA-CLUB
+del interfaces ae16 unit 0 family ethernet-switching vlan members BOL-HEBRAICA-CLUB
+del vlans BOL-HEBRAICA-CLUB 2301
+commit synchronize
+
+
+---------CCSC4500BOLEX1-----------
+ssh soporte2@172.23.253.21
+
+config t
+interface TenGigabitEthernet1/10
+switchport trunk allowed vlan remove 2301
+exit
+no vlan 2301
+end
+
+
+
+
+

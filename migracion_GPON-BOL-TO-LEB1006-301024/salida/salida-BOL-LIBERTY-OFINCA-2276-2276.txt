@@ -1,0 +1,60 @@
+########################################
+VLAN: 2276	BOL-LIBERTY-OFINCA
+
+---------LEB1006X1-----------
+ssh soporte2@181.225.41.25
+
+config t
+no interface Port-channel4.2276
+ description LIBERTY-OFINCA;ID:26186
+ encapsulation dot1Q 2276
+ ip address 172.23.243.209 255.255.255.252
+ service-policy input 40M
+ service-policy output 40M
+exit
+no ip route 190.94.244.72 255.255.255.252 172.23.243.210 name GPON-VL2276-BOL-LIBERTY-OFINCA
+
+interface Port-channel10.2276
+ description LIBERTY-OFINCA;ID:26186
+encapsulation dot1Q 2276
+ ip address 172.23.243.209 255.255.255.252
+ service-policy input 40M
+ service-policy output 40M
+exit
+ip route 190.94.244.72 255.255.255.252 172.23.243.210 name GPON-VL2276-BOL-LIBERTY-OFINCA
+end
+
+###########TROUBLESHOOTING############
+
+ping 172.23.243.210
+sh mac address-table vlan 2276
+show ethernet-switching table vlan 2276
+
+################################################################
+ELIMINAR RESIDUOS
+
+----------CCSJ4500LEBX1-----------------
+ssh soporte2@172.23.253.28
+
+run sh vlan 2276
+
+del interfaces ae8 unit 0 family ethernet-switching vlan members BOL-LIBERTY-OFINCA
+del interfaces ae16 unit 0 family ethernet-switching vlan members BOL-LIBERTY-OFINCA
+del vlans BOL-LIBERTY-OFINCA 2276
+commit synchronize
+
+
+---------CCSC4500BOLEX1-----------
+ssh soporte2@172.23.253.21
+
+config t
+interface TenGigabitEthernet1/10
+switchport trunk allowed vlan remove 2276
+exit
+no vlan 2276
+end
+
+
+
+
+

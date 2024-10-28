@@ -1,0 +1,74 @@
+########################################
+VLAN: 2292	BOL-DGCIM-OPER
+
+---------LEB1006X1-----------
+ssh soporte2@181.225.41.25
+
+config t
+no interface Port-channel4.2292
+ description DGCIM-OPER;ID:26637
+ bandwidth 215040
+ encapsulation dot1Q 2292
+ ip address 172.23.245.193 255.255.255.252
+ service-policy input DGCIM
+ service-policy output DGCIM
+exit
+no ip route 181.225.42.24 255.255.255.248 172.23.245.194 name GPON-VL2292-BOL-DGCIM-OPER
+no ip route 190.94.199.84 255.255.255.252 172.23.245.194 name GPON-VL2292-BOL-DGCIM-OPER
+no ip route 190.94.201.204 255.255.255.252 172.23.245.194 name GPON-VL2292-BOL-DGCIM-OPER
+no ip route 190.94.224.104 255.255.255.252 172.23.245.194 name GPON-VL2292-BOL-DGCIM-OPER
+no ip route 190.94.242.232 255.255.255.252 172.23.245.194 name GPON-VL2292-BOL-DGCIM-OPER
+no ip route 190.94.250.44 255.255.255.252 172.23.245.194 name GPON-VL2292-BOL-DGCIM-OPER
+no ip route 190.94.250.104 255.255.255.252 172.23.245.194 name GPON-VL2292-BOL-DGCIM-OPER
+
+interface Port-channel10.2292
+ description DGCIM-OPER;ID:26637
+ bandwidth 215040
+encapsulation dot1Q 2292
+ ip address 172.23.245.193 255.255.255.252
+ service-policy input DGCIM
+ service-policy output DGCIM
+exit
+ip route 181.225.42.24 255.255.255.248 172.23.245.194 name GPON-VL2292-BOL-DGCIM-OPER
+ip route 190.94.199.84 255.255.255.252 172.23.245.194 name GPON-VL2292-BOL-DGCIM-OPER
+ip route 190.94.201.204 255.255.255.252 172.23.245.194 name GPON-VL2292-BOL-DGCIM-OPER
+ip route 190.94.224.104 255.255.255.252 172.23.245.194 name GPON-VL2292-BOL-DGCIM-OPER
+ip route 190.94.242.232 255.255.255.252 172.23.245.194 name GPON-VL2292-BOL-DGCIM-OPER
+ip route 190.94.250.44 255.255.255.252 172.23.245.194 name GPON-VL2292-BOL-DGCIM-OPER
+ip route 190.94.250.104 255.255.255.252 172.23.245.194 name GPON-VL2292-BOL-DGCIM-OPER
+end
+
+###########TROUBLESHOOTING############
+
+ping 172.23.245.194
+sh mac address-table vlan 2292
+show ethernet-switching table vlan 2292
+
+################################################################
+ELIMINAR RESIDUOS
+
+----------CCSJ4500LEBX1-----------------
+ssh soporte2@172.23.253.28
+
+run sh vlan 2292
+
+del interfaces ae8 unit 0 family ethernet-switching vlan members BOL-DGCIM-OPER
+del interfaces ae16 unit 0 family ethernet-switching vlan members BOL-DGCIM-OPER
+del vlans BOL-DGCIM-OPER 2292
+commit synchronize
+
+
+---------CCSC4500BOLEX1-----------
+ssh soporte2@172.23.253.21
+
+config t
+interface TenGigabitEthernet1/10
+switchport trunk allowed vlan remove 2292
+exit
+no vlan 2292
+end
+
+
+
+
+

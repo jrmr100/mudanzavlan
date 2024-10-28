@@ -1,0 +1,62 @@
+########################################
+VLAN: 2326	BOL-LUVEBRAS
+
+---------LEB1006X1-----------
+ssh soporte2@181.225.41.25
+
+config t
+no interface Port-channel4.2326
+ description LUVEBRAS;ID:26582
+ bandwidth 61440
+ encapsulation dot1Q 2326
+ ip address 172.23.242.13 255.255.255.252
+ service-policy input 60M
+ service-policy output 60M
+exit
+no ip route 190.94.244.220 255.255.255.252 172.23.242.14 name GPON-VL2326-BOL-LUVEBRAS
+
+interface Port-channel10.2326
+ description LUVEBRAS;ID:26582
+ bandwidth 61440
+encapsulation dot1Q 2326
+ ip address 172.23.242.13 255.255.255.252
+ service-policy input 60M
+ service-policy output 60M
+exit
+ip route 190.94.244.220 255.255.255.252 172.23.242.14 name GPON-VL2326-BOL-LUVEBRAS
+end
+
+###########TROUBLESHOOTING############
+
+ping 172.23.242.14
+sh mac address-table vlan 2326
+show ethernet-switching table vlan 2326
+
+################################################################
+ELIMINAR RESIDUOS
+
+----------CCSJ4500LEBX1-----------------
+ssh soporte2@172.23.253.28
+
+run sh vlan 2326
+
+del interfaces ae8 unit 0 family ethernet-switching vlan members BOL-LUVEBRAS
+del interfaces ae16 unit 0 family ethernet-switching vlan members BOL-LUVEBRAS
+del vlans BOL-LUVEBRAS 2326
+commit synchronize
+
+
+---------CCSC4500BOLEX1-----------
+ssh soporte2@172.23.253.21
+
+config t
+interface TenGigabitEthernet1/10
+switchport trunk allowed vlan remove 2326
+exit
+no vlan 2326
+end
+
+
+
+
+

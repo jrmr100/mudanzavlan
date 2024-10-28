@@ -1,0 +1,62 @@
+########################################
+VLAN: 2275	BOL-HOGAR-LUVADICHT
+
+---------LEB1006X1-----------
+ssh soporte2@181.225.41.25
+
+config t
+no interface Port-channel4.2275
+ description HOGAR-LUBAVITCH;ID:25960
+ bandwidth 20480
+ encapsulation dot1Q 2275
+ ip address 172.23.242.109 255.255.255.252
+ service-policy input 20M
+ service-policy output 20M
+exit
+no ip route 190.94.250.184 255.255.255.252 172.23.242.110 name GPON-VL2275-BOL-HOGAR-LUBAVITCH
+
+interface Port-channel10.2275
+ description HOGAR-LUBAVITCH;ID:25960
+ bandwidth 20480
+encapsulation dot1Q 2275
+ ip address 172.23.242.109 255.255.255.252
+ service-policy input 20M
+ service-policy output 20M
+exit
+ip route 190.94.250.184 255.255.255.252 172.23.242.110 name GPON-VL2275-BOL-HOGAR-LUBAVITCH
+end
+
+###########TROUBLESHOOTING############
+
+ping 172.23.242.110
+sh mac address-table vlan 2275
+show ethernet-switching table vlan 2275
+
+################################################################
+ELIMINAR RESIDUOS
+
+----------CCSJ4500LEBX1-----------------
+ssh soporte2@172.23.253.28
+
+run sh vlan 2275
+
+del interfaces ae8 unit 0 family ethernet-switching vlan members BOL-HOGAR-LUVADICHT
+del interfaces ae16 unit 0 family ethernet-switching vlan members BOL-HOGAR-LUVADICHT
+del vlans BOL-HOGAR-LUVADICHT 2275
+commit synchronize
+
+
+---------CCSC4500BOLEX1-----------
+ssh soporte2@172.23.253.21
+
+config t
+interface TenGigabitEthernet1/10
+switchport trunk allowed vlan remove 2275
+exit
+no vlan 2275
+end
+
+
+
+
+

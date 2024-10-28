@@ -1,0 +1,62 @@
+########################################
+VLAN: 2258	BOL-TECNOCOM
+
+---------LEB1006X1-----------
+ssh soporte2@181.225.41.25
+
+config t
+no interface Port-channel4.2258
+ description TECNOCOM;ID:25979
+ bandwidth 92160
+ encapsulation dot1Q 2258
+ ip address 172.23.252.253 255.255.255.252
+ service-policy input 90M
+ service-policy output 90M
+exit
+no ip route 181.225.43.32 255.255.255.248 172.23.252.254 name GPON-VL2258-BOL-TECNOCOM
+
+interface Port-channel10.2258
+ description TECNOCOM;ID:25979
+ bandwidth 92160
+encapsulation dot1Q 2258
+ ip address 172.23.252.253 255.255.255.252
+ service-policy input 90M
+ service-policy output 90M
+exit
+ip route 181.225.43.32 255.255.255.248 172.23.252.254 name GPON-VL2258-BOL-TECNOCOM
+end
+
+###########TROUBLESHOOTING############
+
+ping 172.23.252.254
+sh mac address-table vlan 2258
+show ethernet-switching table vlan 2258
+
+################################################################
+ELIMINAR RESIDUOS
+
+----------CCSJ4500LEBX1-----------------
+ssh soporte2@172.23.253.28
+
+run sh vlan 2258
+
+del interfaces ae8 unit 0 family ethernet-switching vlan members BOL-TECNOCOM
+del interfaces ae16 unit 0 family ethernet-switching vlan members BOL-TECNOCOM
+del vlans BOL-TECNOCOM 2258
+commit synchronize
+
+
+---------CCSC4500BOLEX1-----------
+ssh soporte2@172.23.253.21
+
+config t
+interface TenGigabitEthernet1/10
+switchport trunk allowed vlan remove 2258
+exit
+no vlan 2258
+end
+
+
+
+
+

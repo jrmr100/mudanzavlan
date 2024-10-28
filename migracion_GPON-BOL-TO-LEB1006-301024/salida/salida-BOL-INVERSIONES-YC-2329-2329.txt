@@ -1,0 +1,64 @@
+########################################
+VLAN: 2329	BOL-INVERSIONES-YC
+
+---------LEB1006X1-----------
+ssh soporte2@181.225.41.25
+
+config t
+no interface Port-channel4.2329
+ description BOL-INVERSIONES-YC;ID:26799
+ bandwidth 102400
+ encapsulation dot1Q 2329
+ ip address 172.23.238.173 255.255.255.252
+ service-policy input 100M
+ service-policy output 100M
+exit
+no ip route 181.225.48.232 255.255.255.248 172.23.238.174 name RED1-VL2329-BOL-INVERSIONES-YC
+no ip route 190.94.224.176 255.255.255.252 172.23.238.174 name RED1-VL2329-BOL-INVERSIONES-YC
+
+interface Port-channel10.2329
+ description BOL-INVERSIONES-YC;ID:26799
+ bandwidth 102400
+encapsulation dot1Q 2329
+ ip address 172.23.238.173 255.255.255.252
+ service-policy input 100M
+ service-policy output 100M
+exit
+ip route 181.225.48.232 255.255.255.248 172.23.238.174 name GPON-VL2329-BOL-INVERSIONES-YC
+ip route 190.94.224.176 255.255.255.252 172.23.238.174 name GPON-VL2329-BOL-INVERSIONES-YC
+end
+
+###########TROUBLESHOOTING############
+
+ping 172.23.238.174
+sh mac address-table vlan 2329
+show ethernet-switching table vlan 2329
+
+################################################################
+ELIMINAR RESIDUOS
+
+----------CCSJ4500LEBX1-----------------
+ssh soporte2@172.23.253.28
+
+run sh vlan 2329
+
+del interfaces ae8 unit 0 family ethernet-switching vlan members BOL-INVERSIONES-YC
+del interfaces ae16 unit 0 family ethernet-switching vlan members BOL-INVERSIONES-YC
+del vlans BOL-INVERSIONES-YC 2329
+commit synchronize
+
+
+---------CCSC4500BOLEX1-----------
+ssh soporte2@172.23.253.21
+
+config t
+interface TenGigabitEthernet1/10
+switchport trunk allowed vlan remove 2329
+exit
+no vlan 2329
+end
+
+
+
+
+

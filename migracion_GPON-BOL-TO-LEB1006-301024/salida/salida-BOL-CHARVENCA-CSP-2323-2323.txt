@@ -1,0 +1,62 @@
+########################################
+VLAN: 2323	BOL-CHARVENCA-CSP
+
+---------LEB1006X1-----------
+ssh soporte2@181.225.41.25
+
+config t
+no interface Port-channel4.2323
+ description CHARVENCA-CSP;ID:26070
+ bandwidth 30720
+ encapsulation dot1Q 2323
+ ip address 172.23.252.221 255.255.255.252
+ service-policy input 30M
+ service-policy output 30M
+exit
+no ip route 190.94.210.48 255.255.255.252 172.23.252.222 name GPON-VL2323-BOL-CHARVENCA-CSP
+
+interface Port-channel10.2323
+ description CHARVENCA-CSP;ID:26070
+ bandwidth 30720
+encapsulation dot1Q 2323
+ ip address 172.23.252.221 255.255.255.252
+ service-policy input 30M
+ service-policy output 30M
+exit
+ip route 190.94.210.48 255.255.255.252 172.23.252.222 name GPON-VL2323-BOL-CHARVENCA-CSP
+end
+
+###########TROUBLESHOOTING############
+
+ping 172.23.252.222
+sh mac address-table vlan 2323
+show ethernet-switching table vlan 2323
+
+################################################################
+ELIMINAR RESIDUOS
+
+----------CCSJ4500LEBX1-----------------
+ssh soporte2@172.23.253.28
+
+run sh vlan 2323
+
+del interfaces ae8 unit 0 family ethernet-switching vlan members BOL-CHARVENCA-CSP
+del interfaces ae16 unit 0 family ethernet-switching vlan members BOL-CHARVENCA-CSP
+del vlans BOL-CHARVENCA-CSP 2323
+commit synchronize
+
+
+---------CCSC4500BOLEX1-----------
+ssh soporte2@172.23.253.21
+
+config t
+interface TenGigabitEthernet1/10
+switchport trunk allowed vlan remove 2323
+exit
+no vlan 2323
+end
+
+
+
+
+

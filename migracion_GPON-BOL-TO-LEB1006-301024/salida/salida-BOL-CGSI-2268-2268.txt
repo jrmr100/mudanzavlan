@@ -1,0 +1,64 @@
+########################################
+VLAN: 2268	BOL-CGSI
+
+---------LEB1006X1-----------
+ssh soporte2@181.225.41.25
+
+config t
+no interface Port-channel4.2268
+ description BOL-CGSI
+ bandwidth 51200
+ encapsulation dot1Q 2268
+ ip address 172.23.245.65 255.255.255.252
+ service-policy input 50M
+ service-policy output 50M
+exit
+no ip route 190.94.251.192 255.255.255.248 172.23.245.66 name GPON-VL2268-BOL-CGSI
+no ip route 190.94.253.96 255.255.255.252 172.23.245.66 name GPON-VL2268-BOL-CGSI
+
+interface Port-channel10.2268
+ description BOL-CGSI
+ bandwidth 51200
+encapsulation dot1Q 2268
+ ip address 172.23.245.65 255.255.255.252
+ service-policy input 50M
+ service-policy output 50M
+exit
+ip route 190.94.251.192 255.255.255.248 172.23.245.66 name GPON-VL2268-BOL-CGSI
+ip route 190.94.253.96 255.255.255.252 172.23.245.66 name GPON-VL2268-BOL-CGSI
+end
+
+###########TROUBLESHOOTING############
+
+ping 172.23.245.66
+sh mac address-table vlan 2268
+show ethernet-switching table vlan 2268
+
+################################################################
+ELIMINAR RESIDUOS
+
+----------CCSJ4500LEBX1-----------------
+ssh soporte2@172.23.253.28
+
+run sh vlan 2268
+
+del interfaces ae8 unit 0 family ethernet-switching vlan members BOL-CGSI
+del interfaces ae16 unit 0 family ethernet-switching vlan members BOL-CGSI
+del vlans BOL-CGSI 2268
+commit synchronize
+
+
+---------CCSC4500BOLEX1-----------
+ssh soporte2@172.23.253.21
+
+config t
+interface TenGigabitEthernet1/10
+switchport trunk allowed vlan remove 2268
+exit
+no vlan 2268
+end
+
+
+
+
+

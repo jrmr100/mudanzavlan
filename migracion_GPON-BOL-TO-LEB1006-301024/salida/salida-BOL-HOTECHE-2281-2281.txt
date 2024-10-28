@@ -1,0 +1,62 @@
+########################################
+VLAN: 2281	BOL-HOTECHE
+
+---------LEB1006X1-----------
+ssh soporte2@181.225.41.25
+
+config t
+no interface Port-channel4.2281
+ description BOL-HOTECHE
+ bandwidth 40960
+ encapsulation dot1Q 2281
+ ip address 172.23.243.97 255.255.255.252
+ service-policy input 40M
+ service-policy output 40M
+exit
+no ip route 190.94.244.32 255.255.255.252 172.23.243.98 name GPON-VL2281-BOL-BOL-HOTECHE
+
+interface Port-channel10.2281
+ description BOL-HOTECHE
+ bandwidth 40960
+encapsulation dot1Q 2281
+ ip address 172.23.243.97 255.255.255.252
+ service-policy input 40M
+ service-policy output 40M
+exit
+ip route 190.94.244.32 255.255.255.252 172.23.243.98 name GPON-VL2281-BOL-BOL-HOTECHE
+end
+
+###########TROUBLESHOOTING############
+
+ping 172.23.243.98
+sh mac address-table vlan 2281
+show ethernet-switching table vlan 2281
+
+################################################################
+ELIMINAR RESIDUOS
+
+----------CCSJ4500LEBX1-----------------
+ssh soporte2@172.23.253.28
+
+run sh vlan 2281
+
+del interfaces ae8 unit 0 family ethernet-switching vlan members BOL-HOTECHE
+del interfaces ae16 unit 0 family ethernet-switching vlan members BOL-HOTECHE
+del vlans BOL-HOTECHE 2281
+commit synchronize
+
+
+---------CCSC4500BOLEX1-----------
+ssh soporte2@172.23.253.21
+
+config t
+interface TenGigabitEthernet1/10
+switchport trunk allowed vlan remove 2281
+exit
+no vlan 2281
+end
+
+
+
+
+

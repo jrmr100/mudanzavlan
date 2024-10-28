@@ -1,0 +1,62 @@
+########################################
+VLAN: 2289	BOL-FARMACIA-ADAN
+
+---------LEB1006X1-----------
+ssh soporte2@181.225.41.25
+
+config t
+no interface Port-channel4.2289
+ description BOL-FARMACIA-ADAN
+ bandwidth 102400
+ encapsulation dot1Q 2289
+ ip address 172.23.246.57 255.255.255.252
+ service-policy input 100M
+ service-policy output 100M
+exit
+no ip route 190.94.252.160 255.255.255.252 172.23.246.58 name GPON-VL2289-BOL-FARMACIA-ADAN
+
+interface Port-channel10.2289
+ description BOL-FARMACIA-ADAN
+ bandwidth 102400
+encapsulation dot1Q 2289
+ ip address 172.23.246.57 255.255.255.252
+ service-policy input 100M
+ service-policy output 100M
+exit
+ip route 190.94.252.160 255.255.255.252 172.23.246.58 name GPON-VL2289-BOL-FARMACIA-ADAN
+end
+
+###########TROUBLESHOOTING############
+
+ping 172.23.246.58
+sh mac address-table vlan 2289
+show ethernet-switching table vlan 2289
+
+################################################################
+ELIMINAR RESIDUOS
+
+----------CCSJ4500LEBX1-----------------
+ssh soporte2@172.23.253.28
+
+run sh vlan 2289
+
+del interfaces ae8 unit 0 family ethernet-switching vlan members BOL-FARMACIA-ADAN
+del interfaces ae16 unit 0 family ethernet-switching vlan members BOL-FARMACIA-ADAN
+del vlans BOL-FARMACIA-ADAN 2289
+commit synchronize
+
+
+---------CCSC4500BOLEX1-----------
+ssh soporte2@172.23.253.21
+
+config t
+interface TenGigabitEthernet1/10
+switchport trunk allowed vlan remove 2289
+exit
+no vlan 2289
+end
+
+
+
+
+

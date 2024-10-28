@@ -1,0 +1,64 @@
+########################################
+VLAN: 2263	BOL-HEB-COLEGIO
+
+---------LEB1006X1-----------
+ssh soporte2@181.225.41.25
+
+config t
+no interface Port-channel4.2263
+ description HEB-COLEGIO;ID:25736
+ bandwidth 51200
+ encapsulation dot1Q 2263
+ ip address 172.23.254.185 255.255.255.252
+ service-policy input 50M
+ service-policy output 50M
+exit
+no ip route 181.225.43.80 255.255.255.248 172.23.254.186 name GPON-VL2263-BOL-HEB-COLEGIO
+no ip route 181.225.48.88 255.255.255.248 172.23.254.186 name GPON-VL2263-BOL-HEB-COLEGIO
+
+interface Port-channel10.2263
+ description HEB-COLEGIO;ID:25736
+ bandwidth 51200
+encapsulation dot1Q 2263
+ ip address 172.23.254.185 255.255.255.252
+ service-policy input 50M
+ service-policy output 50M
+exit
+ip route 181.225.43.80 255.255.255.248 172.23.254.186 name GPON-VL2263-BOL-HEB-COLEGIO
+ip route 181.225.48.88 255.255.255.248 172.23.254.186 name GPON-VL2263-BOL-HEB-COLEGIO
+end
+
+###########TROUBLESHOOTING############
+
+ping 172.23.254.186
+sh mac address-table vlan 2263
+show ethernet-switching table vlan 2263
+
+################################################################
+ELIMINAR RESIDUOS
+
+----------CCSJ4500LEBX1-----------------
+ssh soporte2@172.23.253.28
+
+run sh vlan 2263
+
+del interfaces ae8 unit 0 family ethernet-switching vlan members BOL-HEB-COLEGIO
+del interfaces ae16 unit 0 family ethernet-switching vlan members BOL-HEB-COLEGIO
+del vlans BOL-HEB-COLEGIO 2263
+commit synchronize
+
+
+---------CCSC4500BOLEX1-----------
+ssh soporte2@172.23.253.21
+
+config t
+interface TenGigabitEthernet1/10
+switchport trunk allowed vlan remove 2263
+exit
+no vlan 2263
+end
+
+
+
+
+

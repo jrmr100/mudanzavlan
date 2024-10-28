@@ -1,0 +1,62 @@
+########################################
+VLAN: 2269	BOL-MAPLOCA
+
+---------LEB1006X1-----------
+ssh soporte2@181.225.41.25
+
+config t
+no interface Port-channel4.2269
+ description MAPLOCA;ID:26056
+ bandwidth 81920
+ encapsulation dot1Q 2269
+ ip address 172.23.245.153 255.255.255.252
+ service-policy input 80M
+ service-policy output 80M
+exit
+no ip route 190.94.243.56 255.255.255.248 172.23.245.154 name GPON-VL2269-BOL-MAPLOCA
+
+interface Port-channel10.2269
+ description MAPLOCA;ID:26056
+ bandwidth 81920
+encapsulation dot1Q 2269
+ ip address 172.23.245.153 255.255.255.252
+ service-policy input 80M
+ service-policy output 80M
+exit
+ip route 190.94.243.56 255.255.255.248 172.23.245.154 name GPON-VL2269-BOL-MAPLOCA
+end
+
+###########TROUBLESHOOTING############
+
+ping 172.23.245.154
+sh mac address-table vlan 2269
+show ethernet-switching table vlan 2269
+
+################################################################
+ELIMINAR RESIDUOS
+
+----------CCSJ4500LEBX1-----------------
+ssh soporte2@172.23.253.28
+
+run sh vlan 2269
+
+del interfaces ae8 unit 0 family ethernet-switching vlan members BOL-MAPLOCA
+del interfaces ae16 unit 0 family ethernet-switching vlan members BOL-MAPLOCA
+del vlans BOL-MAPLOCA 2269
+commit synchronize
+
+
+---------CCSC4500BOLEX1-----------
+ssh soporte2@172.23.253.21
+
+config t
+interface TenGigabitEthernet1/10
+switchport trunk allowed vlan remove 2269
+exit
+no vlan 2269
+end
+
+
+
+
+

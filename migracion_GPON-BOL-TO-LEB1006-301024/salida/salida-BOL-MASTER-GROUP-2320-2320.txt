@@ -1,0 +1,62 @@
+########################################
+VLAN: 2320	BOL-MASTER-GROUP
+
+---------LEB1006X1-----------
+ssh soporte2@181.225.41.25
+
+config t
+no interface Port-channel4.2320
+ description MASTER-GROUP;ID:26762
+ bandwidth 51200
+ encapsulation dot1Q 2320
+ ip address 172.23.242.213 255.255.255.252
+ service-policy input 50M
+ service-policy output 50M
+exit
+no ip route 190.94.200.48 255.255.255.252 172.23.242.214 name GPON-VL2320-BOL-MASTER-GROUP
+
+interface Port-channel10.2320
+ description MASTER-GROUP;ID:26762
+ bandwidth 51200
+encapsulation dot1Q 2320
+ ip address 172.23.242.213 255.255.255.252
+ service-policy input 50M
+ service-policy output 50M
+exit
+ip route 190.94.200.48 255.255.255.252 172.23.242.214 name GPON-VL2320-BOL-MASTER-GROUP
+end
+
+###########TROUBLESHOOTING############
+
+ping 172.23.242.214
+sh mac address-table vlan 2320
+show ethernet-switching table vlan 2320
+
+################################################################
+ELIMINAR RESIDUOS
+
+----------CCSJ4500LEBX1-----------------
+ssh soporte2@172.23.253.28
+
+run sh vlan 2320
+
+del interfaces ae8 unit 0 family ethernet-switching vlan members BOL-MASTER-GROUP
+del interfaces ae16 unit 0 family ethernet-switching vlan members BOL-MASTER-GROUP
+del vlans BOL-MASTER-GROUP 2320
+commit synchronize
+
+
+---------CCSC4500BOLEX1-----------
+ssh soporte2@172.23.253.21
+
+config t
+interface TenGigabitEthernet1/10
+switchport trunk allowed vlan remove 2320
+exit
+no vlan 2320
+end
+
+
+
+
+

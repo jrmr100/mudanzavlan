@@ -1,0 +1,68 @@
+########################################
+VLAN: 2252	BOL-Wedoo
+
+---------LEB1006X1-----------
+ssh soporte2@181.225.41.25
+
+config t
+no interface Port-channel4.2252
+ description BOL-WEDOO
+ bandwidth 25600
+ encapsulation dot1Q 2252
+ ip address 172.23.247.249 255.255.255.252
+ service-policy input 60M
+ service-policy output 60M
+exit
+no ip route 190.94.243.184 255.255.255.248 172.23.247.250 name GPON-VL2252-BOL-WEDOO
+no ip route 190.94.253.56 255.255.255.252 172.23.247.250 name GPON-VL2252-BOL-WEDOO
+no ip route 190.94.253.60 255.255.255.252 172.23.247.250 name GPON-VL2252-BOL-WEDOO
+no ip route 190.94.253.68 255.255.255.252 172.23.247.250 name GPON-VL2252-BOL-WEDOO
+
+interface Port-channel10.2252
+ description BOL-WEDOO
+ bandwidth 25600
+encapsulation dot1Q 2252
+ ip address 172.23.247.249 255.255.255.252
+ service-policy input 60M
+ service-policy output 60M
+exit
+ip route 190.94.243.184 255.255.255.248 172.23.247.250 name GPON-VL2252-BOL-WEDOO
+ip route 190.94.253.56 255.255.255.252 172.23.247.250 name GPON-VL2252-BOL-WEDOO
+ip route 190.94.253.60 255.255.255.252 172.23.247.250 name GPON-VL2252-BOL-WEDOO
+ip route 190.94.253.68 255.255.255.252 172.23.247.250 name GPON-VL2252-BOL-WEDOO
+end
+
+###########TROUBLESHOOTING############
+
+ping 172.23.247.250
+sh mac address-table vlan 2252
+show ethernet-switching table vlan 2252
+
+################################################################
+ELIMINAR RESIDUOS
+
+----------CCSJ4500LEBX1-----------------
+ssh soporte2@172.23.253.28
+
+run sh vlan 2252
+
+del interfaces ae8 unit 0 family ethernet-switching vlan members BOL-Wedoo
+del interfaces ae16 unit 0 family ethernet-switching vlan members BOL-Wedoo
+del vlans BOL-Wedoo 2252
+commit synchronize
+
+
+---------CCSC4500BOLEX1-----------
+ssh soporte2@172.23.253.21
+
+config t
+interface TenGigabitEthernet1/10
+switchport trunk allowed vlan remove 2252
+exit
+no vlan 2252
+end
+
+
+
+
+

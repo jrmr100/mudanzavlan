@@ -1,0 +1,62 @@
+########################################
+VLAN: 2294	BOL-PRIMTEK-WILSON
+
+---------LEB1006X1-----------
+ssh soporte2@181.225.41.25
+
+config t
+no interface Port-channel4.2294
+ description BOL-PRIMTEK-WILSON
+ bandwidth 512000
+ encapsulation dot1Q 2294
+ ip address 172.23.245.209 255.255.255.252
+ service-policy input 500M
+ service-policy output 500M
+exit
+no ip route 190.94.245.104 255.255.255.248 172.23.245.210 name GPON-VL2294-BOL-PRIMTEK-WILSON
+
+interface Port-channel10.2294
+ description BOL-PRIMTEK-WILSON
+ bandwidth 512000
+encapsulation dot1Q 2294
+ ip address 172.23.245.209 255.255.255.252
+ service-policy input 500M
+ service-policy output 500M
+exit
+ip route 190.94.245.104 255.255.255.248 172.23.245.210 name GPON-VL2294-BOL-PRIMTEK-WILSON
+end
+
+###########TROUBLESHOOTING############
+
+ping 172.23.245.210
+sh mac address-table vlan 2294
+show ethernet-switching table vlan 2294
+
+################################################################
+ELIMINAR RESIDUOS
+
+----------CCSJ4500LEBX1-----------------
+ssh soporte2@172.23.253.28
+
+run sh vlan 2294
+
+del interfaces ae8 unit 0 family ethernet-switching vlan members BOL-PRIMTEK-WILSON
+del interfaces ae16 unit 0 family ethernet-switching vlan members BOL-PRIMTEK-WILSON
+del vlans BOL-PRIMTEK-WILSON 2294
+commit synchronize
+
+
+---------CCSC4500BOLEX1-----------
+ssh soporte2@172.23.253.21
+
+config t
+interface TenGigabitEthernet1/10
+switchport trunk allowed vlan remove 2294
+exit
+no vlan 2294
+end
+
+
+
+
+

@@ -1,0 +1,62 @@
+########################################
+VLAN: 2350	BOL-HUMANITAS
+
+---------LEB1006X1-----------
+ssh soporte2@181.225.41.25
+
+config t
+no interface Port-channel4.2350
+ description BOL-HUMANITAS;ID:26871
+ bandwidth 204800
+ encapsulation dot1Q 2350
+ ip address 172.23.237.129 255.255.255.252
+ service-policy input 200M
+ service-policy output 200M
+exit
+no ip route 181.225.53.232 255.255.255.248 172.23.237.130 name GPON-VL2350-BOL-HUMANITAS
+
+interface Port-channel10.2350
+ description BOL-HUMANITAS;ID:26871
+ bandwidth 204800
+encapsulation dot1Q 2350
+ ip address 172.23.237.129 255.255.255.252
+ service-policy input 200M
+ service-policy output 200M
+exit
+ip route 181.225.53.232 255.255.255.248 172.23.237.130 name GPON-VL2350-BOL-HUMANITAS
+end
+
+###########TROUBLESHOOTING############
+
+ping 172.23.237.130
+sh mac address-table vlan 2350
+show ethernet-switching table vlan 2350
+
+################################################################
+ELIMINAR RESIDUOS
+
+----------CCSJ4500LEBX1-----------------
+ssh soporte2@172.23.253.28
+
+run sh vlan 2350
+
+del interfaces ae8 unit 0 family ethernet-switching vlan members BOL-HUMANITAS
+del interfaces ae16 unit 0 family ethernet-switching vlan members BOL-HUMANITAS
+del vlans BOL-HUMANITAS 2350
+commit synchronize
+
+
+---------CCSC4500BOLEX1-----------
+ssh soporte2@172.23.253.21
+
+config t
+interface TenGigabitEthernet1/10
+switchport trunk allowed vlan remove 2350
+exit
+no vlan 2350
+end
+
+
+
+
+

@@ -1,0 +1,62 @@
+########################################
+VLAN: 2314	BOL-GAMA-CC-SEBUCAN
+
+---------LEB1006X1-----------
+ssh soporte2@181.225.41.25
+
+config t
+no interface Port-channel4.2314
+ description GAMA-CC-SEBUCAN;ID:26091
+ bandwidth 51200
+ encapsulation dot1Q 2314
+ ip address 172.23.241.141 255.255.255.252
+ service-policy input 50M
+ service-policy output 50M
+exit
+no ip route 190.94.200.36 255.255.255.252 172.23.241.142 name GPON-VL2314-BOL-GAMA-CC-SEBUCAN
+
+interface Port-channel10.2314
+ description GAMA-CC-SEBUCAN;ID:26091
+ bandwidth 51200
+encapsulation dot1Q 2314
+ ip address 172.23.241.141 255.255.255.252
+ service-policy input 50M
+ service-policy output 50M
+exit
+ip route 190.94.200.36 255.255.255.252 172.23.241.142 name GPON-VL2314-BOL-GAMA-CC-SEBUCAN
+end
+
+###########TROUBLESHOOTING############
+
+ping 172.23.241.142
+sh mac address-table vlan 2314
+show ethernet-switching table vlan 2314
+
+################################################################
+ELIMINAR RESIDUOS
+
+----------CCSJ4500LEBX1-----------------
+ssh soporte2@172.23.253.28
+
+run sh vlan 2314
+
+del interfaces ae8 unit 0 family ethernet-switching vlan members BOL-GAMA-CC-SEBUCAN
+del interfaces ae16 unit 0 family ethernet-switching vlan members BOL-GAMA-CC-SEBUCAN
+del vlans BOL-GAMA-CC-SEBUCAN 2314
+commit synchronize
+
+
+---------CCSC4500BOLEX1-----------
+ssh soporte2@172.23.253.21
+
+config t
+interface TenGigabitEthernet1/10
+switchport trunk allowed vlan remove 2314
+exit
+no vlan 2314
+end
+
+
+
+
+

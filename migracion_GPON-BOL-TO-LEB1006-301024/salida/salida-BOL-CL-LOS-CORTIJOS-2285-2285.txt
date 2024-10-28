@@ -1,0 +1,62 @@
+########################################
+VLAN: 2285	BOL-CL-LOS-CORTIJOS
+
+---------LEB1006X1-----------
+ssh soporte2@181.225.41.25
+
+config t
+no interface Port-channel4.2285
+ description BOL-CL-LOS-CORTIJOS;ID:26203
+ bandwidth 51200
+ encapsulation dot1Q 2285
+ ip address 172.23.246.201 255.255.255.252
+ service-policy input 50M
+ service-policy output 50M
+exit
+no ip route 190.94.252.196 255.255.255.252 172.23.246.202 name GPON-VL2285-BOL-CL-LOS-CORTIJOS
+
+interface Port-channel10.2285
+ description BOL-CL-LOS-CORTIJOS;ID:26203
+ bandwidth 51200
+encapsulation dot1Q 2285
+ ip address 172.23.246.201 255.255.255.252
+ service-policy input 50M
+ service-policy output 50M
+exit
+ip route 190.94.252.196 255.255.255.252 172.23.246.202 name GPON-VL2285-BOL-CL-LOS-CORTIJOS
+end
+
+###########TROUBLESHOOTING############
+
+ping 172.23.246.202
+sh mac address-table vlan 2285
+show ethernet-switching table vlan 2285
+
+################################################################
+ELIMINAR RESIDUOS
+
+----------CCSJ4500LEBX1-----------------
+ssh soporte2@172.23.253.28
+
+run sh vlan 2285
+
+del interfaces ae8 unit 0 family ethernet-switching vlan members BOL-CL-LOS-CORTIJOS
+del interfaces ae16 unit 0 family ethernet-switching vlan members BOL-CL-LOS-CORTIJOS
+del vlans BOL-CL-LOS-CORTIJOS 2285
+commit synchronize
+
+
+---------CCSC4500BOLEX1-----------
+ssh soporte2@172.23.253.21
+
+config t
+interface TenGigabitEthernet1/10
+switchport trunk allowed vlan remove 2285
+exit
+no vlan 2285
+end
+
+
+
+
+

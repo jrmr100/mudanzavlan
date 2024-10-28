@@ -1,0 +1,62 @@
+########################################
+VLAN: 2250	BOL-CHOCOBRU
+
+---------LEB1006X1-----------
+ssh soporte2@181.225.41.25
+
+config t
+no interface Port-channel4.2250
+ description CHOCOBRU;ID:26121
+ bandwidth 20480
+ encapsulation dot1Q 2250
+ ip address 172.23.247.185 255.255.255.252
+ service-policy input 20M
+ service-policy output 20M
+exit
+no ip route 181.225.43.144 255.255.255.248 172.23.247.186 name GPON-VL3400-BOL-CHOCOBRU
+
+interface Port-channel10.2250
+ description CHOCOBRU;ID:26121
+ bandwidth 20480
+encapsulation dot1Q 2250
+ ip address 172.23.247.185 255.255.255.252
+ service-policy input 20M
+ service-policy output 20M
+exit
+ip route 181.225.43.144 255.255.255.248 172.23.247.186 name GPON-VL3400-BOL-CHOCOBRU
+end
+
+###########TROUBLESHOOTING############
+
+ping 172.23.247.186
+sh mac address-table vlan 2250
+show ethernet-switching table vlan 2250
+
+################################################################
+ELIMINAR RESIDUOS
+
+----------CCSJ4500LEBX1-----------------
+ssh soporte2@172.23.253.28
+
+run sh vlan 2250
+
+del interfaces ae8 unit 0 family ethernet-switching vlan members BOL-CHOCOBRU
+del interfaces ae16 unit 0 family ethernet-switching vlan members BOL-CHOCOBRU
+del vlans BOL-CHOCOBRU 2250
+commit synchronize
+
+
+---------CCSC4500BOLEX1-----------
+ssh soporte2@172.23.253.21
+
+config t
+interface TenGigabitEthernet1/10
+switchport trunk allowed vlan remove 2250
+exit
+no vlan 2250
+end
+
+
+
+
+
