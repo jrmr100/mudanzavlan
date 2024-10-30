@@ -42,7 +42,10 @@ run sh vlan 2261
 
 del interfaces ae8 unit 0 family ethernet-switching vlan members BOL-VALORALTA
 del interfaces ae16 unit 0 family ethernet-switching vlan members BOL-VALORALTA
-del vlans BOL-VALORALTA 2261
+del interfaces ge-0/0/17 unit 0 family ethernet-switching vlan members BOL-VALORALTA
+del interfaces xe-0/0/30 unit 0 family ethernet-switching vlan members BOL-VALORALTA
+
+del vlans BOL-VALORALTA
 commit synchronize
 
 

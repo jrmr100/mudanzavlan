@@ -42,7 +42,13 @@ run sh vlan 2308
 
 del interfaces ae8 unit 0 family ethernet-switching vlan members BOL-ARTROGEN
 del interfaces ae16 unit 0 family ethernet-switching vlan members BOL-ARTROGEN
-del vlans BOL-ARTROGEN 2308
+del interfaces ge-0/0/17 unit 0 family ethernet-switching vlan members BOL-ARTROGEN
+del interfaces ge-0/0/19 unit 0 family ethernet-switching vlan members BOL-ARTROGEN
+del interfaces xe-0/0/19 unit 0 family ethernet-switching vlan members BOL-ARTROGEN
+del interfaces xe-0/0/30 unit 0 family ethernet-switching vlan members BOL-ARTROGEN
+
+
+del vlans BOL-ARTROGEN
 commit synchronize
 
 

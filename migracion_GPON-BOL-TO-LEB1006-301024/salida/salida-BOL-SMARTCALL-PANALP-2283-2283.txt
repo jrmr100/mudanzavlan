@@ -42,7 +42,7 @@ run sh vlan 2283
 
 del interfaces ae8 unit 0 family ethernet-switching vlan members BOL-SMARTCALL-PANALP
 del interfaces ae16 unit 0 family ethernet-switching vlan members BOL-SMARTCALL-PANALP
-del vlans BOL-SMARTCALL-PANALP 2283
+del vlans BOL-SMARTCALL-PANALP
 commit synchronize
 
 

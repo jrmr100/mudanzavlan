@@ -42,7 +42,7 @@ run sh vlan 2320
 
 del interfaces ae8 unit 0 family ethernet-switching vlan members BOL-MASTER-GROUP
 del interfaces ae16 unit 0 family ethernet-switching vlan members BOL-MASTER-GROUP
-del vlans BOL-MASTER-GROUP 2320
+del vlans BOL-MASTER-GROUP
 commit synchronize
 
 

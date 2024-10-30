@@ -42,7 +42,7 @@ run sh vlan 2350
 
 del interfaces ae8 unit 0 family ethernet-switching vlan members BOL-HUMANITAS
 del interfaces ae16 unit 0 family ethernet-switching vlan members BOL-HUMANITAS
-del vlans BOL-HUMANITAS 2350
+del vlans BOL-HUMANITAS
 commit synchronize
 
 

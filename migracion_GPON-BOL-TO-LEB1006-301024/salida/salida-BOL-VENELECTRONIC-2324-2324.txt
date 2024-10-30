@@ -42,7 +42,7 @@ run sh vlan 2324
 
 del interfaces ae8 unit 0 family ethernet-switching vlan members BOL-VENELECTRONIC
 del interfaces ae16 unit 0 family ethernet-switching vlan members BOL-VENELECTRONIC
-del vlans BOL-VENELECTRONIC 2324
+del vlans BOL-VENELECTRONIC
 commit synchronize
 
 

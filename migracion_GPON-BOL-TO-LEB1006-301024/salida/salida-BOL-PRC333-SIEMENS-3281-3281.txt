@@ -40,9 +40,13 @@ ssh soporte2@172.23.253.28
 
 run sh vlan 3281
 
-del interfaces ae8 unit 0 family ethernet-switching vlan members BOL-PRC333-SIEMENS
-del interfaces ae16 unit 0 family ethernet-switching vlan members BOL-PRC333-SIEMENS
-del vlans BOL-PRC333-SIEMENS 3281
+del interfaces ae8 unit 0 family ethernet-switching vlan members BOL-PRC333-T-SIEMENS
+del interfaces ae16 unit 0 family ethernet-switching vlan members BOL-PRC333-T-SIEMENS
+del vlans BOL-PRC333-T-SIEMENS 3281
+
+del vlans TUNO-AVANTI vlan-id 1851
+
+
 commit synchronize
 
 

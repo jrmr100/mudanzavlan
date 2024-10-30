@@ -42,7 +42,7 @@ run sh vlan 2291
 
 del interfaces ae8 unit 0 family ethernet-switching vlan members BOL-PRC-SEGRE
 del interfaces ae16 unit 0 family ethernet-switching vlan members BOL-PRC-SEGRE
-del vlans BOL-PRC-SEGRE 2291
+del vlans BOL-PRC-SEGRE
 commit synchronize
 
 

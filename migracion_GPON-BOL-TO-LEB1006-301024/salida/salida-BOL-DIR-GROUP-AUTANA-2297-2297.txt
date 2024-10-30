@@ -44,7 +44,7 @@ run sh vlan 2297
 
 del interfaces ae8 unit 0 family ethernet-switching vlan members BOL-DIR-GROUP-AUTANA
 del interfaces ae16 unit 0 family ethernet-switching vlan members BOL-DIR-GROUP-AUTANA
-del vlans BOL-DIR-GROUP-AUTANA 2297
+del vlans BOL-DIR-GROUP-AUTANA
 commit synchronize
 
 

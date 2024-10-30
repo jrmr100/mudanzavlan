@@ -42,7 +42,7 @@ run sh vlan 2317
 
 del interfaces ae8 unit 0 family ethernet-switching vlan members BOL-GAMA-LOS-RUICES
 del interfaces ae16 unit 0 family ethernet-switching vlan members BOL-GAMA-LOS-RUICES
-del vlans BOL-GAMA-LOS-RUICES 2317
+del vlans BOL-GAMA-LOS-RUICES
 commit synchronize
 
 

@@ -42,7 +42,7 @@ run sh vlan 2289
 
 del interfaces ae8 unit 0 family ethernet-switching vlan members BOL-FARMACIA-ADAN
 del interfaces ae16 unit 0 family ethernet-switching vlan members BOL-FARMACIA-ADAN
-del vlans BOL-FARMACIA-ADAN 2289
+del vlans BOL-FARMACIA-ADAN
 commit synchronize
 
 

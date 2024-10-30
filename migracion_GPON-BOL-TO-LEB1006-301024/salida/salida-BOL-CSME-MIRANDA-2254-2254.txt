@@ -42,7 +42,7 @@ run sh vlan 2254
 
 del interfaces ae8 unit 0 family ethernet-switching vlan members BOL-CSME-MIRANDA
 del interfaces ae16 unit 0 family ethernet-switching vlan members BOL-CSME-MIRANDA
-del vlans BOL-CSME-MIRANDA 2254
+del vlans BOL-CSME-MIRANDA
 commit synchronize
 
 

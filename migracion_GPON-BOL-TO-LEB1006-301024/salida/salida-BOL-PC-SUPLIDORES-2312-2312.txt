@@ -42,7 +42,7 @@ run sh vlan 2312
 
 del interfaces ae8 unit 0 family ethernet-switching vlan members BOL-PC-SUPLIDORES
 del interfaces ae16 unit 0 family ethernet-switching vlan members BOL-PC-SUPLIDORES
-del vlans BOL-PC-SUPLIDORES 2312
+del vlans BOL-PC-SUPLIDORES
 commit synchronize
 
 

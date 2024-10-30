@@ -42,7 +42,7 @@ run sh vlan 624
 
 del interfaces ae8 unit 0 family ethernet-switching vlan members BOL-COMER-TIARES
 del interfaces ae16 unit 0 family ethernet-switching vlan members BOL-COMER-TIARES
-del vlans BOL-COMER-TIARES 624
+del vlans BOL-COMER-TIARES
 commit synchronize
 
 

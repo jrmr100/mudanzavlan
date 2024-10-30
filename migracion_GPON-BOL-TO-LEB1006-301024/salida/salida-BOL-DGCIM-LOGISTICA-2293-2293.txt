@@ -42,7 +42,7 @@ run sh vlan 2293
 
 del interfaces ae8 unit 0 family ethernet-switching vlan members BOL-DGCIM-LOGISTICA
 del interfaces ae16 unit 0 family ethernet-switching vlan members BOL-DGCIM-LOGISTICA
-del vlans BOL-DGCIM-LOGISTICA 2293
+del vlans BOL-DGCIM-LOGISTICA
 commit synchronize
 
 

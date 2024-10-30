@@ -44,7 +44,7 @@ run sh vlan 633
 
 del interfaces ae8 unit 0 family ethernet-switching vlan members BOL-PEPSICO-PANAM
 del interfaces ae16 unit 0 family ethernet-switching vlan members BOL-PEPSICO-PANAM
-del vlans BOL-PEPSICO-PANAM 633
+del vlans BOL-PEPSICO-PANAM
 commit synchronize
 
 

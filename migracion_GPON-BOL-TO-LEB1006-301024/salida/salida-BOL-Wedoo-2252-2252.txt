@@ -48,7 +48,7 @@ run sh vlan 2252
 
 del interfaces ae8 unit 0 family ethernet-switching vlan members BOL-Wedoo
 del interfaces ae16 unit 0 family ethernet-switching vlan members BOL-Wedoo
-del vlans BOL-Wedoo 2252
+del vlans BOL-Wedoo
 commit synchronize
 
 

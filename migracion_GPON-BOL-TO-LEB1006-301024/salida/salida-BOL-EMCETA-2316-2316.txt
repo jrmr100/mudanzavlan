@@ -42,7 +42,7 @@ run sh vlan 2316
 
 del interfaces ae8 unit 0 family ethernet-switching vlan members BOL-EMCETA
 del interfaces ae16 unit 0 family ethernet-switching vlan members BOL-EMCETA
-del vlans BOL-EMCETA 2316
+del vlans BOL-EMCETA
 commit synchronize
 
 

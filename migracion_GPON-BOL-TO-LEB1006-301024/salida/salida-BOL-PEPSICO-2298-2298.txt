@@ -44,7 +44,9 @@ run sh vlan 2298
 
 del interfaces ae8 unit 0 family ethernet-switching vlan members BOL-PEPSICO
 del interfaces ae16 unit 0 family ethernet-switching vlan members BOL-PEPSICO
-del vlans BOL-PEPSICO 2298
+del interfaces ae20 unit 0 family ethernet-switching vlan members BOL-PEPSICO
+
+del vlans BOL-PEPSICO
 commit synchronize
 
 

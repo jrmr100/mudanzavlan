@@ -42,7 +42,7 @@ run sh vlan 2349
 
 del interfaces ae8 unit 0 family ethernet-switching vlan members BOL-NETSO
 del interfaces ae16 unit 0 family ethernet-switching vlan members BOL-NETSO
-del vlans BOL-NETSO 2349
+del vlans BOL-NETSO
 commit synchronize
 
 

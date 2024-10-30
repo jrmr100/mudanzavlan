@@ -42,7 +42,7 @@ run sh vlan 2286
 
 del interfaces ae8 unit 0 family ethernet-switching vlan members BOL-LIBERTY-EXP-BOL
 del interfaces ae16 unit 0 family ethernet-switching vlan members BOL-LIBERTY-EXP-BOL
-del vlans BOL-LIBERTY-EXP-BOL 2286
+del vlans BOL-LIBERTY-EXP-BOL
 commit synchronize
 
 

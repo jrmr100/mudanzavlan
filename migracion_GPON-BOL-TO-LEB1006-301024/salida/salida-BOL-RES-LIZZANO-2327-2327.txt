@@ -42,7 +42,7 @@ run sh vlan 2327
 
 del interfaces ae8 unit 0 family ethernet-switching vlan members BOL-RES-LIZZANO
 del interfaces ae16 unit 0 family ethernet-switching vlan members BOL-RES-LIZZANO
-del vlans BOL-RES-LIZZANO 2327
+del vlans BOL-RES-LIZZANO
 commit synchronize
 
 

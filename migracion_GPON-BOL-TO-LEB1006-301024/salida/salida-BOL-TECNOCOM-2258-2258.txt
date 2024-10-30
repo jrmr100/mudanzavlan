@@ -42,7 +42,7 @@ run sh vlan 2258
 
 del interfaces ae8 unit 0 family ethernet-switching vlan members BOL-TECNOCOM
 del interfaces ae16 unit 0 family ethernet-switching vlan members BOL-TECNOCOM
-del vlans BOL-TECNOCOM 2258
+del vlans BOL-TECNOCOM
 commit synchronize
 
 

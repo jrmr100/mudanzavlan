@@ -42,7 +42,7 @@ run sh vlan 2326
 
 del interfaces ae8 unit 0 family ethernet-switching vlan members BOL-LUVEBRAS
 del interfaces ae16 unit 0 family ethernet-switching vlan members BOL-LUVEBRAS
-del vlans BOL-LUVEBRAS 2326
+del vlans BOL-LUVEBRAS
 commit synchronize
 
 

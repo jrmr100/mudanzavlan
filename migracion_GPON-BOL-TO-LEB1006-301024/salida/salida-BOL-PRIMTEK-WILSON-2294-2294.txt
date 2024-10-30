@@ -42,7 +42,7 @@ run sh vlan 2294
 
 del interfaces ae8 unit 0 family ethernet-switching vlan members BOL-PRIMTEK-WILSON
 del interfaces ae16 unit 0 family ethernet-switching vlan members BOL-PRIMTEK-WILSON
-del vlans BOL-PRIMTEK-WILSON 2294
+del vlans BOL-PRIMTEK-WILSON
 commit synchronize
 
 

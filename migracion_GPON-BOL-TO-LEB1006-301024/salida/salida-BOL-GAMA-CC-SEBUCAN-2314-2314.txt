@@ -42,7 +42,7 @@ run sh vlan 2314
 
 del interfaces ae8 unit 0 family ethernet-switching vlan members BOL-GAMA-CC-SEBUCAN
 del interfaces ae16 unit 0 family ethernet-switching vlan members BOL-GAMA-CC-SEBUCAN
-del vlans BOL-GAMA-CC-SEBUCAN 2314
+del vlans BOL-GAMA-CC-SEBUCAN
 commit synchronize
 
 

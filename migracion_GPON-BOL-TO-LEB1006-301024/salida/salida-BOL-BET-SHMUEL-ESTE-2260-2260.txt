@@ -40,7 +40,10 @@ run sh vlan 2260
 
 del interfaces ae8 unit 0 family ethernet-switching vlan members BOL-BET-SHMUEL-ESTE
 del interfaces ae16 unit 0 family ethernet-switching vlan members BOL-BET-SHMUEL-ESTE
-del vlans BOL-BET-SHMUEL-ESTE 2260
+del interfaces ge-0/0/17 unit 0 family ethernet-switching vlan members BOL-BET-SHMUEL-ESTE
+del interfaces xe-0/0/30 unit 0 family ethernet-switching vlan members BOL-BET-SHMUEL-ESTE
+
+del vlans BOL-BET-SHMUEL-ESTE
 commit synchronize
 
 

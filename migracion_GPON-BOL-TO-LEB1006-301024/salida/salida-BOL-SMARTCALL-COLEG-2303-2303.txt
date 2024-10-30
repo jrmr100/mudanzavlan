@@ -42,7 +42,7 @@ run sh vlan 2303
 
 del interfaces ae8 unit 0 family ethernet-switching vlan members BOL-SMARTCALL-COLEG
 del interfaces ae16 unit 0 family ethernet-switching vlan members BOL-SMARTCALL-COLEG
-del vlans BOL-SMARTCALL-COLEG 2303
+del vlans BOL-SMARTCALL-COLEG
 commit synchronize
 
 

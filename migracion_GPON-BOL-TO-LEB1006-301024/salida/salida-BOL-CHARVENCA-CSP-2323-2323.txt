@@ -42,7 +42,9 @@ run sh vlan 2323
 
 del interfaces ae8 unit 0 family ethernet-switching vlan members BOL-CHARVENCA-CSP
 del interfaces ae16 unit 0 family ethernet-switching vlan members BOL-CHARVENCA-CSP
-del vlans BOL-CHARVENCA-CSP 2323
+del interfaces ge-0/0/17 unit 0 family ethernet-switching vlan members BOL-CHARVENCA-CSP
+
+del vlans BOL-CHARVENCA-CSP
 commit synchronize
 
 

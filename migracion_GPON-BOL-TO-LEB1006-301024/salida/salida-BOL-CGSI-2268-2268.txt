@@ -44,7 +44,7 @@ run sh vlan 2268
 
 del interfaces ae8 unit 0 family ethernet-switching vlan members BOL-CGSI
 del interfaces ae16 unit 0 family ethernet-switching vlan members BOL-CGSI
-del vlans BOL-CGSI 2268
+del vlans BOL-CGSI
 commit synchronize
 
 

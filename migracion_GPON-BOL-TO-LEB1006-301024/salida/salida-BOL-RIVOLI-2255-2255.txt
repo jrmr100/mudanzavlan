@@ -42,7 +42,10 @@ run sh vlan 2255
 
 del interfaces ae8 unit 0 family ethernet-switching vlan members BOL-RIVOLI
 del interfaces ae16 unit 0 family ethernet-switching vlan members BOL-RIVOLI
-del vlans BOL-RIVOLI 2255
+del interfaces ge-0/0/17 unit 0 family ethernet-switching vlan members BOL-RIVOLI
+del interfaces xe-0/0/30 unit 0 family ethernet-switching vlan members BOL-RIVOLI
+
+del vlans BOL-RIVOLI
 commit synchronize
 
 

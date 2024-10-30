@@ -42,7 +42,7 @@ run sh vlan 2302
 
 del interfaces ae8 unit 0 family ethernet-switching vlan members BOL-TELEVEN
 del interfaces ae16 unit 0 family ethernet-switching vlan members BOL-TELEVEN
-del vlans BOL-TELEVEN 2302
+del vlans BOL-TELEVEN
 commit synchronize
 
 

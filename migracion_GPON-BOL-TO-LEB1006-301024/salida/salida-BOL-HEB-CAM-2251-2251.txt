@@ -42,7 +42,7 @@ run sh vlan 2251
 
 del interfaces ae8 unit 0 family ethernet-switching vlan members BOL-HEB-CAM
 del interfaces ae16 unit 0 family ethernet-switching vlan members BOL-HEB-CAM
-del vlans BOL-HEB-CAM 2251
+del vlans BOL-HEB-CAM
 commit synchronize
 
 

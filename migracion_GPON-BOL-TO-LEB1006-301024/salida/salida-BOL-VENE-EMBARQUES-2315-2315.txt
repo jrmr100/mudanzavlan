@@ -42,7 +42,7 @@ run sh vlan 2315
 
 del interfaces ae8 unit 0 family ethernet-switching vlan members BOL-VENE-EMBARQUES
 del interfaces ae16 unit 0 family ethernet-switching vlan members BOL-VENE-EMBARQUES
-del vlans BOL-VENE-EMBARQUES 2315
+del vlans BOL-VENE-EMBARQUES
 commit synchronize
 
 

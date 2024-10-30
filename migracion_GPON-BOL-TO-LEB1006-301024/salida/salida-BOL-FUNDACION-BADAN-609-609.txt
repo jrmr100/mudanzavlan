@@ -44,7 +44,7 @@ run sh vlan 609
 
 del interfaces ae8 unit 0 family ethernet-switching vlan members BOL-FUNDACION-BADAN
 del interfaces ae16 unit 0 family ethernet-switching vlan members BOL-FUNDACION-BADAN
-del vlans BOL-FUNDACION-BADAN 609
+del vlans BOL-FUNDACION-BADAN
 commit synchronize
 
 

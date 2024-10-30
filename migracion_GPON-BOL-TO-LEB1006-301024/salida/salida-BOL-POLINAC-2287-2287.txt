@@ -42,7 +42,7 @@ run sh vlan 2287
 
 del interfaces ae8 unit 0 family ethernet-switching vlan members BOL-POLINAC
 del interfaces ae16 unit 0 family ethernet-switching vlan members BOL-POLINAC
-del vlans BOL-POLINAC 2287
+del vlans BOL-POLINAC
 commit synchronize
 
 

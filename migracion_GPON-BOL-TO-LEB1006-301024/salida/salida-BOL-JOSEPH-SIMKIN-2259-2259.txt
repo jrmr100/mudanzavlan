@@ -42,7 +42,7 @@ run sh vlan 2259
 
 del interfaces ae8 unit 0 family ethernet-switching vlan members BOL-JOSEPH-SIMKIN
 del interfaces ae16 unit 0 family ethernet-switching vlan members BOL-JOSEPH-SIMKIN
-del vlans BOL-JOSEPH-SIMKIN 2259
+del vlans BOL-JOSEPH-SIMKIN
 commit synchronize
 
 

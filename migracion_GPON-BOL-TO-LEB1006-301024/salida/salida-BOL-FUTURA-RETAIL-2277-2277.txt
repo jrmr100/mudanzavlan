@@ -42,7 +42,7 @@ run sh vlan 2277
 
 del interfaces ae8 unit 0 family ethernet-switching vlan members BOL-FUTURA-RETAIL
 del interfaces ae16 unit 0 family ethernet-switching vlan members BOL-FUTURA-RETAIL
-del vlans BOL-FUTURA-RETAIL 2277
+del vlans BOL-FUTURA-RETAIL
 commit synchronize
 
 

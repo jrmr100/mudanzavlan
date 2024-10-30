@@ -42,7 +42,7 @@ run sh vlan 2275
 
 del interfaces ae8 unit 0 family ethernet-switching vlan members BOL-HOGAR-LUVADICHT
 del interfaces ae16 unit 0 family ethernet-switching vlan members BOL-HOGAR-LUVADICHT
-del vlans BOL-HOGAR-LUVADICHT 2275
+del vlans BOL-HOGAR-LUVADICHT
 commit synchronize
 
 

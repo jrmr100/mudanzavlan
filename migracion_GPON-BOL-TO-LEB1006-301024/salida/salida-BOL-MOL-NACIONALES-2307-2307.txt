@@ -44,7 +44,7 @@ run sh vlan 2307
 
 del interfaces ae8 unit 0 family ethernet-switching vlan members BOL-MOL-NACIONALES
 del interfaces ae16 unit 0 family ethernet-switching vlan members BOL-MOL-NACIONALES
-del vlans BOL-MOL-NACIONALES 2307
+del vlans BOL-MOL-NACIONALES
 commit synchronize
 
 

@@ -42,7 +42,7 @@ run sh vlan 2304
 
 del interfaces ae8 unit 0 family ethernet-switching vlan members BOL-PRC-DANISA
 del interfaces ae16 unit 0 family ethernet-switching vlan members BOL-PRC-DANISA
-del vlans BOL-PRC-DANISA 2304
+del vlans BOL-PRC-DANISA
 commit synchronize
 
 

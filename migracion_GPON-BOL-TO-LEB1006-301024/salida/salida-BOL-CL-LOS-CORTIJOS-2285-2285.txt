@@ -42,7 +42,7 @@ run sh vlan 2285
 
 del interfaces ae8 unit 0 family ethernet-switching vlan members BOL-CL-LOS-CORTIJOS
 del interfaces ae16 unit 0 family ethernet-switching vlan members BOL-CL-LOS-CORTIJOS
-del vlans BOL-CL-LOS-CORTIJOS 2285
+del vlans BOL-CL-LOS-CORTIJOS
 commit synchronize
 
 

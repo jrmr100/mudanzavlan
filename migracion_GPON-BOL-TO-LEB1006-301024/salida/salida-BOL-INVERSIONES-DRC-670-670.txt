@@ -42,7 +42,7 @@ run sh vlan 670
 
 del interfaces ae8 unit 0 family ethernet-switching vlan members BOL-INVERSIONES-DRC
 del interfaces ae16 unit 0 family ethernet-switching vlan members BOL-INVERSIONES-DRC
-del vlans BOL-INVERSIONES-DRC 670
+del vlans BOL-INVERSIONES-DRC
 commit synchronize
 
 

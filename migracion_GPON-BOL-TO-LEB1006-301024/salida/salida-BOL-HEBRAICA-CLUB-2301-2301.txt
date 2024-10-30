@@ -42,7 +42,7 @@ run sh vlan 2301
 
 del interfaces ae8 unit 0 family ethernet-switching vlan members BOL-HEBRAICA-CLUB
 del interfaces ae16 unit 0 family ethernet-switching vlan members BOL-HEBRAICA-CLUB
-del vlans BOL-HEBRAICA-CLUB 2301
+del vlans BOL-HEBRAICA-CLUB
 commit synchronize
 
 

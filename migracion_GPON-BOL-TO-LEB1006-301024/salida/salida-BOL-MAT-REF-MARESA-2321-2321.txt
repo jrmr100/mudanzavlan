@@ -42,7 +42,7 @@ run sh vlan 2321
 
 del interfaces ae8 unit 0 family ethernet-switching vlan members BOL-MAT-REF-MARESA
 del interfaces ae16 unit 0 family ethernet-switching vlan members BOL-MAT-REF-MARESA
-del vlans BOL-MAT-REF-MARESA 2321
+del vlans BOL-MAT-REF-MARESA
 commit synchronize
 
 

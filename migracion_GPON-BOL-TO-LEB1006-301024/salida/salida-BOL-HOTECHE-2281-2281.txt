@@ -42,7 +42,7 @@ run sh vlan 2281
 
 del interfaces ae8 unit 0 family ethernet-switching vlan members BOL-HOTECHE
 del interfaces ae16 unit 0 family ethernet-switching vlan members BOL-HOTECHE
-del vlans BOL-HOTECHE 2281
+del vlans BOL-HOTECHE
 commit synchronize
 
 

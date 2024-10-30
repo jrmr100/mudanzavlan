@@ -40,7 +40,7 @@ run sh vlan 2300
 
 del interfaces ae8 unit 0 family ethernet-switching vlan members BOL-HEB-WIFI
 del interfaces ae16 unit 0 family ethernet-switching vlan members BOL-HEB-WIFI
-del vlans BOL-HEB-WIFI 2300
+del vlans BOL-HEB-WIFI
 commit synchronize
 
 

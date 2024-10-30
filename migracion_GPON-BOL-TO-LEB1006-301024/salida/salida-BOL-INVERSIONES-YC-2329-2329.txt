@@ -44,7 +44,7 @@ run sh vlan 2329
 
 del interfaces ae8 unit 0 family ethernet-switching vlan members BOL-INVERSIONES-YC
 del interfaces ae16 unit 0 family ethernet-switching vlan members BOL-INVERSIONES-YC
-del vlans BOL-INVERSIONES-YC 2329
+del vlans BOL-INVERSIONES-YC
 commit synchronize
 
 

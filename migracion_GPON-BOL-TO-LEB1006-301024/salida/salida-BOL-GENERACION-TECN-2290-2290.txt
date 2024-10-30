@@ -42,7 +42,7 @@ run sh vlan 2290
 
 del interfaces ae8 unit 0 family ethernet-switching vlan members BOL-GENERACION-TECN
 del interfaces ae16 unit 0 family ethernet-switching vlan members BOL-GENERACION-TECN
-del vlans BOL-GENERACION-TECN 2290
+del vlans BOL-GENERACION-TECN
 commit synchronize
 
 

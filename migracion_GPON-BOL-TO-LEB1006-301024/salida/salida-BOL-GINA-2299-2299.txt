@@ -42,7 +42,7 @@ run sh vlan 2299
 
 del interfaces ae8 unit 0 family ethernet-switching vlan members BOL-GINA
 del interfaces ae16 unit 0 family ethernet-switching vlan members BOL-GINA
-del vlans BOL-GINA 2299
+del vlans BOL-GINA
 commit synchronize
 
 

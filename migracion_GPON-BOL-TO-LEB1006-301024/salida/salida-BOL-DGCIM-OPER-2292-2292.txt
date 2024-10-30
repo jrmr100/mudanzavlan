@@ -54,7 +54,7 @@ run sh vlan 2292
 
 del interfaces ae8 unit 0 family ethernet-switching vlan members BOL-DGCIM-OPER
 del interfaces ae16 unit 0 family ethernet-switching vlan members BOL-DGCIM-OPER
-del vlans BOL-DGCIM-OPER 2292
+del vlans BOL-DGCIM-OPER
 commit synchronize
 
 

@@ -44,7 +44,11 @@ run sh vlan 2263
 
 del interfaces ae8 unit 0 family ethernet-switching vlan members BOL-HEB-COLEGIO
 del interfaces ae16 unit 0 family ethernet-switching vlan members BOL-HEB-COLEGIO
-del vlans BOL-HEB-COLEGIO 2263
+del interfaces ge-0/0/17 unit 0 family ethernet-switching vlan members BOL-HEB-COLEGIO
+del interfaces xe-0/0/30 unit 0 family ethernet-switching vlan members BOL-HEB-COLEGIO
+
+
+del vlans BOL-HEB-COLEGIO
 commit synchronize
 
 

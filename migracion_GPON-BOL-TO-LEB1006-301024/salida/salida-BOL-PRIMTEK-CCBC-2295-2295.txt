@@ -44,7 +44,7 @@ run sh vlan 2295
 
 del interfaces ae8 unit 0 family ethernet-switching vlan members BOL-PRIMTEK-CCBC
 del interfaces ae16 unit 0 family ethernet-switching vlan members BOL-PRIMTEK-CCBC
-del vlans BOL-PRIMTEK-CCBC 2295
+del vlans BOL-PRIMTEK-CCBC
 commit synchronize
 
 

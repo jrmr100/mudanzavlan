@@ -42,7 +42,7 @@ run sh vlan 2250
 
 del interfaces ae8 unit 0 family ethernet-switching vlan members BOL-CHOCOBRU
 del interfaces ae16 unit 0 family ethernet-switching vlan members BOL-CHOCOBRU
-del vlans BOL-CHOCOBRU 2250
+del vlans BOL-CHOCOBRU
 commit synchronize
 
 

@@ -44,7 +44,7 @@ run sh vlan 2311
 
 del interfaces ae8 unit 0 family ethernet-switching vlan members BOL-INVER-SANTURIC
 del interfaces ae16 unit 0 family ethernet-switching vlan members BOL-INVER-SANTURIC
-del vlans BOL-INVER-SANTURIC 2311
+del vlans BOL-INVER-SANTURIC
 commit synchronize
 
 

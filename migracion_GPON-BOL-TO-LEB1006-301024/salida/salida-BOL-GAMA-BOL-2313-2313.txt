@@ -42,7 +42,7 @@ run sh vlan 2313
 
 del interfaces ae8 unit 0 family ethernet-switching vlan members BOL-GAMA-BOL
 del interfaces ae16 unit 0 family ethernet-switching vlan members BOL-GAMA-BOL
-del vlans BOL-GAMA-BOL 2313
+del vlans BOL-GAMA-BOL
 commit synchronize
 
 

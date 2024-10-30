@@ -42,7 +42,7 @@ run sh vlan 2253
 
 del interfaces ae8 unit 0 family ethernet-switching vlan members BOL-AXESS-NET
 del interfaces ae16 unit 0 family ethernet-switching vlan members BOL-AXESS-NET
-del vlans BOL-AXESS-NET 2253
+del vlans BOL-AXESS-NET
 commit synchronize
 
 
