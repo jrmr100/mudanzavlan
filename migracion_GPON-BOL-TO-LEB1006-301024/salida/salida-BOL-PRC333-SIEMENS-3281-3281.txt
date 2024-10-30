@@ -15,15 +15,15 @@ no interface Port-channel4.3281
 exit
 no ip route 181.225.43.40 255.255.255.248 172.23.242.106 name GPON-VL3281-BOL-PRC333-T-SIEMENS
 
-interface Port-channel10.3281
+interface Port-channel10.2330
  description PRC333-T-SIEMENS;ID:25960
  bandwidth 61440
-encapsulation dot1Q 3281
+encapsulation dot1Q 2330
  ip address 172.23.242.105 255.255.255.252
  service-policy input 60M
  service-policy output 60M
 exit
-ip route 181.225.43.40 255.255.255.248 172.23.242.106 name GPON-VL3281-BOL-PRC333-T-SIEMENS
+ip route 181.225.43.40 255.255.255.248 172.23.242.106 name GPON-VL2330-BOL-PRC333-T-SIEMENS
 end
 
 ###########TROUBLESHOOTING############
