@@ -1,0 +1,65 @@
+########################################
+VLAN: 1909	LIBER-EMB-PAISES-BAJ
+
+------VECREDNOC1004X1------
+ssh soporte2@181.225.41.18
+
+config t
+no interface TenGigabitEthernet1/0/2.1909
+ description EMB-PAISES-BAJOS;ID:26197
+ bandwidth 51200
+ encapsulation dot1Q 1909
+ ip address 172.23.246.97 255.255.255.252
+ service-policy input 50M
+ service-policy output 50M
+exit
+no ip route 190.94.252.40 255.255.255.252 172.23.246.98 name GPON-VL1909-LIBER-EMB-PAISES-BAJ
+
+---------LEB1006X1-----------
+ssh soporte2@181.225.41.25
+
+interface Port-channel11.1909
+ description EMB-PAISES-BAJOS;ID:26197
+ bandwidth 51200
+encapsulation dot1Q 1909
+ ip address 172.23.246.97 255.255.255.252
+ service-policy input 50M
+ service-policy output 50M
+exit
+ip route 190.94.252.40 255.255.255.252 172.23.246.98 name GPON-VL1909-LIBER-EMB-PAISES-BAJ
+end
+
+###########TROUBLESHOOTING############
+
+ping 172.23.246.98
+sh mac address-table vlan 1909
+show ethernet-switching table vlan 1909
+
+################################################################
+ELIMINAR RESIDUOS
+
+----------CCSJ4500CREX2-----------
+ssh soporte2@172.23.253.59
+
+run sh vlan 1909
+
+del interfaces xe-0/0/10 unit 0 family ethernet-switching vlan members LIBER-EMB-PAISES-BAJ
+del interfaces ae5 unit 0 family ethernet-switching vlan members LIBER-EMB-PAISES-BAJ
+del vlans LIBER-EMB-PAISES-BAJ vlan-id 1909
+commit synchronize
+
+
+----------CCS3064LIBERX1-----------
+ssh soporte2@172.23.253.39
+
+config t
+interface Eth1/7
+switchport trunk allowed vlan remove 1909
+exit
+no vlan 1909
+end
+
+
+
+
+

@@ -1,0 +1,65 @@
+########################################
+VLAN: 1942	LIBER-FARM-HB-PLZ-VE
+
+------VECREDNOC1004X1------
+ssh soporte2@181.225.41.18
+
+config t
+no interface TenGigabitEthernet1/0/2.1942
+ description FARM-HB-PLZ-VE;ID:26557
+ bandwidth 61440
+ encapsulation dot1Q 1942
+ ip address 172.23.241.157 255.255.255.252
+ service-policy input 60M
+ service-policy output 60M
+exit
+no ip route 190.94.244.108 255.255.255.252 172.23.241.158 name GPON-VL1942-LIBER-FARM-HB-PLZ-VE
+
+---------LEB1006X1-----------
+ssh soporte2@181.225.41.25
+
+interface Port-channel11.1942
+ description FARM-HB-PLZ-VE;ID:26557
+ bandwidth 61440
+encapsulation dot1Q 1942
+ ip address 172.23.241.157 255.255.255.252
+ service-policy input 60M
+ service-policy output 60M
+exit
+ip route 190.94.244.108 255.255.255.252 172.23.241.158 name GPON-VL1942-LIBER-FARM-HB-PLZ-VE
+end
+
+###########TROUBLESHOOTING############
+
+ping 172.23.241.158
+sh mac address-table vlan 1942
+show ethernet-switching table vlan 1942
+
+################################################################
+ELIMINAR RESIDUOS
+
+----------CCSJ4500CREX2-----------
+ssh soporte2@172.23.253.59
+
+run sh vlan 1942
+
+del interfaces xe-0/0/10 unit 0 family ethernet-switching vlan members LIBER-FARM-HB-PLZ-VE
+del interfaces ae5 unit 0 family ethernet-switching vlan members LIBER-FARM-HB-PLZ-VE
+del vlans LIBER-FARM-HB-PLZ-VE vlan-id 1942
+commit synchronize
+
+
+----------CCS3064LIBERX1-----------
+ssh soporte2@172.23.253.39
+
+config t
+interface Eth1/7
+switchport trunk allowed vlan remove 1942
+exit
+no vlan 1942
+end
+
+
+
+
+

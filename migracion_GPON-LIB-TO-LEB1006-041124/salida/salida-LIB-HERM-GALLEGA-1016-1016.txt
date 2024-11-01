@@ -1,0 +1,65 @@
+########################################
+VLAN: 1016	LIB-HERM-GALLEGA
+
+------VECREDNOC1004X1------
+ssh soporte2@181.225.41.18
+
+config t
+no interface TenGigabitEthernet1/0/2.1016
+ description LIB-HERM-GALLEGA;ID:
+ bandwidth 204800
+ encapsulation dot1Q 1016
+ ip address 172.23.241.97 255.255.255.252
+ service-policy input 200M
+ service-policy output 200M
+exit
+no ip route 190.94.244.172 255.255.255.252 172.23.241.98 name GPON-VL1016-LIB-HERM-GALLEGA
+
+---------LEB1006X1-----------
+ssh soporte2@181.225.41.25
+
+interface Port-channel11.1016
+ description LIB-HERM-GALLEGA;ID:
+ bandwidth 204800
+encapsulation dot1Q 1016
+ ip address 172.23.241.97 255.255.255.252
+ service-policy input 200M
+ service-policy output 200M
+exit
+ip route 190.94.244.172 255.255.255.252 172.23.241.98 name GPON-VL1016-LIB-HERM-GALLEGA
+end
+
+###########TROUBLESHOOTING############
+
+ping 172.23.241.98
+sh mac address-table vlan 1016
+show ethernet-switching table vlan 1016
+
+################################################################
+ELIMINAR RESIDUOS
+
+----------CCSJ4500CREX2-----------
+ssh soporte2@172.23.253.59
+
+run sh vlan 1016
+
+del interfaces xe-0/0/10 unit 0 family ethernet-switching vlan members LIB-HERM-GALLEGA
+del interfaces ae5 unit 0 family ethernet-switching vlan members LIB-HERM-GALLEGA
+del vlans LIB-HERM-GALLEGA vlan-id 1016
+commit synchronize
+
+
+----------CCS3064LIBERX1-----------
+ssh soporte2@172.23.253.39
+
+config t
+interface Eth1/7
+switchport trunk allowed vlan remove 1016
+exit
+no vlan 1016
+end
+
+
+
+
+

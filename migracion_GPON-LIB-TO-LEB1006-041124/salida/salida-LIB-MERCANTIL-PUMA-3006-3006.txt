@@ -1,0 +1,65 @@
+########################################
+VLAN: 3006	LIB-MERCANTIL-PUMA
+
+------VECREDNOC1004X1------
+ssh soporte2@181.225.41.18
+
+config t
+no interface TenGigabitEthernet1/0/2.3006
+ description LIB-MERCANTIL-PUMA;ID:26889
+ bandwidth 51200
+ encapsulation dot1Q 3006
+ ip address 172.23.237.13 255.255.255.252
+ service-policy input 50M
+ service-policy output 50M
+exit
+no ip route 190.94.252.72 255.255.255.252 172.23.237.14 name GPON-VL3006-LIB-MERCANTIL-PUMA
+
+---------LEB1006X1-----------
+ssh soporte2@181.225.41.25
+
+interface Port-channel11.3006
+ description LIB-MERCANTIL-PUMA;ID:26889
+ bandwidth 51200
+encapsulation dot1Q 3006
+ ip address 172.23.237.13 255.255.255.252
+ service-policy input 50M
+ service-policy output 50M
+exit
+ip route 190.94.252.72 255.255.255.252 172.23.237.14 name GPON-VL3006-LIB-MERCANTIL-PUMA
+end
+
+###########TROUBLESHOOTING############
+
+ping 172.23.237.14
+sh mac address-table vlan 3006
+show ethernet-switching table vlan 3006
+
+################################################################
+ELIMINAR RESIDUOS
+
+----------CCSJ4500CREX2-----------
+ssh soporte2@172.23.253.59
+
+run sh vlan 3006
+
+del interfaces xe-0/0/10 unit 0 family ethernet-switching vlan members LIB-MERCANTIL-PUMA
+del interfaces ae5 unit 0 family ethernet-switching vlan members LIB-MERCANTIL-PUMA
+del vlans LIB-MERCANTIL-PUMA vlan-id 3006
+commit synchronize
+
+
+----------CCS3064LIBERX1-----------
+ssh soporte2@172.23.253.39
+
+config t
+interface Eth1/7
+switchport trunk allowed vlan remove 3006
+exit
+no vlan 3006
+end
+
+
+
+
+

@@ -1,0 +1,69 @@
+########################################
+VLAN: 1932	LIBER-QUINTA-SOLERA
+
+------VECREDNOC1004X1------
+ssh soporte2@181.225.41.18
+
+config t
+no interface TenGigabitEthernet1/0/2.1932
+ description GPON-VL1045-LIBER-QUINTA-SOLERA
+ bandwidth 358400
+ encapsulation dot1Q 1932
+ ip address 172.23.246.69 255.255.255.252
+ service-policy input 350M
+ service-policy output 350M
+exit
+no ip route 190.94.252.4 255.255.255.252 172.23.246.70 name GPON-VL1932-LIBER-QUINTA-SOLERA
+no ip route 190.94.253.0 255.255.255.252 172.23.246.70 name GPON-VL1932-LIBER-QUINTA-SOLERA
+no ip route 208.84.85.12 255.255.255.252 172.23.246.70 name GPON-VL1932-LIBER-QUINTA-SOLERA
+
+---------LEB1006X1-----------
+ssh soporte2@181.225.41.25
+
+interface Port-channel11.1932
+ description GPON-VL1045-LIBER-QUINTA-SOLERA
+ bandwidth 358400
+encapsulation dot1Q 1932
+ ip address 172.23.246.69 255.255.255.252
+ service-policy input 350M
+ service-policy output 350M
+exit
+ip route 190.94.252.4 255.255.255.252 172.23.246.70 name GPON-VL1932-LIBER-QUINTA-SOLERA
+ip route 190.94.253.0 255.255.255.252 172.23.246.70 name GPON-VL1932-LIBER-QUINTA-SOLERA
+ip route 208.84.85.12 255.255.255.252 172.23.246.70 name GPON-VL1932-LIBER-QUINTA-SOLERA
+end
+
+###########TROUBLESHOOTING############
+
+ping 172.23.246.70
+sh mac address-table vlan 1932
+show ethernet-switching table vlan 1932
+
+################################################################
+ELIMINAR RESIDUOS
+
+----------CCSJ4500CREX2-----------
+ssh soporte2@172.23.253.59
+
+run sh vlan 1932
+
+del interfaces xe-0/0/10 unit 0 family ethernet-switching vlan members LIBER-QUINTA-SOLERA
+del interfaces ae5 unit 0 family ethernet-switching vlan members LIBER-QUINTA-SOLERA
+del vlans LIBER-QUINTA-SOLERA vlan-id 1932
+commit synchronize
+
+
+----------CCS3064LIBERX1-----------
+ssh soporte2@172.23.253.39
+
+config t
+interface Eth1/7
+switchport trunk allowed vlan remove 1932
+exit
+no vlan 1932
+end
+
+
+
+
+

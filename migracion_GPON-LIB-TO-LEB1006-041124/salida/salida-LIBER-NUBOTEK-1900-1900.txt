@@ -1,0 +1,65 @@
+########################################
+VLAN: 1900	LIBER-NUBOTEK
+
+------VECREDNOC1004X1------
+ssh soporte2@181.225.41.18
+
+config t
+no interface TenGigabitEthernet1/0/2.1900
+ description NUBOTEK-FIBRA;ID:26119
+ bandwidth 51200
+ encapsulation dot1Q 1900
+ ip address 172.23.253.217 255.255.255.252
+ service-policy input 50M
+ service-policy output 50M
+exit
+no ip route 190.94.208.84 255.255.255.252 172.23.253.218 name GPON-VL1900-LIBER-NUBOTEK
+
+---------LEB1006X1-----------
+ssh soporte2@181.225.41.25
+
+interface Port-channel11.1900
+ description NUBOTEK-FIBRA;ID:26119
+ bandwidth 51200
+encapsulation dot1Q 1900
+ ip address 172.23.253.217 255.255.255.252
+ service-policy input 50M
+ service-policy output 50M
+exit
+ip route 190.94.208.84 255.255.255.252 172.23.253.218 name GPON-VL1900-LIBER-NUBOTEK
+end
+
+###########TROUBLESHOOTING############
+
+ping 172.23.253.218
+sh mac address-table vlan 1900
+show ethernet-switching table vlan 1900
+
+################################################################
+ELIMINAR RESIDUOS
+
+----------CCSJ4500CREX2-----------
+ssh soporte2@172.23.253.59
+
+run sh vlan 1900
+
+del interfaces xe-0/0/10 unit 0 family ethernet-switching vlan members LIBER-NUBOTEK
+del interfaces ae5 unit 0 family ethernet-switching vlan members LIBER-NUBOTEK
+del vlans LIBER-NUBOTEK vlan-id 1900
+commit synchronize
+
+
+----------CCS3064LIBERX1-----------
+ssh soporte2@172.23.253.39
+
+config t
+interface Eth1/7
+switchport trunk allowed vlan remove 1900
+exit
+no vlan 1900
+end
+
+
+
+
+

@@ -1,0 +1,65 @@
+########################################
+VLAN: 1024	LIBER-DES-INVEST
+
+------VECREDNOC1004X1------
+ssh soporte2@181.225.41.18
+
+config t
+no interface TenGigabitEthernet1/0/2.1024
+ description DES-INVEST;ID:26783
+ bandwidth 102400
+ encapsulation dot1Q 1024
+ ip address 172.23.242.233 255.255.255.252
+ service-policy input 100M
+ service-policy output 100M
+exit
+no ip route 181.225.53.192 255.255.255.248 172.23.242.234 name GPON-VL1024-LIBER-DES-INVEST
+
+---------LEB1006X1-----------
+ssh soporte2@181.225.41.25
+
+interface Port-channel11.1024
+ description DES-INVEST;ID:26783
+ bandwidth 102400
+encapsulation dot1Q 1024
+ ip address 172.23.242.233 255.255.255.252
+ service-policy input 100M
+ service-policy output 100M
+exit
+ip route 181.225.53.192 255.255.255.248 172.23.242.234 name GPON-VL1024-LIBER-DES-INVEST
+end
+
+###########TROUBLESHOOTING############
+
+ping 172.23.242.234
+sh mac address-table vlan 1024
+show ethernet-switching table vlan 1024
+
+################################################################
+ELIMINAR RESIDUOS
+
+----------CCSJ4500CREX2-----------
+ssh soporte2@172.23.253.59
+
+run sh vlan 1024
+
+del interfaces xe-0/0/10 unit 0 family ethernet-switching vlan members LIBER-DES-INVEST
+del interfaces ae5 unit 0 family ethernet-switching vlan members LIBER-DES-INVEST
+del vlans LIBER-DES-INVEST vlan-id 1024
+commit synchronize
+
+
+----------CCS3064LIBERX1-----------
+ssh soporte2@172.23.253.39
+
+config t
+interface Eth1/7
+switchport trunk allowed vlan remove 1024
+exit
+no vlan 1024
+end
+
+
+
+
+
