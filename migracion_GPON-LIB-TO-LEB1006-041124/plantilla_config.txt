@@ -1,0 +1,50 @@
+########################################
+VLAN: VLAN_NUEVA	NOMBRE_VLAN
+
+------VECREDNOC1004X1------
+ssh soporte2@181.225.41.18
+
+config t
+no DATOS_INTERFACE_VIEJA
+
+---------LEB1006X1-----------
+ssh soporte2@181.225.41.25
+
+interface Port-channel11.VLAN_NUEVA
+DATOS_INTERFACE_NUEVA
+end
+
+###########TROUBLESHOOTING############
+
+ping NEXTHOP
+sh mac address-table vlan VLAN_NUEVA
+show ethernet-switching table vlan VLAN_NUEVA
+
+################################################################
+ELIMINAR RESIDUOS
+
+----------CCSJ4500CREX2-----------
+ssh soporte2@172.23.253.59
+
+run sh vlan VLAN_VIEJA
+
+del interfaces xe-0/0/10 unit 0 family ethernet-switching vlan members NOMBRE_VLAN
+del interfaces ae5 unit 0 family ethernet-switching vlan members NOMBRE_VLAN
+del vlans NOMBRE_VLAN vlan-id VLAN_VIEJA
+commit synchronize
+
+
+----------CCS3064LIBERX1-----------
+ssh soporte2@172.23.253.39
+
+config t
+interface Eth1/7
+switchport trunk allowed vlan remove VLAN_VIEJA
+exit
+no vlan VLAN_VIEJA
+end
+
+
+
+
+
