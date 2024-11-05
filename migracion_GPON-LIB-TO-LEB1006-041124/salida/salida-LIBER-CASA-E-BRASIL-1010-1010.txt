@@ -19,12 +19,12 @@ no ip route 181.225.43.232 255.255.255.248 172.23.252.174 name RED1-VL1010-LIBER
 ssh soporte2@181.225.41.25
 
 interface Port-channel11.1010
- description CASA-E-BRASIL;ID:21210
- bandwidth 102400
+description CASA-E-BRASIL;ID:21210
+bandwidth 102400
 encapsulation dot1Q 1010
- ip address 172.23.252.173 255.255.255.252
- service-policy input 100M
- service-policy output 100M
+ip address 172.23.252.173 255.255.255.252
+service-policy input 100M
+service-policy output 100M
 exit
 ip route 181.225.43.232 255.255.255.248 172.23.252.174 name GPON-VL1010-LIBER-CASA-E-BRASIL
 end
