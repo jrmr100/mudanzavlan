@@ -1,0 +1,66 @@
+########################################
+VLAN: 996	ELUN-SISTEM1902
+
+------VECREDNOC1004X1------
+ssh soporte2@181.225.41.18
+
+config t
+no interface TenGigabitEthernet1/0/4.996
+ description SISTEM1902;ID:26580
+ bandwidth 102400
+ encapsulation dot1Q 996
+ ip address 172.23.241.165 255.255.255.252
+ service-policy input 100M
+ service-policy output 100M
+exit
+no ip route 190.94.244.236 255.255.255.252 172.23.241.166 name GPON-VL996-ELUN-SISTEM1902
+
+---------LEB1006X1-----------
+ssh soporte2@181.225.41.25
+
+config t
+interface Port-channel12.996
+ description SISTEM1902;ID:26580
+ bandwidth 102400
+encapsulation dot1Q 996
+ ip address 172.23.241.165 255.255.255.252
+ service-policy input 100M
+ service-policy output 100M
+exit
+ip route 190.94.244.236 255.255.255.252 172.23.241.166 name GPON-VL996-ELUN-SISTEM1902
+end
+
+###########TROUBLESHOOTING############
+
+ping 172.23.241.166
+sh mac address-table vlan 996
+show ethernet-switching table vlan 996
+
+################################################################
+ELIMINAR RESIDUOS
+
+----------CCSJ4500CREX2-----------
+ssh soporte2@172.23.253.59
+
+run sh vlan 996
+
+del interfaces xe-0/0/10 unit 0 family ethernet-switching vlan members ELUN-SISTEM1902
+del interfaces ae5 unit 0 family ethernet-switching vlan members ELUN-SISTEM1902
+del vlans ELUN-SISTEM1902 vlan-id 996
+commit synchronize
+
+
+----------CCS3064LIBERX1-----------
+ssh soporte2@172.23.253.39
+
+config t
+interface Eth1/7
+switchport trunk allowed vlan remove 996
+exit
+no vlan 996
+end
+
+
+
+
+

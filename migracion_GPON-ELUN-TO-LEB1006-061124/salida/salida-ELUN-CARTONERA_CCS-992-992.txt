@@ -1,0 +1,66 @@
+########################################
+VLAN: 992	ELUN-CARTONERA_CCS
+
+------VECREDNOC1004X1------
+ssh soporte2@181.225.41.18
+
+config t
+no interface TenGigabitEthernet1/0/4.992
+ description CARTONERACCS;ID:25969
+ bandwidth 51200
+ encapsulation dot1Q 992
+ ip address 172.23.252.149 255.255.255.252
+ service-policy input 50M
+ service-policy output 50M
+exit
+no ip route 181.225.43.168 255.255.255.248 172.23.252.150 name GPON-VL992-ELUN-CARTONERA_CCS
+
+---------LEB1006X1-----------
+ssh soporte2@181.225.41.25
+
+config t
+interface Port-channel12.992
+ description CARTONERACCS;ID:25969
+ bandwidth 51200
+encapsulation dot1Q 992
+ ip address 172.23.252.149 255.255.255.252
+ service-policy input 50M
+ service-policy output 50M
+exit
+ip route 181.225.43.168 255.255.255.248 172.23.252.150 name GPON-VL992-ELUN-CARTONERA_CCS
+end
+
+###########TROUBLESHOOTING############
+
+ping 172.23.252.150
+sh mac address-table vlan 992
+show ethernet-switching table vlan 992
+
+################################################################
+ELIMINAR RESIDUOS
+
+----------CCSJ4500CREX2-----------
+ssh soporte2@172.23.253.59
+
+run sh vlan 992
+
+del interfaces xe-0/0/10 unit 0 family ethernet-switching vlan members ELUN-CARTONERA_CCS
+del interfaces ae5 unit 0 family ethernet-switching vlan members ELUN-CARTONERA_CCS
+del vlans ELUN-CARTONERA_CCS vlan-id 992
+commit synchronize
+
+
+----------CCS3064LIBERX1-----------
+ssh soporte2@172.23.253.39
+
+config t
+interface Eth1/7
+switchport trunk allowed vlan remove 992
+exit
+no vlan 992
+end
+
+
+
+
+

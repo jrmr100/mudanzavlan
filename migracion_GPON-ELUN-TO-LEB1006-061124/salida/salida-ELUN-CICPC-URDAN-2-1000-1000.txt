@@ -1,0 +1,66 @@
+########################################
+VLAN: 1000	ELUN-CICPC-URDAN-2
+
+------VECREDNOC1004X1------
+ssh soporte2@181.225.41.18
+
+config t
+no interface TenGigabitEthernet1/0/4.1000
+ description ELUN-CICPC-URDAN-2;ID:4
+ bandwidth 51200
+ encapsulation dot1Q 1000
+ ip address 172.23.238.177 255.255.255.252
+ service-policy input 50M
+ service-policy output 50M
+exit
+no ip route 190.94.224.180 255.255.255.252 172.23.238.178 name GPON-VL1000-ELUN-CICPC-URDAN-2
+
+---------LEB1006X1-----------
+ssh soporte2@181.225.41.25
+
+config t
+interface Port-channel12.1000
+ description ELUN-CICPC-URDAN-2;ID:4
+ bandwidth 51200
+encapsulation dot1Q 1000
+ ip address 172.23.238.177 255.255.255.252
+ service-policy input 50M
+ service-policy output 50M
+exit
+ip route 190.94.224.180 255.255.255.252 172.23.238.178 name GPON-VL1000-ELUN-CICPC-URDAN-2
+end
+
+###########TROUBLESHOOTING############
+
+ping 172.23.238.178
+sh mac address-table vlan 1000
+show ethernet-switching table vlan 1000
+
+################################################################
+ELIMINAR RESIDUOS
+
+----------CCSJ4500CREX2-----------
+ssh soporte2@172.23.253.59
+
+run sh vlan 1000
+
+del interfaces xe-0/0/10 unit 0 family ethernet-switching vlan members ELUN-CICPC-URDAN-2
+del interfaces ae5 unit 0 family ethernet-switching vlan members ELUN-CICPC-URDAN-2
+del vlans ELUN-CICPC-URDAN-2 vlan-id 1000
+commit synchronize
+
+
+----------CCS3064LIBERX1-----------
+ssh soporte2@172.23.253.39
+
+config t
+interface Eth1/7
+switchport trunk allowed vlan remove 1000
+exit
+no vlan 1000
+end
+
+
+
+
+

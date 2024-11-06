@@ -1,0 +1,66 @@
+########################################
+VLAN: 980	ELUN-GAMA-SB-SW
+
+------VECREDNOC1004X1------
+ssh soporte2@181.225.41.18
+
+config t
+no interface TenGigabitEthernet1/0/4.980
+ description GAMA-SB;ID:26091
+ bandwidth 51200
+ encapsulation dot1Q 980
+ ip address 172.23.244.49 255.255.255.252
+ service-policy input 50M
+ service-policy output 50M
+exit
+no ip route 190.94.193.196 255.255.255.252 172.23.244.50 name GPON-VL980-ELUN-GAMA-SB
+
+---------LEB1006X1-----------
+ssh soporte2@181.225.41.25
+
+config t
+interface Port-channel12.980
+ description GAMA-SB;ID:26091
+ bandwidth 51200
+encapsulation dot1Q 980
+ ip address 172.23.244.49 255.255.255.252
+ service-policy input 50M
+ service-policy output 50M
+exit
+ip route 190.94.193.196 255.255.255.252 172.23.244.50 name GPON-VL980-ELUN-GAMA-SB
+end
+
+###########TROUBLESHOOTING############
+
+ping 172.23.244.50
+sh mac address-table vlan 980
+show ethernet-switching table vlan 980
+
+################################################################
+ELIMINAR RESIDUOS
+
+----------CCSJ4500CREX2-----------
+ssh soporte2@172.23.253.59
+
+run sh vlan 980
+
+del interfaces xe-0/0/10 unit 0 family ethernet-switching vlan members ELUN-GAMA-SB-SW
+del interfaces ae5 unit 0 family ethernet-switching vlan members ELUN-GAMA-SB-SW
+del vlans ELUN-GAMA-SB-SW vlan-id 980
+commit synchronize
+
+
+----------CCS3064LIBERX1-----------
+ssh soporte2@172.23.253.39
+
+config t
+interface Eth1/7
+switchport trunk allowed vlan remove 980
+exit
+no vlan 980
+end
+
+
+
+
+

@@ -1,0 +1,68 @@
+########################################
+VLAN: 997	ELUN-F-STANZIONE
+
+------VECREDNOC1004X1------
+ssh soporte2@181.225.41.18
+
+config t
+no interface TenGigabitEthernet1/0/4.997
+ description F-STANZIONE;ID:26583
+ bandwidth 51200
+ encapsulation dot1Q 997
+ ip address 172.23.240.145 255.255.255.252
+ service-policy input 50M
+ service-policy output 50M
+exit
+no ip route 190.94.197.24 255.255.255.252 172.23.240.146 name GPON-VL997-ELUN-F-STANZIONE
+no ip route 190.94.200.12 255.255.255.252 172.23.240.146 name GPON-VL997-ELUN-F-STANZIONE
+
+---------LEB1006X1-----------
+ssh soporte2@181.225.41.25
+
+config t
+interface Port-channel12.997
+ description F-STANZIONE;ID:26583
+ bandwidth 51200
+encapsulation dot1Q 997
+ ip address 172.23.240.145 255.255.255.252
+ service-policy input 50M
+ service-policy output 50M
+exit
+ip route 190.94.197.24 255.255.255.252 172.23.240.146 name GPON-VL997-ELUN-F-STANZIONE
+ip route 190.94.200.12 255.255.255.252 172.23.240.146 name GPON-VL997-ELUN-F-STANZIONE
+end
+
+###########TROUBLESHOOTING############
+
+ping 172.23.240.146
+sh mac address-table vlan 997
+show ethernet-switching table vlan 997
+
+################################################################
+ELIMINAR RESIDUOS
+
+----------CCSJ4500CREX2-----------
+ssh soporte2@172.23.253.59
+
+run sh vlan 997
+
+del interfaces xe-0/0/10 unit 0 family ethernet-switching vlan members ELUN-F-STANZIONE
+del interfaces ae5 unit 0 family ethernet-switching vlan members ELUN-F-STANZIONE
+del vlans ELUN-F-STANZIONE vlan-id 997
+commit synchronize
+
+
+----------CCS3064LIBERX1-----------
+ssh soporte2@172.23.253.39
+
+config t
+interface Eth1/7
+switchport trunk allowed vlan remove 997
+exit
+no vlan 997
+end
+
+
+
+
+

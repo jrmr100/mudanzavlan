@@ -173,13 +173,13 @@ for index_lista in range(size_lista):
     for item in lista_salida:
         string_salida = string_salida + item
     with open(datos.txt_salida + lista_nombres_vlan[index_lista][:-1] +
-              "-" + lista_vlan_nueva[index_lista][:-1] +
               "-" + lista_vlan_vieja[index_lista][:-1] +
+              "-" + lista_vlan_nueva[index_lista][:-1] +
               ".txt", "w") as salida:
         print("procesando archivo " + lista_nombres_vlan[index_lista][:-1] +
-              "-" + lista_vlan_nueva[index_lista][:-1] +
-              "-" + lista_vlan_vieja[index_lista][:-1])
+              "-" + lista_vlan_vieja[index_lista][:-1] +
+              "-" + lista_vlan_nueva[index_lista][:-1])
         salida.write(string_salida)
         logger.info("procesando archivo " + lista_nombres_vlan[index_lista][:-1] +
-              "-" + lista_vlan_nueva[index_lista][:-1] +
-              "-" + lista_vlan_vieja[index_lista][:-1])
+              "-" + lista_vlan_vieja[index_lista][:-1] +
+              "-" + lista_vlan_nueva[index_lista][:-1])

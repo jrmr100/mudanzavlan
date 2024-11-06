@@ -1,0 +1,66 @@
+########################################
+VLAN: 991	ELUN-CICPC-PCARABOBO
+
+------VECREDNOC1004X1------
+ssh soporte2@181.225.41.18
+
+config t
+no interface TenGigabitEthernet1/0/4.991
+ description CICPC-PCARABOBO;ID:26637
+ bandwidth 20480
+ encapsulation dot1Q 991
+ ip address 172.23.244.129 255.255.255.252
+ service-policy input 20M
+ service-policy output 20M
+exit
+no ip route 190.94.250.232 255.255.255.252 172.23.244.130 name GPON-VL991-ELUN-CICPC-PCARABOBO
+
+---------LEB1006X1-----------
+ssh soporte2@181.225.41.25
+
+config t
+interface Port-channel12.991
+ description CICPC-PCARABOBO;ID:26637
+ bandwidth 20480
+encapsulation dot1Q 991
+ ip address 172.23.244.129 255.255.255.252
+ service-policy input 20M
+ service-policy output 20M
+exit
+ip route 190.94.250.232 255.255.255.252 172.23.244.130 name GPON-VL991-ELUN-CICPC-PCARABOBO
+end
+
+###########TROUBLESHOOTING############
+
+ping 172.23.244.130
+sh mac address-table vlan 991
+show ethernet-switching table vlan 991
+
+################################################################
+ELIMINAR RESIDUOS
+
+----------CCSJ4500CREX2-----------
+ssh soporte2@172.23.253.59
+
+run sh vlan 991
+
+del interfaces xe-0/0/10 unit 0 family ethernet-switching vlan members ELUN-CICPC-PCARABOBO
+del interfaces ae5 unit 0 family ethernet-switching vlan members ELUN-CICPC-PCARABOBO
+del vlans ELUN-CICPC-PCARABOBO vlan-id 991
+commit synchronize
+
+
+----------CCS3064LIBERX1-----------
+ssh soporte2@172.23.253.39
+
+config t
+interface Eth1/7
+switchport trunk allowed vlan remove 991
+exit
+no vlan 991
+end
+
+
+
+
+
