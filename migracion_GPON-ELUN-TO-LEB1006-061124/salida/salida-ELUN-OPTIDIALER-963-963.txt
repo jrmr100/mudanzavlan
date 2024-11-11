@@ -44,17 +44,17 @@ ssh soporte2@172.23.253.59
 
 run sh vlan 963
 
-del interfaces xe-0/0/10 unit 0 family ethernet-switching vlan members ELUN-OPTIDIALER
-del interfaces ae5 unit 0 family ethernet-switching vlan members ELUN-OPTIDIALER
-del vlans ELUN-OPTIDIALER vlan-id 963
+del interfaces xe-0/0/11 unit 0 family ethernet-switching vlan members ELUN-OPTIDIALER
+del interfaces ae4 unit 0 family ethernet-switching vlan members ELUN-OPTIDIALER
+del vlans ELUN-OPTIDIALER
 commit synchronize
 
 
-----------CCS3064LIBERX1-----------
-ssh soporte2@172.23.253.39
+----------CCSC4500ELUNX1-----------
+ssh soporte2@172.23.249.90
 
 config t
-interface Eth1/7
+interface Te1/11
 switchport trunk allowed vlan remove 963
 exit
 no vlan 963

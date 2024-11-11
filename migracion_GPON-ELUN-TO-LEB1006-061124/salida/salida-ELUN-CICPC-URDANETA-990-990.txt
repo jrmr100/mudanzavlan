@@ -44,17 +44,17 @@ ssh soporte2@172.23.253.59
 
 run sh vlan 990
 
-del interfaces xe-0/0/10 unit 0 family ethernet-switching vlan members ELUN-CICPC-URDANETA
-del interfaces ae5 unit 0 family ethernet-switching vlan members ELUN-CICPC-URDANETA
-del vlans ELUN-CICPC-URDANETA vlan-id 990
+del interfaces xe-0/0/11 unit 0 family ethernet-switching vlan members ELUN-CICPC-URDANETA
+del interfaces ae4 unit 0 family ethernet-switching vlan members ELUN-CICPC-URDANETA
+del vlans ELUN-CICPC-URDANETA
 commit synchronize
 
 
-----------CCS3064LIBERX1-----------
-ssh soporte2@172.23.253.39
+----------CCSC4500ELUNX1-----------
+ssh soporte2@172.23.249.90
 
 config t
-interface Eth1/7
+interface Te1/11
 switchport trunk allowed vlan remove 990
 exit
 no vlan 990
