@@ -43,9 +43,9 @@ ssh soporte2@172.23.253.59
 
 run sh vlan 3000
 
-del interfaces xe-0/0/10 unit 0 family ethernet-switching vlan members LIB-QTA-OJO-D-AGUA
-del interfaces ae5 unit 0 family ethernet-switching vlan members LIB-QTA-OJO-D-AGUA
-del vlans LIB-QTA-OJO-D-AGUA vlan-id 3000
+del interfaces xe-0/0/10 unit 0 family ethernet-switching vlan members LIB-QTA-OJO-OD-AGUA
+del interfaces ae5 unit 0 family ethernet-switching vlan members LIB-QTA-OJO-OD-AGUA
+del vlans LIB-QTA-OJO-OD-AGUA vlan-id 3000
 commit synchronize
 
 

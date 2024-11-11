@@ -43,9 +43,9 @@ ssh soporte2@172.23.253.59
 
 run sh vlan 1032
 
-del interfaces xe-0/0/10 unit 0 family ethernet-switching vlan members LIBER-CASIO-REC-LAC
-del interfaces ae5 unit 0 family ethernet-switching vlan members LIBER-CASIO-REC-LAC
-del vlans LIBER-CASIO-REC-LAC vlan-id 1032
+del interfaces xe-0/0/10 unit 0 family ethernet-switching vlan members CASIO-REC-LAC
+del interfaces ae5 unit 0 family ethernet-switching vlan members CASIO-REC-LAC
+del vlans CASIO-REC-LAC vlan-id 1032
 commit synchronize
 
 

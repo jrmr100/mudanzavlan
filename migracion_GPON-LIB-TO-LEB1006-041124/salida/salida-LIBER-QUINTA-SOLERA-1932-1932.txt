@@ -49,6 +49,7 @@ run sh vlan 1932
 
 del interfaces xe-0/0/10 unit 0 family ethernet-switching vlan members LIBER-QUINTA-SOLERA
 del interfaces ae5 unit 0 family ethernet-switching vlan members LIBER-QUINTA-SOLERA
+del interfaces ae12 unit 0 family ethernet-switching vlan members LIBER-QUINTA-SOLERA
 del vlans LIBER-QUINTA-SOLERA vlan-id 1932
 commit synchronize
 

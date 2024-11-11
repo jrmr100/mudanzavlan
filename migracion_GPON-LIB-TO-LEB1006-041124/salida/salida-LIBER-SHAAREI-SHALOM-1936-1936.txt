@@ -43,6 +43,7 @@ run sh vlan 1936
 
 del interfaces xe-0/0/10 unit 0 family ethernet-switching vlan members LIBER-SHAAREI-SHALOM
 del interfaces ae5 unit 0 family ethernet-switching vlan members LIBER-SHAAREI-SHALOM
+del interfaces xe-0/0/8 unit 0 family ethernet-switching vlan members LIBER-SHAAREI-SHALOM
 del vlans LIBER-SHAAREI-SHALOM vlan-id 1936
 commit synchronize
 

@@ -43,9 +43,9 @@ ssh soporte2@172.23.253.59
 
 run sh vlan 1023
 
-del interfaces xe-0/0/10 unit 0 family ethernet-switching vlan members LIBER-OIT-T-BANVENEZ
-del interfaces ae5 unit 0 family ethernet-switching vlan members LIBER-OIT-T-BANVENEZ
-del vlans LIBER-OIT-T-BANVENEZ vlan-id 1023
+del interfaces xe-0/0/10 unit 0 family ethernet-switching vlan members LIBER-OPT-T-BANVENEZ
+del interfaces ae5 unit 0 family ethernet-switching vlan members LIBER-OPT-T-BANVENEZ
+del vlans LIBER-OPT-T-BANVENEZ vlan-id 1023
 commit synchronize
 
 

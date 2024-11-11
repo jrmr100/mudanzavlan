@@ -45,6 +45,7 @@ run sh vlan 1935
 
 del interfaces xe-0/0/10 unit 0 family ethernet-switching vlan members LIBER-CONDOMI-BANCOP
 del interfaces ae5 unit 0 family ethernet-switching vlan members LIBER-CONDOMI-BANCOP
+del interfaces xe-0/0/8 unit 0 family ethernet-switching vlan members LIBER-CONDOMI-BANCOP
 del vlans LIBER-CONDOMI-BANCOP vlan-id 1935
 commit synchronize
 

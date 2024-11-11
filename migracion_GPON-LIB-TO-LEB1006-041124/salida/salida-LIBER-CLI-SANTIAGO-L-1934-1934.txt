@@ -45,6 +45,8 @@ run sh vlan 1934
 
 del interfaces xe-0/0/10 unit 0 family ethernet-switching vlan members LIBER-CLI-SANTIAGO-L
 del interfaces ae5 unit 0 family ethernet-switching vlan members LIBER-CLI-SANTIAGO-L
+del interfaces xe-0/0/8 unit 0 family ethernet-switching vlan members LIBER-CLI-SANTIAGO-L
+
 del vlans LIBER-CLI-SANTIAGO-L vlan-id 1934
 commit synchronize
 

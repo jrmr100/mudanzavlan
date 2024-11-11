@@ -41,9 +41,9 @@ ssh soporte2@172.23.253.59
 
 run sh vlan 1013
 
-del interfaces xe-0/0/10 unit 0 family ethernet-switching vlan members LIBER-QUINTA-MARQUIS
-del interfaces ae5 unit 0 family ethernet-switching vlan members LIBER-QUINTA-MARQUIS
-del vlans LIBER-QUINTA-MARQUIS vlan-id 1013
+del interfaces xe-0/0/10 unit 0 family ethernet-switching vlan members LIBER-QTA-MARQUIS
+del interfaces ae5 unit 0 family ethernet-switching vlan members LIBER-QTA-MARQUIS
+del vlans LIBER-QTA-MARQUIS vlan-id 1013
 commit synchronize
 
 
