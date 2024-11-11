@@ -1,0 +1,66 @@
+########################################
+VLAN: 990	ELUN-CICPC-URDANETA
+
+------VECREDNOC1004X1------
+ssh soporte2@181.225.41.18
+
+config t
+no interface TenGigabitEthernet1/0/4.990
+ description CICPC-URDANETA;ID:26637
+ bandwidth 20480
+ encapsulation dot1Q 990
+ ip address 172.23.244.125 255.255.255.252
+ service-policy input 20M
+ service-policy output 20M
+exit
+no ip route 190.94.250.228 255.255.255.252 172.23.244.126 name GPON-VL990-ELUN-CICPC-URDANETA
+
+---------LEB1006X1-----------
+ssh soporte2@181.225.41.25
+
+config t
+interface Port-channel12.990
+ description CICPC-URDANETA;ID:26637
+ bandwidth 20480
+encapsulation dot1Q 990
+ ip address 172.23.244.125 255.255.255.252
+ service-policy input 20M
+ service-policy output 20M
+exit
+ip route 190.94.250.228 255.255.255.252 172.23.244.126 name GPON-VL990-ELUN-CICPC-URDANETA
+end
+
+###########TROUBLESHOOTING############
+
+ping 172.23.244.126
+sh mac address-table vlan 990
+show ethernet-switching table vlan 990
+
+################################################################
+ELIMINAR RESIDUOS
+
+----------CCSJ4500CREX2-----------
+ssh soporte2@172.23.253.59
+
+run sh vlan 990
+
+del interfaces xe-0/0/10 unit 0 family ethernet-switching vlan members ELUN-CICPC-URDANETA
+del interfaces ae5 unit 0 family ethernet-switching vlan members ELUN-CICPC-URDANETA
+del vlans ELUN-CICPC-URDANETA vlan-id 990
+commit synchronize
+
+
+----------CCS3064LIBERX1-----------
+ssh soporte2@172.23.253.39
+
+config t
+interface Eth1/7
+switchport trunk allowed vlan remove 990
+exit
+no vlan 990
+end
+
+
+
+
+

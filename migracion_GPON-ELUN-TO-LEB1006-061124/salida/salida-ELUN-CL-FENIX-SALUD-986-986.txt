@@ -1,0 +1,66 @@
+########################################
+VLAN: 986	ELUN-CL-FENIX-SALUD
+
+------VECREDNOC1004X1------
+ssh soporte2@181.225.41.18
+
+config t
+no interface TenGigabitEthernet1/0/4.986
+ description ELUN-CL-FENIX-SALUD;ID:26955
+ bandwidth 307200
+ encapsulation dot1Q 986
+ ip address 172.23.237.45 255.255.255.252
+ service-policy input 300M
+ service-policy output 300M
+exit
+no ip route 190.94.194.196 255.255.255.252 172.23.237.46 name GPON-VL986-ELUN-CL-FENIX-SALUD
+
+---------LEB1006X1-----------
+ssh soporte2@181.225.41.25
+
+config t
+interface Port-channel12.986
+ description ELUN-CL-FENIX-SALUD;ID:26955
+ bandwidth 307200
+encapsulation dot1Q 986
+ ip address 172.23.237.45 255.255.255.252
+ service-policy input 300M
+ service-policy output 300M
+exit
+ip route 190.94.194.196 255.255.255.252 172.23.237.46 name GPON-VL986-ELUN-CL-FENIX-SALUD
+end
+
+###########TROUBLESHOOTING############
+
+ping 172.23.237.46
+sh mac address-table vlan 986
+show ethernet-switching table vlan 986
+
+################################################################
+ELIMINAR RESIDUOS
+
+----------CCSJ4500CREX2-----------
+ssh soporte2@172.23.253.59
+
+run sh vlan 986
+
+del interfaces xe-0/0/10 unit 0 family ethernet-switching vlan members ELUN-CL-FENIX-SALUD
+del interfaces ae5 unit 0 family ethernet-switching vlan members ELUN-CL-FENIX-SALUD
+del vlans ELUN-CL-FENIX-SALUD vlan-id 986
+commit synchronize
+
+
+----------CCS3064LIBERX1-----------
+ssh soporte2@172.23.253.39
+
+config t
+interface Eth1/7
+switchport trunk allowed vlan remove 986
+exit
+no vlan 986
+end
+
+
+
+
+

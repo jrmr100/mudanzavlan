@@ -1,0 +1,64 @@
+########################################
+VLAN: 988	ELUN-BEIT-AVOT-CAM
+
+------VECREDNOC1004X1------
+ssh soporte2@181.225.41.18
+
+config t
+no interface TenGigabitEthernet1/0/4.988
+ description ELUN-BEIT-AVOT-CAM;ID:4
+ bandwidth 10240
+ encapsulation dot1Q 988
+ ip address 190.94.210.161 255.255.255.252
+ service-policy input 10M
+ service-policy output 10M
+exit
+
+---------LEB1006X1-----------
+ssh soporte2@181.225.41.25
+
+config t
+interface Port-channel12.988
+ description ELUN-BEIT-AVOT-CAM;ID:4
+ bandwidth 10240
+encapsulation dot1Q 988
+ ip address 190.94.210.161 255.255.255.252
+ service-policy input 10M
+ service-policy output 10M
+exit
+end
+
+###########TROUBLESHOOTING############
+
+ping NEXTHOP
+sh mac address-table vlan 988
+show ethernet-switching table vlan 988
+
+################################################################
+ELIMINAR RESIDUOS
+
+----------CCSJ4500CREX2-----------
+ssh soporte2@172.23.253.59
+
+run sh vlan 988
+
+del interfaces xe-0/0/10 unit 0 family ethernet-switching vlan members ELUN-BEIT-AVOT-CAM
+del interfaces ae5 unit 0 family ethernet-switching vlan members ELUN-BEIT-AVOT-CAM
+del vlans ELUN-BEIT-AVOT-CAM vlan-id 988
+commit synchronize
+
+
+----------CCS3064LIBERX1-----------
+ssh soporte2@172.23.253.39
+
+config t
+interface Eth1/7
+switchport trunk allowed vlan remove 988
+exit
+no vlan 988
+end
+
+
+
+
+

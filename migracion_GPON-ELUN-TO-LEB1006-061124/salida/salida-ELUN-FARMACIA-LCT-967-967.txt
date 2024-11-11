@@ -1,0 +1,66 @@
+########################################
+VLAN: 967	ELUN-FARMACIA-LCT
+
+------VECREDNOC1004X1------
+ssh soporte2@181.225.41.18
+
+config t
+no interface TenGigabitEthernet1/0/4.967
+ description ELUN-FARMACIA-LCT;ID:26137
+ bandwidth 20480
+ encapsulation dot1Q 967
+ ip address 172.23.242.177 255.255.255.252
+ service-policy input 20M
+ service-policy output 20M
+exit
+no ip route 190.94.200.236 255.255.255.252 172.23.242.178 name GPON-VL967-ELUN-FARMACIA-LCT
+
+---------LEB1006X1-----------
+ssh soporte2@181.225.41.25
+
+config t
+interface Port-channel12.967
+ description ELUN-FARMACIA-LCT;ID:26137
+ bandwidth 20480
+encapsulation dot1Q 967
+ ip address 172.23.242.177 255.255.255.252
+ service-policy input 20M
+ service-policy output 20M
+exit
+ip route 190.94.200.236 255.255.255.252 172.23.242.178 name GPON-VL967-ELUN-FARMACIA-LCT
+end
+
+###########TROUBLESHOOTING############
+
+ping 172.23.242.178
+sh mac address-table vlan 967
+show ethernet-switching table vlan 967
+
+################################################################
+ELIMINAR RESIDUOS
+
+----------CCSJ4500CREX2-----------
+ssh soporte2@172.23.253.59
+
+run sh vlan 967
+
+del interfaces xe-0/0/10 unit 0 family ethernet-switching vlan members ELUN-FARMACIA-LCT
+del interfaces ae5 unit 0 family ethernet-switching vlan members ELUN-FARMACIA-LCT
+del vlans ELUN-FARMACIA-LCT vlan-id 967
+commit synchronize
+
+
+----------CCS3064LIBERX1-----------
+ssh soporte2@172.23.253.39
+
+config t
+interface Eth1/7
+switchport trunk allowed vlan remove 967
+exit
+no vlan 967
+end
+
+
+
+
+

@@ -1,0 +1,66 @@
+########################################
+VLAN: 2457	ELUN-A-ANTICANCEROSA
+
+------VECREDNOC1004X1------
+ssh soporte2@181.225.41.18
+
+config t
+no interface TenGigabitEthernet1/0/4.2457
+ description ELUN-A-ANTICANCEROSA;ID:26985
+ bandwidth 51200
+ encapsulation dot1Q 2457
+ ip address 172.23.237.185 255.255.255.252
+ service-policy input 50M
+ service-policy output 50M
+exit
+no ip route 190.94.194.36 255.255.255.252 172.23.237.186 name GPON-VL2457-ELUN-A-ANTICANCEROSA
+
+---------LEB1006X1-----------
+ssh soporte2@181.225.41.25
+
+config t
+interface Port-channel12.2457
+ description ELUN-A-ANTICANCEROSA;ID:26985
+ bandwidth 51200
+encapsulation dot1Q 2457
+ ip address 172.23.237.185 255.255.255.252
+ service-policy input 50M
+ service-policy output 50M
+exit
+ip route 190.94.194.36 255.255.255.252 172.23.237.186 name GPON-VL2457-ELUN-A-ANTICANCEROSA
+end
+
+###########TROUBLESHOOTING############
+
+ping 172.23.237.186
+sh mac address-table vlan 2457
+show ethernet-switching table vlan 2457
+
+################################################################
+ELIMINAR RESIDUOS
+
+----------CCSJ4500CREX2-----------
+ssh soporte2@172.23.253.59
+
+run sh vlan 2457
+
+del interfaces xe-0/0/10 unit 0 family ethernet-switching vlan members ELUN-A-ANTICANCEROSA
+del interfaces ae5 unit 0 family ethernet-switching vlan members ELUN-A-ANTICANCEROSA
+del vlans ELUN-A-ANTICANCEROSA vlan-id 2457
+commit synchronize
+
+
+----------CCS3064LIBERX1-----------
+ssh soporte2@172.23.253.39
+
+config t
+interface Eth1/7
+switchport trunk allowed vlan remove 2457
+exit
+no vlan 2457
+end
+
+
+
+
+
