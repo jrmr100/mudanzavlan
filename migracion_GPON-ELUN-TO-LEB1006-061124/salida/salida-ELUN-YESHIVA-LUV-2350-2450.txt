@@ -1,3 +1,5 @@
+OJO: dio error al migrar por QinQ se cambio a la 2458
+
 ########################################
 VLAN: 2450	ELUN-YESHIVA-LUV
 
@@ -18,10 +20,10 @@ exit
 ssh soporte2@181.225.41.25
 
 config t
-interface Port-channel12.2450
+interface Port-channel12.2458
  description ELUN-YESHIVA-LUV;ID:4
  bandwidth 10240
-encapsulation dot1Q 2450
+encapsulation dot1Q 2458
  ip address 190.94.210.169 255.255.255.252
  service-policy input 10M
  service-policy output 10M

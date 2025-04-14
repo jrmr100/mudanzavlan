@@ -1,0 +1,57 @@
+########################################
+VLAN: 1034	LIBER-SEG-ALT-P2-SW
+
+------VECREDNOC1004X1------
+ssh soporte2@181.225.41.18
+
+config t
+no interface TenGigabitEthernet1/0/2.1034
+ description SEG-ALT-P2-SW;ID:26655
+ encapsulation dot1Q 1034
+ ip address 172.23.240.49 255.255.255.252
+exit
+
+---------LEB1006X1-----------
+ssh soporte2@181.225.41.25
+
+interface Port-channel11.1034
+ description SEG-ALT-P2-SW;ID:26655
+encapsulation dot1Q 1034
+ ip address 172.23.240.49 255.255.255.252
+exit
+end
+
+###########TROUBLESHOOTING############
+
+ping NEXTHOP
+sh mac address-table vlan 1034
+show ethernet-switching table vlan 1034
+
+################################################################
+ELIMINAR RESIDUOS
+
+----------CCSJ4500CREX2-----------
+ssh soporte2@172.23.253.59
+
+run sh vlan 1034
+
+del interfaces xe-0/0/10 unit 0 family ethernet-switching vlan members LIBER-SEG-ALT-P2-SW
+del interfaces ae5 unit 0 family ethernet-switching vlan members LIBER-SEG-ALT-P2-SW
+del vlans LIBER-SEG-ALT-P2-SW vlan-id 1034
+commit synchronize
+
+
+----------CCS3064LIBERX1-----------
+ssh soporte2@172.23.253.39
+
+config t
+interface Eth1/7
+switchport trunk allowed vlan remove 1034
+exit
+no vlan 1034
+end
+
+
+
+
+

@@ -1,0 +1,65 @@
+########################################
+VLAN: 1914	LIB-I-C-LA-FLORIDA
+
+------VECREDNOC1004X1------
+ssh soporte2@181.225.41.18
+
+config t
+no interface TenGigabitEthernet1/0/2.1914
+ description LIB-I-C-LA-FLORIDA;ID:26758
+ bandwidth 2048
+ encapsulation dot1Q 1914
+ ip address 172.23.238.41 255.255.255.252
+ service-policy input 200M
+ service-policy output 200M
+exit
+no ip route 190.94.198.232 255.255.255.248 172.23.238.42 name GPON-VL1914-LIB-I-C-LA-FLORIDA
+
+---------LEB1006X1-----------
+ssh soporte2@181.225.41.25
+
+interface Port-channel11.1914
+ description LIB-I-C-LA-FLORIDA;ID:26758
+ bandwidth 2048
+encapsulation dot1Q 1914
+ ip address 172.23.238.41 255.255.255.252
+ service-policy input 200M
+ service-policy output 200M
+exit
+ip route 190.94.198.232 255.255.255.248 172.23.238.42 name GPON-VL1914-LIB-I-C-LA-FLORIDA
+end
+
+###########TROUBLESHOOTING############
+
+ping 172.23.238.42
+sh mac address-table vlan 1914
+show ethernet-switching table vlan 1914
+
+################################################################
+ELIMINAR RESIDUOS
+
+----------CCSJ4500CREX2-----------
+ssh soporte2@172.23.253.59
+
+run sh vlan 1914
+
+del interfaces xe-0/0/10 unit 0 family ethernet-switching vlan members LIB-I-C-LA-FLORIDA
+del interfaces ae5 unit 0 family ethernet-switching vlan members LIB-I-C-LA-FLORIDA
+del vlans LIB-I-C-LA-FLORIDA vlan-id 1914
+commit synchronize
+
+
+----------CCS3064LIBERX1-----------
+ssh soporte2@172.23.253.39
+
+config t
+interface Eth1/7
+switchport trunk allowed vlan remove 1914
+exit
+no vlan 1914
+end
+
+
+
+
+

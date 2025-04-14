@@ -1,0 +1,65 @@
+########################################
+VLAN: 1038	LIBER-EMB-BRITANICA
+
+------VECREDNOC1004X1------
+ssh soporte2@181.225.41.18
+
+config t
+no interface TenGigabitEthernet1/0/2.1038
+ description EMB-BRITANICA;ID:26729
+ bandwidth 102400
+ encapsulation dot1Q 1038
+ ip address 172.23.240.245 255.255.255.252
+ service-policy input 100M
+ service-policy output 100M
+exit
+no ip route 190.94.193.236 255.255.255.252 172.23.240.246 name GPON-VL1038-LIBER-EMB-BRITANICA
+
+---------LEB1006X1-----------
+ssh soporte2@181.225.41.25
+
+interface Port-channel11.1038
+ description EMB-BRITANICA;ID:26729
+ bandwidth 102400
+encapsulation dot1Q 1038
+ ip address 172.23.240.245 255.255.255.252
+ service-policy input 100M
+ service-policy output 100M
+exit
+ip route 190.94.193.236 255.255.255.252 172.23.240.246 name GPON-VL1038-LIBER-EMB-BRITANICA
+end
+
+###########TROUBLESHOOTING############
+
+ping 172.23.240.246
+sh mac address-table vlan 1038
+show ethernet-switching table vlan 1038
+
+################################################################
+ELIMINAR RESIDUOS
+
+----------CCSJ4500CREX2-----------
+ssh soporte2@172.23.253.59
+
+run sh vlan 1038
+
+del interfaces xe-0/0/10 unit 0 family ethernet-switching vlan members LIBER-EMB-BRITANICA
+del interfaces ae5 unit 0 family ethernet-switching vlan members LIBER-EMB-BRITANICA
+del vlans LIBER-EMB-BRITANICA vlan-id 1038
+commit synchronize
+
+
+----------CCS3064LIBERX1-----------
+ssh soporte2@172.23.253.39
+
+config t
+interface Eth1/7
+switchport trunk allowed vlan remove 1038
+exit
+no vlan 1038
+end
+
+
+
+
+

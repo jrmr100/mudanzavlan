@@ -1,0 +1,77 @@
+########################################
+VLAN: 1944	LIBER-EVEMPRO
+
+------VECREDNOC1004X1------
+ssh soporte2@181.225.41.18
+
+config t
+no interface TenGigabitEthernet1/0/2.1944
+ description LIBER-EVEMPRO
+ bandwidth 409600
+ encapsulation dot1Q 1944
+ ip address 172.23.247.61 255.255.255.252
+ service-policy input 400M
+ service-policy output 400M
+exit
+no ip route 172.23.244.44 255.255.255.252 172.23.247.62 name GPON-VL1944-LIBER-EVENPRO
+no ip route 190.94.209.160 255.255.255.248 172.23.247.62 name GPON-VL1944-LIBER-EVENPRO
+no ip route 190.94.210.220 255.255.255.252 172.23.247.62 name GPON-VL1944-LIBER-EVENPRO
+no ip route 190.94.244.36 255.255.255.252 172.23.247.62 name GPON-VL1944-LIBER-EVENPRO
+no ip route 190.94.244.40 255.255.255.252 172.23.247.62 name GPON-VL1944-LIBER-EVENPRO
+no ip route 190.94.244.44 255.255.255.252 172.23.247.62 name GPON-VL1944-LIBER-EVENPRO
+no ip route 190.94.251.48 255.255.255.248 172.23.247.62 name GPON-VL1944-LIBER-EVENPRO
+
+---------LEB1006X1-----------
+ssh soporte2@181.225.41.25
+
+interface Port-channel11.1944
+ description LIBER-EVEMPRO
+ bandwidth 409600
+encapsulation dot1Q 1944
+ ip address 172.23.247.61 255.255.255.252
+ service-policy input 400M
+ service-policy output 400M
+exit
+ip route 172.23.244.44 255.255.255.252 172.23.247.62 name GPON-VL1944-LIBER-EVENPRO
+ip route 190.94.209.160 255.255.255.248 172.23.247.62 name GPON-VL1944-LIBER-EVENPRO
+ip route 190.94.210.220 255.255.255.252 172.23.247.62 name GPON-VL1944-LIBER-EVENPRO
+ip route 190.94.244.36 255.255.255.252 172.23.247.62 name GPON-VL1944-LIBER-EVENPRO
+ip route 190.94.244.40 255.255.255.252 172.23.247.62 name GPON-VL1944-LIBER-EVENPRO
+ip route 190.94.244.44 255.255.255.252 172.23.247.62 name GPON-VL1944-LIBER-EVENPRO
+ip route 190.94.251.48 255.255.255.248 172.23.247.62 name GPON-VL1944-LIBER-EVENPRO
+end
+
+###########TROUBLESHOOTING############
+
+ping 172.23.247.62
+sh mac address-table vlan 1944
+show ethernet-switching table vlan 1944
+
+################################################################
+ELIMINAR RESIDUOS
+
+----------CCSJ4500CREX2-----------
+ssh soporte2@172.23.253.59
+
+run sh vlan 1944
+
+del interfaces xe-0/0/10 unit 0 family ethernet-switching vlan members LIBER-EVEMPRO
+del interfaces ae5 unit 0 family ethernet-switching vlan members LIBER-EVEMPRO
+del vlans LIBER-EVEMPRO vlan-id 1944
+commit synchronize
+
+
+----------CCS3064LIBERX1-----------
+ssh soporte2@172.23.253.39
+
+config t
+interface Eth1/7
+switchport trunk allowed vlan remove 1944
+exit
+no vlan 1944
+end
+
+
+
+
+

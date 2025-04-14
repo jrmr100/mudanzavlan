@@ -1,0 +1,65 @@
+########################################
+VLAN: 1919	LIB-SACVEN
+
+------VECREDNOC1004X1------
+ssh soporte2@181.225.41.18
+
+config t
+no interface TenGigabitEthernet1/0/2.1919
+ description LIB-SACVEN;ID:
+ bandwidth 51200
+ encapsulation dot1Q 1919
+ ip address 172.23.253.201 255.255.255.252
+ service-policy input 50M
+ service-policy output 50M
+exit
+no ip route 190.94.253.44 255.255.255.252 172.23.253.202 name GPON-VL1919-LIB-SACVEN
+
+---------LEB1006X1-----------
+ssh soporte2@181.225.41.25
+
+interface Port-channel11.1919
+ description LIB-SACVEN;ID:
+ bandwidth 51200
+encapsulation dot1Q 1919
+ ip address 172.23.253.201 255.255.255.252
+ service-policy input 50M
+ service-policy output 50M
+exit
+ip route 190.94.253.44 255.255.255.252 172.23.253.202 name GPON-VL1919-LIB-SACVEN
+end
+
+###########TROUBLESHOOTING############
+
+ping 172.23.253.202
+sh mac address-table vlan 1919
+show ethernet-switching table vlan 1919
+
+################################################################
+ELIMINAR RESIDUOS
+
+----------CCSJ4500CREX2-----------
+ssh soporte2@172.23.253.59
+
+run sh vlan 1919
+
+del interfaces xe-0/0/10 unit 0 family ethernet-switching vlan members LIB-SACVEN
+del interfaces ae5 unit 0 family ethernet-switching vlan members LIB-SACVEN
+del vlans LIB-SACVEN vlan-id 1919
+commit synchronize
+
+
+----------CCS3064LIBERX1-----------
+ssh soporte2@172.23.253.39
+
+config t
+interface Eth1/7
+switchport trunk allowed vlan remove 1919
+exit
+no vlan 1919
+end
+
+
+
+
+

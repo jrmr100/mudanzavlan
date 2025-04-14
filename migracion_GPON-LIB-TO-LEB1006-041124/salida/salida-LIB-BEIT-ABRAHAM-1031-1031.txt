@@ -1,0 +1,63 @@
+########################################
+VLAN: 1031	LIB-BEIT-ABRAHAM
+
+------VECREDNOC1004X1------
+ssh soporte2@181.225.41.18
+
+config t
+no interface TenGigabitEthernet1/0/2.1031
+ description LIB-BEIT-ABRAHAM;ID:26637
+ bandwidth 10240
+ encapsulation dot1Q 1031
+ ip address 190.94.210.137 255.255.255.252
+ service-policy input 10M
+ service-policy output 10M
+exit
+
+---------LEB1006X1-----------
+ssh soporte2@181.225.41.25
+
+interface Port-channel11.1031
+ description LIB-BEIT-ABRAHAM;ID:26637
+ bandwidth 10240
+encapsulation dot1Q 1031
+ ip address 190.94.210.137 255.255.255.252
+ service-policy input 10M
+ service-policy output 10M
+exit
+end
+
+###########TROUBLESHOOTING############
+
+ping NEXTHOP
+sh mac address-table vlan 1031
+show ethernet-switching table vlan 1031
+
+################################################################
+ELIMINAR RESIDUOS
+
+----------CCSJ4500CREX2-----------
+ssh soporte2@172.23.253.59
+
+run sh vlan 1031
+
+del interfaces xe-0/0/10 unit 0 family ethernet-switching vlan members LIB-BEIT-ABRAHAM
+del interfaces ae5 unit 0 family ethernet-switching vlan members LIB-BEIT-ABRAHAM
+del vlans LIB-BEIT-ABRAHAM vlan-id 1031
+commit synchronize
+
+
+----------CCS3064LIBERX1-----------
+ssh soporte2@172.23.253.39
+
+config t
+interface Eth1/7
+switchport trunk allowed vlan remove 1031
+exit
+no vlan 1031
+end
+
+
+
+
+

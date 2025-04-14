@@ -1,0 +1,65 @@
+########################################
+VLAN: 1941	LIBER-QUINTA-VY
+
+------VECREDNOC1004X1------
+ssh soporte2@181.225.41.18
+
+config t
+no interface TenGigabitEthernet1/0/2.1941
+ description LIBER-QUINTA-VY
+ bandwidth 102400
+ encapsulation dot1Q 1941
+ ip address 172.23.241.197 255.255.255.252
+ service-policy input 100M
+ service-policy output 100M
+exit
+no ip route 190.94.244.212 255.255.255.252 172.23.241.198 name GPON-VL1941-LIBER-QUINTA-VY
+
+---------LEB1006X1-----------
+ssh soporte2@181.225.41.25
+
+interface Port-channel11.1941
+ description LIBER-QUINTA-VY
+ bandwidth 102400
+encapsulation dot1Q 1941
+ ip address 172.23.241.197 255.255.255.252
+ service-policy input 100M
+ service-policy output 100M
+exit
+ip route 190.94.244.212 255.255.255.252 172.23.241.198 name GPON-VL1941-LIBER-QUINTA-VY
+end
+
+###########TROUBLESHOOTING############
+
+ping 172.23.241.198
+sh mac address-table vlan 1941
+show ethernet-switching table vlan 1941
+
+################################################################
+ELIMINAR RESIDUOS
+
+----------CCSJ4500CREX2-----------
+ssh soporte2@172.23.253.59
+
+run sh vlan 1941
+
+del interfaces xe-0/0/10 unit 0 family ethernet-switching vlan members LIBER-QUINTA-VY
+del interfaces ae5 unit 0 family ethernet-switching vlan members LIBER-QUINTA-VY
+del vlans LIBER-QUINTA-VY vlan-id 1941
+commit synchronize
+
+
+----------CCS3064LIBERX1-----------
+ssh soporte2@172.23.253.39
+
+config t
+interface Eth1/7
+switchport trunk allowed vlan remove 1941
+exit
+no vlan 1941
+end
+
+
+
+
+
