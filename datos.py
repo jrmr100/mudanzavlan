@@ -1,7 +1,7 @@
 # DINAMICA
-working_directory = "migracion_GPON-ELUN-TO-LEB1006-061124/"
+working_directory = "migracion_GPON-STG-TO-LEB1006-140425/"
 interface_anterior = "TenGigabitEthernet1/0/4."
-interface_nueva = "Port-channel12"
+interface_nueva = "Port-channel13"
 
 # ESTATICA
 txt_vlan_vieja = working_directory + "lista_vlan_vieja.txt"

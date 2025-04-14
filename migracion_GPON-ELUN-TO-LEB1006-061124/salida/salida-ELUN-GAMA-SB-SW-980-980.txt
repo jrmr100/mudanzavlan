@@ -44,9 +44,9 @@ ssh soporte2@172.23.253.59
 
 run sh vlan 980
 
-del interfaces xe-0/0/11 unit 0 family ethernet-switching vlan members ELUN-GAMA-SB
-del interfaces ae4 unit 0 family ethernet-switching vlan members ELUN-GAMA-SB
-del vlans ELUN-GAMA-SB
+del interfaces xe-0/0/11 unit 0 family ethernet-switching vlan members ELUN-GAMA-SB-SW
+del interfaces ae4 unit 0 family ethernet-switching vlan members ELUN-GAMA-SB-SW
+del vlans ELUN-GAMA-SB-SW
 commit synchronize
 
 
