@@ -1,5 +1,5 @@
 # DINAMICA
-working_directory = "migracion_GPON-BOL-TO-LEB1006-100326/"
+working_directory = "migracion_GPON-BOL-TO-LEB1006-200426/"
 interface_anterior = "Port-channel10."
 interface_nueva = "Port-channel6"
 
