@@ -1,0 +1,43 @@
+########################################
+VLAN: 1667	LEB-SMARTCALL-COLEG
+
+------LEB1006X1------
+ssh soporte2@181.225.41.25
+
+config t
+no interface Port-channel10.2303
+ description BOL-SMARTCALL-COLEG;ID:26088
+ bandwidth 302080
+ encapsulation dot1Q 2303
+ ip address 172.23.247.37 255.255.255.252
+ service-policy input BOL-SMARTCALL-COLEG
+ service-policy output BOL-SMARTCALL-COLEG
+exit
+no ip route 190.94.209.152 255.255.255.248 172.23.247.38 name GPON-VL2303-BOL-SMARTCALL-COLEG
+
+---------LEB1006X1-----------
+ssh soporte2@181.225.41.25
+
+interface Port-channel6.1667
+ description LEB-SMARTCALL-COLEG;ID:26088
+ bandwidth 302080
+encapsulation dot1Q 1667
+ ip address 172.23.247.37 255.255.255.252
+ service-policy input BOL-SMARTCALL-COLEG
+ service-policy output BOL-SMARTCALL-COLEG
+exit
+ip route 190.94.209.152 255.255.255.248 172.23.247.38 name GPON-VL1667-LEB-SMARTCALL-COLEG
+end
+
+###########TROUBLESHOOTING############
+
+ping 172.23.247.38
+sh mac address-table vlan 1667
+show ethernet-switching table vlan 1667
+
+################################################################
+
+
+
+
+

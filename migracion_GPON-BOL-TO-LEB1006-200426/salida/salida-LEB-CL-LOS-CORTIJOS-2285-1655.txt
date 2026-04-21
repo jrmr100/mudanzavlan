@@ -1,0 +1,43 @@
+########################################
+VLAN: 1655	LEB-CL-LOS-CORTIJOS
+
+------LEB1006X1------
+ssh soporte2@181.225.41.25
+
+config t
+no interface Port-channel10.2285
+ description BOL-CL-LOS-CORTIJOS;ID:26203
+ bandwidth 153600
+ encapsulation dot1Q 2285
+ ip address 172.23.246.201 255.255.255.252
+ service-policy input 150M
+ service-policy output 150M
+exit
+no ip route 190.94.252.196 255.255.255.252 172.23.246.202 name GPON-VL2285-BOL-CL-LOS-CORTIJOS
+
+---------LEB1006X1-----------
+ssh soporte2@181.225.41.25
+
+interface Port-channel6.1655
+ description LEB-CL-LOS-CORTIJOS;ID:26203
+ bandwidth 153600
+encapsulation dot1Q 1655
+ ip address 172.23.246.201 255.255.255.252
+ service-policy input 150M
+ service-policy output 150M
+exit
+ip route 190.94.252.196 255.255.255.252 172.23.246.202 name GPON-VL1655-LEB-CL-LOS-CORTIJOS
+end
+
+###########TROUBLESHOOTING############
+
+ping 172.23.246.202
+sh mac address-table vlan 1655
+show ethernet-switching table vlan 1655
+
+################################################################
+
+
+
+
+

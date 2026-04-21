@@ -1,0 +1,43 @@
+########################################
+VLAN: 1675	LEB-ACQUA-FONTANA
+
+------LEB1006X1------
+ssh soporte2@181.225.41.25
+
+config t
+no interface Port-channel4.2272
+ description BOL-ACQUA-FONTANA;ID:26037
+ bandwidth 51200
+ encapsulation dot1Q 2272
+ ip address 172.23.250.69 255.255.255.252
+ service-policy input 50M
+ service-policy output 50M
+ exit
+ no ip route 190.94.210.108 255.255.255.252 172.23.250.70 name GPON-VL2272-BOL-ACQUA-FONTANA
+
+---------LEB1006X1-----------
+ssh soporte2@181.225.41.25
+
+interface Port-channel6.1675
+ description LEB-ACQUA-FONTANA;ID:26037
+ bandwidth 51200
+ encapsulation dot1Q 1675
+ ip address 172.23.250.69 255.255.255.252
+ service-policy input 50M
+ service-policy output 50M
+ exit
+ ip route 190.94.210.108 255.255.255.252 172.23.250.70 name GPON-VL1675-LEB-ACQUA-FONTANA
+
+
+###########TROUBLESHOOTING############
+
+ping 172.23.247.250
+sh mac address-table vlan 1675
+show ethernet-switching table vlan 1675
+
+################################################################
+
+
+
+
+

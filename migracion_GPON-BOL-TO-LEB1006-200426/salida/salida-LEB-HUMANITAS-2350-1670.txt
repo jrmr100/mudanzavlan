@@ -1,0 +1,43 @@
+########################################
+VLAN: 1670	LEB-HUMANITAS
+
+------LEB1006X1------
+ssh soporte2@181.225.41.25
+
+config t
+no interface Port-channel10.2350
+ description BOL-HUMANITAS;ID:26871
+ bandwidth 512000
+ encapsulation dot1Q 2350
+ ip address 172.23.237.129 255.255.255.252
+ service-policy input 500M
+ service-policy output 500M
+exit
+no ip route 181.225.53.232 255.255.255.248 172.23.237.130 name GPON-VL2350-BOL-HUMANITAS
+
+---------LEB1006X1-----------
+ssh soporte2@181.225.41.25
+
+interface Port-channel6.1670
+ description LEB-HUMANITAS;ID:26871
+ bandwidth 512000
+encapsulation dot1Q 1670
+ ip address 172.23.237.129 255.255.255.252
+ service-policy input 500M
+ service-policy output 500M
+exit
+ip route 181.225.53.232 255.255.255.248 172.23.237.130 name GPON-VL1670-LEB-HUMANITAS
+end
+
+###########TROUBLESHOOTING############
+
+ping 172.23.237.130
+sh mac address-table vlan 1670
+show ethernet-switching table vlan 1670
+
+################################################################
+
+
+
+
+

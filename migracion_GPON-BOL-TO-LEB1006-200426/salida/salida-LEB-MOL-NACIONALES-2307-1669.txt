@@ -1,0 +1,45 @@
+########################################
+VLAN: 1669	LEB-MOL-NACIONALES
+
+------LEB1006X1------
+ssh soporte2@181.225.41.25
+
+config t
+no interface Port-channel10.2307
+ description BOL-MOL-NACIONALES;ID:25947
+ bandwidth 512000
+ encapsulation dot1Q 2307
+ ip address 172.23.254.249 255.255.255.252
+ service-policy input 500M
+ service-policy output 500M
+exit
+no ip route 190.94.209.80 255.255.255.248 172.23.254.250 name GPON-VL2307-BOL-MOL-NACIONALES
+no ip route 190.94.211.80 255.255.255.248 172.23.254.250 name GPON-VL2307-BOL-MOL-NACIONALES
+
+---------LEB1006X1-----------
+ssh soporte2@181.225.41.25
+
+interface Port-channel6.1669
+ description LEB-MOL-NACIONALES;ID:25947
+ bandwidth 512000
+encapsulation dot1Q 1669
+ ip address 172.23.254.249 255.255.255.252
+ service-policy input 500M
+ service-policy output 500M
+exit
+ip route 190.94.209.80 255.255.255.248 172.23.254.250 name GPON-VL1669-LEB-MOL-NACIONALES
+ip route 190.94.211.80 255.255.255.248 172.23.254.250 name GPON-VL1669-LEB-MOL-NACIONALES
+end
+
+###########TROUBLESHOOTING############
+
+ping 172.23.254.250
+sh mac address-table vlan 1669
+show ethernet-switching table vlan 1669
+
+################################################################
+
+
+
+
+

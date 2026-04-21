@@ -1,0 +1,43 @@
+########################################
+VLAN: 1677	LEB-COLEGIO-FRANCIA
+
+------LEB1006X1------
+ssh soporte2@181.225.41.25
+
+config t
+no interface Port-channel10.2278
+ description BOL-COLEGIO-FRANCIA;ID:4
+ bandwidth 102400
+ encapsulation dot1Q 2278
+ ip address 172.23.243.185 255.255.255.252
+ service-policy input 100M
+ service-policy output 100M
+exit
+no ip route 190.94.244.132 255.255.255.252 172.23.243.186 name GPON-VL2278-BOL-COLEGIO-FRANCIA
+
+---------LEB1006X1-----------
+ssh soporte2@181.225.41.25
+
+interface Port-channel6.1677
+ description LEB-COLEGIO-FRANCIA;ID:4
+ bandwidth 102400
+encapsulation dot1Q 1677
+ ip address 172.23.243.185 255.255.255.252
+ service-policy input 100M
+ service-policy output 100M
+exit
+ip route 190.94.244.132 255.255.255.252 172.23.243.186 name GPON-VL1677-LEB-COLEGIO-FRANCIA
+end
+
+###########TROUBLESHOOTING############
+
+ping 172.23.243.186
+sh mac address-table vlan 1677
+show ethernet-switching table vlan 1677
+
+################################################################
+
+
+
+
+

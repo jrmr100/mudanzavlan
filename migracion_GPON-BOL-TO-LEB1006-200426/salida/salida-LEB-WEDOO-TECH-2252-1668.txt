@@ -1,0 +1,49 @@
+########################################
+VLAN: 1668	LEB-WEDOO-TECH
+
+------LEB1006X1------
+ssh soporte2@181.225.41.25
+
+config t
+no interface Port-channel10.2252
+ description BOL-WEDOO;ID:26157
+ bandwidth 25600
+ encapsulation dot1Q 2252
+ ip address 172.23.247.249 255.255.255.252
+ service-policy input 60M
+ service-policy output 60M
+exit
+no ip route 190.94.243.184 255.255.255.248 172.23.247.250 name GPON-VL2252-BOL-WEDOO
+no ip route 190.94.253.56 255.255.255.252 172.23.247.250 name GPON-VL2252-BOL-WEDOO
+no ip route 190.94.253.60 255.255.255.252 172.23.247.250 name GPON-VL2252-BOL-WEDOO
+no ip route 190.94.253.68 255.255.255.252 172.23.247.250 name GPON-VL2252-BOL-WEDOO
+
+---------LEB1006X1-----------
+ssh soporte2@181.225.41.25
+
+interface Port-channel6.1668
+ description LEB-WEDOO;ID:26157
+ bandwidth 25600
+encapsulation dot1Q 1668
+ ip address 172.23.247.249 255.255.255.252
+ service-policy input 60M
+ service-policy output 60M
+exit
+ip route 190.94.243.184 255.255.255.248 172.23.247.250 name GPON-VL1668-LEB-WEDOO
+ip route 190.94.253.56 255.255.255.252 172.23.247.250 name GPON-VL1668-LEB-WEDOO
+ip route 190.94.253.60 255.255.255.252 172.23.247.250 name GPON-VL1668-LEB-WEDOO
+ip route 190.94.253.68 255.255.255.252 172.23.247.250 name GPON-VL1668-LEB-WEDOO
+end
+
+###########TROUBLESHOOTING############
+
+ping 172.23.247.250
+sh mac address-table vlan 1668
+show ethernet-switching table vlan 1668
+
+################################################################
+
+
+
+
+

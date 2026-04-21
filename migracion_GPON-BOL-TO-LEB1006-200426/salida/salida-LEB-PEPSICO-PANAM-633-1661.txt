@@ -1,0 +1,45 @@
+########################################
+VLAN: 1661	LEB-PEPSICO-PANAM
+
+------LEB1006X1------
+ssh soporte2@181.225.41.25
+
+config t
+no interface Port-channel10.633
+ description PEPSICO-PANAM;ID:26066
+ bandwidth 81920
+ encapsulation dot1Q 633
+ ip address 172.23.248.61 255.255.255.252
+ service-policy input 80M
+ service-policy output 80M
+exit
+no ip route 190.94.253.156 255.255.255.252 172.23.248.62 name GPON-VL633-BOL-PEPSICO-PANAM
+no ip route 190.94.253.232 255.255.255.252 172.23.248.62 name GPON-VL633-BOL-PEPSICO-PANAM
+
+---------LEB1006X1-----------
+ssh soporte2@181.225.41.25
+
+interface Port-channel6.1661
+ description LEB-PEPSICO-PANAM;ID:26066
+ bandwidth 81920
+encapsulation dot1Q 1661
+ ip address 172.23.248.61 255.255.255.252
+ service-policy input 80M
+ service-policy output 80M
+exit
+ip route 190.94.253.156 255.255.255.252 172.23.248.62 name GPON-VL1661-LEB-PEPSICO-PANAM
+ip route 190.94.253.232 255.255.255.252 172.23.248.62 name GPON-VL1661-LEB-PEPSICO-PANAM
+end
+
+###########TROUBLESHOOTING############
+
+ping 172.23.248.62
+sh mac address-table vlan 1661
+show ethernet-switching table vlan 1661
+
+################################################################
+
+
+
+
+

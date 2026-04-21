@@ -1,0 +1,41 @@
+########################################
+VLAN: 1671	LEB-CORFIN-AUTANA
+
+------LEB1006X1------
+ssh soporte2@181.225.41.25
+
+config t
+no interface Port-channel10.610
+ description BOL-CORFIN-AUTANA;ID:26528
+ bandwidth 512000
+ encapsulation dot1Q 610
+ ip address 190.94.197.65 255.255.255.248
+ service-policy input 500M
+ service-policy output 500M
+exit
+
+---------LEB1006X1-----------
+ssh soporte2@181.225.41.25
+
+interface Port-channel6.1671
+ description LEB-CORFIN-AUTANA;ID:26528
+ bandwidth 512000
+encapsulation dot1Q 1671
+ ip address 190.94.197.65 255.255.255.248
+ service-policy input 500M
+ service-policy output 500M
+exit
+end
+
+###########TROUBLESHOOTING############
+
+ping NEXTHOP
+sh mac address-table vlan 1671
+show ethernet-switching table vlan 1671
+
+################################################################
+
+
+
+
+
